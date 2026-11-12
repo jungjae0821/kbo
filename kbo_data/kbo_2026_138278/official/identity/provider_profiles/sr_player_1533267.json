@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-11-12T07:38:22+00:00",
+  "player": {
+    "id": "sr:player:1533267",
+    "name": "매드리스, 블라이",
+    "type": "OF",
+    "date_of_birth": "1996-02-29",
+    "nationality": "United states",
+    "country_code": "USA",
+    "jersey_number": 13,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249979",
+      "name": "SSG 랜더스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "SSG",
+      "gender": "male"
+    }
+  ]
+}

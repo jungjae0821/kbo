@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:42:24+00:00",
+  "player": {
+    "id": "sr:player:3168190",
+    "name": "김한결",
+    "type": "P",
+    "date_of_birth": "2006-07-24",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 193,
+    "weight": 93,
+    "jersey_number": 62,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249971",
+      "name": "롯데 자이언츠",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "GIA",
+      "gender": "male"
+    }
+  ]
+}

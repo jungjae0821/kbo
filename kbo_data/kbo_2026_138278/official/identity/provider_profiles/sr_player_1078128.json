@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:38:13+00:00",
+  "player": {
+    "id": "sr:player:1078128",
+    "name": "황, 재균",
+    "type": "IF",
+    "date_of_birth": "1987-07-28",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 182,
+    "weight": 98,
+    "jersey_number": 10,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249967",
+      "name": "KT 위즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "WIZ",
+      "gender": "male"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "competition": {
+    "id": "sr:competition:2541",
+    "name": "KBO 리그",
+    "gender": "men",
+    "category": {
+      "id": "sr:category:384",
+      "name": "대한민국",
+      "country_code": "KOR"
+    }
+  },
+  "season": {
+    "id": "sr:season:138278",
+    "name": "KBO 리그 2026",
+    "start_date": "2026-03-28",
+    "end_date": "2026-11-08",
+    "year": "2026",
+    "competition_id": "sr:competition:2541"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249961",
+      "name": "두산 베어스",
+      "short_name": "두산 베어스",
+      "abbreviation": "BEA"
+    },
+    {
+      "id": "sr:competitor:249963",
+      "name": "한화 이글스",
+      "short_name": "한화",
+      "abbreviation": "EAG"
+    },
+    {
+      "id": "sr:competitor:249965",
+      "name": "KIA 타이거즈",
+      "short_name": "KIA",
+      "abbreviation": "TIG"
+    },
+    {
+      "id": "sr:competitor:249967",
+      "name": "KT 위즈",
+      "short_name": "KT 위즈",
+      "abbreviation": "WIZ"
+    },
+    {
+      "id": "sr:competitor:249969",
+      "name": "LG 트윈스",
+      "short_name": "LG",
+      "abbreviation": "TWI"
+    },
+    {
+      "id": "sr:competitor:249971",
+      "name": "롯데 자이언츠",
+      "short_name": "롯데 자이언츠",
+      "abbreviation": "GIA"
+    },
+    {
+      "id": "sr:competitor:249973",
+      "name": "NC 다이노스",
+      "short_name": "NC",
+      "abbreviation": "DIN"
+    },
+    {
+      "id": "sr:competitor:249975",
+      "name": "키움 히어로즈",
+      "short_name": "키움 히어로즈",
+      "abbreviation": "키움"
+    },
+    {
+      "id": "sr:competitor:249977",
+      "name": "삼성 라이온즈",
+      "short_name": "삼성",
+      "abbreviation": "LIO"
+    },
+    {
+      "id": "sr:competitor:249979",
+      "name": "SSG 랜더스",
+      "short_name": "SSG 랜더스",
+      "abbreviation": "SSG"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:38:59+00:00",
+  "player": {
+    "id": "sr:player:2777505",
+    "name": "준표전",
+    "type": "P",
+    "date_of_birth": "2005-05-07",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 185,
+    "weight": 90,
+    "jersey_number": 62,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249975",
+      "name": "키움 히어로즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "키움",
+      "gender": "male"
+    }
+  ]
+}

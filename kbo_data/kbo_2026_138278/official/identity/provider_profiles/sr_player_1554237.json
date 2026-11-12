@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:38:24+00:00",
+  "player": {
+    "id": "sr:player:1554237",
+    "name": "지머맨, 브루스",
+    "type": "P",
+    "date_of_birth": "1995-02-09",
+    "nationality": "United states",
+    "country_code": "USA",
+    "height": 191,
+    "weight": 107,
+    "jersey_number": 12,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249963",
+      "name": "한화 이글스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "EAG",
+      "gender": "male"
+    }
+  ]
+}

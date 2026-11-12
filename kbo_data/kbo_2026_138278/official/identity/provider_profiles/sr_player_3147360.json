@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:39:32+00:00",
+  "player": {
+    "id": "sr:player:3147360",
+    "name": "김성현",
+    "type": "IF",
+    "date_of_birth": "1987-03-09",
+    "nationality": "Korea",
+    "country_code": "COR",
+    "height": 172,
+    "weight": 72,
+    "jersey_number": 6,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249979",
+      "name": "SSG 랜더스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "SSG",
+      "gender": "male"
+    }
+  ]
+}

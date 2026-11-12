@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:39:36+00:00",
+  "player": {
+    "id": "sr:player:3147442",
+    "name": "재성김",
+    "type": "C",
+    "date_of_birth": "1996-10-30",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 185,
+    "weight": 85,
+    "jersey_number": 2,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249977",
+      "name": "삼성 라이온즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "LIO",
+      "gender": "male"
+    }
+  ]
+}

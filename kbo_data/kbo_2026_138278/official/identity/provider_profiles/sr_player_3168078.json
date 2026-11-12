@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:42:03+00:00",
+  "player": {
+    "id": "sr:player:3168078",
+    "name": "정구범",
+    "type": "P",
+    "date_of_birth": "2000-06-16",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 183,
+    "weight": 73,
+    "jersey_number": 8,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249973",
+      "name": "NC 다이노스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "DIN",
+      "gender": "male"
+    }
+  ]
+}

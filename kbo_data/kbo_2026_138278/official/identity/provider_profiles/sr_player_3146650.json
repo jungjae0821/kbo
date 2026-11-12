@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:39:13+00:00",
+  "player": {
+    "id": "sr:player:3146650",
+    "name": "김명신",
+    "type": "P",
+    "date_of_birth": "1993-11-29",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 178,
+    "weight": 90,
+    "jersey_number": 46,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249961",
+      "name": "두산 베어스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "BEA",
+      "gender": "male"
+    }
+  ]
+}

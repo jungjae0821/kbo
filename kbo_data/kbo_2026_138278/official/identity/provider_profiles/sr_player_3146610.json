@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:39:09+00:00",
+  "player": {
+    "id": "sr:player:3146610",
+    "name": "홍건희",
+    "type": "P",
+    "date_of_birth": "1992-09-29",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 187,
+    "weight": 97,
+    "jersey_number": 52,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249965",
+      "name": "KIA 타이거즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "TIG",
+      "gender": "male"
+    }
+  ]
+}

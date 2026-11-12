@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:40:02+00:00",
+  "player": {
+    "id": "sr:player:3148646",
+    "name": "배민서",
+    "type": "P",
+    "date_of_birth": "1999-11-18",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 184,
+    "weight": 90,
+    "jersey_number": 45,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249963",
+      "name": "한화 이글스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "EAG",
+      "gender": "male"
+    }
+  ]
+}

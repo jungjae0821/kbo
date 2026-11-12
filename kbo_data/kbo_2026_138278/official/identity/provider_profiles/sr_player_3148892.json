@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:40:15+00:00",
+  "player": {
+    "id": "sr:player:3148892",
+    "name": "강민성",
+    "type": "IF",
+    "date_of_birth": "1999-12-08",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 180,
+    "weight": 85,
+    "jersey_number": 5,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249967",
+      "name": "KT 위즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "WIZ",
+      "gender": "male"
+    }
+  ]
+}

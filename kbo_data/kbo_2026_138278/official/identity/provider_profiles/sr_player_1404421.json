@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:38:22+00:00",
+  "player": {
+    "id": "sr:player:1404421",
+    "name": "가스트로, 하롤드",
+    "type": "OF",
+    "date_of_birth": "1993-11-30",
+    "nationality": "Venezuela",
+    "country_code": "VEN",
+    "height": 183,
+    "weight": 88,
+    "jersey_number": 26,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249965",
+      "name": "KIA 타이거즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "TIG",
+      "gender": "male"
+    }
+  ]
+}

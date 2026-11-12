@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:41:28+00:00",
+  "player": {
+    "id": "sr:player:3167446",
+    "name": "대호김",
+    "type": "P",
+    "date_of_birth": "2001-10-15",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 185,
+    "weight": 100,
+    "jersey_number": 44,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249977",
+      "name": "삼성 라이온즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "LIO",
+      "gender": "male"
+    }
+  ]
+}

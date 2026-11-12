@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:41:03+00:00",
+  "player": {
+    "id": "sr:player:3166876",
+    "name": "이희성",
+    "type": "C",
+    "date_of_birth": "2007-04-01",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 185,
+    "weight": 95,
+    "jersey_number": 32,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249973",
+      "name": "NC 다이노스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "DIN",
+      "gender": "male"
+    }
+  ]
+}

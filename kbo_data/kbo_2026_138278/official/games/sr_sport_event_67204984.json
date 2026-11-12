@@ -1,0 +1,766 @@
+{
+  "provider_event_id": "sr:sport_event:67204984",
+  "kbo_game_id": "20260820HTHH0",
+  "date": "20260820",
+  "source_url": "https://www.koreabaseball.com/Schedule/GameCenter/Main.aspx?gameDate=20260820&gameId=20260820HTHH0&section=REVIEW",
+  "player_identity": "Official game rows contain names, not KBO player IDs; no forced cross-provider join.",
+  "teams": [
+    {
+      "qualifier": "away",
+      "official_team_name": "KIA",
+      "runs_scored": 10,
+      "batting": {
+        "at_bats": 39,
+        "hits": 12,
+        "runs_batted_in": 10,
+        "runs": 10
+      },
+      "pitching": {
+        "outs_pitched": 27,
+        "batters_faced": 42,
+        "pitches": 170,
+        "hits_allowed": 11,
+        "home_runs_allowed": 3,
+        "walks_and_hit_batters": 3,
+        "pitcher_strikeouts": 6,
+        "runs_allowed": 6,
+        "pitcher_earned_runs_sum": 5
+      },
+      "batters": [
+        {
+          "player_name": "박재현",
+          "source_order": "1",
+          "source_position": "좌",
+          "at_bats": 5,
+          "hits": 1,
+          "runs_batted_in": 0,
+          "runs": 1,
+          "plate_appearance_results_by_inning": [
+            "2땅",
+            "",
+            "",
+            "우안",
+            "중비",
+            "",
+            "중비",
+            "",
+            "삼진"
+          ]
+        },
+        {
+          "player_name": "김선빈",
+          "source_order": "2",
+          "source_position": "二",
+          "at_bats": 4,
+          "hits": 1,
+          "runs_batted_in": 0,
+          "runs": 1,
+          "plate_appearance_results_by_inning": [
+            "1땅",
+            "",
+            "",
+            "3안",
+            "1땅",
+            "",
+            "3땅",
+            "",
+            ""
+          ]
+        },
+        {
+          "player_name": "하주석",
+          "source_order": "2",
+          "source_position": "二",
+          "at_bats": 1,
+          "hits": 1,
+          "runs_batted_in": 1,
+          "runs": 1,
+          "plate_appearance_results_by_inning": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "좌안"
+          ]
+        },
+        {
+          "player_name": "김도영",
+          "source_order": "3",
+          "source_position": "지三",
+          "at_bats": 4,
+          "hits": 3,
+          "runs_batted_in": 0,
+          "runs": 4,
+          "plate_appearance_results_by_inning": [
+            "삼진",
+            "",
+            "",
+            "좌안",
+            "",
+            "좌중2",
+            "",
+            "4구",
+            "중안"
+          ]
+        },
+        {
+          "player_name": "카스트로",
+          "source_order": "4",
+          "source_position": "一",
+          "at_bats": 4,
+          "hits": 2,
+          "runs_batted_in": 3,
+          "runs": 1,
+          "plate_appearance_results_by_inning": [
+            "",
+            "우비",
+            "",
+            "사구",
+            "",
+            "우중안",
+            "",
+            "우안",
+            "야선"
+          ]
+        },
+        {
+          "player_name": "나성범",
+          "source_order": "5",
+          "source_position": "우",
+          "at_bats": 4,
+          "hits": 2,
+          "runs_batted_in": 3,
+          "runs": 0,
+          "plate_appearance_results_by_inning": [
+            "",
+            "삼진",
+            "",
+            "우안",
+            "",
+            "2병",
+            "",
+            "중희비",
+            "우안"
+          ]
+        },
+        {
+          "player_name": "박정우",
+          "source_order": "5",
+          "source_position": "주우",
+          "at_bats": 0,
+          "hits": 0,
+          "runs_batted_in": 0,
+          "runs": 0,
+          "plate_appearance_results_by_inning": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "player_name": "윤도현",
+          "source_order": "6",
+          "source_position": "三",
+          "at_bats": 4,
+          "hits": 0,
+          "runs_batted_in": 0,
+          "runs": 0,
+          "plate_appearance_results_by_inning": [
+            "",
+            "삼진",
+            "",
+            "우비",
+            "",
+            "3직",
+            "",
+            "삼진",
+            ""
+          ]
+        },
+        {
+          "player_name": "정해영",
+          "source_order": "6",
+          "source_position": "투",
+          "at_bats": 0,
+          "hits": 0,
+          "runs_batted_in": 0,
+          "runs": 0,
+          "plate_appearance_results_by_inning": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "player_name": "오선우",
+          "source_order": "6",
+          "source_position": "타",
+          "at_bats": 1,
+          "hits": 0,
+          "runs_batted_in": 0,
+          "runs": 0,
+          "plate_appearance_results_by_inning": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "삼진"
+          ]
+        },
+        {
+          "player_name": "성영탁",
+          "source_order": "6",
+          "source_position": "투",
+          "at_bats": 0,
+          "hits": 0,
+          "runs_batted_in": 0,
+          "runs": 0,
+          "plate_appearance_results_by_inning": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "player_name": "한준수",
+          "source_order": "7",
+          "source_position": "포",
+          "at_bats": 3,
+          "hits": 0,
+          "runs_batted_in": 0,
+          "runs": 0,
+          "plate_appearance_results_by_inning": [
+            "",
+            "",
+            "3비",
+            "1파",
+            "",
+            "",
+            "중비",
+            "",
+            ""
+          ]
+        },
+        {
+          "player_name": "김태군",
+          "source_order": "7",
+          "source_position": "포",
+          "at_bats": 1,
+          "hits": 1,
+          "runs_batted_in": 3,
+          "runs": 1,
+          "plate_appearance_results_by_inning": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "좌홈",
+            "사구"
+          ]
+        },
+        {
+          "player_name": "정현창",
+          "source_order": "8",
+          "source_position": "유",
+          "at_bats": 4,
+          "hits": 0,
+          "runs_batted_in": 0,
+          "runs": 0,
+          "plate_appearance_results_by_inning": [
+            "",
+            "",
+            "1땅",
+            "삼진",
+            "",
+            "",
+            "4구",
+            "삼진",
+            "1땅"
+          ]
+        },
+        {
+          "player_name": "김호령",
+          "source_order": "9",
+          "source_position": "중",
+          "at_bats": 4,
+          "hits": 1,
+          "runs_batted_in": 0,
+          "runs": 1,
+          "plate_appearance_results_by_inning": [
+            "",
+            "",
+            "3땅",
+            "",
+            "삼진",
+            "",
+            "좌안",
+            "",
+            "우실"
+          ]
+        }
+      ],
+      "pitchers": [
+        {
+          "player_name": "황동하",
+          "entry": "선발",
+          "result": "",
+          "outs_pitched": 15,
+          "batters_faced": 22,
+          "pitches": 85,
+          "opponent_at_bats": 18,
+          "hits_allowed": 4,
+          "home_runs_allowed": 1,
+          "walks_and_hit_batters": 3,
+          "pitcher_strikeouts": 4,
+          "runs_allowed": 2,
+          "earned_runs": 2
+        },
+        {
+          "player_name": "이태양",
+          "entry": "6.5",
+          "result": "홀드",
+          "outs_pitched": 3,
+          "batters_faced": 4,
+          "pitches": 13,
+          "opponent_at_bats": 4,
+          "hits_allowed": 1,
+          "home_runs_allowed": 0,
+          "walks_and_hit_batters": 0,
+          "pitcher_strikeouts": 1,
+          "runs_allowed": 0,
+          "earned_runs": 0
+        },
+        {
+          "player_name": "김범수",
+          "entry": "7.9",
+          "result": "",
+          "outs_pitched": 0,
+          "batters_faced": 2,
+          "pitches": 5,
+          "opponent_at_bats": 2,
+          "hits_allowed": 2,
+          "home_runs_allowed": 1,
+          "walks_and_hit_batters": 0,
+          "pitcher_strikeouts": 0,
+          "runs_allowed": 2,
+          "earned_runs": 2
+        },
+        {
+          "player_name": "최지민",
+          "entry": "7.2",
+          "result": "승",
+          "outs_pitched": 3,
+          "batters_faced": 6,
+          "pitches": 28,
+          "opponent_at_bats": 6,
+          "hits_allowed": 2,
+          "home_runs_allowed": 1,
+          "walks_and_hit_batters": 0,
+          "pitcher_strikeouts": 0,
+          "runs_allowed": 2,
+          "earned_runs": 1
+        },
+        {
+          "player_name": "정해영",
+          "entry": "8.8",
+          "result": "홀드",
+          "outs_pitched": 3,
+          "batters_faced": 3,
+          "pitches": 14,
+          "opponent_at_bats": 3,
+          "hits_allowed": 0,
+          "home_runs_allowed": 0,
+          "walks_and_hit_batters": 0,
+          "pitcher_strikeouts": 0,
+          "runs_allowed": 0,
+          "earned_runs": 0
+        },
+        {
+          "player_name": "성영탁",
+          "entry": "9.2",
+          "result": "",
+          "outs_pitched": 3,
+          "batters_faced": 5,
+          "pitches": 25,
+          "opponent_at_bats": 5,
+          "hits_allowed": 2,
+          "home_runs_allowed": 0,
+          "walks_and_hit_batters": 0,
+          "pitcher_strikeouts": 1,
+          "runs_allowed": 0,
+          "earned_runs": 0
+        }
+      ]
+    },
+    {
+      "qualifier": "home",
+      "official_team_name": "한화",
+      "runs_scored": 6,
+      "batting": {
+        "at_bats": 38,
+        "hits": 11,
+        "runs_batted_in": 6,
+        "runs": 6
+      },
+      "pitching": {
+        "outs_pitched": 27,
+        "batters_faced": 44,
+        "pitches": 167,
+        "hits_allowed": 12,
+        "home_runs_allowed": 1,
+        "walks_and_hit_batters": 4,
+        "pitcher_strikeouts": 9,
+        "runs_allowed": 10,
+        "pitcher_earned_runs_sum": 9
+      },
+      "batters": [
+        {
+          "player_name": "김태연",
+          "source_order": "1",
+          "source_position": "우",
+          "at_bats": 5,
+          "hits": 2,
+          "runs_batted_in": 2,
+          "runs": 1,
+          "plate_appearance_results_by_inning": [
+            "좌안",
+            "2땅",
+            "",
+            "",
+            "좌비",
+            "",
+            "좌홈",
+            "좌비",
+            ""
+          ]
+        },
+        {
+          "player_name": "최인호",
+          "source_order": "2",
+          "source_position": "중",
+          "at_bats": 2,
+          "hits": 0,
+          "runs_batted_in": 0,
+          "runs": 0,
+          "plate_appearance_results_by_inning": [
+            "1희번",
+            "",
+            "3비",
+            "",
+            "유직",
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "player_name": "심우준",
+          "source_order": "2",
+          "source_position": "유",
+          "at_bats": 1,
+          "hits": 0,
+          "runs_batted_in": 0,
+          "runs": 1,
+          "plate_appearance_results_by_inning": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "유실",
+            "",
+            ""
+          ]
+        },
+        {
+          "player_name": "페라자",
+          "source_order": "2",
+          "source_position": "타",
+          "at_bats": 1,
+          "hits": 0,
+          "runs_batted_in": 0,
+          "runs": 0,
+          "plate_appearance_results_by_inning": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "삼진"
+          ]
+        },
+        {
+          "player_name": "한지윤",
+          "source_order": "3",
+          "source_position": "좌",
+          "at_bats": 4,
+          "hits": 3,
+          "runs_batted_in": 2,
+          "runs": 1,
+          "plate_appearance_results_by_inning": [
+            "4구",
+            "",
+            "좌비",
+            "",
+            "좌안",
+            "",
+            "우홈",
+            "",
+            "좌안"
+          ]
+        },
+        {
+          "player_name": "강백호",
+          "source_order": "4",
+          "source_position": "지",
+          "at_bats": 5,
+          "hits": 0,
+          "runs_batted_in": 0,
+          "runs": 0,
+          "plate_appearance_results_by_inning": [
+            "삼진",
+            "",
+            "1땅",
+            "",
+            "중비",
+            "",
+            "투땅",
+            "",
+            "중직"
+          ]
+        },
+        {
+          "player_name": "노시환",
+          "source_order": "5",
+          "source_position": "三",
+          "at_bats": 5,
+          "hits": 2,
+          "runs_batted_in": 0,
+          "runs": 0,
+          "plate_appearance_results_by_inning": [
+            "좌비",
+            "",
+            "",
+            "우비",
+            "",
+            "삼진",
+            "중안",
+            "",
+            "우2"
+          ]
+        },
+        {
+          "player_name": "채은성",
+          "source_order": "6",
+          "source_position": "一",
+          "at_bats": 4,
+          "hits": 1,
+          "runs_batted_in": 0,
+          "runs": 0,
+          "plate_appearance_results_by_inning": [
+            "",
+            "삼진",
+            "",
+            "4구",
+            "",
+            "우안",
+            "좌비",
+            "",
+            "3땅"
+          ]
+        },
+        {
+          "player_name": "박정현",
+          "source_order": "7",
+          "source_position": "유",
+          "at_bats": 2,
+          "hits": 0,
+          "runs_batted_in": 0,
+          "runs": 0,
+          "plate_appearance_results_by_inning": [
+            "",
+            "삼진",
+            "",
+            "삼진",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "player_name": "문현빈",
+          "source_order": "7",
+          "source_position": "타중",
+          "at_bats": 2,
+          "hits": 0,
+          "runs_batted_in": 0,
+          "runs": 0,
+          "plate_appearance_results_by_inning": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "2땅",
+            "좌비",
+            "",
+            ""
+          ]
+        },
+        {
+          "player_name": "최재훈",
+          "source_order": "8",
+          "source_position": "포",
+          "at_bats": 3,
+          "hits": 1,
+          "runs_batted_in": 0,
+          "runs": 1,
+          "plate_appearance_results_by_inning": [
+            "",
+            "좌안",
+            "",
+            "4구",
+            "",
+            "우비",
+            "",
+            "3땅",
+            ""
+          ]
+        },
+        {
+          "player_name": "황영묵",
+          "source_order": "9",
+          "source_position": "二",
+          "at_bats": 4,
+          "hits": 2,
+          "runs_batted_in": 2,
+          "runs": 2,
+          "plate_appearance_results_by_inning": [
+            "",
+            "우중홈",
+            "",
+            "투땅",
+            "",
+            "",
+            "우안",
+            "1땅",
+            ""
+          ]
+        }
+      ],
+      "pitchers": [
+        {
+          "player_name": "류현진",
+          "entry": "선발",
+          "result": "",
+          "outs_pitched": 18,
+          "batters_faced": 24,
+          "pitches": 86,
+          "opponent_at_bats": 23,
+          "hits_allowed": 6,
+          "home_runs_allowed": 0,
+          "walks_and_hit_batters": 1,
+          "pitcher_strikeouts": 5,
+          "runs_allowed": 4,
+          "earned_runs": 4
+        },
+        {
+          "player_name": "이상규",
+          "entry": "7.7",
+          "result": "",
+          "outs_pitched": 3,
+          "batters_faced": 5,
+          "pitches": 14,
+          "opponent_at_bats": 4,
+          "hits_allowed": 1,
+          "home_runs_allowed": 0,
+          "walks_and_hit_batters": 1,
+          "pitcher_strikeouts": 0,
+          "runs_allowed": 0,
+          "earned_runs": 0
+        },
+        {
+          "player_name": "정우주",
+          "entry": "8.3",
+          "result": "패",
+          "outs_pitched": 2,
+          "batters_faced": 5,
+          "pitches": 28,
+          "opponent_at_bats": 3,
+          "hits_allowed": 2,
+          "home_runs_allowed": 1,
+          "walks_and_hit_batters": 1,
+          "pitcher_strikeouts": 1,
+          "runs_allowed": 3,
+          "earned_runs": 3
+        },
+        {
+          "player_name": "황준서",
+          "entry": "8.8",
+          "result": "",
+          "outs_pitched": 2,
+          "batters_faced": 4,
+          "pitches": 17,
+          "opponent_at_bats": 4,
+          "hits_allowed": 1,
+          "home_runs_allowed": 0,
+          "walks_and_hit_batters": 0,
+          "pitcher_strikeouts": 2,
+          "runs_allowed": 2,
+          "earned_runs": 1
+        },
+        {
+          "player_name": "김서현",
+          "entry": "9.3",
+          "result": "",
+          "outs_pitched": 2,
+          "batters_faced": 6,
+          "pitches": 22,
+          "opponent_at_bats": 5,
+          "hits_allowed": 2,
+          "home_runs_allowed": 0,
+          "walks_and_hit_batters": 1,
+          "pitcher_strikeouts": 1,
+          "runs_allowed": 1,
+          "earned_runs": 1
+        }
+      ]
+    }
+  ]
+}

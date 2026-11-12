@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:40:36+00:00",
+  "player": {
+    "id": "sr:player:3156096",
+    "name": "이기순",
+    "type": "P",
+    "date_of_birth": "2003-05-14",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 174,
+    "weight": 74,
+    "jersey_number": 4,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249979",
+      "name": "SSG 랜더스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "SSG",
+      "gender": "male"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:40:52+00:00",
+  "player": {
+    "id": "sr:player:3166770",
+    "name": "선엽육",
+    "type": "P",
+    "date_of_birth": "2005-07-13",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 190,
+    "weight": 90,
+    "jersey_number": 4,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249977",
+      "name": "삼성 라이온즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "LIO",
+      "gender": "male"
+    }
+  ]
+}

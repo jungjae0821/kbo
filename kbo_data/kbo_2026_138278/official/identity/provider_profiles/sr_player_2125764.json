@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:38:32+00:00",
+  "player": {
+    "id": "sr:player:2125764",
+    "name": "다니엘 데이비스",
+    "type": "P",
+    "date_of_birth": "1997-06-11",
+    "nationality": "United states",
+    "country_code": "USA",
+    "height": 185,
+    "weight": 86,
+    "jersey_number": 36,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249967",
+      "name": "KT 위즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "WIZ",
+      "gender": "male"
+    }
+  ]
+}

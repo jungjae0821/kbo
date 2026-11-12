@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:40:57+00:00",
+  "player": {
+    "id": "sr:player:3166816",
+    "name": "류준규",
+    "type": "OF",
+    "date_of_birth": "2002-08-16",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 176,
+    "weight": 69,
+    "jersey_number": 67,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249967",
+      "name": "KT 위즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "WIZ",
+      "gender": "male"
+    }
+  ]
+}

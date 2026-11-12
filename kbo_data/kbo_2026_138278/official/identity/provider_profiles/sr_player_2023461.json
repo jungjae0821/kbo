@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:38:29+00:00",
+  "player": {
+    "id": "sr:player:2023461",
+    "name": "재훈하",
+    "type": "OF",
+    "date_of_birth": "1990-10-29",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 182,
+    "weight": 90,
+    "jersey_number": 13,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249979",
+      "name": "SSG 랜더스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "SSG",
+      "gender": "male"
+    }
+  ]
+}

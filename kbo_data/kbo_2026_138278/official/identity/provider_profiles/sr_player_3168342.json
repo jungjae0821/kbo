@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:42:36+00:00",
+  "player": {
+    "id": "sr:player:3168342",
+    "name": "안인산",
+    "type": "IF",
+    "date_of_birth": "2001-02-27",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 181,
+    "weight": 95,
+    "jersey_number": 50,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249967",
+      "name": "KT 위즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "WIZ",
+      "gender": "male"
+    }
+  ]
+}

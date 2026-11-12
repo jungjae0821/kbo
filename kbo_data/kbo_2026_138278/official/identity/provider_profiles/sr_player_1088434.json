@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-11-12T07:38:17+00:00",
+  "player": {
+    "id": "sr:player:1088434",
+    "name": "웰스, 라클린",
+    "type": "P",
+    "date_of_birth": "1997-02-27",
+    "nationality": "Australia",
+    "country_code": "AUS",
+    "height": 183,
+    "weight": 91,
+    "jersey_number": 19,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:34417",
+      "name": "호주",
+      "country": "호주",
+      "country_code": "AUS",
+      "abbreviation": "AUS",
+      "gender": "male"
+    },
+    {
+      "id": "sr:competitor:249969",
+      "name": "LG 트윈스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "TWI",
+      "gender": "male"
+    }
+  ]
+}

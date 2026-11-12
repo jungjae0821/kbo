@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:40:14+00:00",
+  "player": {
+    "id": "sr:player:3148888",
+    "name": "김민석",
+    "type": "C",
+    "date_of_birth": "2005-07-22",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 181,
+    "weight": 93,
+    "jersey_number": 44,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249967",
+      "name": "KT 위즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "WIZ",
+      "gender": "male"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:40:34+00:00",
+  "player": {
+    "id": "sr:player:3155646",
+    "name": "이민재",
+    "type": "OF",
+    "date_of_birth": "2004-03-07",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 184,
+    "weight": 80,
+    "jersey_number": 17,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249963",
+      "name": "한화 이글스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "EAG",
+      "gender": "male"
+    }
+  ]
+}

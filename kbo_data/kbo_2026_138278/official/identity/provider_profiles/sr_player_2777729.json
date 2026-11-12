@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:39:02+00:00",
+  "player": {
+    "id": "sr:player:2777729",
+    "name": "김, 시앙",
+    "type": "C",
+    "date_of_birth": "2001-10-31",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 178,
+    "weight": 79,
+    "jersey_number": 35,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249975",
+      "name": "키움 히어로즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "키움",
+      "gender": "male"
+    }
+  ]
+}

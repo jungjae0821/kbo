@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-11-12T07:38:18+00:00",
+  "player": {
+    "id": "sr:player:1097022",
+    "name": "주라도, 아리엘",
+    "type": "P",
+    "date_of_birth": "1996-01-30",
+    "nationality": "Panama",
+    "country_code": "PAN",
+    "height": 188,
+    "weight": 109,
+    "jersey_number": 37,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:34390",
+      "name": "파나마",
+      "country": "파나마",
+      "country_code": "PAN",
+      "abbreviation": "PAN",
+      "gender": "male"
+    },
+    {
+      "id": "sr:competitor:249977",
+      "name": "삼성 라이온즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "LIO",
+      "gender": "male"
+    }
+  ]
+}

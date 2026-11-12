@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:40:20+00:00",
+  "player": {
+    "id": "sr:player:3149556",
+    "name": "이준영",
+    "type": "P",
+    "date_of_birth": "1992-08-10",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 177,
+    "weight": 85,
+    "jersey_number": 20,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249965",
+      "name": "KIA 타이거즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "TIG",
+      "gender": "male"
+    }
+  ]
+}

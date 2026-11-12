@@ -1,0 +1,922 @@
+{
+  "generated_at": "2026-11-12T06:37:11+00:00",
+  "sport_event": {
+    "id": "sr:sport_event:67204166",
+    "start_time": "2026-05-12T09:30:00+00:00",
+    "start_time_confirmed": true,
+    "sport_event_context": {
+      "sport": {
+        "id": "sr:sport:3",
+        "name": "야구"
+      },
+      "category": {
+        "id": "sr:category:384",
+        "name": "대한민국",
+        "country_code": "KOR"
+      },
+      "competition": {
+        "id": "sr:competition:2541",
+        "name": "KBO 리그",
+        "gender": "men"
+      },
+      "season": {
+        "id": "sr:season:138278",
+        "name": "KBO 리그 2026",
+        "start_date": "2026-03-28",
+        "end_date": "2026-11-08",
+        "year": "2026",
+        "competition_id": "sr:competition:2541"
+      },
+      "stage": {
+        "order": 1,
+        "type": "league",
+        "phase": "regular season",
+        "start_date": "2026-03-28",
+        "end_date": "2026-10-12",
+        "year": "2026"
+      },
+      "round": {
+        "number": 1
+      },
+      "groups": [
+        {
+          "id": "sr:league:103622",
+          "name": "KBO 2026"
+        }
+      ]
+    },
+    "coverage": {
+      "type": "sport_event",
+      "sport_event_properties": {
+        "basic_play_by_play": true,
+        "scores": "live"
+      }
+    },
+    "competitors": [
+      {
+        "id": "sr:competitor:249969",
+        "name": "LG 트윈스",
+        "country": "대한민국",
+        "country_code": "KOR",
+        "abbreviation": "TWI",
+        "qualifier": "home",
+        "gender": "male"
+      },
+      {
+        "id": "sr:competitor:249977",
+        "name": "삼성 라이온즈",
+        "country": "대한민국",
+        "country_code": "KOR",
+        "abbreviation": "LIO",
+        "qualifier": "away",
+        "gender": "male"
+      }
+    ],
+    "venue": {
+      "id": "sr:venue:50439",
+      "name": "Jamsil Baseball Stadium",
+      "capacity": 25553,
+      "city_name": "서울",
+      "city_id": "sr:city:724",
+      "country_name": "대한민국",
+      "map_coordinates": "37.512389, 127.071972",
+      "country_code": "KOR",
+      "timezone": "Asia/Seoul"
+    },
+    "sport_event_conditions": {
+      "ground": {
+        "neutral": false
+      }
+    }
+  },
+  "sport_event_status": {
+    "status": "closed",
+    "match_status": "ended",
+    "home_score": 1,
+    "away_score": 9,
+    "winner_id": "sr:competitor:249977",
+    "period_scores": [
+      {
+        "home_score": 0,
+        "away_score": 1,
+        "type": "regular_period",
+        "number": 1
+      },
+      {
+        "home_score": 0,
+        "away_score": 0,
+        "type": "regular_period",
+        "number": 2
+      },
+      {
+        "home_score": 0,
+        "away_score": 0,
+        "type": "regular_period",
+        "number": 3
+      },
+      {
+        "home_score": 0,
+        "away_score": 0,
+        "type": "regular_period",
+        "number": 4
+      },
+      {
+        "home_score": 0,
+        "away_score": 0,
+        "type": "regular_period",
+        "number": 5
+      },
+      {
+        "home_score": 0,
+        "away_score": 0,
+        "type": "regular_period",
+        "number": 6
+      },
+      {
+        "home_score": 1,
+        "away_score": 0,
+        "type": "regular_period",
+        "number": 7
+      },
+      {
+        "home_score": 0,
+        "away_score": 4,
+        "type": "regular_period",
+        "number": 8
+      },
+      {
+        "home_score": 0,
+        "away_score": 4,
+        "type": "regular_period",
+        "number": 9
+      }
+    ]
+  },
+  "statistics": {
+    "totals": {
+      "competitors": [
+        {
+          "id": "sr:competitor:249969",
+          "name": "LG 트윈스",
+          "abbreviation": "TWI",
+          "qualifier": "home",
+          "statistics": {
+            "at_bats": 31,
+            "earned_runs": 7,
+            "errors": 0,
+            "hits": 7,
+            "hits_allowed": 14,
+            "home_runs": 0,
+            "innings_pitched": 9,
+            "runs": 1,
+            "runs_batted_in": 0,
+            "saves": 0,
+            "stolen_bases": 0,
+            "strikeouts": 3,
+            "walks": 5,
+            "walks_allowed": 5
+          },
+          "players": [
+            {
+              "statistics": {
+                "at_bats": 4,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 1,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 0,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:933254",
+              "name": "딘, 오스틴",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 0,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 0,
+                "hits_allowed": 1,
+                "home_runs": 0,
+                "innings_pitched": 1.1,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 1,
+                "walks": 0,
+                "walks_allowed": 1
+              },
+              "id": "sr:player:2562889",
+              "name": "윤식, 김",
+              "type": "pitcher"
+            },
+            {
+              "statistics": {
+                "at_bats": 2,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 1,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 1,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:2563415",
+              "name": "오지환",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 4,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 2,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 0,
+                "runs_batted_in": 1,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 0,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:2563443",
+              "name": "박해민",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 0,
+                "earned_runs": 1,
+                "errors": 0,
+                "hits": 0,
+                "hits_allowed": 6,
+                "home_runs": 0,
+                "innings_pitched": 5.2,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 2,
+                "walks": 0,
+                "walks_allowed": 1
+              },
+              "id": "sr:player:2777429",
+              "name": "김유영",
+              "type": "pitcher"
+            },
+            {
+              "statistics": {
+                "at_bats": 3,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 0,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 0,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:2777433",
+              "name": "이재원",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 3,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 1,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 1,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:2777445",
+              "name": "박동원",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 1,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 0,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 0,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:2777449",
+              "name": "신민재",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 1,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 1,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 0,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:2777451",
+              "name": "김현종",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 2,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 1,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 2,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:2777459",
+              "name": "구본혁",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 4,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 1,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 0,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:2777477",
+              "name": "홍창기",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 0,
+                "earned_runs": 2,
+                "errors": 0,
+                "hits": 0,
+                "hits_allowed": 5,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 0,
+                "walks_allowed": 1
+              },
+              "id": "sr:player:3148572",
+              "name": "함덕주",
+              "type": "pitcher"
+            },
+            {
+              "statistics": {
+                "at_bats": 3,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 0,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 1,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 1,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:3148576",
+              "name": "송찬의",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 0,
+                "earned_runs": 1,
+                "errors": 0,
+                "hits": 0,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 1,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 0,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:3148586",
+              "name": "김진수",
+              "type": "pitcher"
+            },
+            {
+              "statistics": {
+                "at_bats": 0,
+                "earned_runs": 3,
+                "errors": 0,
+                "hits": 0,
+                "hits_allowed": 2,
+                "home_runs": 0,
+                "innings_pitched": 1,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 0,
+                "walks_allowed": 2
+              },
+              "id": "sr:player:3149584",
+              "name": "장현식",
+              "type": "pitcher"
+            },
+            {
+              "statistics": {
+                "at_bats": 4,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 0,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 0,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:3166588",
+              "name": "천성호",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 1,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 0,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 0,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:3166590",
+              "name": "이영빈",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 1,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 0,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 0,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:3166596",
+              "name": "이주헌",
+              "type": "batter"
+            }
+          ]
+        },
+        {
+          "id": "sr:competitor:249977",
+          "name": "삼성 라이온즈",
+          "abbreviation": "LIO",
+          "qualifier": "away",
+          "statistics": {
+            "at_bats": 37,
+            "earned_runs": 1,
+            "errors": 0,
+            "hits": 14,
+            "hits_allowed": 7,
+            "home_runs": 2,
+            "innings_pitched": 9,
+            "runs": 9,
+            "runs_batted_in": 0,
+            "saves": 0,
+            "stolen_bases": 2,
+            "strikeouts": 8,
+            "walks": 5,
+            "walks_allowed": 5
+          },
+          "players": [
+            {
+              "statistics": {
+                "at_bats": 4,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 2,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 1,
+                "runs_batted_in": 1,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 1,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:1088430",
+              "name": "디아즈, 루인",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 0,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 0,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 1,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 1,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:2777599",
+              "name": "성윤김",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 3,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 1,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 1,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 0,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:3146828",
+              "name": "승현장",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 0,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 0,
+                "hits_allowed": 4,
+                "home_runs": 0,
+                "innings_pitched": 5,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 3,
+                "walks": 0,
+                "walks_allowed": 1
+              },
+              "id": "sr:player:3147388",
+              "name": "원태최",
+              "type": "pitcher"
+            },
+            {
+              "statistics": {
+                "at_bats": 0,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 0,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0.1,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 0,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:3147392",
+              "name": "태훈김",
+              "type": "pitcher"
+            },
+            {
+              "statistics": {
+                "at_bats": 0,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 0,
+                "hits_allowed": 2,
+                "home_runs": 0,
+                "innings_pitched": 2,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 2,
+                "walks": 0,
+                "walks_allowed": 1
+              },
+              "id": "sr:player:3147422",
+              "name": "승민이",
+              "type": "pitcher"
+            },
+            {
+              "statistics": {
+                "at_bats": 5,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 1,
+                "hits_allowed": 0,
+                "home_runs": 1,
+                "innings_pitched": 0,
+                "runs": 1,
+                "runs_batted_in": 5,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 1,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:3147448",
+              "name": "병우전",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 3,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 2,
+                "hits_allowed": 0,
+                "home_runs": 1,
+                "innings_pitched": 1,
+                "runs": 1,
+                "runs_batted_in": 1,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 2,
+                "walks": 1,
+                "walks_allowed": 2
+              },
+              "id": "sr:player:3147458",
+              "name": "재현이",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 0,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 0,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 0,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:3147498",
+              "name": "훈곤김"
+            },
+            {
+              "statistics": {
+                "at_bats": 3,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 0,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 1,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 1,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:3147502",
+              "name": "지찬김",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 5,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 3,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 2,
+                "runs_batted_in": 1,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 0,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:3147510",
+              "name": "자욱구",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 5,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 2,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 0,
+                "runs_batted_in": 1,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 0,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:3149648",
+              "name": "형우최",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 5,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 0,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 0,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:3166594",
+              "name": "지혁류",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 1,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 1,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 1,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 0,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:3166756",
+              "name": "세혁박",
+              "type": "batter"
+            },
+            {
+              "statistics": {
+                "at_bats": 0,
+                "earned_runs": 1,
+                "errors": 0,
+                "hits": 0,
+                "hits_allowed": 1,
+                "home_runs": 0,
+                "innings_pitched": 0.2,
+                "runs": 0,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 1,
+                "walks": 0,
+                "walks_allowed": 1
+              },
+              "id": "sr:player:3166786",
+              "name": "유라, 미야지",
+              "type": "pitcher"
+            },
+            {
+              "statistics": {
+                "at_bats": 4,
+                "earned_runs": 0,
+                "errors": 0,
+                "hits": 3,
+                "hits_allowed": 0,
+                "home_runs": 0,
+                "innings_pitched": 0,
+                "runs": 1,
+                "runs_batted_in": 0,
+                "saves": 0,
+                "stolen_bases": 0,
+                "strikeouts": 0,
+                "walks": 0,
+                "walks_allowed": 0
+              },
+              "id": "sr:player:3167744",
+              "name": "승규박",
+              "type": "batter"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

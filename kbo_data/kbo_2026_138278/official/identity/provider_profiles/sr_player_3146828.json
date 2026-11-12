@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:39:18+00:00",
+  "player": {
+    "id": "sr:player:3146828",
+    "name": "승현장",
+    "type": "C",
+    "date_of_birth": "1994-03-07",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 184,
+    "weight": 86,
+    "jersey_number": 46,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249977",
+      "name": "삼성 라이온즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "LIO",
+      "gender": "male"
+    }
+  ]
+}

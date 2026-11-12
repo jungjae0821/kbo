@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:40:47+00:00",
+  "player": {
+    "id": "sr:player:3156482",
+    "name": "토다, 나쓰키",
+    "type": "P",
+    "date_of_birth": "2000-07-22",
+    "nationality": "Japan",
+    "country_code": "JPN",
+    "height": 170,
+    "weight": 80,
+    "jersey_number": 11,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249973",
+      "name": "NC 다이노스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "DIN",
+      "gender": "male"
+    }
+  ]
+}

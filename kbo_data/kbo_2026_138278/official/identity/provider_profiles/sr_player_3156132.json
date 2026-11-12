@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:40:42+00:00",
+  "player": {
+    "id": "sr:player:3156132",
+    "name": "김요셉",
+    "type": "IF",
+    "date_of_birth": "2007-05-03",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 188,
+    "weight": 81,
+    "jersey_number": 46,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249979",
+      "name": "SSG 랜더스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "SSG",
+      "gender": "male"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:39:50+00:00",
+  "player": {
+    "id": "sr:player:3148430",
+    "name": "하준영",
+    "type": "P",
+    "date_of_birth": "1999-09-06",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 182,
+    "weight": 79,
+    "jersey_number": 29,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249973",
+      "name": "NC 다이노스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "DIN",
+      "gender": "male"
+    }
+  ]
+}

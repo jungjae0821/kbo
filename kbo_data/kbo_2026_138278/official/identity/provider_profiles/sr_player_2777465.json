@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:38:57+00:00",
+  "player": {
+    "id": "sr:player:2777465",
+    "name": "김성진",
+    "type": "IF",
+    "date_of_birth": "2000-03-17",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 183,
+    "weight": 100,
+    "jersey_number": 36,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249969",
+      "name": "LG 트윈스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "TWI",
+      "gender": "male"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:42:02+00:00",
+  "player": {
+    "id": "sr:player:3168052",
+    "name": "최성영",
+    "type": "P",
+    "date_of_birth": "1997-04-28",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 180,
+    "weight": 85,
+    "jersey_number": 26,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249973",
+      "name": "NC 다이노스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "DIN",
+      "gender": "male"
+    }
+  ]
+}

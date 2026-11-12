@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:40:11+00:00",
+  "player": {
+    "id": "sr:player:3148856",
+    "name": "이정현",
+    "type": "P",
+    "date_of_birth": "1997-12-05",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 188,
+    "weight": 93,
+    "jersey_number": 21,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249967",
+      "name": "KT 위즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "WIZ",
+      "gender": "male"
+    }
+  ]
+}

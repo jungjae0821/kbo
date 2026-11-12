@@ -1,0 +1,1345 @@
+{
+  "metadata": {
+    "provider_player_ids": 668,
+    "verified_player_ids": 575,
+    "unresolved_player_ids": 93,
+    "all_complete": false,
+    "method_counts": {
+      "birth_date_and_name_or_height_plus_game": 192,
+      "unique_name_team_and_multiple_exact_game_records": 383
+    },
+    "rule": "No name-only merges. Multi-game links require a unique official name/team ID, at least three exact nontrivial game stat matches, and no competing provider ID. Bio links require exact DOB plus compatible name or matching height and game evidence.",
+    "scope": "Player identity only. Never move a season total into a historical team stint."
+  },
+  "players": [
+    {
+      "provider_player_id": "sr:player:1005443",
+      "provider_names": [
+        "파다크, 크리스"
+      ],
+      "observed_teams": [
+        "삼성"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:1085322",
+      "provider_names": [
+        "햇치, 톰"
+      ],
+      "observed_teams": [
+        "SSG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:1097022",
+      "provider_names": [
+        "주라도, 아리엘"
+      ],
+      "observed_teams": [
+        "삼성"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:1378703",
+      "provider_names": [
+        "헤르난데즈, 윌켈"
+      ],
+      "observed_teams": [
+        "한화"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:1404421",
+      "provider_names": [
+        "가스트로, 하롤드"
+      ],
+      "observed_teams": [
+        "KIA"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:1533267",
+      "provider_names": [
+        "매드리스, 블라이"
+      ],
+      "observed_teams": [
+        "SSG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:1554237",
+      "provider_names": [
+        "지머맨, 브루스"
+      ],
+      "observed_teams": [
+        "한화"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:1710413",
+      "provider_names": [
+        "로드리게즈, 엘빈"
+      ],
+      "observed_teams": [
+        "롯데"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:1722722",
+      "provider_names": [
+        "비스리, 제러미"
+      ],
+      "observed_teams": [
+        "롯데"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:2008069",
+      "provider_names": [
+        "톰슨, 릴리"
+      ],
+      "observed_teams": [
+        "NC"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:2028739",
+      "provider_names": [
+        "펄라사, 요나탄"
+      ],
+      "observed_teams": [
+        "한화"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:2125764",
+      "provider_names": [
+        "다니엘 데이비스"
+      ],
+      "observed_teams": [
+        "KT"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:2262001",
+      "provider_names": [
+        "로그, 자크"
+      ],
+      "observed_teams": [
+        "두산"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:2275275",
+      "provider_names": [
+        "부슐리, 케일럽"
+      ],
+      "observed_teams": [
+        "KT"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:2283491",
+      "provider_names": [
+        "베네치아노, 안토니"
+      ],
+      "observed_teams": [
+        "SSG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:2285675",
+      "provider_names": [
+        "크림, 린턴"
+      ],
+      "observed_teams": [
+        "NC"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:2287035",
+      "provider_names": [
+        "커싱, 존"
+      ],
+      "observed_teams": [
+        "한화"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:2562749",
+      "provider_names": [
+        "오로플린, 잭"
+      ],
+      "observed_teams": [
+        "삼성"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:2562887",
+      "provider_names": [
+        "김원정"
+      ],
+      "observed_teams": [
+        "롯데"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:2562941",
+      "provider_names": [
+        "권주"
+      ],
+      "observed_teams": [
+        "KT"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:2777429",
+      "provider_names": [
+        "김유영"
+      ],
+      "observed_teams": [
+        "LG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3146622",
+      "provider_names": [
+        "김한정"
+      ],
+      "observed_teams": [
+        "두산"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3146850",
+      "provider_names": [
+        "박승재"
+      ],
+      "observed_teams": [
+        "두산"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3147090",
+      "provider_names": [
+        "이주형"
+      ],
+      "observed_teams": [
+        "키움"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3147498",
+      "provider_names": [
+        "훈곤김"
+      ],
+      "observed_teams": [
+        "삼성"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3147846",
+      "provider_names": [
+        "김상수"
+      ],
+      "observed_teams": [
+        "롯데"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3148422",
+      "provider_names": [
+        "천사민"
+      ],
+      "observed_teams": [
+        "NC"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3148698",
+      "provider_names": [
+        "박상운"
+      ],
+      "observed_teams": [
+        "한화"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3148834",
+      "provider_names": [
+        "몬용익"
+      ],
+      "observed_teams": [
+        "KT"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3149558",
+      "provider_names": [
+        "김사윤"
+      ],
+      "observed_teams": [
+        "KIA"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3156094",
+      "provider_names": [
+        "다케다, 쇼타"
+      ],
+      "observed_teams": [
+        "SSG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3156112",
+      "provider_names": [
+        "이근욱"
+      ],
+      "observed_teams": [
+        "SSG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3166800",
+      "provider_names": [
+        "승원윤"
+      ],
+      "observed_teams": [
+        "키움"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3166816",
+      "provider_names": [
+        "류준규"
+      ],
+      "observed_teams": [
+        "KT"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3166862",
+      "provider_names": [
+        "손영준"
+      ],
+      "observed_teams": [
+        "LG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3167150",
+      "provider_names": [
+        "교야마, 마사야"
+      ],
+      "observed_teams": [
+        "롯데"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3167272",
+      "provider_names": [
+        "성진원"
+      ],
+      "observed_teams": [
+        "키움"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3167444",
+      "provider_names": [
+        "백산김"
+      ],
+      "observed_teams": [
+        "삼성"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": [
+        "55420"
+      ]
+    },
+    {
+      "provider_player_id": "sr:player:3167682",
+      "provider_names": [
+        "현, 양"
+      ],
+      "observed_teams": [
+        "삼성"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3168238",
+      "provider_names": [
+        "윤성핀"
+      ],
+      "observed_teams": [
+        "롯데"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "bio_identity_not_confirmed",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3168362",
+      "provider_names": [
+        "이재원"
+      ],
+      "observed_teams": [
+        "KT"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3168370",
+      "provider_names": [
+        "장시환"
+      ],
+      "observed_teams": [
+        "LG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3168372",
+      "provider_names": [
+        "김동현"
+      ],
+      "observed_teams": [
+        "LG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3168402",
+      "provider_names": [
+        "김주온"
+      ],
+      "observed_teams": [
+        "LG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3168404",
+      "provider_names": [
+        "김강렬"
+      ],
+      "observed_teams": [
+        "LG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3168424",
+      "provider_names": [
+        "이상융"
+      ],
+      "observed_teams": [
+        "LG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3168718",
+      "provider_names": [
+        "엄준현"
+      ],
+      "observed_teams": [
+        "KIA"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3168726",
+      "provider_names": [
+        "김재현"
+      ],
+      "observed_teams": [
+        "KIA"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3169242",
+      "provider_names": [
+        "박시원"
+      ],
+      "observed_teams": [
+        "LG",
+        "NC"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3169284",
+      "provider_names": [
+        "양우진"
+      ],
+      "observed_teams": [
+        "LG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": [
+        "56165"
+      ]
+    },
+    {
+      "provider_player_id": "sr:player:3169312",
+      "provider_names": [
+        "김민수"
+      ],
+      "observed_teams": [
+        "LG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": [
+        "64793"
+      ]
+    },
+    {
+      "provider_player_id": "sr:player:3173336",
+      "provider_names": [
+        "Gyu-heon Jang"
+      ],
+      "observed_teams": [
+        "한화"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3173462",
+      "provider_names": [
+        "천현재"
+      ],
+      "observed_teams": [
+        "두산"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3173468",
+      "provider_names": [
+        "홍성호"
+      ],
+      "observed_teams": [
+        "두산"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": [
+        "66233"
+      ]
+    },
+    {
+      "provider_player_id": "sr:player:3173476",
+      "provider_names": [
+        "신우열"
+      ],
+      "observed_teams": [
+        "두산"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3173484",
+      "provider_names": [
+        "최주형"
+      ],
+      "observed_teams": [
+        "두산"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": [
+        "56215"
+      ]
+    },
+    {
+      "provider_player_id": "sr:player:3173508",
+      "provider_names": [
+        "서준오"
+      ],
+      "observed_teams": [
+        "두산"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": [
+        "56241"
+      ]
+    },
+    {
+      "provider_player_id": "sr:player:3173510",
+      "provider_names": [
+        "다무라, 이치로"
+      ],
+      "observed_teams": [
+        "두산"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3173778",
+      "provider_names": [
+        "최원준"
+      ],
+      "observed_teams": [
+        "한화"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3173788",
+      "provider_names": [
+        "이도훈"
+      ],
+      "observed_teams": [
+        "한화"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3173790",
+      "provider_names": [
+        "이재환"
+      ],
+      "observed_teams": [
+        "한화"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3173792",
+      "provider_names": [
+        "박주진"
+      ],
+      "observed_teams": [
+        "한화"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3173796",
+      "provider_names": [
+        "박명현"
+      ],
+      "observed_teams": [
+        "SSG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3173798",
+      "provider_names": [
+        "하동준"
+      ],
+      "observed_teams": [
+        "한화"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3173800",
+      "provider_names": [
+        "장현진"
+      ],
+      "observed_teams": [
+        "SSG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3173802",
+      "provider_names": [
+        "황희성"
+      ],
+      "observed_teams": [
+        "한화"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3173816",
+      "provider_names": [
+        "박준영"
+      ],
+      "observed_teams": [
+        "한화"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3173818",
+      "provider_names": [
+        "박준영"
+      ],
+      "observed_teams": [
+        "한화"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3173820",
+      "provider_names": [
+        "이정범"
+      ],
+      "observed_teams": [
+        "KT",
+        "SSG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": [
+        "67807"
+      ]
+    },
+    {
+      "provider_player_id": "sr:player:3173832",
+      "provider_names": [
+        "여현승"
+      ],
+      "observed_teams": [
+        "한화"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3173838",
+      "provider_names": [
+        "김준영"
+      ],
+      "observed_teams": [
+        "SSG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3173840",
+      "provider_names": [
+        "박상후"
+      ],
+      "observed_teams": [
+        "SSG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3173842",
+      "provider_names": [
+        "이도우"
+      ],
+      "observed_teams": [
+        "SSG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3173858",
+      "provider_names": [
+        "장재혁"
+      ],
+      "observed_teams": [
+        "KIA"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": [
+        "50641"
+      ]
+    },
+    {
+      "provider_player_id": "sr:player:3173860",
+      "provider_names": [
+        "지현"
+      ],
+      "observed_teams": [
+        "KIA"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": [
+        "56633"
+      ]
+    },
+    {
+      "provider_player_id": "sr:player:3173890",
+      "provider_names": [
+        "김시훈"
+      ],
+      "observed_teams": [
+        "KIA"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": [
+        "68928"
+      ]
+    },
+    {
+      "provider_player_id": "sr:player:3173894",
+      "provider_names": [
+        "이도현"
+      ],
+      "observed_teams": [
+        "KIA"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3173902",
+      "provider_names": [
+        "이성원"
+      ],
+      "observed_teams": [
+        "KIA"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3192766",
+      "provider_names": [
+        "히라모토, 긴지로"
+      ],
+      "observed_teams": [
+        "SSG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": [
+        "56800"
+      ]
+    },
+    {
+      "provider_player_id": "sr:player:3195968",
+      "provider_names": [
+        "Seungyoon Oh"
+      ],
+      "observed_teams": [
+        "LG"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3206118",
+      "provider_names": [
+        "한승주"
+      ],
+      "observed_teams": [
+        "KT"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3206556",
+      "provider_names": [
+        "시라카와케이쇼"
+      ],
+      "observed_teams": [
+        "KIA"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3208656",
+      "provider_names": [
+        "다카다타쿠토"
+      ],
+      "observed_teams": [
+        "두산"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3215200",
+      "provider_names": [
+        "이무라 쇼타"
+      ],
+      "observed_teams": [
+        "롯데"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3223624",
+      "provider_names": [
+        "엄준혁"
+      ],
+      "observed_teams": [
+        "KIA"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:3239360",
+      "provider_names": [
+        "미야모리사토시"
+      ],
+      "observed_teams": [
+        "삼성"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:854970",
+      "provider_names": [
+        "알칸타라, 라울"
+      ],
+      "observed_teams": [
+        "키움"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": [
+        "69045"
+      ]
+    },
+    {
+      "provider_player_id": "sr:player:855358",
+      "provider_names": [
+        "버헤이건, 드루"
+      ],
+      "observed_teams": [
+        "NC"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:869350",
+      "provider_names": [
+        "워스, 오스틴"
+      ],
+      "observed_teams": [
+        "삼성"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:928344",
+      "provider_names": [
+        "데이비드슨, 매트"
+      ],
+      "observed_teams": [
+        "NC",
+        "키움"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:938342",
+      "provider_names": [
+        "클레빙거, 마이크"
+      ],
+      "observed_teams": [
+        "NC"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:972783",
+      "provider_names": [
+        "레예스, 빅토르"
+      ],
+      "observed_teams": [
+        "롯데"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    },
+    {
+      "provider_player_id": "sr:player:979023",
+      "provider_names": [
+        "힐리아드, 샘"
+      ],
+      "observed_teams": [
+        "KT"
+      ],
+      "verified": false,
+      "kbo_player_id": null,
+      "method": null,
+      "reason": "insufficient_independent_evidence",
+      "game_candidate_ids": []
+    }
+  ]
+}

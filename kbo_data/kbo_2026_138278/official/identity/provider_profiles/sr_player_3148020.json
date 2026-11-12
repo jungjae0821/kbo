@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:39:47+00:00",
+  "player": {
+    "id": "sr:player:3148020",
+    "name": "최항",
+    "type": "IF",
+    "date_of_birth": "1994-01-03",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 183,
+    "weight": 88,
+    "jersey_number": 14,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249971",
+      "name": "롯데 자이언츠",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "GIA",
+      "gender": "male"
+    }
+  ]
+}

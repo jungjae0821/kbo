@@ -1,0 +1,4684 @@
+{
+  "metadata": {
+    "created_at": "2026-11-12T08:32:40.162039+00:00",
+    "season": {
+      "id": "sr:season:138278",
+      "name": "KBO 리그 2026",
+      "start_date": "2026-03-28",
+      "end_date": "2026-11-08",
+      "year": "2026",
+      "competition_id": "sr:competition:2541"
+    },
+    "purpose": "fantasy_starting_lineups_from_final_season_stats",
+    "algorithm_version": "1.0",
+    "source_file": "corrected_player_season_stats.json",
+    "source_sha256": "8301357ebbcf2810bb4960caf064f49ae0c96655f8f2f69ca33720df1e5210d4",
+    "team_count": 10,
+    "league_pa_weighted_baseline": {
+      "obp": 0.346066576182754,
+      "slg": 0.40448972361277585
+    },
+    "rules": {
+      "pitcher": "At least 20 starts and 100 innings; lowest official ERA, then WHIP, then most outs.",
+      "batters": "At least 144 PA and positive AB. No injury, handedness or opponent adjustment.",
+      "defense": "Eight fielders plus DH. A fielding slot needs >=10 starts or >=30 defensive innings at that exact position.",
+      "assignment": "Maximize sum of shrunken OPS + 0.01*min(PA/600,1) + 0.02*min(position starts/80,1). Player used once.",
+      "shrinkage": "OBP and SLG each shrunk toward league PA-weighted rate using 200 prior PA.",
+      "batting_order": "Select #4 by adjusted SLG, #2 by adjusted OPS, #1 by adjusted OBP, #3 by adjusted OPS, #5 by adjusted SLG, #6-9 by adjusted OPS. Remove each chosen hitter before next selection.",
+      "scope": "A reproducible fantasy lineup, not an actual historical lineup or a proven run-maximizing order.",
+      "team_membership": "Official season table team labels; not a separately verified end-of-season active roster."
+    }
+  },
+  "teams": [
+    {
+      "team_id": "sr:competitor:249967",
+      "team_name": "KT 위즈",
+      "official_team_name": "KT",
+      "assignment_score": 7.454097799424465,
+      "starting_pitcher": {
+        "player_id": "kbo:player:50030",
+        "kbo_player_id": "50030",
+        "player_name": "소형준",
+        "season_starts": 23,
+        "pitching": {
+          "games": 23,
+          "wins": 10,
+          "losses": 3,
+          "saves": 0,
+          "holds": 0,
+          "hits_allowed": 134,
+          "home_runs_allowed": 10,
+          "walks_allowed": 24,
+          "hit_batters": 5,
+          "pitcher_strikeouts": 106,
+          "runs_allowed": 50,
+          "earned_runs": 46,
+          "earned_run_average": 3.15,
+          "whip": 1.2,
+          "complete_games": 0,
+          "shutouts": 0,
+          "quality_starts": 14,
+          "blown_saves": 0,
+          "batters_faced": 546,
+          "pitches": 2069,
+          "doubles_allowed": 18,
+          "triples_allowed": 2,
+          "wild_pitches": 2,
+          "balks": 0,
+          "outs_pitched": 394,
+          "innings_pitched": "131.1"
+        }
+      },
+      "batting_order": [
+        {
+          "order": 1,
+          "player_id": "kbo:player:66606",
+          "kbo_player_id": "66606",
+          "player_name": "최원준",
+          "position": "중견수",
+          "position_code": "CF",
+          "batting": {
+            "games": 140,
+            "plate_appearances": 676,
+            "at_bats": 585,
+            "runs": 125,
+            "hits": 208,
+            "doubles": 41,
+            "triples": 4,
+            "home_runs": 9,
+            "total_bases": 284,
+            "runs_batted_in": 74,
+            "sacrifice_bunts": 3,
+            "sacrifice_flies": 4,
+            "walks": 76,
+            "intentional_walks": 0,
+            "hit_by_pitch": 8,
+            "batting_strikeouts": 86,
+            "grounded_into_double_plays": 3,
+            "batting_average": 0.356,
+            "on_base_percentage": 0.434,
+            "slugging_percentage": 0.485,
+            "ops": 0.919
+          },
+          "running": {
+            "stolen_bases": 28,
+            "caught_stealing": 12
+          },
+          "adjusted_rates": {
+            "obp": 0.4139238758408114,
+            "slg": 0.46661865835908123,
+            "ops": 0.8805425341998927
+          },
+          "fielding_evidence": {
+            "position": "중견수",
+            "games": 54,
+            "starts": 54,
+            "errors": 2,
+            "outs_fielded": 1263
+          }
+        },
+        {
+          "order": 2,
+          "player_id": "kbo:player:52001",
+          "kbo_player_id": "52001",
+          "player_name": "안현민",
+          "position": "우익수",
+          "position_code": "RF",
+          "batting": {
+            "games": 94,
+            "plate_appearances": 417,
+            "at_bats": 326,
+            "runs": 56,
+            "hits": 97,
+            "doubles": 22,
+            "triples": 2,
+            "home_runs": 14,
+            "total_bases": 165,
+            "runs_batted_in": 63,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 4,
+            "walks": 64,
+            "intentional_walks": 1,
+            "hit_by_pitch": 23,
+            "batting_strikeouts": 90,
+            "grounded_into_double_plays": 10,
+            "batting_average": 0.298,
+            "on_base_percentage": 0.441,
+            "slugging_percentage": 0.506,
+            "ops": 0.947
+          },
+          "running": {
+            "stolen_bases": 5,
+            "caught_stealing": 1
+          },
+          "adjusted_rates": {
+            "obp": 0.4102274152942476,
+            "slg": 0.4730955343963617,
+            "ops": 0.8833229496906093
+          },
+          "fielding_evidence": {
+            "position": "우익수",
+            "games": 65,
+            "starts": 64,
+            "errors": 2,
+            "outs_fielded": 1464
+          }
+        },
+        {
+          "order": 3,
+          "player_id": "kbo:player:79240",
+          "kbo_player_id": "79240",
+          "player_name": "허경민",
+          "position": "3루수",
+          "position_code": "3B",
+          "batting": {
+            "games": 109,
+            "plate_appearances": 396,
+            "at_bats": 352,
+            "runs": 64,
+            "hits": 116,
+            "doubles": 20,
+            "triples": 0,
+            "home_runs": 4,
+            "total_bases": 148,
+            "runs_batted_in": 44,
+            "sacrifice_bunts": 1,
+            "sacrifice_flies": 2,
+            "walks": 30,
+            "intentional_walks": 1,
+            "hit_by_pitch": 11,
+            "batting_strikeouts": 34,
+            "grounded_into_double_plays": 8,
+            "batting_average": 0.33,
+            "on_base_percentage": 0.397,
+            "slugging_percentage": 0.42,
+            "ops": 0.817
+          },
+          "running": {
+            "stolen_bases": 1,
+            "caught_stealing": 2
+          },
+          "adjusted_rates": {
+            "obp": 0.3799082470411927,
+            "slg": 0.41479520926603214,
+            "ops": 0.7947034563072248
+          },
+          "fielding_evidence": {
+            "position": "3루수",
+            "games": 107,
+            "starts": 99,
+            "errors": 7,
+            "outs_fielded": 2415
+          }
+        },
+        {
+          "order": 4,
+          "player_id": "kbo:player:56034",
+          "kbo_player_id": "56034",
+          "player_name": "힐리어드",
+          "position": "좌익수",
+          "position_code": "LF",
+          "batting": {
+            "games": 142,
+            "plate_appearances": 639,
+            "at_bats": 562,
+            "runs": 116,
+            "hits": 171,
+            "doubles": 24,
+            "triples": 3,
+            "home_runs": 44,
+            "total_bases": 333,
+            "runs_batted_in": 139,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 9,
+            "walks": 65,
+            "intentional_walks": 2,
+            "hit_by_pitch": 3,
+            "batting_strikeouts": 175,
+            "grounded_into_double_plays": 4,
+            "batting_average": 0.304,
+            "on_base_percentage": 0.374,
+            "slugging_percentage": 0.593,
+            "ops": 0.967
+          },
+          "running": {
+            "stolen_bases": 10,
+            "caught_stealing": 3
+          },
+          "adjusted_rates": {
+            "obp": 0.3673412577312882,
+            "slg": 0.5480631045560848,
+            "ops": 0.9154043622873729
+          },
+          "fielding_evidence": {
+            "position": "좌익수",
+            "games": 102,
+            "starts": 72,
+            "errors": 2,
+            "outs_fielded": 2003
+          }
+        },
+        {
+          "order": 5,
+          "player_id": "kbo:player:53036",
+          "kbo_player_id": "53036",
+          "player_name": "류현인",
+          "position": "지명타자",
+          "position_code": "DH",
+          "batting": {
+            "games": 90,
+            "plate_appearances": 238,
+            "at_bats": 213,
+            "runs": 32,
+            "hits": 72,
+            "doubles": 16,
+            "triples": 0,
+            "home_runs": 1,
+            "total_bases": 91,
+            "runs_batted_in": 27,
+            "sacrifice_bunts": 2,
+            "sacrifice_flies": 3,
+            "walks": 17,
+            "intentional_walks": 0,
+            "hit_by_pitch": 3,
+            "batting_strikeouts": 39,
+            "grounded_into_double_plays": 2,
+            "batting_average": 0.338,
+            "on_base_percentage": 0.39,
+            "slugging_percentage": 0.427,
+            "ops": 0.817
+          },
+          "running": {
+            "stolen_bases": 3,
+            "caught_stealing": 1
+          },
+          "adjusted_rates": {
+            "obp": 0.3699390758825361,
+            "slg": 0.4167213349830027,
+            "ops": 0.7866604108655388
+          },
+          "fielding_evidence": null
+        },
+        {
+          "order": 6,
+          "player_id": "kbo:player:76290",
+          "kbo_player_id": "76290",
+          "player_name": "김현수",
+          "position": "1루수",
+          "position_code": "1B",
+          "batting": {
+            "games": 142,
+            "plate_appearances": 622,
+            "at_bats": 555,
+            "runs": 69,
+            "hits": 159,
+            "doubles": 32,
+            "triples": 0,
+            "home_runs": 14,
+            "total_bases": 233,
+            "runs_batted_in": 95,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 4,
+            "walks": 58,
+            "intentional_walks": 1,
+            "hit_by_pitch": 5,
+            "batting_strikeouts": 70,
+            "grounded_into_double_plays": 17,
+            "batting_average": 0.286,
+            "on_base_percentage": 0.357,
+            "slugging_percentage": 0.42,
+            "ops": 0.777
+          },
+          "running": {
+            "stolen_bases": 0,
+            "caught_stealing": 2
+          },
+          "adjusted_rates": {
+            "obp": 0.3543397995578477,
+            "slg": 0.41622621012476296,
+            "ops": 0.7705660096826107
+          },
+          "fielding_evidence": {
+            "position": "1루수",
+            "games": 111,
+            "starts": 110,
+            "errors": 3,
+            "outs_fielded": 2628
+          }
+        },
+        {
+          "order": 7,
+          "player_id": "kbo:player:78548",
+          "kbo_player_id": "78548",
+          "player_name": "장성우",
+          "position": "포수",
+          "position_code": "C",
+          "batting": {
+            "games": 76,
+            "plate_appearances": 269,
+            "at_bats": 217,
+            "runs": 39,
+            "hits": 44,
+            "doubles": 12,
+            "triples": 0,
+            "home_runs": 12,
+            "total_bases": 92,
+            "runs_batted_in": 41,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 1,
+            "walks": 49,
+            "intentional_walks": 3,
+            "hit_by_pitch": 2,
+            "batting_strikeouts": 66,
+            "grounded_into_double_plays": 10,
+            "batting_average": 0.203,
+            "on_base_percentage": 0.353,
+            "slugging_percentage": 0.424,
+            "ops": 0.777
+          },
+          "running": {
+            "stolen_bases": 1,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.35004331606940464,
+            "slg": 0.4156800527133372,
+            "ops": 0.7657233687827418
+          },
+          "fielding_evidence": {
+            "position": "포수",
+            "games": 23,
+            "starts": 18,
+            "errors": 0,
+            "outs_fielded": 466
+          }
+        },
+        {
+          "order": 8,
+          "player_id": "kbo:player:51003",
+          "kbo_player_id": "51003",
+          "player_name": "권동진",
+          "position": "유격수",
+          "position_code": "SS",
+          "batting": {
+            "games": 127,
+            "plate_appearances": 261,
+            "at_bats": 228,
+            "runs": 46,
+            "hits": 61,
+            "doubles": 17,
+            "triples": 2,
+            "home_runs": 3,
+            "total_bases": 91,
+            "runs_batted_in": 33,
+            "sacrifice_bunts": 4,
+            "sacrifice_flies": 1,
+            "walks": 26,
+            "intentional_walks": 0,
+            "hit_by_pitch": 2,
+            "batting_strikeouts": 77,
+            "grounded_into_double_plays": 2,
+            "batting_average": 0.268,
+            "on_base_percentage": 0.346,
+            "slugging_percentage": 0.399,
+            "ops": 0.745
+          },
+          "running": {
+            "stolen_bases": 3,
+            "caught_stealing": 1
+          },
+          "adjusted_rates": {
+            "obp": 0.3460288833764659,
+            "slg": 0.4013816588341761,
+            "ops": 0.7474105422106421
+          },
+          "fielding_evidence": {
+            "position": "유격수",
+            "games": 112,
+            "starts": 63,
+            "errors": 7,
+            "outs_fielded": 1806
+          }
+        },
+        {
+          "order": 9,
+          "player_id": "kbo:player:79402",
+          "kbo_player_id": "79402",
+          "player_name": "김상수",
+          "position": "2루수",
+          "position_code": "2B",
+          "batting": {
+            "games": 131,
+            "plate_appearances": 489,
+            "at_bats": 408,
+            "runs": 49,
+            "hits": 115,
+            "doubles": 13,
+            "triples": 1,
+            "home_runs": 1,
+            "total_bases": 133,
+            "runs_batted_in": 41,
+            "sacrifice_bunts": 15,
+            "sacrifice_flies": 2,
+            "walks": 55,
+            "intentional_walks": 0,
+            "hit_by_pitch": 9,
+            "batting_strikeouts": 60,
+            "grounded_into_double_plays": 11,
+            "batting_average": 0.282,
+            "on_base_percentage": 0.378,
+            "slugging_percentage": 0.326,
+            "ops": 0.704
+          },
+          "running": {
+            "stolen_bases": 1,
+            "caught_stealing": 4
+          },
+          "adjusted_rates": {
+            "obp": 0.3687305010690143,
+            "slg": 0.3487836643288174,
+            "ops": 0.7175141653978316
+          },
+          "fielding_evidence": {
+            "position": "2루수",
+            "games": 129,
+            "starts": 118,
+            "errors": 7,
+            "outs_fielded": 2883
+          }
+        }
+      ],
+      "validation": {
+        "unique_batters": true,
+        "all_defensive_positions_filled": true,
+        "pitcher_separate_from_batters": true,
+        "all_players_match_team": true
+      }
+    },
+    {
+      "team_id": "sr:competitor:249977",
+      "team_name": "삼성 라이온즈",
+      "official_team_name": "삼성",
+      "assignment_score": 7.494183067960366,
+      "starting_pitcher": {
+        "player_id": "kbo:player:53375",
+        "kbo_player_id": "53375",
+        "player_name": "후라도",
+        "season_starts": 24,
+        "pitching": {
+          "games": 24,
+          "wins": 9,
+          "losses": 3,
+          "saves": 0,
+          "holds": 0,
+          "hits_allowed": 157,
+          "home_runs_allowed": 16,
+          "walks_allowed": 31,
+          "hit_batters": 4,
+          "pitcher_strikeouts": 98,
+          "runs_allowed": 70,
+          "earned_runs": 59,
+          "earned_run_average": 3.54,
+          "whip": 1.25,
+          "complete_games": 0,
+          "shutouts": 0,
+          "quality_starts": 17,
+          "blown_saves": 0,
+          "batters_faced": 638,
+          "pitches": 2320,
+          "doubles_allowed": 14,
+          "triples_allowed": 4,
+          "wild_pitches": 7,
+          "balks": 0,
+          "outs_pitched": 450,
+          "innings_pitched": "150.0"
+        }
+      },
+      "batting_order": [
+        {
+          "order": 1,
+          "player_id": "kbo:player:72443",
+          "kbo_player_id": "72443",
+          "player_name": "최형우",
+          "position": "지명타자",
+          "position_code": "DH",
+          "batting": {
+            "games": 137,
+            "plate_appearances": 574,
+            "at_bats": 491,
+            "runs": 61,
+            "hits": 148,
+            "doubles": 25,
+            "triples": 0,
+            "home_runs": 18,
+            "total_bases": 227,
+            "runs_batted_in": 106,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 9,
+            "walks": 69,
+            "intentional_walks": 4,
+            "hit_by_pitch": 5,
+            "batting_strikeouts": 108,
+            "grounded_into_double_plays": 19,
+            "batting_average": 0.301,
+            "on_base_percentage": 0.387,
+            "slugging_percentage": 0.462,
+            "ops": 0.849
+          },
+          "running": {
+            "stolen_bases": 2,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.37642288790252043,
+            "slg": 0.44713946346583355,
+            "ops": 0.823562351368354
+          },
+          "fielding_evidence": null
+        },
+        {
+          "order": 2,
+          "player_id": "kbo:player:54400",
+          "kbo_player_id": "54400",
+          "player_name": "디아즈",
+          "position": "1루수",
+          "position_code": "1B",
+          "batting": {
+            "games": 144,
+            "plate_appearances": 625,
+            "at_bats": 541,
+            "runs": 86,
+            "hits": 165,
+            "doubles": 33,
+            "triples": 0,
+            "home_runs": 26,
+            "total_bases": 276,
+            "runs_batted_in": 129,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 9,
+            "walks": 73,
+            "intentional_walks": 5,
+            "hit_by_pitch": 2,
+            "batting_strikeouts": 98,
+            "grounded_into_double_plays": 13,
+            "batting_average": 0.305,
+            "on_base_percentage": 0.384,
+            "slugging_percentage": 0.51,
+            "ops": 0.894
+          },
+          "running": {
+            "stolen_bases": 2,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.3748040184685464,
+            "slg": 0.4844217511788547,
+            "ops": 0.859225769647401
+          },
+          "fielding_evidence": {
+            "position": "1루수",
+            "games": 141,
+            "starts": 141,
+            "errors": 8,
+            "outs_fielded": 3600
+          }
+        },
+        {
+          "order": 3,
+          "player_id": "kbo:player:69418",
+          "kbo_player_id": "69418",
+          "player_name": "박승규",
+          "position": "중견수",
+          "position_code": "CF",
+          "batting": {
+            "games": 106,
+            "plate_appearances": 381,
+            "at_bats": 317,
+            "runs": 69,
+            "hits": 84,
+            "doubles": 11,
+            "triples": 6,
+            "home_runs": 13,
+            "total_bases": 146,
+            "runs_batted_in": 47,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 3,
+            "walks": 56,
+            "intentional_walks": 1,
+            "hit_by_pitch": 5,
+            "batting_strikeouts": 61,
+            "grounded_into_double_plays": 9,
+            "batting_average": 0.265,
+            "on_base_percentage": 0.381,
+            "slugging_percentage": 0.461,
+            "ops": 0.842
+          },
+          "running": {
+            "stolen_bases": 8,
+            "caught_stealing": 2
+          },
+          "adjusted_rates": {
+            "obp": 0.3689747250198809,
+            "slg": 0.44154723704398485,
+            "ops": 0.8105219620638657
+          },
+          "fielding_evidence": {
+            "position": "중견수",
+            "games": 33,
+            "starts": 18,
+            "errors": 0,
+            "outs_fielded": 481
+          }
+        },
+        {
+          "order": 4,
+          "player_id": "kbo:player:62404",
+          "kbo_player_id": "62404",
+          "player_name": "구자욱",
+          "position": "좌익수",
+          "position_code": "LF",
+          "batting": {
+            "games": 114,
+            "plate_appearances": 497,
+            "at_bats": 420,
+            "runs": 88,
+            "hits": 156,
+            "doubles": 31,
+            "triples": 6,
+            "home_runs": 15,
+            "total_bases": 244,
+            "runs_batted_in": 102,
+            "sacrifice_bunts": 1,
+            "sacrifice_flies": 5,
+            "walks": 66,
+            "intentional_walks": 3,
+            "hit_by_pitch": 5,
+            "batting_strikeouts": 71,
+            "grounded_into_double_plays": 4,
+            "batting_average": 0.371,
+            "on_base_percentage": 0.458,
+            "slugging_percentage": 0.581,
+            "ops": 1.039
+          },
+          "running": {
+            "stolen_bases": 6,
+            "caught_stealing": 2
+          },
+          "adjusted_rates": {
+            "obp": 0.4258813704972035,
+            "slg": 0.5303514271485728,
+            "ops": 0.9562327976457763
+          },
+          "fielding_evidence": {
+            "position": "좌익수",
+            "games": 100,
+            "starts": 99,
+            "errors": 5,
+            "outs_fielded": 2355
+          }
+        },
+        {
+          "order": 5,
+          "player_id": "kbo:player:52415",
+          "kbo_player_id": "52415",
+          "player_name": "이재현",
+          "position": "유격수",
+          "position_code": "SS",
+          "batting": {
+            "games": 85,
+            "plate_appearances": 304,
+            "at_bats": 248,
+            "runs": 46,
+            "hits": 55,
+            "doubles": 7,
+            "triples": 0,
+            "home_runs": 17,
+            "total_bases": 113,
+            "runs_batted_in": 45,
+            "sacrifice_bunts": 7,
+            "sacrifice_flies": 4,
+            "walks": 33,
+            "intentional_walks": 0,
+            "hit_by_pitch": 12,
+            "batting_strikeouts": 45,
+            "grounded_into_double_plays": 2,
+            "batting_average": 0.222,
+            "on_base_percentage": 0.337,
+            "slugging_percentage": 0.456,
+            "ops": 0.793
+          },
+          "running": {
+            "stolen_bases": 1,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.3405978476915691,
+            "slg": 0.4355594141320539,
+            "ops": 0.776157261823623
+          },
+          "fielding_evidence": {
+            "position": "유격수",
+            "games": 84,
+            "starts": 79,
+            "errors": 14,
+            "outs_fielded": 1899
+          }
+        },
+        {
+          "order": 6,
+          "player_id": "kbo:player:74540",
+          "kbo_player_id": "74540",
+          "player_name": "강민호",
+          "position": "포수",
+          "position_code": "C",
+          "batting": {
+            "games": 111,
+            "plate_appearances": 344,
+            "at_bats": 303,
+            "runs": 37,
+            "hits": 81,
+            "doubles": 15,
+            "triples": 0,
+            "home_runs": 13,
+            "total_bases": 135,
+            "runs_batted_in": 58,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 1,
+            "walks": 34,
+            "intentional_walks": 0,
+            "hit_by_pitch": 6,
+            "batting_strikeouts": 77,
+            "grounded_into_double_plays": 7,
+            "batting_average": 0.267,
+            "on_base_percentage": 0.352,
+            "slugging_percentage": 0.446,
+            "ops": 0.798
+          },
+          "running": {
+            "stolen_bases": 0,
+            "caught_stealing": 2
+          },
+          "adjusted_rates": {
+            "obp": 0.349818594184836,
+            "slg": 0.43073886897528524,
+            "ops": 0.7805574631601213
+          },
+          "fielding_evidence": {
+            "position": "포수",
+            "games": 104,
+            "starts": 90,
+            "errors": 3,
+            "outs_fielded": 1968
+          }
+        },
+        {
+          "order": 7,
+          "player_id": "kbo:player:67449",
+          "kbo_player_id": "67449",
+          "player_name": "김성윤",
+          "position": "우익수",
+          "position_code": "RF",
+          "batting": {
+            "games": 125,
+            "plate_appearances": 493,
+            "at_bats": 424,
+            "runs": 80,
+            "hits": 127,
+            "doubles": 20,
+            "triples": 2,
+            "home_runs": 6,
+            "total_bases": 169,
+            "runs_batted_in": 54,
+            "sacrifice_bunts": 13,
+            "sacrifice_flies": 3,
+            "walks": 51,
+            "intentional_walks": 0,
+            "hit_by_pitch": 2,
+            "batting_strikeouts": 49,
+            "grounded_into_double_plays": 9,
+            "batting_average": 0.3,
+            "on_base_percentage": 0.375,
+            "slugging_percentage": 0.399,
+            "ops": 0.774
+          },
+          "running": {
+            "stolen_bases": 19,
+            "caught_stealing": 5
+          },
+          "adjusted_rates": {
+            "obp": 0.36664980553614834,
+            "slg": 0.4005843358189829,
+            "ops": 0.7672341413551312
+          },
+          "fielding_evidence": {
+            "position": "우익수",
+            "games": 112,
+            "starts": 92,
+            "errors": 4,
+            "outs_fielded": 2476
+          }
+        },
+        {
+          "order": 8,
+          "player_id": "kbo:player:65586",
+          "kbo_player_id": "65586",
+          "player_name": "전병우",
+          "position": "3루수",
+          "position_code": "3B",
+          "batting": {
+            "games": 118,
+            "plate_appearances": 409,
+            "at_bats": 340,
+            "runs": 52,
+            "hits": 81,
+            "doubles": 20,
+            "triples": 1,
+            "home_runs": 12,
+            "total_bases": 139,
+            "runs_batted_in": 54,
+            "sacrifice_bunts": 3,
+            "sacrifice_flies": 3,
+            "walks": 43,
+            "intentional_walks": 1,
+            "hit_by_pitch": 20,
+            "batting_strikeouts": 104,
+            "grounded_into_double_plays": 8,
+            "batting_average": 0.238,
+            "on_base_percentage": 0.355,
+            "slugging_percentage": 0.409,
+            "ops": 0.764
+          },
+          "running": {
+            "stolen_bases": 3,
+            "caught_stealing": 2
+          },
+          "adjusted_rates": {
+            "obp": 0.352066199074796,
+            "slg": 0.4075187926478738,
+            "ops": 0.7595849917226698
+          },
+          "fielding_evidence": {
+            "position": "3루수",
+            "games": 102,
+            "starts": 90,
+            "errors": 7,
+            "outs_fielded": 2317
+          }
+        },
+        {
+          "order": 9,
+          "player_id": "kbo:player:62234",
+          "kbo_player_id": "62234",
+          "player_name": "류지혁",
+          "position": "2루수",
+          "position_code": "2B",
+          "batting": {
+            "games": 139,
+            "plate_appearances": 531,
+            "at_bats": 457,
+            "runs": 64,
+            "hits": 128,
+            "doubles": 19,
+            "triples": 6,
+            "home_runs": 5,
+            "total_bases": 174,
+            "runs_batted_in": 60,
+            "sacrifice_bunts": 7,
+            "sacrifice_flies": 3,
+            "walks": 54,
+            "intentional_walks": 1,
+            "hit_by_pitch": 10,
+            "batting_strikeouts": 78,
+            "grounded_into_double_plays": 12,
+            "batting_average": 0.28,
+            "on_base_percentage": 0.366,
+            "slugging_percentage": 0.381,
+            "ops": 0.747
+          },
+          "running": {
+            "stolen_bases": 29,
+            "caught_stealing": 6
+          },
+          "adjusted_rates": {
+            "obp": 0.3605462588735305,
+            "slg": 0.38742673696655977,
+            "ops": 0.7479729958400902
+          },
+          "fielding_evidence": {
+            "position": "2루수",
+            "games": 134,
+            "starts": 124,
+            "errors": 14,
+            "outs_fielded": 3038
+          }
+        }
+      ],
+      "validation": {
+        "unique_batters": true,
+        "all_defensive_positions_filled": true,
+        "pitcher_separate_from_batters": true,
+        "all_players_match_team": true
+      }
+    },
+    {
+      "team_id": "sr:competitor:249963",
+      "team_name": "한화 이글스",
+      "official_team_name": "한화",
+      "assignment_score": 7.368467549511626,
+      "starting_pitcher": {
+        "player_id": "kbo:player:76715",
+        "kbo_player_id": "76715",
+        "player_name": "류현진",
+        "season_starts": 25,
+        "pitching": {
+          "games": 25,
+          "wins": 9,
+          "losses": 6,
+          "saves": 0,
+          "holds": 0,
+          "hits_allowed": 136,
+          "home_runs_allowed": 10,
+          "walks_allowed": 20,
+          "hit_batters": 6,
+          "pitcher_strikeouts": 115,
+          "runs_allowed": 68,
+          "earned_runs": 58,
+          "earned_run_average": 3.88,
+          "whip": 1.16,
+          "complete_games": 0,
+          "shutouts": 0,
+          "quality_starts": 11,
+          "blown_saves": 0,
+          "batters_faced": 560,
+          "pitches": 2074,
+          "doubles_allowed": 18,
+          "triples_allowed": 2,
+          "wild_pitches": 1,
+          "balks": 0,
+          "outs_pitched": 404,
+          "innings_pitched": "134.2"
+        }
+      },
+      "batting_order": [
+        {
+          "order": 1,
+          "player_id": "kbo:player:50707",
+          "kbo_player_id": "50707",
+          "player_name": "최인호",
+          "position": "중견수",
+          "position_code": "CF",
+          "batting": {
+            "games": 79,
+            "plate_appearances": 218,
+            "at_bats": 191,
+            "runs": 26,
+            "hits": 62,
+            "doubles": 6,
+            "triples": 0,
+            "home_runs": 5,
+            "total_bases": 83,
+            "runs_batted_in": 24,
+            "sacrifice_bunts": 2,
+            "sacrifice_flies": 2,
+            "walks": 20,
+            "intentional_walks": 0,
+            "hit_by_pitch": 3,
+            "batting_strikeouts": 29,
+            "grounded_into_double_plays": 6,
+            "batting_average": 0.325,
+            "on_base_percentage": 0.394,
+            "slugging_percentage": 0.435,
+            "ops": 0.829
+          },
+          "running": {
+            "stolen_bases": 0,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.37106534745586317,
+            "slg": 0.42040178163290703,
+            "ops": 0.7914671290887703
+          },
+          "fielding_evidence": {
+            "position": "중견수",
+            "games": 34,
+            "starts": 29,
+            "errors": 1,
+            "outs_fielded": 721
+          }
+        },
+        {
+          "order": 2,
+          "player_id": "kbo:player:54730",
+          "kbo_player_id": "54730",
+          "player_name": "페라자",
+          "position": "우익수",
+          "position_code": "RF",
+          "batting": {
+            "games": 132,
+            "plate_appearances": 558,
+            "at_bats": 456,
+            "runs": 88,
+            "hits": 132,
+            "doubles": 29,
+            "triples": 2,
+            "home_runs": 20,
+            "total_bases": 225,
+            "runs_batted_in": 68,
+            "sacrifice_bunts": 2,
+            "sacrifice_flies": 5,
+            "walks": 91,
+            "intentional_walks": 4,
+            "hit_by_pitch": 4,
+            "batting_strikeouts": 104,
+            "grounded_into_double_plays": 9,
+            "batting_average": 0.289,
+            "on_base_percentage": 0.408,
+            "slugging_percentage": 0.493,
+            "ops": 0.901
+          },
+          "running": {
+            "stolen_bases": 10,
+            "caught_stealing": 5
+          },
+          "adjusted_rates": {
+            "obp": 0.391658727225001,
+            "slg": 0.469646365069334,
+            "ops": 0.861305092294335
+          },
+          "fielding_evidence": {
+            "position": "우익수",
+            "games": 116,
+            "starts": 114,
+            "errors": 3,
+            "outs_fielded": 2690
+          }
+        },
+        {
+          "order": 3,
+          "player_id": "kbo:player:69737",
+          "kbo_player_id": "69737",
+          "player_name": "노시환",
+          "position": "3루수",
+          "position_code": "3B",
+          "batting": {
+            "games": 127,
+            "plate_appearances": 571,
+            "at_bats": 505,
+            "runs": 97,
+            "hits": 143,
+            "doubles": 21,
+            "triples": 2,
+            "home_runs": 29,
+            "total_bases": 255,
+            "runs_batted_in": 96,
+            "sacrifice_bunts": 1,
+            "sacrifice_flies": 3,
+            "walks": 51,
+            "intentional_walks": 0,
+            "hit_by_pitch": 11,
+            "batting_strikeouts": 147,
+            "grounded_into_double_plays": 17,
+            "batting_average": 0.283,
+            "on_base_percentage": 0.36,
+            "slugging_percentage": 0.505,
+            "ops": 0.865
+          },
+          "running": {
+            "stolen_bases": 3,
+            "caught_stealing": 4
+          },
+          "adjusted_rates": {
+            "obp": 0.3563856228749037,
+            "slg": 0.47892729535999373,
+            "ops": 0.8353129182348975
+          },
+          "fielding_evidence": {
+            "position": "3루수",
+            "games": 122,
+            "starts": 122,
+            "errors": 12,
+            "outs_fielded": 3203
+          }
+        },
+        {
+          "order": 4,
+          "player_id": "kbo:player:68050",
+          "kbo_player_id": "68050",
+          "player_name": "강백호",
+          "position": "지명타자",
+          "position_code": "DH",
+          "batting": {
+            "games": 131,
+            "plate_appearances": 570,
+            "at_bats": 508,
+            "runs": 77,
+            "hits": 145,
+            "doubles": 22,
+            "triples": 0,
+            "home_runs": 34,
+            "total_bases": 269,
+            "runs_batted_in": 118,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 6,
+            "walks": 53,
+            "intentional_walks": 5,
+            "hit_by_pitch": 3,
+            "batting_strikeouts": 121,
+            "grounded_into_double_plays": 9,
+            "batting_average": 0.285,
+            "on_base_percentage": 0.353,
+            "slugging_percentage": 0.53,
+            "ops": 0.883
+          },
+          "running": {
+            "stolen_bases": 0,
+            "caught_stealing": 2
+          },
+          "adjusted_rates": {
+            "obp": 0.3511991106968192,
+            "slg": 0.4973999282111106,
+            "ops": 0.8485990389079299
+          },
+          "fielding_evidence": null
+        },
+        {
+          "order": 5,
+          "player_id": "kbo:player:52764",
+          "kbo_player_id": "52764",
+          "player_name": "허인서",
+          "position": "포수",
+          "position_code": "C",
+          "batting": {
+            "games": 130,
+            "plate_appearances": 460,
+            "at_bats": 407,
+            "runs": 59,
+            "hits": 115,
+            "doubles": 17,
+            "triples": 0,
+            "home_runs": 20,
+            "total_bases": 192,
+            "runs_batted_in": 79,
+            "sacrifice_bunts": 4,
+            "sacrifice_flies": 5,
+            "walks": 36,
+            "intentional_walks": 2,
+            "hit_by_pitch": 8,
+            "batting_strikeouts": 129,
+            "grounded_into_double_plays": 5,
+            "batting_average": 0.283,
+            "on_base_percentage": 0.349,
+            "slugging_percentage": 0.472,
+            "ops": 0.821
+          },
+          "running": {
+            "stolen_bases": 0,
+            "caught_stealing": 1
+          },
+          "adjusted_rates": {
+            "obp": 0.34811108369174365,
+            "slg": 0.45154234048871994,
+            "ops": 0.7996534241804636
+          },
+          "fielding_evidence": {
+            "position": "포수",
+            "games": 126,
+            "starts": 104,
+            "errors": 4,
+            "outs_fielded": 2777
+          }
+        },
+        {
+          "order": 6,
+          "player_id": "kbo:player:53764",
+          "kbo_player_id": "53764",
+          "player_name": "문현빈",
+          "position": "좌익수",
+          "position_code": "LF",
+          "batting": {
+            "games": 132,
+            "plate_appearances": 589,
+            "at_bats": 516,
+            "runs": 83,
+            "hits": 153,
+            "doubles": 30,
+            "triples": 4,
+            "home_runs": 15,
+            "total_bases": 236,
+            "runs_batted_in": 76,
+            "sacrifice_bunts": 2,
+            "sacrifice_flies": 4,
+            "walks": 60,
+            "intentional_walks": 0,
+            "hit_by_pitch": 7,
+            "batting_strikeouts": 75,
+            "grounded_into_double_plays": 20,
+            "batting_average": 0.297,
+            "on_base_percentage": 0.375,
+            "slugging_percentage": 0.457,
+            "ops": 0.832
+          },
+          "running": {
+            "stolen_bases": 11,
+            "caught_stealing": 2
+          },
+          "adjusted_rates": {
+            "obp": 0.3676657987788983,
+            "slg": 0.44368941029474673,
+            "ops": 0.8113552090736451
+          },
+          "fielding_evidence": {
+            "position": "좌익수",
+            "games": 97,
+            "starts": 92,
+            "errors": 3,
+            "outs_fielded": 2339
+          }
+        },
+        {
+          "order": 7,
+          "player_id": "kbo:player:50709",
+          "kbo_player_id": "50709",
+          "player_name": "박정현",
+          "position": "유격수",
+          "position_code": "SS",
+          "batting": {
+            "games": 79,
+            "plate_appearances": 153,
+            "at_bats": 135,
+            "runs": 29,
+            "hits": 31,
+            "doubles": 4,
+            "triples": 0,
+            "home_runs": 11,
+            "total_bases": 68,
+            "runs_batted_in": 30,
+            "sacrifice_bunts": 3,
+            "sacrifice_flies": 1,
+            "walks": 13,
+            "intentional_walks": 0,
+            "hit_by_pitch": 1,
+            "batting_strikeouts": 42,
+            "grounded_into_double_plays": 3,
+            "batting_average": 0.23,
+            "on_base_percentage": 0.3,
+            "slugging_percentage": 0.504,
+            "ops": 0.804
+          },
+          "running": {
+            "stolen_bases": 1,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.3261000431630334,
+            "slg": 0.44762024000723843,
+            "ops": 0.7737202831702719
+          },
+          "fielding_evidence": {
+            "position": "유격수",
+            "games": 35,
+            "starts": 16,
+            "errors": 4,
+            "outs_fielded": 480
+          }
+        },
+        {
+          "order": 8,
+          "player_id": "kbo:player:66704",
+          "kbo_player_id": "66704",
+          "player_name": "김태연",
+          "position": "1루수",
+          "position_code": "1B",
+          "batting": {
+            "games": 128,
+            "plate_appearances": 452,
+            "at_bats": 387,
+            "runs": 64,
+            "hits": 104,
+            "doubles": 18,
+            "triples": 2,
+            "home_runs": 13,
+            "total_bases": 165,
+            "runs_batted_in": 44,
+            "sacrifice_bunts": 15,
+            "sacrifice_flies": 2,
+            "walks": 40,
+            "intentional_walks": 0,
+            "hit_by_pitch": 8,
+            "batting_strikeouts": 82,
+            "grounded_into_double_plays": 9,
+            "batting_average": 0.269,
+            "on_base_percentage": 0.348,
+            "slugging_percentage": 0.426,
+            "ops": 0.774
+          },
+          "running": {
+            "stolen_bases": 3,
+            "caught_stealing": 1
+          },
+          "adjusted_rates": {
+            "obp": 0.3474069252094337,
+            "slg": 0.4194017557094405,
+            "ops": 0.7668086809188742
+          },
+          "fielding_evidence": {
+            "position": "1루수",
+            "games": 109,
+            "starts": 92,
+            "errors": 2,
+            "outs_fielded": 2488
+          }
+        },
+        {
+          "order": 9,
+          "player_id": "kbo:player:65703",
+          "kbo_player_id": "65703",
+          "player_name": "이도윤",
+          "position": "2루수",
+          "position_code": "2B",
+          "batting": {
+            "games": 117,
+            "plate_appearances": 401,
+            "at_bats": 365,
+            "runs": 46,
+            "hits": 96,
+            "doubles": 17,
+            "triples": 3,
+            "home_runs": 2,
+            "total_bases": 125,
+            "runs_batted_in": 38,
+            "sacrifice_bunts": 7,
+            "sacrifice_flies": 4,
+            "walks": 21,
+            "intentional_walks": 1,
+            "hit_by_pitch": 4,
+            "batting_strikeouts": 59,
+            "grounded_into_double_plays": 4,
+            "batting_average": 0.263,
+            "on_base_percentage": 0.307,
+            "slugging_percentage": 0.342,
+            "ops": 0.649
+          },
+          "running": {
+            "stolen_bases": 3,
+            "caught_stealing": 1
+          },
+          "adjusted_rates": {
+            "obp": 0.3200005245200513,
+            "slg": 0.36279524912238803,
+            "ops": 0.6827957736424393
+          },
+          "fielding_evidence": {
+            "position": "2루수",
+            "games": 96,
+            "starts": 86,
+            "errors": 12,
+            "outs_fielded": 2167
+          }
+        }
+      ],
+      "validation": {
+        "unique_batters": true,
+        "all_defensive_positions_filled": true,
+        "pitcher_separate_from_batters": true,
+        "all_players_match_team": true
+      }
+    },
+    {
+      "team_id": "sr:competitor:249971",
+      "team_name": "롯데 자이언츠",
+      "official_team_name": "롯데",
+      "assignment_score": 7.116374560480734,
+      "starting_pitcher": {
+        "player_id": "kbo:player:51516",
+        "kbo_player_id": "51516",
+        "player_name": "김진욱",
+        "season_starts": 26,
+        "pitching": {
+          "games": 26,
+          "wins": 7,
+          "losses": 9,
+          "saves": 0,
+          "holds": 0,
+          "hits_allowed": 141,
+          "home_runs_allowed": 18,
+          "walks_allowed": 51,
+          "hit_batters": 8,
+          "pitcher_strikeouts": 123,
+          "runs_allowed": 77,
+          "earned_runs": 66,
+          "earned_run_average": 4.12,
+          "whip": 1.33,
+          "complete_games": 0,
+          "shutouts": 0,
+          "quality_starts": 11,
+          "blown_saves": 0,
+          "batters_faced": 628,
+          "pitches": 2428,
+          "doubles_allowed": 27,
+          "triples_allowed": 0,
+          "wild_pitches": 4,
+          "balks": 0,
+          "outs_pitched": 433,
+          "innings_pitched": "144.1"
+        }
+      },
+      "batting_order": [
+        {
+          "order": 1,
+          "player_id": "kbo:player:51551",
+          "kbo_player_id": "51551",
+          "player_name": "나승엽",
+          "position": "1루수",
+          "position_code": "1B",
+          "batting": {
+            "games": 105,
+            "plate_appearances": 437,
+            "at_bats": 380,
+            "runs": 55,
+            "hits": 109,
+            "doubles": 22,
+            "triples": 2,
+            "home_runs": 8,
+            "total_bases": 159,
+            "runs_batted_in": 60,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 5,
+            "walks": 52,
+            "intentional_walks": 0,
+            "hit_by_pitch": 0,
+            "batting_strikeouts": 63,
+            "grounded_into_double_plays": 8,
+            "batting_average": 0.287,
+            "on_base_percentage": 0.368,
+            "slugging_percentage": 0.418,
+            "ops": 0.786
+          },
+          "running": {
+            "stolen_bases": 1,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.3611135247041614,
+            "slg": 0.41375815498046337,
+            "ops": 0.7748716796846248
+          },
+          "fielding_evidence": {
+            "position": "1루수",
+            "games": 93,
+            "starts": 90,
+            "errors": 10,
+            "outs_fielded": 2136
+          }
+        },
+        {
+          "order": 2,
+          "player_id": "kbo:player:54529",
+          "kbo_player_id": "54529",
+          "player_name": "레이예스",
+          "position": "좌익수",
+          "position_code": "LF",
+          "batting": {
+            "games": 144,
+            "plate_appearances": 636,
+            "at_bats": 582,
+            "runs": 83,
+            "hits": 211,
+            "doubles": 38,
+            "triples": 2,
+            "home_runs": 18,
+            "total_bases": 307,
+            "runs_batted_in": 109,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 4,
+            "walks": 48,
+            "intentional_walks": 9,
+            "hit_by_pitch": 2,
+            "batting_strikeouts": 65,
+            "grounded_into_double_plays": 12,
+            "batting_average": 0.363,
+            "on_base_percentage": 0.41,
+            "slugging_percentage": 0.527,
+            "ops": 0.937
+          },
+          "running": {
+            "stolen_bases": 1,
+            "caught_stealing": 2
+          },
+          "adjusted_rates": {
+            "obp": 0.3947049225317593,
+            "slg": 0.4976913214384632,
+            "ops": 0.8923962439702224
+          },
+          "fielding_evidence": {
+            "position": "좌익수",
+            "games": 108,
+            "starts": 99,
+            "errors": 4,
+            "outs_fielded": 2515
+          }
+        },
+        {
+          "order": 3,
+          "player_id": "kbo:player:69517",
+          "kbo_player_id": "69517",
+          "player_name": "고승민",
+          "position": "2루수",
+          "position_code": "2B",
+          "batting": {
+            "games": 112,
+            "plate_appearances": 493,
+            "at_bats": 445,
+            "runs": 70,
+            "hits": 128,
+            "doubles": 27,
+            "triples": 3,
+            "home_runs": 16,
+            "total_bases": 209,
+            "runs_batted_in": 75,
+            "sacrifice_bunts": 2,
+            "sacrifice_flies": 5,
+            "walks": 39,
+            "intentional_walks": 1,
+            "hit_by_pitch": 2,
+            "batting_strikeouts": 95,
+            "grounded_into_double_plays": 0,
+            "batting_average": 0.288,
+            "on_base_percentage": 0.344,
+            "slugging_percentage": 0.47,
+            "ops": 0.814
+          },
+          "running": {
+            "stolen_bases": 0,
+            "caught_stealing": 1
+          },
+          "adjusted_rates": {
+            "obp": 0.34459641448275724,
+            "slg": 0.4510937153283624,
+            "ops": 0.7956901298111196
+          },
+          "fielding_evidence": {
+            "position": "2루수",
+            "games": 89,
+            "starts": 86,
+            "errors": 6,
+            "outs_fielded": 1997
+          }
+        },
+        {
+          "order": 4,
+          "player_id": "kbo:player:68525",
+          "kbo_player_id": "68525",
+          "player_name": "한동희",
+          "position": "3루수",
+          "position_code": "3B",
+          "batting": {
+            "games": 109,
+            "plate_appearances": 461,
+            "at_bats": 412,
+            "runs": 55,
+            "hits": 126,
+            "doubles": 21,
+            "triples": 1,
+            "home_runs": 25,
+            "total_bases": 224,
+            "runs_batted_in": 81,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 4,
+            "walks": 37,
+            "intentional_walks": 4,
+            "hit_by_pitch": 8,
+            "batting_strikeouts": 82,
+            "grounded_into_double_plays": 21,
+            "batting_average": 0.306,
+            "on_base_percentage": 0.371,
+            "slugging_percentage": 0.544,
+            "ops": 0.915
+          },
+          "running": {
+            "stolen_bases": 1,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.36345584755907834,
+            "slg": 0.5017881160704314,
+            "ops": 0.8652439636295097
+          },
+          "fielding_evidence": {
+            "position": "3루수",
+            "games": 64,
+            "starts": 64,
+            "errors": 6,
+            "outs_fielded": 1507
+          }
+        },
+        {
+          "order": 5,
+          "player_id": "kbo:player:51528",
+          "kbo_player_id": "51528",
+          "player_name": "손성빈",
+          "position": "포수",
+          "position_code": "C",
+          "batting": {
+            "games": 129,
+            "plate_appearances": 385,
+            "at_bats": 341,
+            "runs": 42,
+            "hits": 91,
+            "doubles": 21,
+            "triples": 1,
+            "home_runs": 8,
+            "total_bases": 138,
+            "runs_batted_in": 40,
+            "sacrifice_bunts": 9,
+            "sacrifice_flies": 2,
+            "walks": 27,
+            "intentional_walks": 0,
+            "hit_by_pitch": 6,
+            "batting_strikeouts": 67,
+            "grounded_into_double_plays": 7,
+            "batting_average": 0.267,
+            "on_base_percentage": 0.33,
+            "slugging_percentage": 0.405,
+            "ops": 0.735
+          },
+          "running": {
+            "stolen_bases": 0,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.3354928465582065,
+            "slg": 0.4048255465342824,
+            "ops": 0.7403183930924888
+          },
+          "fielding_evidence": {
+            "position": "포수",
+            "games": 129,
+            "starts": 112,
+            "errors": 10,
+            "outs_fielded": 2752
+          }
+        },
+        {
+          "order": 6,
+          "player_id": "kbo:player:68205",
+          "kbo_player_id": "68205",
+          "player_name": "전민재",
+          "position": "유격수",
+          "position_code": "SS",
+          "batting": {
+            "games": 140,
+            "plate_appearances": 520,
+            "at_bats": 472,
+            "runs": 50,
+            "hits": 131,
+            "doubles": 21,
+            "triples": 0,
+            "home_runs": 9,
+            "total_bases": 179,
+            "runs_batted_in": 70,
+            "sacrifice_bunts": 5,
+            "sacrifice_flies": 5,
+            "walks": 34,
+            "intentional_walks": 0,
+            "hit_by_pitch": 4,
+            "batting_strikeouts": 105,
+            "grounded_into_double_plays": 10,
+            "batting_average": 0.278,
+            "on_base_percentage": 0.328,
+            "slugging_percentage": 0.379,
+            "ops": 0.707
+          },
+          "running": {
+            "stolen_bases": 13,
+            "caught_stealing": 4
+          },
+          "adjusted_rates": {
+            "obp": 0.33301849338409834,
+            "slg": 0.3860804787813267,
+            "ops": 0.7190989721654251
+          },
+          "fielding_evidence": {
+            "position": "유격수",
+            "games": 139,
+            "starts": 136,
+            "errors": 16,
+            "outs_fielded": 3363
+          }
+        },
+        {
+          "order": 7,
+          "player_id": "kbo:player:50500",
+          "kbo_player_id": "50500",
+          "player_name": "황성빈",
+          "position": "중견수",
+          "position_code": "CF",
+          "batting": {
+            "games": 121,
+            "plate_appearances": 506,
+            "at_bats": 461,
+            "runs": 72,
+            "hits": 133,
+            "doubles": 12,
+            "triples": 11,
+            "home_runs": 0,
+            "total_bases": 167,
+            "runs_batted_in": 38,
+            "sacrifice_bunts": 6,
+            "sacrifice_flies": 2,
+            "walks": 31,
+            "intentional_walks": 0,
+            "hit_by_pitch": 6,
+            "batting_strikeouts": 70,
+            "grounded_into_double_plays": 2,
+            "batting_average": 0.289,
+            "on_base_percentage": 0.34,
+            "slugging_percentage": 0.362,
+            "ops": 0.702
+          },
+          "running": {
+            "stolen_bases": 55,
+            "caught_stealing": 11
+          },
+          "adjusted_rates": {
+            "obp": 0.34171857682230994,
+            "slg": 0.3740367488988034,
+            "ops": 0.7157553257211133
+          },
+          "fielding_evidence": {
+            "position": "중견수",
+            "games": 113,
+            "starts": 107,
+            "errors": 4,
+            "outs_fielded": 2496
+          }
+        },
+        {
+          "order": 8,
+          "player_id": "kbo:player:68507",
+          "kbo_player_id": "68507",
+          "player_name": "장두성",
+          "position": "지명타자",
+          "position_code": "DH",
+          "batting": {
+            "games": 102,
+            "plate_appearances": 262,
+            "at_bats": 239,
+            "runs": 36,
+            "hits": 68,
+            "doubles": 8,
+            "triples": 2,
+            "home_runs": 0,
+            "total_bases": 80,
+            "runs_batted_in": 22,
+            "sacrifice_bunts": 5,
+            "sacrifice_flies": 1,
+            "walks": 14,
+            "intentional_walks": 0,
+            "hit_by_pitch": 3,
+            "batting_strikeouts": 50,
+            "grounded_into_double_plays": 1,
+            "batting_average": 0.285,
+            "on_base_percentage": 0.331,
+            "slugging_percentage": 0.335,
+            "ops": 0.666
+          },
+          "running": {
+            "stolen_bases": 18,
+            "caught_stealing": 3
+          },
+          "adjusted_rates": {
+            "obp": 0.3375223273518416,
+            "slg": 0.3650821314341021,
+            "ops": 0.7026044587859437
+          },
+          "fielding_evidence": null
+        },
+        {
+          "order": 9,
+          "player_id": "kbo:player:52591",
+          "kbo_player_id": "52591",
+          "player_name": "윤동희",
+          "position": "우익수",
+          "position_code": "RF",
+          "batting": {
+            "games": 84,
+            "plate_appearances": 308,
+            "at_bats": 273,
+            "runs": 26,
+            "hits": 63,
+            "doubles": 13,
+            "triples": 0,
+            "home_runs": 5,
+            "total_bases": 91,
+            "runs_batted_in": 24,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 0,
+            "walks": 31,
+            "intentional_walks": 2,
+            "hit_by_pitch": 4,
+            "batting_strikeouts": 83,
+            "grounded_into_double_plays": 4,
+            "batting_average": 0.231,
+            "on_base_percentage": 0.318,
+            "slugging_percentage": 0.333,
+            "ops": 0.651
+          },
+          "running": {
+            "stolen_bases": 0,
+            "caught_stealing": 1
+          },
+          "adjusted_rates": {
+            "obp": 0.32904983314281655,
+            "slg": 0.3611455604774708,
+            "ops": 0.6901953936202874
+          },
+          "fielding_evidence": {
+            "position": "우익수",
+            "games": 79,
+            "starts": 72,
+            "errors": 2,
+            "outs_fielded": 1736
+          }
+        }
+      ],
+      "validation": {
+        "unique_batters": true,
+        "all_defensive_positions_filled": true,
+        "pitcher_separate_from_batters": true,
+        "all_players_match_team": true
+      }
+    },
+    {
+      "team_id": "sr:competitor:249965",
+      "team_name": "KIA 타이거즈",
+      "official_team_name": "KIA",
+      "assignment_score": 7.4283807106784,
+      "starting_pitcher": {
+        "player_id": "kbo:player:55633",
+        "kbo_player_id": "55633",
+        "player_name": "올러",
+        "season_starts": 30,
+        "pitching": {
+          "games": 30,
+          "wins": 11,
+          "losses": 10,
+          "saves": 0,
+          "holds": 0,
+          "hits_allowed": 130,
+          "home_runs_allowed": 14,
+          "walks_allowed": 62,
+          "hit_batters": 8,
+          "pitcher_strikeouts": 180,
+          "runs_allowed": 66,
+          "earned_runs": 62,
+          "earned_run_average": 3.13,
+          "whip": 1.08,
+          "complete_games": 1,
+          "shutouts": 1,
+          "quality_starts": 19,
+          "blown_saves": 0,
+          "batters_faced": 717,
+          "pitches": 2815,
+          "doubles_allowed": 17,
+          "triples_allowed": 3,
+          "wild_pitches": 4,
+          "balks": 1,
+          "outs_pitched": 534,
+          "innings_pitched": "178.0"
+        }
+      },
+      "batting_order": [
+        {
+          "order": 1,
+          "player_id": "kbo:player:68646",
+          "kbo_player_id": "68646",
+          "player_name": "한준수",
+          "position": "포수",
+          "position_code": "C",
+          "batting": {
+            "games": 115,
+            "plate_appearances": 390,
+            "at_bats": 317,
+            "runs": 41,
+            "hits": 89,
+            "doubles": 23,
+            "triples": 0,
+            "home_runs": 7,
+            "total_bases": 133,
+            "runs_batted_in": 38,
+            "sacrifice_bunts": 4,
+            "sacrifice_flies": 3,
+            "walks": 56,
+            "intentional_walks": 3,
+            "hit_by_pitch": 10,
+            "batting_strikeouts": 61,
+            "grounded_into_double_plays": 13,
+            "batting_average": 0.281,
+            "on_base_percentage": 0.402,
+            "slugging_percentage": 0.42,
+            "ops": 0.822
+          },
+          "running": {
+            "stolen_bases": 0,
+            "caught_stealing": 1
+          },
+          "adjusted_rates": {
+            "obp": 0.3830395173500861,
+            "slg": 0.41474227919077145,
+            "ops": 0.7977817965408576
+          },
+          "fielding_evidence": {
+            "position": "포수",
+            "games": 92,
+            "starts": 74,
+            "errors": 5,
+            "outs_fielded": 1977
+          }
+        },
+        {
+          "order": 2,
+          "player_id": "kbo:player:62947",
+          "kbo_player_id": "62947",
+          "player_name": "나성범",
+          "position": "우익수",
+          "position_code": "RF",
+          "batting": {
+            "games": 140,
+            "plate_appearances": 581,
+            "at_bats": 508,
+            "runs": 79,
+            "hits": 154,
+            "doubles": 28,
+            "triples": 0,
+            "home_runs": 31,
+            "total_bases": 275,
+            "runs_batted_in": 97,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 7,
+            "walks": 58,
+            "intentional_walks": 2,
+            "hit_by_pitch": 8,
+            "batting_strikeouts": 158,
+            "grounded_into_double_plays": 12,
+            "batting_average": 0.303,
+            "on_base_percentage": 0.379,
+            "slugging_percentage": 0.541,
+            "ops": 0.92
+          },
+          "running": {
+            "stolen_bases": 0,
+            "caught_stealing": 1
+          },
+          "adjusted_rates": {
+            "obp": 0.37056634473309963,
+            "slg": 0.5060421827433486,
+            "ops": 0.8766085274764481
+          },
+          "fielding_evidence": {
+            "position": "우익수",
+            "games": 102,
+            "starts": 101,
+            "errors": 4,
+            "outs_fielded": 2413
+          }
+        },
+        {
+          "order": 3,
+          "player_id": "kbo:player:56626",
+          "kbo_player_id": "56626",
+          "player_name": "카스트로",
+          "position": "1루수",
+          "position_code": "1B",
+          "batting": {
+            "games": 99,
+            "plate_appearances": 431,
+            "at_bats": 401,
+            "runs": 61,
+            "hits": 131,
+            "doubles": 32,
+            "triples": 0,
+            "home_runs": 21,
+            "total_bases": 226,
+            "runs_batted_in": 88,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 4,
+            "walks": 20,
+            "intentional_walks": 2,
+            "hit_by_pitch": 6,
+            "batting_strikeouts": 63,
+            "grounded_into_double_plays": 8,
+            "batting_average": 0.327,
+            "on_base_percentage": 0.364,
+            "slugging_percentage": 0.564,
+            "ops": 0.928
+          },
+          "running": {
+            "stolen_bases": 1,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.35831587200721204,
+            "slg": 0.5134420677061096,
+            "ops": 0.8717579397133216
+          },
+          "fielding_evidence": {
+            "position": "1루수",
+            "games": 48,
+            "starts": 47,
+            "errors": 2,
+            "outs_fielded": 1209
+          }
+        },
+        {
+          "order": 4,
+          "player_id": "kbo:player:52605",
+          "kbo_player_id": "52605",
+          "player_name": "김도영",
+          "position": "3루수",
+          "position_code": "3B",
+          "batting": {
+            "games": 135,
+            "plate_appearances": 593,
+            "at_bats": 496,
+            "runs": 120,
+            "hits": 153,
+            "doubles": 29,
+            "triples": 2,
+            "home_runs": 45,
+            "total_bases": 321,
+            "runs_batted_in": 118,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 5,
+            "walks": 85,
+            "intentional_walks": 11,
+            "hit_by_pitch": 7,
+            "batting_strikeouts": 103,
+            "grounded_into_double_plays": 8,
+            "batting_average": 0.308,
+            "on_base_percentage": 0.413,
+            "slugging_percentage": 0.647,
+            "ops": 1.06
+          },
+          "running": {
+            "stolen_bases": 11,
+            "caught_stealing": 1
+          },
+          "adjusted_rates": {
+            "obp": 0.3961189347245281,
+            "slg": 0.5858372569010784,
+            "ops": 0.9819561916256064
+          },
+          "fielding_evidence": {
+            "position": "3루수",
+            "games": 119,
+            "starts": 117,
+            "errors": 10,
+            "outs_fielded": 2976
+          }
+        },
+        {
+          "order": 5,
+          "player_id": "kbo:player:55636",
+          "kbo_player_id": "55636",
+          "player_name": "박재현",
+          "position": "좌익수",
+          "position_code": "LF",
+          "batting": {
+            "games": 132,
+            "plate_appearances": 556,
+            "at_bats": 515,
+            "runs": 81,
+            "hits": 151,
+            "doubles": 22,
+            "triples": 6,
+            "home_runs": 19,
+            "total_bases": 242,
+            "runs_batted_in": 69,
+            "sacrifice_bunts": 10,
+            "sacrifice_flies": 1,
+            "walks": 29,
+            "intentional_walks": 2,
+            "hit_by_pitch": 1,
+            "batting_strikeouts": 108,
+            "grounded_into_double_plays": 4,
+            "batting_average": 0.293,
+            "on_base_percentage": 0.332,
+            "slugging_percentage": 0.47,
+            "ops": 0.802
+          },
+          "running": {
+            "stolen_bases": 21,
+            "caught_stealing": 4
+          },
+          "adjusted_rates": {
+            "obp": 0.33572131645046405,
+            "slg": 0.4526692390509989,
+            "ops": 0.788390555501463
+          },
+          "fielding_evidence": {
+            "position": "좌익수",
+            "games": 96,
+            "starts": 90,
+            "errors": 3,
+            "outs_fielded": 2320
+          }
+        },
+        {
+          "order": 6,
+          "player_id": "kbo:player:67609",
+          "kbo_player_id": "67609",
+          "player_name": "박정우",
+          "position": "지명타자",
+          "position_code": "DH",
+          "batting": {
+            "games": 110,
+            "plate_appearances": 157,
+            "at_bats": 130,
+            "runs": 34,
+            "hits": 38,
+            "doubles": 3,
+            "triples": 2,
+            "home_runs": 0,
+            "total_bases": 45,
+            "runs_batted_in": 17,
+            "sacrifice_bunts": 3,
+            "sacrifice_flies": 0,
+            "walks": 19,
+            "intentional_walks": 0,
+            "hit_by_pitch": 5,
+            "batting_strikeouts": 29,
+            "grounded_into_double_plays": 1,
+            "batting_average": 0.292,
+            "on_base_percentage": 0.403,
+            "slugging_percentage": 0.346,
+            "ops": 0.749
+          },
+          "running": {
+            "stolen_bases": 3,
+            "caught_stealing": 1
+          },
+          "adjusted_rates": {
+            "obp": 0.3711045244721311,
+            "slg": 0.3787673521640201,
+            "ops": 0.7498718766361512
+          },
+          "fielding_evidence": null
+        },
+        {
+          "order": 7,
+          "player_id": "kbo:player:78603",
+          "kbo_player_id": "78603",
+          "player_name": "김선빈",
+          "position": "2루수",
+          "position_code": "2B",
+          "batting": {
+            "games": 137,
+            "plate_appearances": 538,
+            "at_bats": 456,
+            "runs": 50,
+            "hits": 130,
+            "doubles": 23,
+            "triples": 1,
+            "home_runs": 1,
+            "total_bases": 158,
+            "runs_batted_in": 50,
+            "sacrifice_bunts": 5,
+            "sacrifice_flies": 1,
+            "walks": 69,
+            "intentional_walks": 1,
+            "hit_by_pitch": 7,
+            "batting_strikeouts": 50,
+            "grounded_into_double_plays": 11,
+            "batting_average": 0.285,
+            "on_base_percentage": 0.386,
+            "slugging_percentage": 0.346,
+            "ops": 0.732
+          },
+          "running": {
+            "stolen_bases": 3,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.3751779339248656,
+            "slg": 0.3618508736077984,
+            "ops": 0.737028807532664
+          },
+          "fielding_evidence": {
+            "position": "2루수",
+            "games": 98,
+            "starts": 93,
+            "errors": 5,
+            "outs_fielded": 2118
+          }
+        },
+        {
+          "order": 8,
+          "player_id": "kbo:player:65653",
+          "kbo_player_id": "65653",
+          "player_name": "김호령",
+          "position": "중견수",
+          "position_code": "CF",
+          "batting": {
+            "games": 141,
+            "plate_appearances": 581,
+            "at_bats": 525,
+            "runs": 74,
+            "hits": 140,
+            "doubles": 27,
+            "triples": 2,
+            "home_runs": 13,
+            "total_bases": 210,
+            "runs_batted_in": 68,
+            "sacrifice_bunts": 8,
+            "sacrifice_flies": 9,
+            "walks": 35,
+            "intentional_walks": 1,
+            "hit_by_pitch": 4,
+            "batting_strikeouts": 156,
+            "grounded_into_double_plays": 10,
+            "batting_average": 0.267,
+            "on_base_percentage": 0.312,
+            "slugging_percentage": 0.4,
+            "ops": 0.712
+          },
+          "running": {
+            "stolen_bases": 17,
+            "caught_stealing": 6
+          },
+          "adjusted_rates": {
+            "obp": 0.3207238351300266,
+            "slg": 0.401149737160762,
+            "ops": 0.7218735722907886
+          },
+          "fielding_evidence": {
+            "position": "중견수",
+            "games": 140,
+            "starts": 133,
+            "errors": 4,
+            "outs_fielded": 3516
+          }
+        },
+        {
+          "order": 9,
+          "player_id": "kbo:player:62700",
+          "kbo_player_id": "62700",
+          "player_name": "하주석",
+          "position": "유격수",
+          "position_code": "SS",
+          "batting": {
+            "games": 71,
+            "plate_appearances": 248,
+            "at_bats": 225,
+            "runs": 23,
+            "hits": 56,
+            "doubles": 11,
+            "triples": 0,
+            "home_runs": 4,
+            "total_bases": 79,
+            "runs_batted_in": 22,
+            "sacrifice_bunts": 5,
+            "sacrifice_flies": 1,
+            "walks": 12,
+            "intentional_walks": 0,
+            "hit_by_pitch": 5,
+            "batting_strikeouts": 63,
+            "grounded_into_double_plays": 3,
+            "batting_average": 0.249,
+            "on_base_percentage": 0.3,
+            "slugging_percentage": 0.351,
+            "ops": 0.651
+          },
+          "running": {
+            "stolen_bases": 0,
+            "caught_stealing": 1
+          },
+          "adjusted_rates": {
+            "obp": 0.3205654357958723,
+            "slg": 0.3748793408985606,
+            "ops": 0.6954447766944329
+          },
+          "fielding_evidence": {
+            "position": "유격수",
+            "games": 40,
+            "starts": 38,
+            "errors": 3,
+            "outs_fielded": 912
+          }
+        }
+      ],
+      "validation": {
+        "unique_batters": true,
+        "all_defensive_positions_filled": true,
+        "pitcher_separate_from_batters": true,
+        "all_players_match_team": true
+      }
+    },
+    {
+      "team_id": "sr:competitor:249973",
+      "team_name": "NC 다이노스",
+      "official_team_name": "NC",
+      "assignment_score": 7.226649289109642,
+      "starting_pitcher": {
+        "player_id": "kbo:player:55903",
+        "kbo_player_id": "55903",
+        "player_name": "라일리",
+        "season_starts": 22,
+        "pitching": {
+          "games": 22,
+          "wins": 8,
+          "losses": 1,
+          "saves": 0,
+          "holds": 0,
+          "hits_allowed": 105,
+          "home_runs_allowed": 18,
+          "walks_allowed": 35,
+          "hit_batters": 0,
+          "pitcher_strikeouts": 162,
+          "runs_allowed": 41,
+          "earned_runs": 40,
+          "earned_run_average": 2.69,
+          "whip": 1.05,
+          "complete_games": 0,
+          "shutouts": 0,
+          "quality_starts": 16,
+          "blown_saves": 0,
+          "batters_faced": 529,
+          "pitches": 2104,
+          "doubles_allowed": 18,
+          "triples_allowed": 1,
+          "wild_pitches": 4,
+          "balks": 0,
+          "outs_pitched": 401,
+          "innings_pitched": "133.2"
+        }
+      },
+      "batting_order": [
+        {
+          "order": 1,
+          "player_id": "kbo:player:62907",
+          "kbo_player_id": "62907",
+          "player_name": "박민우",
+          "position": "2루수",
+          "position_code": "2B",
+          "batting": {
+            "games": 138,
+            "plate_appearances": 561,
+            "at_bats": 484,
+            "runs": 81,
+            "hits": 155,
+            "doubles": 28,
+            "triples": 3,
+            "home_runs": 7,
+            "total_bases": 210,
+            "runs_batted_in": 72,
+            "sacrifice_bunts": 1,
+            "sacrifice_flies": 4,
+            "walks": 64,
+            "intentional_walks": 2,
+            "hit_by_pitch": 8,
+            "batting_strikeouts": 72,
+            "grounded_into_double_plays": 13,
+            "batting_average": 0.32,
+            "on_base_percentage": 0.405,
+            "slugging_percentage": 0.434,
+            "ops": 0.839
+          },
+          "running": {
+            "stolen_bases": 50,
+            "caught_stealing": 12
+          },
+          "adjusted_rates": {
+            "obp": 0.38951158375368045,
+            "slg": 0.42624434260519733,
+            "ops": 0.8157559263588778
+          },
+          "fielding_evidence": {
+            "position": "2루수",
+            "games": 121,
+            "starts": 116,
+            "errors": 6,
+            "outs_fielded": 2781
+          }
+        },
+        {
+          "order": 2,
+          "player_id": "kbo:player:51344",
+          "kbo_player_id": "51344",
+          "player_name": "김휘집",
+          "position": "3루수",
+          "position_code": "3B",
+          "batting": {
+            "games": 90,
+            "plate_appearances": 351,
+            "at_bats": 301,
+            "runs": 43,
+            "hits": 84,
+            "doubles": 18,
+            "triples": 1,
+            "home_runs": 14,
+            "total_bases": 146,
+            "runs_batted_in": 64,
+            "sacrifice_bunts": 3,
+            "sacrifice_flies": 2,
+            "walks": 33,
+            "intentional_walks": 0,
+            "hit_by_pitch": 12,
+            "batting_strikeouts": 67,
+            "grounded_into_double_plays": 6,
+            "batting_average": 0.279,
+            "on_base_percentage": 0.371,
+            "slugging_percentage": 0.485,
+            "ops": 0.856
+          },
+          "running": {
+            "stolen_bases": 6,
+            "caught_stealing": 2
+          },
+          "adjusted_rates": {
+            "obp": 0.3619497554202374,
+            "slg": 0.4557766691879404,
+            "ops": 0.8177264246081778
+          },
+          "fielding_evidence": {
+            "position": "3루수",
+            "games": 88,
+            "starts": 83,
+            "errors": 7,
+            "outs_fielded": 2040
+          }
+        },
+        {
+          "order": 3,
+          "player_id": "kbo:player:67905",
+          "kbo_player_id": "67905",
+          "player_name": "천재환",
+          "position": "중견수",
+          "position_code": "CF",
+          "batting": {
+            "games": 111,
+            "plate_appearances": 333,
+            "at_bats": 293,
+            "runs": 58,
+            "hits": 88,
+            "doubles": 16,
+            "triples": 2,
+            "home_runs": 8,
+            "total_bases": 132,
+            "runs_batted_in": 38,
+            "sacrifice_bunts": 10,
+            "sacrifice_flies": 3,
+            "walks": 21,
+            "intentional_walks": 0,
+            "hit_by_pitch": 6,
+            "batting_strikeouts": 60,
+            "grounded_into_double_plays": 1,
+            "batting_average": 0.3,
+            "on_base_percentage": 0.356,
+            "slugging_percentage": 0.451,
+            "ops": 0.807
+          },
+          "running": {
+            "stolen_bases": 8,
+            "caught_stealing": 6
+          },
+          "adjusted_rates": {
+            "obp": 0.3522726364663242,
+            "slg": 0.4335477386914731,
+            "ops": 0.7858203751577972
+          },
+          "fielding_evidence": {
+            "position": "중견수",
+            "games": 64,
+            "starts": 46,
+            "errors": 4,
+            "outs_fielded": 1163
+          }
+        },
+        {
+          "order": 4,
+          "player_id": "kbo:player:79215",
+          "kbo_player_id": "79215",
+          "player_name": "박건우",
+          "position": "우익수",
+          "position_code": "RF",
+          "batting": {
+            "games": 129,
+            "plate_appearances": 500,
+            "at_bats": 432,
+            "runs": 56,
+            "hits": 130,
+            "doubles": 19,
+            "triples": 1,
+            "home_runs": 20,
+            "total_bases": 211,
+            "runs_batted_in": 78,
+            "sacrifice_bunts": 1,
+            "sacrifice_flies": 10,
+            "walks": 55,
+            "intentional_walks": 5,
+            "hit_by_pitch": 2,
+            "batting_strikeouts": 80,
+            "grounded_into_double_plays": 10,
+            "batting_average": 0.301,
+            "on_base_percentage": 0.375,
+            "slugging_percentage": 0.488,
+            "ops": 0.863
+          },
+          "running": {
+            "stolen_bases": 9,
+            "caught_stealing": 5
+          },
+          "adjusted_rates": {
+            "obp": 0.3667333074807868,
+            "slg": 0.4641399210322217,
+            "ops": 0.8308732285130085
+          },
+          "fielding_evidence": {
+            "position": "우익수",
+            "games": 57,
+            "starts": 57,
+            "errors": 0,
+            "outs_fielded": 1252
+          }
+        },
+        {
+          "order": 5,
+          "player_id": "kbo:player:68912",
+          "kbo_player_id": "68912",
+          "player_name": "김형준",
+          "position": "포수",
+          "position_code": "C",
+          "batting": {
+            "games": 130,
+            "plate_appearances": 408,
+            "at_bats": 359,
+            "runs": 44,
+            "hits": 90,
+            "doubles": 15,
+            "triples": 1,
+            "home_runs": 17,
+            "total_bases": 158,
+            "runs_batted_in": 66,
+            "sacrifice_bunts": 3,
+            "sacrifice_flies": 3,
+            "walks": 36,
+            "intentional_walks": 1,
+            "hit_by_pitch": 7,
+            "batting_strikeouts": 132,
+            "grounded_into_double_plays": 11,
+            "batting_average": 0.251,
+            "on_base_percentage": 0.328,
+            "slugging_percentage": 0.44,
+            "ops": 0.768
+          },
+          "running": {
+            "stolen_bases": 0,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.3339429526916954,
+            "slg": 0.4283189880305183,
+            "ops": 0.7622619407222138
+          },
+          "fielding_evidence": {
+            "position": "포수",
+            "games": 128,
+            "starts": 105,
+            "errors": 6,
+            "outs_fielded": 2675
+          }
+        },
+        {
+          "order": 6,
+          "player_id": "kbo:player:51907",
+          "kbo_player_id": "51907",
+          "player_name": "김주원",
+          "position": "유격수",
+          "position_code": "SS",
+          "batting": {
+            "games": 131,
+            "plate_appearances": 590,
+            "at_bats": 517,
+            "runs": 85,
+            "hits": 145,
+            "doubles": 22,
+            "triples": 0,
+            "home_runs": 18,
+            "total_bases": 221,
+            "runs_batted_in": 61,
+            "sacrifice_bunts": 2,
+            "sacrifice_flies": 4,
+            "walks": 50,
+            "intentional_walks": 2,
+            "hit_by_pitch": 17,
+            "batting_strikeouts": 79,
+            "grounded_into_double_plays": 6,
+            "batting_average": 0.28,
+            "on_base_percentage": 0.361,
+            "slugging_percentage": 0.427,
+            "ops": 0.788
+          },
+          "running": {
+            "stolen_bases": 30,
+            "caught_stealing": 9
+          },
+          "adjusted_rates": {
+            "obp": 0.35721938637538075,
+            "slg": 0.4213011958513357,
+            "ops": 0.7785205822267165
+          },
+          "fielding_evidence": {
+            "position": "유격수",
+            "games": 129,
+            "starts": 127,
+            "errors": 20,
+            "outs_fielded": 3233
+          }
+        },
+        {
+          "order": 7,
+          "player_id": "kbo:player:56950",
+          "kbo_player_id": "56950",
+          "player_name": "블레인",
+          "position": "1루수",
+          "position_code": "1B",
+          "batting": {
+            "games": 66,
+            "plate_appearances": 264,
+            "at_bats": 236,
+            "runs": 31,
+            "hits": 60,
+            "doubles": 9,
+            "triples": 1,
+            "home_runs": 10,
+            "total_bases": 101,
+            "runs_batted_in": 46,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 3,
+            "walks": 23,
+            "intentional_walks": 0,
+            "hit_by_pitch": 2,
+            "batting_strikeouts": 63,
+            "grounded_into_double_plays": 7,
+            "batting_average": 0.254,
+            "on_base_percentage": 0.322,
+            "slugging_percentage": 0.428,
+            "ops": 0.75
+          },
+          "running": {
+            "stolen_bases": 0,
+            "caught_stealing": 1
+          },
+          "adjusted_rates": {
+            "obp": 0.3323735242167043,
+            "slg": 0.41786626017792067,
+            "ops": 0.7502397843946249
+          },
+          "fielding_evidence": {
+            "position": "1루수",
+            "games": 59,
+            "starts": 58,
+            "errors": 3,
+            "outs_fielded": 1354
+          }
+        },
+        {
+          "order": 8,
+          "player_id": "kbo:player:64022",
+          "kbo_player_id": "64022",
+          "player_name": "안중열",
+          "position": "지명타자",
+          "position_code": "DH",
+          "batting": {
+            "games": 85,
+            "plate_appearances": 174,
+            "at_bats": 146,
+            "runs": 21,
+            "hits": 39,
+            "doubles": 8,
+            "triples": 0,
+            "home_runs": 3,
+            "total_bases": 56,
+            "runs_batted_in": 19,
+            "sacrifice_bunts": 2,
+            "sacrifice_flies": 3,
+            "walks": 19,
+            "intentional_walks": 0,
+            "hit_by_pitch": 4,
+            "batting_strikeouts": 40,
+            "grounded_into_double_plays": 7,
+            "batting_average": 0.267,
+            "on_base_percentage": 0.36,
+            "slugging_percentage": 0.384,
+            "ops": 0.744
+          },
+          "running": {
+            "stolen_bases": 1,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.35254897122072404,
+            "slg": 0.39495707145068226,
+            "ops": 0.7475060426714063
+          },
+          "fielding_evidence": null
+        },
+        {
+          "order": 9,
+          "player_id": "kbo:player:63260",
+          "kbo_player_id": "63260",
+          "player_name": "이우성",
+          "position": "좌익수",
+          "position_code": "LF",
+          "batting": {
+            "games": 123,
+            "plate_appearances": 446,
+            "at_bats": 415,
+            "runs": 43,
+            "hits": 122,
+            "doubles": 21,
+            "triples": 0,
+            "home_runs": 7,
+            "total_bases": 164,
+            "runs_batted_in": 53,
+            "sacrifice_bunts": 1,
+            "sacrifice_flies": 2,
+            "walks": 25,
+            "intentional_walks": 1,
+            "hit_by_pitch": 3,
+            "batting_strikeouts": 67,
+            "grounded_into_double_plays": 13,
+            "batting_average": 0.294,
+            "on_base_percentage": 0.337,
+            "slugging_percentage": 0.395,
+            "ops": 0.732
+          },
+          "running": {
+            "stolen_bases": 4,
+            "caught_stealing": 3
+          },
+          "adjusted_rates": {
+            "obp": 0.3398069895302644,
+            "slg": 0.397937994926556,
+            "ops": 0.7377449844568205
+          },
+          "fielding_evidence": {
+            "position": "좌익수",
+            "games": 83,
+            "starts": 78,
+            "errors": 1,
+            "outs_fielded": 1737
+          }
+        }
+      ],
+      "validation": {
+        "unique_batters": true,
+        "all_defensive_positions_filled": true,
+        "pitcher_separate_from_batters": true,
+        "all_players_match_team": true
+      }
+    },
+    {
+      "team_id": "sr:competitor:249961",
+      "team_name": "두산 베어스",
+      "official_team_name": "두산",
+      "assignment_score": 7.199420815485921,
+      "starting_pitcher": {
+        "player_id": "kbo:player:68220",
+        "kbo_player_id": "68220",
+        "player_name": "곽빈",
+        "season_starts": 27,
+        "pitching": {
+          "games": 27,
+          "wins": 11,
+          "losses": 7,
+          "saves": 0,
+          "holds": 0,
+          "hits_allowed": 129,
+          "home_runs_allowed": 11,
+          "walks_allowed": 39,
+          "hit_batters": 5,
+          "pitcher_strikeouts": 197,
+          "runs_allowed": 45,
+          "earned_runs": 40,
+          "earned_run_average": 2.24,
+          "whip": 1.04,
+          "complete_games": 0,
+          "shutouts": 0,
+          "quality_starts": 20,
+          "blown_saves": 0,
+          "batters_faced": 647,
+          "pitches": 2664,
+          "doubles_allowed": 22,
+          "triples_allowed": 2,
+          "wild_pitches": 5,
+          "balks": 0,
+          "outs_pitched": 483,
+          "innings_pitched": "161.0"
+        }
+      },
+      "batting_order": [
+        {
+          "order": 1,
+          "player_id": "kbo:player:53554",
+          "kbo_player_id": "53554",
+          "player_name": "김민석",
+          "position": "좌익수",
+          "position_code": "LF",
+          "batting": {
+            "games": 135,
+            "plate_appearances": 519,
+            "at_bats": 455,
+            "runs": 61,
+            "hits": 141,
+            "doubles": 22,
+            "triples": 3,
+            "home_runs": 5,
+            "total_bases": 184,
+            "runs_batted_in": 57,
+            "sacrifice_bunts": 2,
+            "sacrifice_flies": 1,
+            "walks": 55,
+            "intentional_walks": 0,
+            "hit_by_pitch": 6,
+            "batting_strikeouts": 85,
+            "grounded_into_double_plays": 5,
+            "batting_average": 0.31,
+            "on_base_percentage": 0.391,
+            "slugging_percentage": 0.404,
+            "ops": 0.795
+          },
+          "running": {
+            "stolen_bases": 3,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.37850113384777584,
+            "slg": 0.4041362235362381,
+            "ops": 0.782637357384014
+          },
+          "fielding_evidence": {
+            "position": "좌익수",
+            "games": 119,
+            "starts": 111,
+            "errors": 2,
+            "outs_fielded": 2635
+          }
+        },
+        {
+          "order": 2,
+          "player_id": "kbo:player:56236",
+          "kbo_player_id": "56236",
+          "player_name": "세베리노",
+          "position": "지명타자",
+          "position_code": "DH",
+          "batting": {
+            "games": 46,
+            "plate_appearances": 176,
+            "at_bats": 152,
+            "runs": 23,
+            "hits": 44,
+            "doubles": 8,
+            "triples": 1,
+            "home_runs": 7,
+            "total_bases": 75,
+            "runs_batted_in": 29,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 1,
+            "walks": 23,
+            "intentional_walks": 1,
+            "hit_by_pitch": 0,
+            "batting_strikeouts": 41,
+            "grounded_into_double_plays": 2,
+            "batting_average": 0.289,
+            "on_base_percentage": 0.381,
+            "slugging_percentage": 0.493,
+            "ops": 0.874
+          },
+          "running": {
+            "stolen_bases": 0,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.36241839158657124,
+            "slg": 0.4459200657514765,
+            "ops": 0.8083384573380478
+          },
+          "fielding_evidence": null
+        },
+        {
+          "order": 3,
+          "player_id": "kbo:player:56251",
+          "kbo_player_id": "56251",
+          "player_name": "카메론",
+          "position": "우익수",
+          "position_code": "RF",
+          "batting": {
+            "games": 75,
+            "plate_appearances": 314,
+            "at_bats": 279,
+            "runs": 39,
+            "hits": 80,
+            "doubles": 19,
+            "triples": 3,
+            "home_runs": 9,
+            "total_bases": 132,
+            "runs_batted_in": 43,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 2,
+            "walks": 30,
+            "intentional_walks": 0,
+            "hit_by_pitch": 3,
+            "batting_strikeouts": 53,
+            "grounded_into_double_plays": 9,
+            "batting_average": 0.287,
+            "on_base_percentage": 0.36,
+            "slugging_percentage": 0.473,
+            "ops": 0.833
+          },
+          "running": {
+            "stolen_bases": 9,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.35457843431235564,
+            "slg": 0.4463423049076949,
+            "ops": 0.8009207392200506
+          },
+          "fielding_evidence": {
+            "position": "우익수",
+            "games": 65,
+            "starts": 64,
+            "errors": 5,
+            "outs_fielded": 1631
+          }
+        },
+        {
+          "order": 4,
+          "player_id": "kbo:player:55252",
+          "kbo_player_id": "55252",
+          "player_name": "박준순",
+          "position": "2루수",
+          "position_code": "2B",
+          "batting": {
+            "games": 98,
+            "plate_appearances": 413,
+            "at_bats": 378,
+            "runs": 52,
+            "hits": 114,
+            "doubles": 16,
+            "triples": 5,
+            "home_runs": 16,
+            "total_bases": 188,
+            "runs_batted_in": 61,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 2,
+            "walks": 25,
+            "intentional_walks": 1,
+            "hit_by_pitch": 8,
+            "batting_strikeouts": 82,
+            "grounded_into_double_plays": 17,
+            "batting_average": 0.302,
+            "on_base_percentage": 0.356,
+            "slugging_percentage": 0.497,
+            "ops": 0.853
+          },
+          "running": {
+            "stolen_bases": 3,
+            "caught_stealing": 2
+          },
+          "adjusted_rates": {
+            "obp": 0.35275907868931616,
+            "slg": 0.4668172018312482,
+            "ops": 0.8195762805205644
+          },
+          "fielding_evidence": {
+            "position": "2루수",
+            "games": 91,
+            "starts": 89,
+            "errors": 9,
+            "outs_fielded": 2128
+          }
+        },
+        {
+          "order": 5,
+          "player_id": "kbo:player:76232",
+          "kbo_player_id": "76232",
+          "player_name": "양의지",
+          "position": "포수",
+          "position_code": "C",
+          "batting": {
+            "games": 135,
+            "plate_appearances": 537,
+            "at_bats": 449,
+            "runs": 55,
+            "hits": 112,
+            "doubles": 18,
+            "triples": 0,
+            "home_runs": 23,
+            "total_bases": 199,
+            "runs_batted_in": 79,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 10,
+            "walks": 57,
+            "intentional_walks": 2,
+            "hit_by_pitch": 21,
+            "batting_strikeouts": 61,
+            "grounded_into_double_plays": 15,
+            "batting_average": 0.249,
+            "on_base_percentage": 0.354,
+            "slugging_percentage": 0.443,
+            "ops": 0.797
+          },
+          "running": {
+            "stolen_bases": 2,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.35184710344172426,
+            "slg": 0.4325494500984466,
+            "ops": 0.7843965535401709
+          },
+          "fielding_evidence": {
+            "position": "포수",
+            "games": 80,
+            "starts": 78,
+            "errors": 2,
+            "outs_fielded": 1780
+          }
+        },
+        {
+          "order": 6,
+          "player_id": "kbo:player:66209",
+          "kbo_player_id": "66209",
+          "player_name": "조수행",
+          "position": "중견수",
+          "position_code": "CF",
+          "batting": {
+            "games": 119,
+            "plate_appearances": 224,
+            "at_bats": 189,
+            "runs": 29,
+            "hits": 61,
+            "doubles": 7,
+            "triples": 3,
+            "home_runs": 0,
+            "total_bases": 74,
+            "runs_batted_in": 21,
+            "sacrifice_bunts": 11,
+            "sacrifice_flies": 0,
+            "walks": 22,
+            "intentional_walks": 0,
+            "hit_by_pitch": 2,
+            "batting_strikeouts": 29,
+            "grounded_into_double_plays": 4,
+            "batting_average": 0.323,
+            "on_base_percentage": 0.399,
+            "slugging_percentage": 0.392,
+            "ops": 0.791
+          },
+          "running": {
+            "stolen_bases": 19,
+            "caught_stealing": 5
+          },
+          "adjusted_rates": {
+            "obp": 0.37403140385978967,
+            "slg": 0.3978913790626301,
+            "ops": 0.7719227829224198
+          },
+          "fielding_evidence": {
+            "position": "중견수",
+            "games": 32,
+            "starts": 15,
+            "errors": 1,
+            "outs_fielded": 462
+          }
+        },
+        {
+          "order": 7,
+          "player_id": "kbo:player:63123",
+          "kbo_player_id": "63123",
+          "player_name": "강승호",
+          "position": "1루수",
+          "position_code": "1B",
+          "batting": {
+            "games": 107,
+            "plate_appearances": 281,
+            "at_bats": 243,
+            "runs": 42,
+            "hits": 66,
+            "doubles": 9,
+            "triples": 0,
+            "home_runs": 9,
+            "total_bases": 102,
+            "runs_batted_in": 41,
+            "sacrifice_bunts": 2,
+            "sacrifice_flies": 5,
+            "walks": 21,
+            "intentional_walks": 0,
+            "hit_by_pitch": 10,
+            "batting_strikeouts": 70,
+            "grounded_into_double_plays": 7,
+            "batting_average": 0.272,
+            "on_base_percentage": 0.348,
+            "slugging_percentage": 0.42,
+            "ops": 0.768
+          },
+          "running": {
+            "stolen_bases": 8,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.3471960815728707,
+            "slg": 0.41355082062901277,
+            "ops": 0.7607469022018835
+          },
+          "fielding_evidence": {
+            "position": "1루수",
+            "games": 78,
+            "starts": 40,
+            "errors": 4,
+            "outs_fielded": 1242
+          }
+        },
+        {
+          "order": 8,
+          "player_id": "kbo:player:51203",
+          "kbo_player_id": "51203",
+          "player_name": "안재석",
+          "position": "3루수",
+          "position_code": "3B",
+          "batting": {
+            "games": 110,
+            "plate_appearances": 451,
+            "at_bats": 413,
+            "runs": 55,
+            "hits": 115,
+            "doubles": 29,
+            "triples": 2,
+            "home_runs": 11,
+            "total_bases": 181,
+            "runs_batted_in": 67,
+            "sacrifice_bunts": 4,
+            "sacrifice_flies": 4,
+            "walks": 26,
+            "intentional_walks": 1,
+            "hit_by_pitch": 4,
+            "batting_strikeouts": 70,
+            "grounded_into_double_plays": 6,
+            "batting_average": 0.278,
+            "on_base_percentage": 0.324,
+            "slugging_percentage": 0.438,
+            "ops": 0.762
+          },
+          "running": {
+            "stolen_bases": 5,
+            "caught_stealing": 1
+          },
+          "adjusted_rates": {
+            "obp": 0.330779286077651,
+            "slg": 0.42770498421283437,
+            "ops": 0.7584842702904854
+          },
+          "fielding_evidence": {
+            "position": "3루수",
+            "games": 109,
+            "starts": 109,
+            "errors": 15,
+            "outs_fielded": 2771
+          }
+        },
+        {
+          "order": 9,
+          "player_id": "kbo:player:64646",
+          "kbo_player_id": "64646",
+          "player_name": "박찬호",
+          "position": "유격수",
+          "position_code": "SS",
+          "batting": {
+            "games": 143,
+            "plate_appearances": 607,
+            "at_bats": 537,
+            "runs": 85,
+            "hits": 152,
+            "doubles": 26,
+            "triples": 2,
+            "home_runs": 5,
+            "total_bases": 197,
+            "runs_batted_in": 54,
+            "sacrifice_bunts": 8,
+            "sacrifice_flies": 5,
+            "walks": 55,
+            "intentional_walks": 1,
+            "hit_by_pitch": 2,
+            "batting_strikeouts": 78,
+            "grounded_into_double_plays": 12,
+            "batting_average": 0.283,
+            "on_base_percentage": 0.349,
+            "slugging_percentage": 0.367,
+            "ops": 0.716
+          },
+          "running": {
+            "stolen_bases": 33,
+            "caught_stealing": 8
+          },
+          "adjusted_rates": {
+            "obp": 0.3482730052497532,
+            "slg": 0.3762911334851985,
+            "ops": 0.7245641387349517
+          },
+          "fielding_evidence": {
+            "position": "유격수",
+            "games": 141,
+            "starts": 137,
+            "errors": 17,
+            "outs_fielded": 3538
+          }
+        }
+      ],
+      "validation": {
+        "unique_batters": true,
+        "all_defensive_positions_filled": true,
+        "pitcher_separate_from_batters": true,
+        "all_players_match_team": true
+      }
+    },
+    {
+      "team_id": "sr:competitor:249969",
+      "team_name": "LG 트윈스",
+      "official_team_name": "LG",
+      "assignment_score": 7.184198134989459,
+      "starting_pitcher": {
+        "player_id": "kbo:player:55130",
+        "kbo_player_id": "55130",
+        "player_name": "톨허스트",
+        "season_starts": 30,
+        "pitching": {
+          "games": 30,
+          "wins": 12,
+          "losses": 11,
+          "saves": 0,
+          "holds": 0,
+          "hits_allowed": 169,
+          "home_runs_allowed": 16,
+          "walks_allowed": 36,
+          "hit_batters": 10,
+          "pitcher_strikeouts": 126,
+          "runs_allowed": 79,
+          "earned_runs": 77,
+          "earned_run_average": 4.24,
+          "whip": 1.26,
+          "complete_games": 0,
+          "shutouts": 0,
+          "quality_starts": 16,
+          "blown_saves": 0,
+          "batters_faced": 699,
+          "pitches": 2678,
+          "doubles_allowed": 35,
+          "triples_allowed": 0,
+          "wild_pitches": 7,
+          "balks": 1,
+          "outs_pitched": 490,
+          "innings_pitched": "163.1"
+        }
+      },
+      "batting_order": [
+        {
+          "order": 1,
+          "player_id": "kbo:player:62415",
+          "kbo_player_id": "62415",
+          "player_name": "박해민",
+          "position": "중견수",
+          "position_code": "CF",
+          "batting": {
+            "games": 144,
+            "plate_appearances": 591,
+            "at_bats": 496,
+            "runs": 80,
+            "hits": 143,
+            "doubles": 20,
+            "triples": 2,
+            "home_runs": 5,
+            "total_bases": 182,
+            "runs_batted_in": 57,
+            "sacrifice_bunts": 18,
+            "sacrifice_flies": 9,
+            "walks": 53,
+            "intentional_walks": 0,
+            "hit_by_pitch": 15,
+            "batting_strikeouts": 68,
+            "grounded_into_double_plays": 6,
+            "batting_average": 0.288,
+            "on_base_percentage": 0.368,
+            "slugging_percentage": 0.367,
+            "ops": 0.735
+          },
+          "running": {
+            "stolen_bases": 42,
+            "caught_stealing": 17
+          },
+          "adjusted_rates": {
+            "obp": 0.36245425440777596,
+            "slg": 0.37647907044570816,
+            "ops": 0.7389333248534842
+          },
+          "fielding_evidence": {
+            "position": "중견수",
+            "games": 144,
+            "starts": 138,
+            "errors": 0,
+            "outs_fielded": 3483
+          }
+        },
+        {
+          "order": 2,
+          "player_id": "kbo:player:52121",
+          "kbo_player_id": "52121",
+          "player_name": "문정빈",
+          "position": "지명타자",
+          "position_code": "DH",
+          "batting": {
+            "games": 91,
+            "plate_appearances": 330,
+            "at_bats": 292,
+            "runs": 41,
+            "hits": 81,
+            "doubles": 12,
+            "triples": 4,
+            "home_runs": 19,
+            "total_bases": 158,
+            "runs_batted_in": 66,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 3,
+            "walks": 31,
+            "intentional_walks": 2,
+            "hit_by_pitch": 4,
+            "batting_strikeouts": 98,
+            "grounded_into_double_plays": 3,
+            "batting_average": 0.277,
+            "on_base_percentage": 0.352,
+            "slugging_percentage": 0.541,
+            "ops": 0.893
+          },
+          "running": {
+            "stolen_bases": 0,
+            "caught_stealing": 1
+          },
+          "adjusted_rates": {
+            "obp": 0.34976097214443547,
+            "slg": 0.4894866881557644,
+            "ops": 0.8392476603001999
+          },
+          "fielding_evidence": null
+        },
+        {
+          "order": 3,
+          "player_id": "kbo:player:68110",
+          "kbo_player_id": "68110",
+          "player_name": "송찬의",
+          "position": "우익수",
+          "position_code": "RF",
+          "batting": {
+            "games": 118,
+            "plate_appearances": 434,
+            "at_bats": 380,
+            "runs": 66,
+            "hits": 104,
+            "doubles": 30,
+            "triples": 2,
+            "home_runs": 16,
+            "total_bases": 186,
+            "runs_batted_in": 73,
+            "sacrifice_bunts": 1,
+            "sacrifice_flies": 1,
+            "walks": 31,
+            "intentional_walks": 0,
+            "hit_by_pitch": 21,
+            "batting_strikeouts": 100,
+            "grounded_into_double_plays": 11,
+            "batting_average": 0.274,
+            "on_base_percentage": 0.36,
+            "slugging_percentage": 0.489,
+            "ops": 0.849
+          },
+          "running": {
+            "stolen_bases": 2,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.35560459816490664,
+            "slg": 0.46234060681791034,
+            "ops": 0.817945204982817
+          },
+          "fielding_evidence": {
+            "position": "우익수",
+            "games": 22,
+            "starts": 12,
+            "errors": 0,
+            "outs_fielded": 343
+          }
+        },
+        {
+          "order": 4,
+          "player_id": "kbo:player:53123",
+          "kbo_player_id": "53123",
+          "player_name": "오스틴",
+          "position": "1루수",
+          "position_code": "1B",
+          "batting": {
+            "games": 144,
+            "plate_appearances": 640,
+            "at_bats": 543,
+            "runs": 114,
+            "hits": 180,
+            "doubles": 34,
+            "triples": 4,
+            "home_runs": 41,
+            "total_bases": 345,
+            "runs_batted_in": 127,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 4,
+            "walks": 81,
+            "intentional_walks": 8,
+            "hit_by_pitch": 12,
+            "batting_strikeouts": 95,
+            "grounded_into_double_plays": 9,
+            "batting_average": 0.331,
+            "on_base_percentage": 0.427,
+            "slugging_percentage": 0.635,
+            "ops": 1.062
+          },
+          "running": {
+            "stolen_bases": 5,
+            "caught_stealing": 2
+          },
+          "adjusted_rates": {
+            "obp": 0.40773013718636997,
+            "slg": 0.5801166008601847,
+            "ops": 0.9878467380465547
+          },
+          "fielding_evidence": {
+            "position": "1루수",
+            "games": 88,
+            "starts": 85,
+            "errors": 6,
+            "outs_fielded": 2171
+          }
+        },
+        {
+          "order": 5,
+          "player_id": "kbo:player:79109",
+          "kbo_player_id": "79109",
+          "player_name": "오지환",
+          "position": "유격수",
+          "position_code": "SS",
+          "batting": {
+            "games": 126,
+            "plate_appearances": 452,
+            "at_bats": 392,
+            "runs": 53,
+            "hits": 95,
+            "doubles": 16,
+            "triples": 1,
+            "home_runs": 14,
+            "total_bases": 155,
+            "runs_batted_in": 61,
+            "sacrifice_bunts": 8,
+            "sacrifice_flies": 4,
+            "walks": 42,
+            "intentional_walks": 0,
+            "hit_by_pitch": 6,
+            "batting_strikeouts": 93,
+            "grounded_into_double_plays": 6,
+            "batting_average": 0.242,
+            "on_base_percentage": 0.322,
+            "slugging_percentage": 0.395,
+            "ops": 0.717
+          },
+          "running": {
+            "stolen_bases": 4,
+            "caught_stealing": 3
+          },
+          "adjusted_rates": {
+            "obp": 0.32938238533213315,
+            "slg": 0.3979109581634282,
+            "ops": 0.7272933434955613
+          },
+          "fielding_evidence": {
+            "position": "유격수",
+            "games": 123,
+            "starts": 114,
+            "errors": 17,
+            "outs_fielded": 2813
+          }
+        },
+        {
+          "order": 6,
+          "player_id": "kbo:player:69102",
+          "kbo_player_id": "69102",
+          "player_name": "문보경",
+          "position": "3루수",
+          "position_code": "3B",
+          "batting": {
+            "games": 108,
+            "plate_appearances": 428,
+            "at_bats": 357,
+            "runs": 45,
+            "hits": 92,
+            "doubles": 14,
+            "triples": 0,
+            "home_runs": 10,
+            "total_bases": 136,
+            "runs_batted_in": 60,
+            "sacrifice_bunts": 1,
+            "sacrifice_flies": 7,
+            "walks": 62,
+            "intentional_walks": 4,
+            "hit_by_pitch": 1,
+            "batting_strikeouts": 83,
+            "grounded_into_double_plays": 9,
+            "batting_average": 0.258,
+            "on_base_percentage": 0.363,
+            "slugging_percentage": 0.381,
+            "ops": 0.744
+          },
+          "running": {
+            "stolen_bases": 0,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.35760718986711915,
+            "slg": 0.38848080369833626,
+            "ops": 0.7460879935654554
+          },
+          "fielding_evidence": {
+            "position": "3루수",
+            "games": 59,
+            "starts": 53,
+            "errors": 4,
+            "outs_fielded": 1372
+          }
+        },
+        {
+          "order": 7,
+          "player_id": "kbo:player:79365",
+          "kbo_player_id": "79365",
+          "player_name": "박동원",
+          "position": "포수",
+          "position_code": "C",
+          "batting": {
+            "games": 128,
+            "plate_appearances": 420,
+            "at_bats": 346,
+            "runs": 49,
+            "hits": 78,
+            "doubles": 15,
+            "triples": 0,
+            "home_runs": 14,
+            "total_bases": 135,
+            "runs_batted_in": 56,
+            "sacrifice_bunts": 10,
+            "sacrifice_flies": 4,
+            "walks": 55,
+            "intentional_walks": 3,
+            "hit_by_pitch": 5,
+            "batting_strikeouts": 97,
+            "grounded_into_double_plays": 13,
+            "batting_average": 0.225,
+            "on_base_percentage": 0.337,
+            "slugging_percentage": 0.39,
+            "ops": 0.727
+          },
+          "running": {
+            "stolen_bases": 1,
+            "caught_stealing": 3
+          },
+          "adjusted_rates": {
+            "obp": 0.3399247019944368,
+            "slg": 0.39467410439121803,
+            "ops": 0.7345988063856548
+          },
+          "fielding_evidence": {
+            "position": "포수",
+            "games": 127,
+            "starts": 102,
+            "errors": 3,
+            "outs_fielded": 2747
+          }
+        },
+        {
+          "order": 8,
+          "player_id": "kbo:player:68119",
+          "kbo_player_id": "68119",
+          "player_name": "문성주",
+          "position": "좌익수",
+          "position_code": "LF",
+          "batting": {
+            "games": 76,
+            "plate_appearances": 244,
+            "at_bats": 215,
+            "runs": 17,
+            "hits": 61,
+            "doubles": 9,
+            "triples": 0,
+            "home_runs": 1,
+            "total_bases": 73,
+            "runs_batted_in": 21,
+            "sacrifice_bunts": 3,
+            "sacrifice_flies": 2,
+            "walks": 21,
+            "intentional_walks": 2,
+            "hit_by_pitch": 3,
+            "batting_strikeouts": 29,
+            "grounded_into_double_plays": 4,
+            "batting_average": 0.284,
+            "on_base_percentage": 0.353,
+            "slugging_percentage": 0.34,
+            "ops": 0.693
+          },
+          "running": {
+            "stolen_bases": 2,
+            "caught_stealing": 2
+          },
+          "adjusted_rates": {
+            "obp": 0.3498768361183576,
+            "slg": 0.36904942505079996,
+            "ops": 0.7189262611691576
+          },
+          "fielding_evidence": {
+            "position": "좌익수",
+            "games": 63,
+            "starts": 48,
+            "errors": 1,
+            "outs_fielded": 1316
+          }
+        },
+        {
+          "order": 9,
+          "player_id": "kbo:player:69100",
+          "kbo_player_id": "69100",
+          "player_name": "구본혁",
+          "position": "2루수",
+          "position_code": "2B",
+          "batting": {
+            "games": 135,
+            "plate_appearances": 390,
+            "at_bats": 338,
+            "runs": 39,
+            "hits": 94,
+            "doubles": 14,
+            "triples": 0,
+            "home_runs": 0,
+            "total_bases": 108,
+            "runs_batted_in": 27,
+            "sacrifice_bunts": 16,
+            "sacrifice_flies": 1,
+            "walks": 33,
+            "intentional_walks": 0,
+            "hit_by_pitch": 2,
+            "batting_strikeouts": 49,
+            "grounded_into_double_plays": 9,
+            "batting_average": 0.278,
+            "on_base_percentage": 0.345,
+            "slugging_percentage": 0.32,
+            "ops": 0.665
+          },
+          "running": {
+            "stolen_bases": 7,
+            "caught_stealing": 1
+          },
+          "adjusted_rates": {
+            "obp": 0.3453615512483912,
+            "slg": 0.34864058427551725,
+            "ops": 0.6940021355239084
+          },
+          "fielding_evidence": {
+            "position": "2루수",
+            "games": 39,
+            "starts": 25,
+            "errors": 1,
+            "outs_fielded": 624
+          }
+        }
+      ],
+      "validation": {
+        "unique_batters": true,
+        "all_defensive_positions_filled": true,
+        "pitcher_separate_from_batters": true,
+        "all_players_match_team": true
+      }
+    },
+    {
+      "team_id": "sr:competitor:249979",
+      "team_name": "SSG 랜더스",
+      "official_team_name": "SSG",
+      "assignment_score": 7.156419924629173,
+      "starting_pitcher": {
+        "player_id": "kbo:player:68856",
+        "kbo_player_id": "68856",
+        "player_name": "최민준",
+        "season_starts": 21,
+        "pitching": {
+          "games": 30,
+          "wins": 4,
+          "losses": 7,
+          "saves": 0,
+          "holds": 0,
+          "hits_allowed": 102,
+          "home_runs_allowed": 15,
+          "walks_allowed": 49,
+          "hit_batters": 6,
+          "pitcher_strikeouts": 73,
+          "runs_allowed": 61,
+          "earned_runs": 56,
+          "earned_run_average": 4.91,
+          "whip": 1.47,
+          "complete_games": 0,
+          "shutouts": 0,
+          "quality_starts": 0,
+          "blown_saves": 1,
+          "batters_faced": 450,
+          "pitches": 1769,
+          "doubles_allowed": 14,
+          "triples_allowed": 0,
+          "wild_pitches": 4,
+          "balks": 1,
+          "outs_pitched": 308,
+          "innings_pitched": "102.2"
+        }
+      },
+      "batting_order": [
+        {
+          "order": 1,
+          "player_id": "kbo:player:54812",
+          "kbo_player_id": "54812",
+          "player_name": "정준재",
+          "position": "2루수",
+          "position_code": "2B",
+          "batting": {
+            "games": 129,
+            "plate_appearances": 549,
+            "at_bats": 471,
+            "runs": 68,
+            "hits": 129,
+            "doubles": 14,
+            "triples": 7,
+            "home_runs": 1,
+            "total_bases": 160,
+            "runs_batted_in": 39,
+            "sacrifice_bunts": 13,
+            "sacrifice_flies": 6,
+            "walks": 54,
+            "intentional_walks": 0,
+            "hit_by_pitch": 5,
+            "batting_strikeouts": 81,
+            "grounded_into_double_plays": 4,
+            "batting_average": 0.274,
+            "on_base_percentage": 0.351,
+            "slugging_percentage": 0.34,
+            "ops": 0.691
+          },
+          "running": {
+            "stolen_bases": 19,
+            "caught_stealing": 8
+          },
+          "adjusted_rates": {
+            "obp": 0.349682663867224,
+            "slg": 0.35722021992330466,
+            "ops": 0.7069028837905287
+          },
+          "fielding_evidence": {
+            "position": "2루수",
+            "games": 129,
+            "starts": 120,
+            "errors": 4,
+            "outs_fielded": 3186
+          }
+        },
+        {
+          "order": 2,
+          "player_id": "kbo:player:67893",
+          "kbo_player_id": "67893",
+          "player_name": "박성한",
+          "position": "유격수",
+          "position_code": "SS",
+          "batting": {
+            "games": 144,
+            "plate_appearances": 627,
+            "at_bats": 530,
+            "runs": 96,
+            "hits": 175,
+            "doubles": 31,
+            "triples": 2,
+            "home_runs": 5,
+            "total_bases": 225,
+            "runs_batted_in": 71,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 3,
+            "walks": 91,
+            "intentional_walks": 2,
+            "hit_by_pitch": 3,
+            "batting_strikeouts": 84,
+            "grounded_into_double_plays": 2,
+            "batting_average": 0.33,
+            "on_base_percentage": 0.429,
+            "slugging_percentage": 0.425,
+            "ops": 0.854
+          },
+          "running": {
+            "stolen_bases": 5,
+            "caught_stealing": 2
+          },
+          "adjusted_rates": {
+            "obp": 0.40894354925822346,
+            "slg": 0.4200398364238877,
+            "ops": 0.8289833856821112
+          },
+          "fielding_evidence": {
+            "position": "유격수",
+            "games": 143,
+            "starts": 137,
+            "errors": 15,
+            "outs_fielded": 3460
+          }
+        },
+        {
+          "order": 3,
+          "player_id": "kbo:player:53827",
+          "kbo_player_id": "53827",
+          "player_name": "에레디아",
+          "position": "우익수",
+          "position_code": "RF",
+          "batting": {
+            "games": 115,
+            "plate_appearances": 497,
+            "at_bats": 449,
+            "runs": 56,
+            "hits": 127,
+            "doubles": 25,
+            "triples": 2,
+            "home_runs": 18,
+            "total_bases": 210,
+            "runs_batted_in": 98,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 7,
+            "walks": 29,
+            "intentional_walks": 2,
+            "hit_by_pitch": 12,
+            "batting_strikeouts": 78,
+            "grounded_into_double_plays": 11,
+            "batting_average": 0.283,
+            "on_base_percentage": 0.338,
+            "slugging_percentage": 0.468,
+            "ops": 0.806
+          },
+          "running": {
+            "stolen_bases": 2,
+            "caught_stealing": 5
+          },
+          "adjusted_rates": {
+            "obp": 0.34031465600652916,
+            "slg": 0.44977610433652104,
+            "ops": 0.7900907603430503
+          },
+          "fielding_evidence": {
+            "position": "우익수",
+            "games": 15,
+            "starts": 15,
+            "errors": 0,
+            "outs_fielded": 326
+          }
+        },
+        {
+          "order": 4,
+          "player_id": "kbo:player:75847",
+          "kbo_player_id": "75847",
+          "player_name": "최정",
+          "position": "3루수",
+          "position_code": "3B",
+          "batting": {
+            "games": 71,
+            "plate_appearances": 305,
+            "at_bats": 255,
+            "runs": 45,
+            "hits": 78,
+            "doubles": 17,
+            "triples": 1,
+            "home_runs": 20,
+            "total_bases": 157,
+            "runs_batted_in": 57,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 7,
+            "walks": 37,
+            "intentional_walks": 5,
+            "hit_by_pitch": 6,
+            "batting_strikeouts": 66,
+            "grounded_into_double_plays": 7,
+            "batting_average": 0.306,
+            "on_base_percentage": 0.397,
+            "slugging_percentage": 0.616,
+            "ops": 1.013
+          },
+          "running": {
+            "stolen_bases": 3,
+            "caught_stealing": 1
+          },
+          "adjusted_rates": {
+            "obp": 0.37682834700307094,
+            "slg": 0.5322335539060499,
+            "ops": 0.9090619009091208
+          },
+          "fielding_evidence": {
+            "position": "3루수",
+            "games": 45,
+            "starts": 45,
+            "errors": 2,
+            "outs_fielded": 1137
+          }
+        },
+        {
+          "order": 5,
+          "player_id": "kbo:player:51868",
+          "kbo_player_id": "51868",
+          "player_name": "고명준",
+          "position": "지명타자",
+          "position_code": "DH",
+          "batting": {
+            "games": 57,
+            "plate_appearances": 232,
+            "at_bats": 213,
+            "runs": 23,
+            "hits": 58,
+            "doubles": 10,
+            "triples": 0,
+            "home_runs": 12,
+            "total_bases": 104,
+            "runs_batted_in": 31,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 2,
+            "walks": 17,
+            "intentional_walks": 0,
+            "hit_by_pitch": 0,
+            "batting_strikeouts": 43,
+            "grounded_into_double_plays": 6,
+            "batting_average": 0.272,
+            "on_base_percentage": 0.323,
+            "slugging_percentage": 0.488,
+            "ops": 0.811
+          },
+          "running": {
+            "stolen_bases": 1,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.33367897045497874,
+            "slg": 0.44933783500591473,
+            "ops": 0.7830168054608935
+          },
+          "fielding_evidence": null
+        },
+        {
+          "order": 6,
+          "player_id": "kbo:player:50820",
+          "kbo_player_id": "50820",
+          "player_name": "전의산",
+          "position": "1루수",
+          "position_code": "1B",
+          "batting": {
+            "games": 86,
+            "plate_appearances": 332,
+            "at_bats": 298,
+            "runs": 29,
+            "hits": 74,
+            "doubles": 15,
+            "triples": 0,
+            "home_runs": 13,
+            "total_bases": 128,
+            "runs_batted_in": 53,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 2,
+            "walks": 31,
+            "intentional_walks": 0,
+            "hit_by_pitch": 1,
+            "batting_strikeouts": 110,
+            "grounded_into_double_plays": 4,
+            "batting_average": 0.248,
+            "on_base_percentage": 0.319,
+            "slugging_percentage": 0.43,
+            "ops": 0.749
+          },
+          "running": {
+            "stolen_bases": 1,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.32917540457998273,
+            "slg": 0.4204096705311187,
+            "ops": 0.7495850751111015
+          },
+          "fielding_evidence": {
+            "position": "1루수",
+            "games": 83,
+            "starts": 82,
+            "errors": 5,
+            "outs_fielded": 1997
+          }
+        },
+        {
+          "order": 7,
+          "player_id": "kbo:player:78224",
+          "kbo_player_id": "78224",
+          "player_name": "김재환",
+          "position": "좌익수",
+          "position_code": "LF",
+          "batting": {
+            "games": 131,
+            "plate_appearances": 527,
+            "at_bats": 446,
+            "runs": 52,
+            "hits": 97,
+            "doubles": 9,
+            "triples": 1,
+            "home_runs": 24,
+            "total_bases": 180,
+            "runs_batted_in": 70,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 2,
+            "walks": 75,
+            "intentional_walks": 0,
+            "hit_by_pitch": 4,
+            "batting_strikeouts": 155,
+            "grounded_into_double_plays": 6,
+            "batting_average": 0.217,
+            "on_base_percentage": 0.334,
+            "slugging_percentage": 0.404,
+            "ops": 0.738
+          },
+          "running": {
+            "stolen_bases": 2,
+            "caught_stealing": 2
+          },
+          "adjusted_rates": {
+            "obp": 0.3373195532827384,
+            "slg": 0.4041347245152066,
+            "ops": 0.7414542777979449
+          },
+          "fielding_evidence": {
+            "position": "좌익수",
+            "games": 21,
+            "starts": 20,
+            "errors": 0,
+            "outs_fielded": 446
+          }
+        },
+        {
+          "order": 8,
+          "player_id": "kbo:player:51865",
+          "kbo_player_id": "51865",
+          "player_name": "조형우",
+          "position": "포수",
+          "position_code": "C",
+          "batting": {
+            "games": 107,
+            "plate_appearances": 379,
+            "at_bats": 339,
+            "runs": 47,
+            "hits": 91,
+            "doubles": 22,
+            "triples": 0,
+            "home_runs": 8,
+            "total_bases": 137,
+            "runs_batted_in": 40,
+            "sacrifice_bunts": 6,
+            "sacrifice_flies": 4,
+            "walks": 27,
+            "intentional_walks": 0,
+            "hit_by_pitch": 3,
+            "batting_strikeouts": 65,
+            "grounded_into_double_plays": 5,
+            "batting_average": 0.268,
+            "on_base_percentage": 0.324,
+            "slugging_percentage": 0.404,
+            "ops": 0.728
+          },
+          "running": {
+            "stolen_bases": 0,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.3316223061080325,
+            "slg": 0.4041691618696981,
+            "ops": 0.7357914679777307
+          },
+          "fielding_evidence": {
+            "position": "포수",
+            "games": 107,
+            "starts": 103,
+            "errors": 6,
+            "outs_fielded": 2507
+          }
+        },
+        {
+          "order": 9,
+          "player_id": "kbo:player:50854",
+          "kbo_player_id": "50854",
+          "player_name": "최지훈",
+          "position": "중견수",
+          "position_code": "CF",
+          "batting": {
+            "games": 141,
+            "plate_appearances": 578,
+            "at_bats": 519,
+            "runs": 79,
+            "hits": 130,
+            "doubles": 26,
+            "triples": 7,
+            "home_runs": 13,
+            "total_bases": 209,
+            "runs_batted_in": 64,
+            "sacrifice_bunts": 2,
+            "sacrifice_flies": 7,
+            "walks": 46,
+            "intentional_walks": 0,
+            "hit_by_pitch": 4,
+            "batting_strikeouts": 90,
+            "grounded_into_double_plays": 9,
+            "batting_average": 0.25,
+            "on_base_percentage": 0.313,
+            "slugging_percentage": 0.403,
+            "ops": 0.716
+          },
+          "running": {
+            "stolen_bases": 21,
+            "caught_stealing": 3
+          },
+          "adjusted_rates": {
+            "obp": 0.3215004051883686,
+            "slg": 0.4033829623683229,
+            "ops": 0.7248833675566915
+          },
+          "fielding_evidence": {
+            "position": "중견수",
+            "games": 141,
+            "starts": 137,
+            "errors": 4,
+            "outs_fielded": 3588
+          }
+        }
+      ],
+      "validation": {
+        "unique_batters": true,
+        "all_defensive_positions_filled": true,
+        "pitcher_separate_from_batters": true,
+        "all_players_match_team": true
+      }
+    },
+    {
+      "team_id": "sr:competitor:249975",
+      "team_name": "키움 히어로즈",
+      "official_team_name": "키움",
+      "assignment_score": 6.910665032355787,
+      "starting_pitcher": {
+        "player_id": "kbo:player:68341",
+        "kbo_player_id": "68341",
+        "player_name": "안우진",
+        "season_starts": 23,
+        "pitching": {
+          "games": 23,
+          "wins": 5,
+          "losses": 8,
+          "saves": 0,
+          "holds": 0,
+          "hits_allowed": 104,
+          "home_runs_allowed": 8,
+          "walks_allowed": 39,
+          "hit_batters": 6,
+          "pitcher_strikeouts": 132,
+          "runs_allowed": 46,
+          "earned_runs": 44,
+          "earned_run_average": 3.54,
+          "whip": 1.28,
+          "complete_games": 0,
+          "shutouts": 0,
+          "quality_starts": 7,
+          "blown_saves": 0,
+          "batters_faced": 483,
+          "pitches": 1879,
+          "doubles_allowed": 18,
+          "triples_allowed": 4,
+          "wild_pitches": 5,
+          "balks": 0,
+          "outs_pitched": 336,
+          "innings_pitched": "112.0"
+        }
+      },
+      "batting_order": [
+        {
+          "order": 1,
+          "player_id": "kbo:player:78168",
+          "kbo_player_id": "78168",
+          "player_name": "서건창",
+          "position": "2루수",
+          "position_code": "2B",
+          "batting": {
+            "games": 99,
+            "plate_appearances": 450,
+            "at_bats": 386,
+            "runs": 60,
+            "hits": 119,
+            "doubles": 13,
+            "triples": 5,
+            "home_runs": 3,
+            "total_bases": 151,
+            "runs_batted_in": 32,
+            "sacrifice_bunts": 7,
+            "sacrifice_flies": 1,
+            "walks": 47,
+            "intentional_walks": 3,
+            "hit_by_pitch": 9,
+            "batting_strikeouts": 49,
+            "grounded_into_double_plays": 8,
+            "batting_average": 0.308,
+            "on_base_percentage": 0.395,
+            "slugging_percentage": 0.391,
+            "ops": 0.786
+          },
+          "running": {
+            "stolen_bases": 3,
+            "caught_stealing": 3
+          },
+          "adjusted_rates": {
+            "obp": 0.3799435619023858,
+            "slg": 0.3951506841885465,
+            "ops": 0.7750942460909322
+          },
+          "fielding_evidence": {
+            "position": "2루수",
+            "games": 80,
+            "starts": 77,
+            "errors": 5,
+            "outs_fielded": 1998
+          }
+        },
+        {
+          "order": 2,
+          "player_id": "kbo:player:56305",
+          "kbo_player_id": "56305",
+          "player_name": "히우라",
+          "position": "좌익수",
+          "position_code": "LF",
+          "batting": {
+            "games": 72,
+            "plate_appearances": 313,
+            "at_bats": 276,
+            "runs": 40,
+            "hits": 75,
+            "doubles": 11,
+            "triples": 1,
+            "home_runs": 13,
+            "total_bases": 127,
+            "runs_batted_in": 43,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 2,
+            "walks": 29,
+            "intentional_walks": 0,
+            "hit_by_pitch": 6,
+            "batting_strikeouts": 93,
+            "grounded_into_double_plays": 4,
+            "batting_average": 0.272,
+            "on_base_percentage": 0.351,
+            "slugging_percentage": 0.46,
+            "ops": 0.811
+          },
+          "running": {
+            "stolen_bases": 2,
+            "caught_stealing": 1
+          },
+          "adjusted_rates": {
+            "obp": 0.34907663788801324,
+            "slg": 0.4383585667106339,
+            "ops": 0.7874352045986471
+          },
+          "fielding_evidence": {
+            "position": "좌익수",
+            "games": 45,
+            "starts": 45,
+            "errors": 2,
+            "outs_fielded": 1149
+          }
+        },
+        {
+          "order": 3,
+          "player_id": "kbo:player:65898",
+          "kbo_player_id": "65898",
+          "player_name": "김웅빈",
+          "position": "3루수",
+          "position_code": "3B",
+          "batting": {
+            "games": 100,
+            "plate_appearances": 323,
+            "at_bats": 281,
+            "runs": 31,
+            "hits": 71,
+            "doubles": 10,
+            "triples": 1,
+            "home_runs": 9,
+            "total_bases": 110,
+            "runs_batted_in": 32,
+            "sacrifice_bunts": 1,
+            "sacrifice_flies": 0,
+            "walks": 33,
+            "intentional_walks": 0,
+            "hit_by_pitch": 8,
+            "batting_strikeouts": 78,
+            "grounded_into_double_plays": 3,
+            "batting_average": 0.253,
+            "on_base_percentage": 0.348,
+            "slugging_percentage": 0.391,
+            "ops": 0.739
+          },
+          "running": {
+            "stolen_bases": 1,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.3472606409876688,
+            "slg": 0.39615859411578425,
+            "ops": 0.743419235103453
+          },
+          "fielding_evidence": {
+            "position": "3루수",
+            "games": 67,
+            "starts": 52,
+            "errors": 4,
+            "outs_fielded": 1384
+          }
+        },
+        {
+          "order": 4,
+          "player_id": "kbo:player:54944",
+          "kbo_player_id": "54944",
+          "player_name": "데이비슨",
+          "position": "1루수",
+          "position_code": "1B",
+          "batting": {
+            "games": 124,
+            "plate_appearances": 523,
+            "at_bats": 464,
+            "runs": 64,
+            "hits": 138,
+            "doubles": 24,
+            "triples": 2,
+            "home_runs": 28,
+            "total_bases": 250,
+            "runs_batted_in": 89,
+            "sacrifice_bunts": 0,
+            "sacrifice_flies": 4,
+            "walks": 30,
+            "intentional_walks": 1,
+            "hit_by_pitch": 25,
+            "batting_strikeouts": 128,
+            "grounded_into_double_plays": 10,
+            "batting_average": 0.297,
+            "on_base_percentage": 0.369,
+            "slugging_percentage": 0.539,
+            "ops": 0.908
+          },
+          "running": {
+            "stolen_bases": 1,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.3626560376715779,
+            "slg": 0.5017910715388039,
+            "ops": 0.8644471092103818
+          },
+          "fielding_evidence": {
+            "position": "1루수",
+            "games": 99,
+            "starts": 98,
+            "errors": 7,
+            "outs_fielded": 2334
+          }
+        },
+        {
+          "order": 5,
+          "player_id": "kbo:player:64346",
+          "kbo_player_id": "64346",
+          "player_name": "임병욱",
+          "position": "중견수",
+          "position_code": "CF",
+          "batting": {
+            "games": 83,
+            "plate_appearances": 289,
+            "at_bats": 264,
+            "runs": 36,
+            "hits": 65,
+            "doubles": 14,
+            "triples": 0,
+            "home_runs": 11,
+            "total_bases": 112,
+            "runs_batted_in": 34,
+            "sacrifice_bunts": 1,
+            "sacrifice_flies": 2,
+            "walks": 15,
+            "intentional_walks": 0,
+            "hit_by_pitch": 7,
+            "batting_strikeouts": 93,
+            "grounded_into_double_plays": 3,
+            "batting_average": 0.246,
+            "on_base_percentage": 0.302,
+            "slugging_percentage": 0.424,
+            "ops": 0.726
+          },
+          "running": {
+            "stolen_bases": 4,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.3200231395430487,
+            "slg": 0.41602033685594103,
+            "ops": 0.7360434763989897
+          },
+          "fielding_evidence": {
+            "position": "중견수",
+            "games": 43,
+            "starts": 38,
+            "errors": 1,
+            "outs_fielded": 951
+          }
+        },
+        {
+          "order": 6,
+          "player_id": "kbo:player:68362",
+          "kbo_player_id": "68362",
+          "player_name": "추재현",
+          "position": "지명타자",
+          "position_code": "DH",
+          "batting": {
+            "games": 79,
+            "plate_appearances": 322,
+            "at_bats": 283,
+            "runs": 36,
+            "hits": 80,
+            "doubles": 14,
+            "triples": 0,
+            "home_runs": 4,
+            "total_bases": 106,
+            "runs_batted_in": 20,
+            "sacrifice_bunts": 5,
+            "sacrifice_flies": 0,
+            "walks": 27,
+            "intentional_walks": 0,
+            "hit_by_pitch": 7,
+            "batting_strikeouts": 62,
+            "grounded_into_double_plays": 14,
+            "batting_average": 0.283,
+            "on_base_percentage": 0.36,
+            "slugging_percentage": 0.375,
+            "ops": 0.735
+          },
+          "running": {
+            "stolen_bases": 1,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.3546615234416682,
+            "slg": 0.3862987446792245,
+            "ops": 0.7409602681208927
+          },
+          "fielding_evidence": null
+        },
+        {
+          "order": 7,
+          "player_id": "kbo:player:53312",
+          "kbo_player_id": "53312",
+          "player_name": "김건희",
+          "position": "포수",
+          "position_code": "C",
+          "batting": {
+            "games": 122,
+            "plate_appearances": 410,
+            "at_bats": 370,
+            "runs": 32,
+            "hits": 99,
+            "doubles": 22,
+            "triples": 0,
+            "home_runs": 8,
+            "total_bases": 145,
+            "runs_batted_in": 50,
+            "sacrifice_bunts": 5,
+            "sacrifice_flies": 3,
+            "walks": 31,
+            "intentional_walks": 1,
+            "hit_by_pitch": 1,
+            "batting_strikeouts": 103,
+            "grounded_into_double_plays": 8,
+            "batting_average": 0.268,
+            "on_base_percentage": 0.323,
+            "slugging_percentage": 0.392,
+            "ops": 0.715
+          },
+          "running": {
+            "stolen_bases": 0,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.330562811863198,
+            "slg": 0.3960949913484511,
+            "ops": 0.7266578032116491
+          },
+          "fielding_evidence": {
+            "position": "포수",
+            "games": 115,
+            "starts": 93,
+            "errors": 7,
+            "outs_fielded": 2492
+          }
+        },
+        {
+          "order": 8,
+          "player_id": "kbo:player:52348",
+          "kbo_player_id": "52348",
+          "player_name": "박찬혁",
+          "position": "우익수",
+          "position_code": "RF",
+          "batting": {
+            "games": 100,
+            "plate_appearances": 356,
+            "at_bats": 304,
+            "runs": 35,
+            "hits": 72,
+            "doubles": 8,
+            "triples": 0,
+            "home_runs": 12,
+            "total_bases": 116,
+            "runs_batted_in": 45,
+            "sacrifice_bunts": 5,
+            "sacrifice_flies": 3,
+            "walks": 35,
+            "intentional_walks": 0,
+            "hit_by_pitch": 9,
+            "batting_strikeouts": 90,
+            "grounded_into_double_plays": 10,
+            "batting_average": 0.237,
+            "on_base_percentage": 0.33,
+            "slugging_percentage": 0.382,
+            "ops": 0.712
+          },
+          "running": {
+            "stolen_bases": 0,
+            "caught_stealing": 1
+          },
+          "adjusted_rates": {
+            "obp": 0.3357793439506309,
+            "slg": 0.39008982863768915,
+            "ops": 0.7258691725883201
+          },
+          "fielding_evidence": {
+            "position": "우익수",
+            "games": 92,
+            "starts": 86,
+            "errors": 2,
+            "outs_fielded": 2126
+          }
+        },
+        {
+          "order": 9,
+          "player_id": "kbo:player:55371",
+          "kbo_player_id": "55371",
+          "player_name": "권혁빈",
+          "position": "유격수",
+          "position_code": "SS",
+          "batting": {
+            "games": 107,
+            "plate_appearances": 326,
+            "at_bats": 292,
+            "runs": 25,
+            "hits": 66,
+            "doubles": 9,
+            "triples": 1,
+            "home_runs": 0,
+            "total_bases": 77,
+            "runs_batted_in": 23,
+            "sacrifice_bunts": 8,
+            "sacrifice_flies": 3,
+            "walks": 17,
+            "intentional_walks": 0,
+            "hit_by_pitch": 6,
+            "batting_strikeouts": 78,
+            "grounded_into_double_plays": 5,
+            "batting_average": 0.226,
+            "on_base_percentage": 0.28,
+            "slugging_percentage": 0.264,
+            "ops": 0.544
+          },
+          "running": {
+            "stolen_bases": 0,
+            "caught_stealing": 0
+          },
+          "adjusted_rates": {
+            "obp": 0.30512037117214985,
+            "slg": 0.3174181458603711,
+            "ops": 0.6225385170325209
+          },
+          "fielding_evidence": {
+            "position": "유격수",
+            "games": 105,
+            "starts": 100,
+            "errors": 11,
+            "outs_fielded": 2419
+          }
+        }
+      ],
+      "validation": {
+        "unique_batters": true,
+        "all_defensive_positions_filled": true,
+        "pitcher_separate_from_batters": true,
+        "all_players_match_team": true
+      }
+    }
+  ]
+}

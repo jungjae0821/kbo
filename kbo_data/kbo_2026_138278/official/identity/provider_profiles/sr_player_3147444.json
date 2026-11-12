@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:39:37+00:00",
+  "player": {
+    "id": "sr:player:3147444",
+    "name": "병헌이",
+    "type": "C",
+    "date_of_birth": "1999-10-26",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 180,
+    "weight": 87,
+    "jersey_number": 23,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249977",
+      "name": "삼성 라이온즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "LIO",
+      "gender": "male"
+    }
+  ]
+}

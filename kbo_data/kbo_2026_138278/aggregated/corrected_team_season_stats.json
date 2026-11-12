@@ -1,0 +1,612 @@
+{
+  "metadata": {
+    "updated_at": "2026-11-12T07:26:38.983925+00:00",
+    "season": {
+      "id": "sr:season:138278",
+      "name": "KBO 리그 2026",
+      "start_date": "2026-03-28",
+      "end_date": "2026-11-08",
+      "year": "2026",
+      "competition_id": "sr:competition:2541"
+    },
+    "record_scope": "official_kbo_regular_season_totals",
+    "source": "KBO official website",
+    "official_snapshot_fetched_at": "2026-11-12T07:17:08.975642+00:00",
+    "team_count": 10,
+    "player_count": 591,
+    "batting_players": 364,
+    "pitching_players": 296,
+    "team_corrected_field_count": 115,
+    "team_matching_field_count": 65,
+    "provider_player_team_records": 674,
+    "identity_candidate_counts": {
+      "unmatched": 139,
+      "unique_candidate": 524,
+      "ambiguous": 11
+    },
+    "candidate_player_difference_count": 2231,
+    "all_provider_records_corrected": false,
+    "rules": {
+      "official_player_identity": "Official batting/pitching/fielding/running tables joined by KBO player ID, not name.",
+      "provider_crosswalk": "Name/team candidates are unverified and never overwrite provider IDs or per-game rows.",
+      "team_identity": "Explicit KBO team abbreviation to existing full team name and ID mapping.",
+      "transfer_scope": "Official player totals are season-wide. Do not assign them to individual provider team stints.",
+      "raw_games": "Original provider JSON is preserved; official/games contains verified official replacements for all 720 games.",
+      "missing_game": "The missing provider game is available under official/games/sr_sport_event_67204148.json; provider IDs not inferred.",
+      "omitted_stats": "Absent official category is null, not zero; player fielding games are per-position, not additive appearances.",
+      "field_semantics": "Batting strikeouts and pitcher strikeouts are separate fields. No conversion of ambiguous provider strikeouts."
+    }
+  },
+  "teams": [
+    {
+      "team_id": "sr:competitor:249967",
+      "team_name": "KT 위즈",
+      "official_team_name": "KT",
+      "source_files": [
+        "raw/team_batting_001.html",
+        "raw/team_pitching_001.html",
+        "raw/team_fielding_001.html",
+        "raw/team_running_001.html"
+      ],
+      "batting": {
+        "games": 144,
+        "plate_appearances": 5839,
+        "at_bats": 5047,
+        "runs": 825,
+        "hits": 1441,
+        "doubles": 253,
+        "triples": 20,
+        "home_runs": 121,
+        "total_bases": 2097,
+        "runs_batted_in": 772,
+        "sacrifice_bunts": 69,
+        "sacrifice_flies": 44,
+        "batting_average": 0.286
+      },
+      "pitching": {
+        "games": 144,
+        "wins": 90,
+        "losses": 49,
+        "saves": 33,
+        "holds": 86,
+        "hits_allowed": 1334,
+        "home_runs_allowed": 123,
+        "walks_allowed": 451,
+        "hit_batters": 72,
+        "pitcher_strikeouts": 1161,
+        "runs_allowed": 649,
+        "earned_runs": 594,
+        "earned_run_average": 4.14,
+        "whip": 1.38,
+        "outs_pitched": 3876,
+        "innings_pitched": "1292.0"
+      },
+      "fielding": {
+        "errors": 87
+      },
+      "running": {
+        "stolen_bases": 61,
+        "caught_stealing": 38
+      },
+      "games": 144,
+      "wins": 90,
+      "losses": 49,
+      "ties": 5,
+      "runs_scored": 825,
+      "runs_allowed": 649
+    },
+    {
+      "team_id": "sr:competitor:249977",
+      "team_name": "삼성 라이온즈",
+      "official_team_name": "삼성",
+      "source_files": [
+        "raw/team_batting_001.html",
+        "raw/team_pitching_001.html",
+        "raw/team_fielding_001.html",
+        "raw/team_running_001.html"
+      ],
+      "batting": {
+        "games": 144,
+        "plate_appearances": 5772,
+        "at_bats": 4940,
+        "runs": 806,
+        "hits": 1350,
+        "doubles": 222,
+        "triples": 27,
+        "home_runs": 140,
+        "total_bases": 2046,
+        "runs_batted_in": 773,
+        "sacrifice_bunts": 60,
+        "sacrifice_flies": 55,
+        "batting_average": 0.273
+      },
+      "pitching": {
+        "games": 144,
+        "wins": 83,
+        "losses": 58,
+        "saves": 42,
+        "holds": 75,
+        "hits_allowed": 1304,
+        "home_runs_allowed": 138,
+        "walks_allowed": 471,
+        "hit_batters": 77,
+        "pitcher_strikeouts": 1091,
+        "runs_allowed": 669,
+        "earned_runs": 613,
+        "earned_run_average": 4.31,
+        "whip": 1.39,
+        "outs_pitched": 3840,
+        "innings_pitched": "1280.0"
+      },
+      "fielding": {
+        "errors": 85
+      },
+      "running": {
+        "stolen_bases": 97,
+        "caught_stealing": 29
+      },
+      "games": 144,
+      "wins": 83,
+      "losses": 58,
+      "ties": 3,
+      "runs_scored": 806,
+      "runs_allowed": 669
+    },
+    {
+      "team_id": "sr:competitor:249963",
+      "team_name": "한화 이글스",
+      "official_team_name": "한화",
+      "source_files": [
+        "raw/team_batting_001.html",
+        "raw/team_pitching_001.html",
+        "raw/team_fielding_001.html",
+        "raw/team_running_001.html"
+      ],
+      "batting": {
+        "games": 144,
+        "plate_appearances": 5804,
+        "at_bats": 5074,
+        "runs": 821,
+        "hits": 1383,
+        "doubles": 217,
+        "triples": 17,
+        "home_runs": 176,
+        "total_bases": 2162,
+        "runs_batted_in": 772,
+        "sacrifice_bunts": 62,
+        "sacrifice_flies": 40,
+        "batting_average": 0.273
+      },
+      "pitching": {
+        "games": 144,
+        "wins": 57,
+        "losses": 83,
+        "saves": 16,
+        "holds": 56,
+        "hits_allowed": 1408,
+        "home_runs_allowed": 148,
+        "walks_allowed": 575,
+        "hit_batters": 102,
+        "pitcher_strikeouts": 1052,
+        "runs_allowed": 835,
+        "earned_runs": 743,
+        "earned_run_average": 5.26,
+        "whip": 1.56,
+        "outs_pitched": 3812,
+        "innings_pitched": "1270.2"
+      },
+      "fielding": {
+        "errors": 110
+      },
+      "running": {
+        "stolen_bases": 76,
+        "caught_stealing": 27
+      },
+      "games": 144,
+      "wins": 57,
+      "losses": 83,
+      "ties": 4,
+      "runs_scored": 821,
+      "runs_allowed": 835
+    },
+    {
+      "team_id": "sr:competitor:249971",
+      "team_name": "롯데 자이언츠",
+      "official_team_name": "롯데",
+      "source_files": [
+        "raw/team_batting_001.html",
+        "raw/team_pitching_001.html",
+        "raw/team_fielding_001.html",
+        "raw/team_running_001.html"
+      ],
+      "batting": {
+        "games": 144,
+        "plate_appearances": 5607,
+        "at_bats": 5044,
+        "runs": 679,
+        "hits": 1373,
+        "doubles": 246,
+        "triples": 26,
+        "home_runs": 113,
+        "total_bases": 2010,
+        "runs_batted_in": 645,
+        "sacrifice_bunts": 37,
+        "sacrifice_flies": 38,
+        "batting_average": 0.272
+      },
+      "pitching": {
+        "games": 144,
+        "wins": 64,
+        "losses": 77,
+        "saves": 27,
+        "holds": 71,
+        "hits_allowed": 1365,
+        "home_runs_allowed": 128,
+        "walks_allowed": 518,
+        "hit_batters": 77,
+        "pitcher_strikeouts": 1167,
+        "runs_allowed": 742,
+        "earned_runs": 669,
+        "earned_run_average": 4.72,
+        "whip": 1.48,
+        "outs_pitched": 3827,
+        "innings_pitched": "1275.2"
+      },
+      "fielding": {
+        "errors": 107
+      },
+      "running": {
+        "stolen_bases": 105,
+        "caught_stealing": 28
+      },
+      "games": 144,
+      "wins": 64,
+      "losses": 77,
+      "ties": 3,
+      "runs_scored": 679,
+      "runs_allowed": 742
+    },
+    {
+      "team_id": "sr:competitor:249965",
+      "team_name": "KIA 타이거즈",
+      "official_team_name": "KIA",
+      "source_files": [
+        "raw/team_batting_001.html",
+        "raw/team_pitching_001.html",
+        "raw/team_fielding_001.html",
+        "raw/team_running_001.html"
+      ],
+      "batting": {
+        "games": 144,
+        "plate_appearances": 5662,
+        "at_bats": 4962,
+        "runs": 769,
+        "hits": 1347,
+        "doubles": 251,
+        "triples": 18,
+        "home_runs": 174,
+        "total_bases": 2156,
+        "runs_batted_in": 736,
+        "sacrifice_bunts": 62,
+        "sacrifice_flies": 41,
+        "batting_average": 0.271
+      },
+      "pitching": {
+        "games": 144,
+        "wins": 79,
+        "losses": 63,
+        "saves": 29,
+        "holds": 91,
+        "hits_allowed": 1242,
+        "home_runs_allowed": 139,
+        "walks_allowed": 534,
+        "hit_batters": 71,
+        "pitcher_strikeouts": 1053,
+        "runs_allowed": 664,
+        "earned_runs": 607,
+        "earned_run_average": 4.27,
+        "whip": 1.39,
+        "outs_pitched": 3839,
+        "innings_pitched": "1279.2"
+      },
+      "fielding": {
+        "errors": 98
+      },
+      "running": {
+        "stolen_bases": 84,
+        "caught_stealing": 19
+      },
+      "games": 144,
+      "wins": 79,
+      "losses": 63,
+      "ties": 2,
+      "runs_scored": 769,
+      "runs_allowed": 664
+    },
+    {
+      "team_id": "sr:competitor:249973",
+      "team_name": "NC 다이노스",
+      "official_team_name": "NC",
+      "source_files": [
+        "raw/team_batting_001.html",
+        "raw/team_pitching_001.html",
+        "raw/team_fielding_001.html",
+        "raw/team_running_001.html"
+      ],
+      "batting": {
+        "games": 144,
+        "plate_appearances": 5634,
+        "at_bats": 4915,
+        "runs": 719,
+        "hits": 1326,
+        "doubles": 221,
+        "triples": 10,
+        "home_runs": 134,
+        "total_bases": 1969,
+        "runs_batted_in": 681,
+        "sacrifice_bunts": 53,
+        "sacrifice_flies": 44,
+        "batting_average": 0.27
+      },
+      "pitching": {
+        "games": 144,
+        "wins": 64,
+        "losses": 78,
+        "saves": 28,
+        "holds": 79,
+        "hits_allowed": 1261,
+        "home_runs_allowed": 157,
+        "walks_allowed": 640,
+        "hit_batters": 88,
+        "pitcher_strikeouts": 1139,
+        "runs_allowed": 772,
+        "earned_runs": 676,
+        "earned_run_average": 4.79,
+        "whip": 1.5,
+        "outs_pitched": 3812,
+        "innings_pitched": "1270.2"
+      },
+      "fielding": {
+        "errors": 108
+      },
+      "running": {
+        "stolen_bases": 154,
+        "caught_stealing": 60
+      },
+      "games": 144,
+      "wins": 64,
+      "losses": 78,
+      "ties": 2,
+      "runs_scored": 719,
+      "runs_allowed": 772
+    },
+    {
+      "team_id": "sr:competitor:249961",
+      "team_name": "두산 베어스",
+      "official_team_name": "두산",
+      "source_files": [
+        "raw/team_batting_001.html",
+        "raw/team_pitching_001.html",
+        "raw/team_fielding_001.html",
+        "raw/team_running_001.html"
+      ],
+      "batting": {
+        "games": 144,
+        "plate_appearances": 5615,
+        "at_bats": 4934,
+        "runs": 688,
+        "hits": 1318,
+        "doubles": 215,
+        "triples": 30,
+        "home_runs": 114,
+        "total_bases": 1935,
+        "runs_batted_in": 645,
+        "sacrifice_bunts": 64,
+        "sacrifice_flies": 52,
+        "batting_average": 0.267
+      },
+      "pitching": {
+        "games": 144,
+        "wins": 73,
+        "losses": 66,
+        "saves": 34,
+        "holds": 59,
+        "hits_allowed": 1259,
+        "home_runs_allowed": 121,
+        "walks_allowed": 468,
+        "hit_batters": 83,
+        "pitcher_strikeouts": 1249,
+        "runs_allowed": 630,
+        "earned_runs": 550,
+        "earned_run_average": 3.86,
+        "whip": 1.35,
+        "outs_pitched": 3848,
+        "innings_pitched": "1282.2"
+      },
+      "fielding": {
+        "errors": 103
+      },
+      "running": {
+        "stolen_bases": 117,
+        "caught_stealing": 29
+      },
+      "games": 144,
+      "wins": 73,
+      "losses": 66,
+      "ties": 5,
+      "runs_scored": 688,
+      "runs_allowed": 630
+    },
+    {
+      "team_id": "sr:competitor:249969",
+      "team_name": "LG 트윈스",
+      "official_team_name": "LG",
+      "source_files": [
+        "raw/team_batting_001.html",
+        "raw/team_pitching_001.html",
+        "raw/team_fielding_001.html",
+        "raw/team_running_001.html"
+      ],
+      "batting": {
+        "games": 144,
+        "plate_appearances": 5624,
+        "at_bats": 4834,
+        "runs": 723,
+        "hits": 1278,
+        "doubles": 216,
+        "triples": 19,
+        "home_runs": 136,
+        "total_bases": 1940,
+        "runs_batted_in": 695,
+        "sacrifice_bunts": 76,
+        "sacrifice_flies": 45,
+        "batting_average": 0.264
+      },
+      "pitching": {
+        "games": 144,
+        "wins": 78,
+        "losses": 65,
+        "saves": 50,
+        "holds": 104,
+        "hits_allowed": 1379,
+        "home_runs_allowed": 118,
+        "walks_allowed": 478,
+        "hit_batters": 90,
+        "pitcher_strikeouts": 983,
+        "runs_allowed": 726,
+        "earned_runs": 679,
+        "earned_run_average": 4.81,
+        "whip": 1.46,
+        "outs_pitched": 3815,
+        "innings_pitched": "1271.2"
+      },
+      "fielding": {
+        "errors": 89
+      },
+      "running": {
+        "stolen_bases": 91,
+        "caught_stealing": 38
+      },
+      "games": 144,
+      "wins": 78,
+      "losses": 65,
+      "ties": 1,
+      "runs_scored": 723,
+      "runs_allowed": 726
+    },
+    {
+      "team_id": "sr:competitor:249979",
+      "team_name": "SSG 랜더스",
+      "official_team_name": "SSG",
+      "source_files": [
+        "raw/team_batting_001.html",
+        "raw/team_pitching_001.html",
+        "raw/team_fielding_001.html",
+        "raw/team_running_001.html"
+      ],
+      "batting": {
+        "games": 144,
+        "plate_appearances": 5633,
+        "at_bats": 4935,
+        "runs": 706,
+        "hits": 1276,
+        "doubles": 220,
+        "triples": 22,
+        "home_runs": 143,
+        "total_bases": 1969,
+        "runs_batted_in": 664,
+        "sacrifice_bunts": 43,
+        "sacrifice_flies": 48,
+        "batting_average": 0.259
+      },
+      "pitching": {
+        "games": 144,
+        "wins": 65,
+        "losses": 74,
+        "saves": 29,
+        "holds": 65,
+        "hits_allowed": 1298,
+        "home_runs_allowed": 159,
+        "walks_allowed": 629,
+        "hit_batters": 93,
+        "pitcher_strikeouts": 1111,
+        "runs_allowed": 797,
+        "earned_runs": 729,
+        "earned_run_average": 5.16,
+        "whip": 1.52,
+        "outs_pitched": 3811,
+        "innings_pitched": "1270.1"
+      },
+      "fielding": {
+        "errors": 85
+      },
+      "running": {
+        "stolen_bases": 96,
+        "caught_stealing": 33
+      },
+      "games": 144,
+      "wins": 65,
+      "losses": 74,
+      "ties": 5,
+      "runs_scored": 706,
+      "runs_allowed": 797
+    },
+    {
+      "team_id": "sr:competitor:249975",
+      "team_name": "키움 히어로즈",
+      "official_team_name": "키움",
+      "source_files": [
+        "raw/team_batting_001.html",
+        "raw/team_pitching_001.html",
+        "raw/team_fielding_001.html",
+        "raw/team_running_001.html"
+      ],
+      "batting": {
+        "games": 144,
+        "plate_appearances": 5542,
+        "at_bats": 4863,
+        "runs": 565,
+        "hits": 1185,
+        "doubles": 198,
+        "triples": 13,
+        "home_runs": 115,
+        "total_bases": 1754,
+        "runs_batted_in": 533,
+        "sacrifice_bunts": 64,
+        "sacrifice_flies": 30,
+        "batting_average": 0.244
+      },
+      "pitching": {
+        "games": 144,
+        "wins": 50,
+        "losses": 90,
+        "saves": 29,
+        "holds": 60,
+        "hits_allowed": 1427,
+        "home_runs_allowed": 135,
+        "walks_allowed": 555,
+        "hit_batters": 85,
+        "pitcher_strikeouts": 1048,
+        "runs_allowed": 817,
+        "earned_runs": 746,
+        "earned_run_average": 5.3,
+        "whip": 1.56,
+        "outs_pitched": 3802,
+        "innings_pitched": "1267.1"
+      },
+      "fielding": {
+        "errors": 97
+      },
+      "running": {
+        "stolen_bases": 23,
+        "caught_stealing": 8
+      },
+      "games": 144,
+      "wins": 50,
+      "losses": 90,
+      "ties": 4,
+      "runs_scored": 565,
+      "runs_allowed": 817
+    }
+  ]
+}

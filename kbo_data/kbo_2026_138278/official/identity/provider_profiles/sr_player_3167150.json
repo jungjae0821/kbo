@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:41:14+00:00",
+  "player": {
+    "id": "sr:player:3167150",
+    "name": "교야마, 마사야",
+    "type": "P",
+    "date_of_birth": "1998-07-04",
+    "nationality": "Japan",
+    "country_code": "JPN",
+    "height": 183,
+    "weight": 80,
+    "jersey_number": 48,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249971",
+      "name": "롯데 자이언츠",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "GIA",
+      "gender": "male"
+    }
+  ]
+}

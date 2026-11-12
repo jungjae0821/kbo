@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:40:56+00:00",
+  "player": {
+    "id": "sr:player:3166800",
+    "name": "승원윤",
+    "type": "IF",
+    "date_of_birth": "2006-03-20",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 180,
+    "weight": 78,
+    "jersey_number": 39,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249975",
+      "name": "키움 히어로즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "키움",
+      "gender": "male"
+    }
+  ]
+}

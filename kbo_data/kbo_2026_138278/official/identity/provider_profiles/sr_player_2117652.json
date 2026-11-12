@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:38:32+00:00",
+  "player": {
+    "id": "sr:player:2117652",
+    "name": "로젠버그, 케니",
+    "type": "P",
+    "date_of_birth": "1995-07-09",
+    "nationality": "United states",
+    "country_code": "USA",
+    "height": 185,
+    "weight": 88,
+    "jersey_number": 30,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249975",
+      "name": "키움 히어로즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "키움",
+      "gender": "male"
+    }
+  ]
+}

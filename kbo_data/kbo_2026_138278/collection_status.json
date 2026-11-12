@@ -1,0 +1,3623 @@
+{
+  "updated_at": "2026-11-12T06:50:36.327048+00:00",
+  "season": {
+    "id": "sr:season:138278",
+    "name": "KBO 리그 2026",
+    "start_date": "2026-03-28",
+    "end_date": "2026-11-08",
+    "year": "2026",
+    "competition_id": "sr:competition:2541"
+  },
+  "scope": "closed_regular_season",
+  "game_list_complete": true,
+  "total_games": 720,
+  "counts": {
+    "pending": 0,
+    "complete": 719,
+    "no_player_stats": 1,
+    "failed": 0
+  },
+  "all_complete": false,
+  "games": [
+    {
+      "event_id": "sr:sport_event:67203786",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:67203788",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:67203790",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67203792",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67203794",
+      "status": "complete",
+      "player_records": 43
+    },
+    {
+      "event_id": "sr:sport_event:67203796",
+      "status": "complete",
+      "player_records": 26
+    },
+    {
+      "event_id": "sr:sport_event:67203798",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67203800",
+      "status": "complete",
+      "player_records": 21
+    },
+    {
+      "event_id": "sr:sport_event:67203802",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:67203804",
+      "status": "complete",
+      "player_records": 24
+    },
+    {
+      "event_id": "sr:sport_event:67203806",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67203808",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67203810",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67203812",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67203814",
+      "status": "complete",
+      "player_records": 42
+    },
+    {
+      "event_id": "sr:sport_event:67203816",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67203818",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67203820",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:67203822",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67203824",
+      "status": "complete",
+      "player_records": 43
+    },
+    {
+      "event_id": "sr:sport_event:67203826",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67203828",
+      "status": "complete",
+      "player_records": 26
+    },
+    {
+      "event_id": "sr:sport_event:67203830",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67203832",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67203834",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67203836",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:67203838",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67203840",
+      "status": "complete",
+      "player_records": 26
+    },
+    {
+      "event_id": "sr:sport_event:67203842",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67203844",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67203846",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67203848",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67203850",
+      "status": "complete",
+      "player_records": 24
+    },
+    {
+      "event_id": "sr:sport_event:67203852",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67203854",
+      "status": "complete",
+      "player_records": 26
+    },
+    {
+      "event_id": "sr:sport_event:67203856",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67203858",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67203860",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67203862",
+      "status": "complete",
+      "player_records": 23
+    },
+    {
+      "event_id": "sr:sport_event:67203864",
+      "status": "complete",
+      "player_records": 22
+    },
+    {
+      "event_id": "sr:sport_event:67203866",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67203868",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67203870",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67203872",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67203874",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67203876",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67203878",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67203880",
+      "status": "complete",
+      "player_records": 25
+    },
+    {
+      "event_id": "sr:sport_event:67203882",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67203884",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67203896",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67203898",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67203900",
+      "status": "complete",
+      "player_records": 43
+    },
+    {
+      "event_id": "sr:sport_event:67203902",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67203904",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67203914",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67203906",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67203908",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67203910",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67203912",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67203916",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:67203918",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67203920",
+      "status": "complete",
+      "player_records": 20
+    },
+    {
+      "event_id": "sr:sport_event:67203922",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67203924",
+      "status": "complete",
+      "player_records": 22
+    },
+    {
+      "event_id": "sr:sport_event:67203926",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67203928",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67203930",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67203932",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67203934",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:67203936",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67203938",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67203940",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67203942",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67203944",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67203946",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67203948",
+      "status": "complete",
+      "player_records": 26
+    },
+    {
+      "event_id": "sr:sport_event:67203950",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67203952",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67203954",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67203956",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67203964",
+      "status": "complete",
+      "player_records": 26
+    },
+    {
+      "event_id": "sr:sport_event:67203970",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67203966",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67203968",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67203972",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67203974",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67203976",
+      "status": "complete",
+      "player_records": 26
+    },
+    {
+      "event_id": "sr:sport_event:67203978",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67203980",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67203982",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67203984",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67203986",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67203988",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67203990",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67203992",
+      "status": "complete",
+      "player_records": 41
+    },
+    {
+      "event_id": "sr:sport_event:67203994",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67203996",
+      "status": "complete",
+      "player_records": 26
+    },
+    {
+      "event_id": "sr:sport_event:67203998",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204000",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67204002",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204004",
+      "status": "complete",
+      "player_records": 26
+    },
+    {
+      "event_id": "sr:sport_event:67204006",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204008",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204010",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204012",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204014",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204016",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204018",
+      "status": "complete",
+      "player_records": 25
+    },
+    {
+      "event_id": "sr:sport_event:67204020",
+      "status": "complete",
+      "player_records": 24
+    },
+    {
+      "event_id": "sr:sport_event:67204022",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67204024",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204026",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204028",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204030",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204032",
+      "status": "complete",
+      "player_records": 26
+    },
+    {
+      "event_id": "sr:sport_event:67204034",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204036",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204038",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204040",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:67204042",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204044",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204046",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67204048",
+      "status": "complete",
+      "player_records": 26
+    },
+    {
+      "event_id": "sr:sport_event:67204050",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204052",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204054",
+      "status": "complete",
+      "player_records": 43
+    },
+    {
+      "event_id": "sr:sport_event:67204056",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204058",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204060",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67204062",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204064",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67204066",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204068",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204070",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204072",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204074",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204076",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204078",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204080",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204082",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204084",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204088",
+      "status": "complete",
+      "player_records": 22
+    },
+    {
+      "event_id": "sr:sport_event:67204086",
+      "status": "complete",
+      "player_records": 23
+    },
+    {
+      "event_id": "sr:sport_event:67204090",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204092",
+      "status": "complete",
+      "player_records": 22
+    },
+    {
+      "event_id": "sr:sport_event:67204094",
+      "status": "complete",
+      "player_records": 18
+    },
+    {
+      "event_id": "sr:sport_event:67204096",
+      "status": "complete",
+      "player_records": 24
+    },
+    {
+      "event_id": "sr:sport_event:67204098",
+      "status": "complete",
+      "player_records": 22
+    },
+    {
+      "event_id": "sr:sport_event:67204100",
+      "status": "complete",
+      "player_records": 24
+    },
+    {
+      "event_id": "sr:sport_event:67204102",
+      "status": "complete",
+      "player_records": 22
+    },
+    {
+      "event_id": "sr:sport_event:67204104",
+      "status": "complete",
+      "player_records": 25
+    },
+    {
+      "event_id": "sr:sport_event:67204106",
+      "status": "complete",
+      "player_records": 21
+    },
+    {
+      "event_id": "sr:sport_event:67204108",
+      "status": "complete",
+      "player_records": 26
+    },
+    {
+      "event_id": "sr:sport_event:67204110",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67204112",
+      "status": "complete",
+      "player_records": 23
+    },
+    {
+      "event_id": "sr:sport_event:67204114",
+      "status": "complete",
+      "player_records": 23
+    },
+    {
+      "event_id": "sr:sport_event:67204116",
+      "status": "complete",
+      "player_records": 21
+    },
+    {
+      "event_id": "sr:sport_event:67204118",
+      "status": "complete",
+      "player_records": 22
+    },
+    {
+      "event_id": "sr:sport_event:67204120",
+      "status": "complete",
+      "player_records": 19
+    },
+    {
+      "event_id": "sr:sport_event:67204122",
+      "status": "complete",
+      "player_records": 23
+    },
+    {
+      "event_id": "sr:sport_event:67204124",
+      "status": "complete",
+      "player_records": 24
+    },
+    {
+      "event_id": "sr:sport_event:67204126",
+      "status": "complete",
+      "player_records": 21
+    },
+    {
+      "event_id": "sr:sport_event:67204128",
+      "status": "complete",
+      "player_records": 23
+    },
+    {
+      "event_id": "sr:sport_event:67204130",
+      "status": "complete",
+      "player_records": 24
+    },
+    {
+      "event_id": "sr:sport_event:67204134",
+      "status": "complete",
+      "player_records": 25
+    },
+    {
+      "event_id": "sr:sport_event:67204136",
+      "status": "complete",
+      "player_records": 25
+    },
+    {
+      "event_id": "sr:sport_event:67204138",
+      "status": "complete",
+      "player_records": 24
+    },
+    {
+      "event_id": "sr:sport_event:67204140",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204142",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204144",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67204154",
+      "status": "complete",
+      "player_records": 20
+    },
+    {
+      "event_id": "sr:sport_event:67204146",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67204148",
+      "status": "no_player_stats",
+      "player_records": 0
+    },
+    {
+      "event_id": "sr:sport_event:67204150",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204152",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204156",
+      "status": "complete",
+      "player_records": 23
+    },
+    {
+      "event_id": "sr:sport_event:67204158",
+      "status": "complete",
+      "player_records": 24
+    },
+    {
+      "event_id": "sr:sport_event:67204160",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67204162",
+      "status": "complete",
+      "player_records": 25
+    },
+    {
+      "event_id": "sr:sport_event:67204164",
+      "status": "complete",
+      "player_records": 24
+    },
+    {
+      "event_id": "sr:sport_event:67204166",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204168",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204170",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204172",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67204174",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204176",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204178",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204180",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204182",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204184",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:67204186",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204188",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204190",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204192",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204194",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204196",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204198",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204200",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204202",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204204",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204214",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67204206",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204208",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204210",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204212",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204216",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67204218",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67204220",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204222",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204224",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:67204226",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204228",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204230",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67204232",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204234",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204242",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204246",
+      "status": "complete",
+      "player_records": 26
+    },
+    {
+      "event_id": "sr:sport_event:67204248",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204250",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204252",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67204254",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204256",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204258",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204260",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204262",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204264",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204266",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204268",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204270",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204272",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67204274",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204276",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204278",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204280",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204282",
+      "status": "complete",
+      "player_records": 26
+    },
+    {
+      "event_id": "sr:sport_event:67204284",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67204286",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204290",
+      "status": "complete",
+      "player_records": 25
+    },
+    {
+      "event_id": "sr:sport_event:67204294",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204296",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204298",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204300",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204302",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204304",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204306",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204308",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204310",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204312",
+      "status": "complete",
+      "player_records": 42
+    },
+    {
+      "event_id": "sr:sport_event:67204314",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204316",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204318",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204320",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204322",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204324",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67204328",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204326",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204330",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204332",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:67204334",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204336",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204338",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67204340",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204342",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204344",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67204346",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204348",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204350",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204352",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204354",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204356",
+      "status": "complete",
+      "player_records": 41
+    },
+    {
+      "event_id": "sr:sport_event:67204358",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204360",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204362",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67204364",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204366",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67204368",
+      "status": "complete",
+      "player_records": 26
+    },
+    {
+      "event_id": "sr:sport_event:67204370",
+      "status": "complete",
+      "player_records": 24
+    },
+    {
+      "event_id": "sr:sport_event:67204372",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204374",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67204376",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204378",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67204380",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204382",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204384",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67204388",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204386",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204390",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204392",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204394",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204396",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204398",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67204400",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:67204402",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204404",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204406",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204408",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204410",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204412",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204414",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204416",
+      "status": "complete",
+      "player_records": 25
+    },
+    {
+      "event_id": "sr:sport_event:67204418",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204420",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204422",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204424",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204426",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204428",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204430",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204432",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204434",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67204436",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204438",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204440",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204442",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204444",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67204446",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204448",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204450",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204452",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67204454",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67204456",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204458",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204460",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204464",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204466",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204468",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204470",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204472",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204474",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204476",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204478",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67204480",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204482",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204484",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204486",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67204488",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204490",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204492",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204494",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204496",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204498",
+      "status": "complete",
+      "player_records": 23
+    },
+    {
+      "event_id": "sr:sport_event:67204500",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204502",
+      "status": "complete",
+      "player_records": 26
+    },
+    {
+      "event_id": "sr:sport_event:67204504",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204506",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67204508",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204510",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:67204512",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204514",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204516",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204518",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67204520",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204522",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204524",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204526",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204528",
+      "status": "complete",
+      "player_records": 24
+    },
+    {
+      "event_id": "sr:sport_event:67204530",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204532",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204534",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204536",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67204538",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67204540",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204542",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204544",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204546",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204548",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204550",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204552",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204554",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204556",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204558",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204560",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67204562",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204564",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204566",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204568",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204570",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204572",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67204574",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204576",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204578",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204580",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204582",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204584",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204586",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67204588",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204590",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204592",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204596",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204598",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204600",
+      "status": "complete",
+      "player_records": 43
+    },
+    {
+      "event_id": "sr:sport_event:67204602",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204604",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204606",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67204608",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204610",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204612",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204614",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:67204616",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204618",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204620",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204622",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204624",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204626",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204628",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204630",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204632",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204634",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204636",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204640",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204642",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204646",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204648",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204650",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204652",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204654",
+      "status": "complete",
+      "player_records": 42
+    },
+    {
+      "event_id": "sr:sport_event:67204656",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204658",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204660",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204662",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204666",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204668",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204670",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204674",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67204676",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204678",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204680",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204682",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204684",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:67204686",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204688",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:67204692",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:67204694",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204696",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67204698",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204700",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204702",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:67204704",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204706",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:67204708",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204710",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:67204712",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67204714",
+      "status": "complete",
+      "player_records": 44
+    },
+    {
+      "event_id": "sr:sport_event:67204716",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204718",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204720",
+      "status": "complete",
+      "player_records": 41
+    },
+    {
+      "event_id": "sr:sport_event:67204722",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204724",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204728",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204732",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204734",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204736",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204738",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204742",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204744",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204746",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:67204748",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204750",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204752",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204754",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204756",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204758",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204760",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204762",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:67204764",
+      "status": "complete",
+      "player_records": 53
+    },
+    {
+      "event_id": "sr:sport_event:67204766",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204768",
+      "status": "complete",
+      "player_records": 42
+    },
+    {
+      "event_id": "sr:sport_event:67204770",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:67204772",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204774",
+      "status": "complete",
+      "player_records": 43
+    },
+    {
+      "event_id": "sr:sport_event:67204776",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204778",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204780",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204782",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204784",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67204786",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204788",
+      "status": "complete",
+      "player_records": 24
+    },
+    {
+      "event_id": "sr:sport_event:67204790",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204792",
+      "status": "complete",
+      "player_records": 42
+    },
+    {
+      "event_id": "sr:sport_event:67204794",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204796",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67204798",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67204800",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204802",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:67204804",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204806",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67204808",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204810",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204812",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204814",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67204816",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204822",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204824",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204826",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204828",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204830",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204834",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:67204838",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:67204840",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204842",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204896",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204898",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67204900",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204902",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67204904",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204906",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:67204908",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204910",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204912",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204914",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204916",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204918",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204920",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204922",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204924",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204926",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204928",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204930",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204932",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204934",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204936",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204938",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204940",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204942",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204944",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67204946",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204952",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67204954",
+      "status": "complete",
+      "player_records": 25
+    },
+    {
+      "event_id": "sr:sport_event:67204956",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204958",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67204960",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204962",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67204964",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204966",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67204968",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67204970",
+      "status": "complete",
+      "player_records": 44
+    },
+    {
+      "event_id": "sr:sport_event:67204972",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204974",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:67204976",
+      "status": "complete",
+      "player_records": 41
+    },
+    {
+      "event_id": "sr:sport_event:67204978",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67204980",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67204982",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204984",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67204986",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67204988",
+      "status": "complete",
+      "player_records": 43
+    },
+    {
+      "event_id": "sr:sport_event:67204990",
+      "status": "complete",
+      "player_records": 24
+    },
+    {
+      "event_id": "sr:sport_event:67204992",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67204994",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67205002",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67205000",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67205006",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67205008",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67205010",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67205012",
+      "status": "complete",
+      "player_records": 24
+    },
+    {
+      "event_id": "sr:sport_event:67205014",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67205016",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67205018",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67205020",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67205022",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67205024",
+      "status": "complete",
+      "player_records": 42
+    },
+    {
+      "event_id": "sr:sport_event:67205026",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67205028",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67205030",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67205032",
+      "status": "complete",
+      "player_records": 47
+    },
+    {
+      "event_id": "sr:sport_event:67205034",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67205036",
+      "status": "complete",
+      "player_records": 45
+    },
+    {
+      "event_id": "sr:sport_event:67205038",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67205040",
+      "status": "complete",
+      "player_records": 42
+    },
+    {
+      "event_id": "sr:sport_event:67205044",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:67205056",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67205058",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:67205060",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67205062",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67205064",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:67205066",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67205074",
+      "status": "complete",
+      "player_records": 41
+    },
+    {
+      "event_id": "sr:sport_event:67205076",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67205078",
+      "status": "complete",
+      "player_records": 26
+    },
+    {
+      "event_id": "sr:sport_event:67205080",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67205082",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67205084",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:67205086",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67205088",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67205090",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:67205092",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:67205094",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67205096",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67205098",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67205102",
+      "status": "complete",
+      "player_records": 41
+    },
+    {
+      "event_id": "sr:sport_event:67205104",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67205106",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67205108",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:67205110",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:67205114",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:74061548",
+      "status": "complete",
+      "player_records": 42
+    },
+    {
+      "event_id": "sr:sport_event:67205116",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:67205118",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:67205120",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67205122",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:67205124",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:67205134",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:67205126",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:67205128",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:67205130",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:67205132",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:74268996",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:74268998",
+      "status": "complete",
+      "player_records": 41
+    },
+    {
+      "event_id": "sr:sport_event:74269000",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:74269002",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:74269004",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:74269006",
+      "status": "complete",
+      "player_records": 28
+    },
+    {
+      "event_id": "sr:sport_event:74269008",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:74269010",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:74269012",
+      "status": "complete",
+      "player_records": 45
+    },
+    {
+      "event_id": "sr:sport_event:74269014",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:74269016",
+      "status": "complete",
+      "player_records": 45
+    },
+    {
+      "event_id": "sr:sport_event:74269018",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:74269020",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:74269022",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:74269024",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:74269026",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:74269028",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:74269030",
+      "status": "complete",
+      "player_records": 24
+    },
+    {
+      "event_id": "sr:sport_event:74269032",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:74269034",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:74269036",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:74269038",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:74269040",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:74269042",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:74269044",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:74061900",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:74269046",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:74269048",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:74269050",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:74269052",
+      "status": "complete",
+      "player_records": 26
+    },
+    {
+      "event_id": "sr:sport_event:74269054",
+      "status": "complete",
+      "player_records": 43
+    },
+    {
+      "event_id": "sr:sport_event:74269056",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:74269058",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:74269060",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:74269062",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:74269064",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:74269066",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:74269068",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:74269070",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:74059918",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:74268156",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:74268158",
+      "status": "complete",
+      "player_records": 26
+    },
+    {
+      "event_id": "sr:sport_event:74268160",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:74268162",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:74268164",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:74268166",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:74268168",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:74268170",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:74268172",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:74268174",
+      "status": "complete",
+      "player_records": 43
+    },
+    {
+      "event_id": "sr:sport_event:74268176",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:74268178",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:74268180",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:74268182",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:74268184",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:74268186",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:74268188",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:74268190",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:74268196",
+      "status": "complete",
+      "player_records": 43
+    },
+    {
+      "event_id": "sr:sport_event:74268198",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:74268200",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:74268202",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:74268204",
+      "status": "complete",
+      "player_records": 45
+    },
+    {
+      "event_id": "sr:sport_event:74268206",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:74268210",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:74268212",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:74268214",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:74268216",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:74268218",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:74268220",
+      "status": "complete",
+      "player_records": 47
+    },
+    {
+      "event_id": "sr:sport_event:74268222",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:74268224",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:74268226",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:74268228",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:74268230",
+      "status": "complete",
+      "player_records": 44
+    },
+    {
+      "event_id": "sr:sport_event:74268232",
+      "status": "complete",
+      "player_records": 39
+    },
+    {
+      "event_id": "sr:sport_event:74268234",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:74268236",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:74268238",
+      "status": "complete",
+      "player_records": 32
+    },
+    {
+      "event_id": "sr:sport_event:74268240",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:74268242",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:74268244",
+      "status": "complete",
+      "player_records": 25
+    },
+    {
+      "event_id": "sr:sport_event:74268246",
+      "status": "complete",
+      "player_records": 41
+    },
+    {
+      "event_id": "sr:sport_event:74268248",
+      "status": "complete",
+      "player_records": 27
+    },
+    {
+      "event_id": "sr:sport_event:74268250",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:74268252",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:74268254",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:74268256",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:74268258",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:74268260",
+      "status": "complete",
+      "player_records": 38
+    },
+    {
+      "event_id": "sr:sport_event:74268262",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:74268264",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:74268266",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:74268268",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:74268270",
+      "status": "complete",
+      "player_records": 29
+    },
+    {
+      "event_id": "sr:sport_event:74268272",
+      "status": "complete",
+      "player_records": 36
+    },
+    {
+      "event_id": "sr:sport_event:74268274",
+      "status": "complete",
+      "player_records": 42
+    },
+    {
+      "event_id": "sr:sport_event:74268276",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:74268278",
+      "status": "complete",
+      "player_records": 35
+    },
+    {
+      "event_id": "sr:sport_event:74268280",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:74268282",
+      "status": "complete",
+      "player_records": 42
+    },
+    {
+      "event_id": "sr:sport_event:74268284",
+      "status": "complete",
+      "player_records": 33
+    },
+    {
+      "event_id": "sr:sport_event:74268286",
+      "status": "complete",
+      "player_records": 41
+    },
+    {
+      "event_id": "sr:sport_event:74268288",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:75207990",
+      "status": "complete",
+      "player_records": 37
+    },
+    {
+      "event_id": "sr:sport_event:75207992",
+      "status": "complete",
+      "player_records": 34
+    },
+    {
+      "event_id": "sr:sport_event:75207994",
+      "status": "complete",
+      "player_records": 30
+    },
+    {
+      "event_id": "sr:sport_event:75207996",
+      "status": "complete",
+      "player_records": 22
+    },
+    {
+      "event_id": "sr:sport_event:75207998",
+      "status": "complete",
+      "player_records": 19
+    },
+    {
+      "event_id": "sr:sport_event:75208000",
+      "status": "complete",
+      "player_records": 21
+    },
+    {
+      "event_id": "sr:sport_event:75208002",
+      "status": "complete",
+      "player_records": 40
+    },
+    {
+      "event_id": "sr:sport_event:75208004",
+      "status": "complete",
+      "player_records": 31
+    },
+    {
+      "event_id": "sr:sport_event:75208006",
+      "status": "complete",
+      "player_records": 45
+    },
+    {
+      "event_id": "sr:sport_event:75208008",
+      "status": "complete",
+      "player_records": 43
+    },
+    {
+      "event_id": "sr:sport_event:75208010",
+      "status": "complete",
+      "player_records": 28
+    }
+  ]
+}

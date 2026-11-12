@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:38:20+00:00",
+  "player": {
+    "id": "sr:player:1378703",
+    "name": "헤르난데즈, 윌켈",
+    "type": "P",
+    "date_of_birth": "1999-04-13",
+    "nationality": "Venezuela",
+    "country_code": "VEN",
+    "height": 190,
+    "weight": 88,
+    "jersey_number": 12,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249963",
+      "name": "한화 이글스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "EAG",
+      "gender": "male"
+    }
+  ]
+}

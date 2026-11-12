@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:38:15+00:00",
+  "player": {
+    "id": "sr:player:1085322",
+    "name": "햇치, 톰",
+    "type": "P",
+    "date_of_birth": "1994-09-29",
+    "nationality": "United states",
+    "country_code": "USA",
+    "height": 185,
+    "weight": 93,
+    "jersey_number": 55,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249979",
+      "name": "SSG 랜더스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "SSG",
+      "gender": "male"
+    }
+  ]
+}

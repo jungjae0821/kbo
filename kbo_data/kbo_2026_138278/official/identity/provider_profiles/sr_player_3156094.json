@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:40:35+00:00",
+  "player": {
+    "id": "sr:player:3156094",
+    "name": "다케다, 쇼타",
+    "type": "P",
+    "date_of_birth": "1993-04-03",
+    "nationality": "Japan",
+    "country_code": "JPN",
+    "height": 187,
+    "weight": 90,
+    "jersey_number": 23,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249979",
+      "name": "SSG 랜더스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "SSG",
+      "gender": "male"
+    }
+  ]
+}

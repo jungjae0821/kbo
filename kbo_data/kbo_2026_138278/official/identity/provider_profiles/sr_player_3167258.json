@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:41:21+00:00",
+  "player": {
+    "id": "sr:player:3167258",
+    "name": "주형이",
+    "type": "IF",
+    "date_of_birth": "2002-07-05",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 183,
+    "weight": 105,
+    "jersey_number": 58,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249975",
+      "name": "키움 히어로즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "키움",
+      "gender": "male"
+    }
+  ]
+}

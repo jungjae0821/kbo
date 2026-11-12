@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:41:10+00:00",
+  "player": {
+    "id": "sr:player:3167144",
+    "name": "천범석",
+    "type": "P",
+    "date_of_birth": "2006-03-06",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 183,
+    "weight": 86,
+    "jersey_number": 68,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249979",
+      "name": "SSG 랜더스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "SSG",
+      "gender": "male"
+    }
+  ]
+}

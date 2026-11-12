@@ -1,0 +1,925 @@
+{
+  "retrieved_at": "2026-11-12T06:50:33.518658+00:00",
+  "season": {
+    "id": "sr:season:138278",
+    "name": "KBO 리그 2026",
+    "start_date": "2026-03-28",
+    "end_date": "2026-11-08",
+    "year": "2026",
+    "competition_id": "sr:competition:2541"
+  },
+  "sport_event": {
+    "id": "sr:sport_event:67204192",
+    "start_time": "2026-05-14T09:30:00+00:00",
+    "start_time_confirmed": true,
+    "sport_event_context": {
+      "sport": {
+        "id": "sr:sport:3",
+        "name": "야구"
+      },
+      "category": {
+        "id": "sr:category:384",
+        "name": "대한민국",
+        "country_code": "KOR"
+      },
+      "competition": {
+        "id": "sr:competition:2541",
+        "name": "KBO 리그",
+        "gender": "men"
+      },
+      "season": {
+        "id": "sr:season:138278",
+        "name": "KBO 리그 2026",
+        "start_date": "2026-03-28",
+        "end_date": "2026-11-08",
+        "year": "2026",
+        "competition_id": "sr:competition:2541"
+      },
+      "stage": {
+        "order": 1,
+        "type": "league",
+        "phase": "regular season",
+        "start_date": "2026-03-28",
+        "end_date": "2026-10-12",
+        "year": "2026"
+      },
+      "round": {
+        "number": 1
+      },
+      "groups": [
+        {
+          "id": "sr:league:103622",
+          "name": "KBO 2026"
+        }
+      ]
+    },
+    "coverage": {
+      "type": "sport_event",
+      "sport_event_properties": {
+        "basic_play_by_play": true,
+        "scores": "live"
+      }
+    },
+    "competitors": [
+      {
+        "id": "sr:competitor:249965",
+        "name": "KIA 타이거즈",
+        "country": "대한민국",
+        "country_code": "KOR",
+        "abbreviation": "TIG",
+        "qualifier": "home",
+        "gender": "male"
+      },
+      {
+        "id": "sr:competitor:249961",
+        "name": "두산 베어스",
+        "country": "대한민국",
+        "country_code": "KOR",
+        "abbreviation": "BEA",
+        "qualifier": "away",
+        "gender": "male"
+      }
+    ],
+    "venue": {
+      "id": "sr:venue:50443",
+      "name": "Gwangju-Kia Champions Field",
+      "capacity": 22244,
+      "city_name": "광주",
+      "city_id": "sr:city:3034",
+      "country_name": "대한민국",
+      "map_coordinates": "35.168139, 126.889111",
+      "country_code": "KOR",
+      "timezone": "Asia/Seoul"
+    },
+    "sport_event_conditions": {
+      "ground": {
+        "neutral": false
+      }
+    }
+  },
+  "sport_event_status": {
+    "status": "closed",
+    "match_status": "ended",
+    "home_score": 5,
+    "away_score": 3,
+    "winner_id": "sr:competitor:249965",
+    "period_scores": [
+      {
+        "home_score": 0,
+        "away_score": 0,
+        "type": "regular_period",
+        "number": 1
+      },
+      {
+        "home_score": 3,
+        "away_score": 2,
+        "type": "regular_period",
+        "number": 2
+      },
+      {
+        "home_score": 1,
+        "away_score": 0,
+        "type": "regular_period",
+        "number": 3
+      },
+      {
+        "home_score": 0,
+        "away_score": 0,
+        "type": "regular_period",
+        "number": 4
+      },
+      {
+        "home_score": 0,
+        "away_score": 0,
+        "type": "regular_period",
+        "number": 5
+      },
+      {
+        "home_score": 0,
+        "away_score": 0,
+        "type": "regular_period",
+        "number": 6
+      },
+      {
+        "home_score": 1,
+        "away_score": 1,
+        "type": "regular_period",
+        "number": 7
+      },
+      {
+        "home_score": 0,
+        "away_score": 0,
+        "type": "regular_period",
+        "number": 8
+      },
+      {
+        "home_score": 0,
+        "away_score": 0,
+        "type": "regular_period",
+        "number": 9
+      }
+    ]
+  },
+  "record_scope": "single_game",
+  "players": [
+    {
+      "team_id": "sr:competitor:249965",
+      "team_name": "KIA 타이거즈",
+      "player_id": "sr:player:951922",
+      "player_name": "로드리게스, 아데를린",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 4,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 2,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 1,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249965",
+      "team_name": "KIA 타이거즈",
+      "player_id": "sr:player:2562909",
+      "player_name": "이의리",
+      "type": null,
+      "statistics": {
+        "at_bats": 0,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 0,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249965",
+      "team_name": "KIA 타이거즈",
+      "player_id": "sr:player:2777549",
+      "player_name": "정해영",
+      "type": "pitcher",
+      "statistics": {
+        "at_bats": 0,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 0,
+        "hits_allowed": 1,
+        "home_runs": 0,
+        "innings_pitched": 1,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249965",
+      "team_name": "KIA 타이거즈",
+      "player_id": "sr:player:3148648",
+      "player_name": "김범수",
+      "type": "pitcher",
+      "statistics": {
+        "at_bats": 0,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 0,
+        "hits_allowed": 1,
+        "home_runs": 0,
+        "innings_pitched": 0.2,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 1,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249965",
+      "team_name": "KIA 타이거즈",
+      "player_id": "sr:player:3149574",
+      "player_name": "황동하",
+      "type": "pitcher",
+      "statistics": {
+        "at_bats": 0,
+        "earned_runs": 1,
+        "errors": 0,
+        "hits": 0,
+        "hits_allowed": 6,
+        "home_runs": 0,
+        "innings_pitched": 6.1,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 3,
+        "walks": 0,
+        "walks_allowed": 1
+      }
+    },
+    {
+      "team_id": "sr:competitor:249965",
+      "team_name": "KIA 타이거즈",
+      "player_id": "sr:player:3149600",
+      "player_name": "김태군",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 4,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 3,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 1,
+        "runs_batted_in": 1,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249965",
+      "team_name": "KIA 타이거즈",
+      "player_id": "sr:player:3149614",
+      "player_name": "김선빈",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 5,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 3,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 1,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249965",
+      "team_name": "KIA 타이거즈",
+      "player_id": "sr:player:3149616",
+      "player_name": "김도영",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 4,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 1,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249965",
+      "team_name": "KIA 타이거즈",
+      "player_id": "sr:player:3149620",
+      "player_name": "윤도현",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 4,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 1,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249965",
+      "team_name": "KIA 타이거즈",
+      "player_id": "sr:player:3149628",
+      "player_name": "박민",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 4,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 0,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249965",
+      "team_name": "KIA 타이거즈",
+      "player_id": "sr:player:3149640",
+      "player_name": "박정우",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 1,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 0,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249965",
+      "team_name": "KIA 타이거즈",
+      "player_id": "sr:player:3149646",
+      "player_name": "김호령",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 4,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 2,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 1,
+        "runs_batted_in": 1,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249965",
+      "team_name": "KIA 타이거즈",
+      "player_id": "sr:player:3166716",
+      "player_name": "정현창",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 1,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 1,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249965",
+      "team_name": "KIA 타이거즈",
+      "player_id": "sr:player:3166766",
+      "player_name": "박재현",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 5,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 1,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249965",
+      "team_name": "KIA 타이거즈",
+      "player_id": "sr:player:3168730",
+      "player_name": "한승연",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 2,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 1,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 1,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 1,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249965",
+      "team_name": "KIA 타이거즈",
+      "player_id": "sr:player:3173908",
+      "player_name": "성영탁",
+      "type": "pitcher",
+      "statistics": {
+        "at_bats": 0,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 0,
+        "hits_allowed": 1,
+        "home_runs": 0,
+        "innings_pitched": 1.1,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 3,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249961",
+      "team_name": "두산 베어스",
+      "player_id": "sr:player:1086530",
+      "player_name": "카메론, 다즈",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 4,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 2,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 1,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249961",
+      "team_name": "두산 베어스",
+      "player_id": "sr:player:1528409",
+      "player_name": "벤자민, 웨스",
+      "type": "pitcher",
+      "statistics": {
+        "at_bats": 0,
+        "earned_runs": 4,
+        "errors": 0,
+        "hits": 0,
+        "hits_allowed": 10,
+        "home_runs": 0,
+        "innings_pitched": 6,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 4,
+        "walks": 0,
+        "walks_allowed": 1
+      }
+    },
+    {
+      "team_id": "sr:competitor:249961",
+      "team_name": "두산 베어스",
+      "player_id": "sr:player:2563407",
+      "player_name": "양의지",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 3,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 2,
+        "hits_allowed": 0,
+        "home_runs": 2,
+        "innings_pitched": 0,
+        "runs": 2,
+        "runs_batted_in": 3,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249961",
+      "team_name": "두산 베어스",
+      "player_id": "sr:player:3146768",
+      "player_name": "박치국",
+      "type": "pitcher",
+      "statistics": {
+        "at_bats": 0,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 0,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0.1,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249961",
+      "team_name": "두산 베어스",
+      "player_id": "sr:player:3146832",
+      "player_name": "김기연",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 1,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 0,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249961",
+      "team_name": "두산 베어스",
+      "player_id": "sr:player:3146884",
+      "player_name": "임종성",
+      "type": "pitcher",
+      "statistics": {
+        "at_bats": 0,
+        "earned_runs": 1,
+        "errors": 0,
+        "hits": 0,
+        "hits_allowed": 4,
+        "home_runs": 0,
+        "innings_pitched": 1,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 1,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249961",
+      "team_name": "두산 베어스",
+      "player_id": "sr:player:3146888",
+      "player_name": "강승호",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 3,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 2,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249961",
+      "team_name": "두산 베어스",
+      "player_id": "sr:player:3146912",
+      "player_name": "오명진",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 1,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 0,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249961",
+      "team_name": "두산 베어스",
+      "player_id": "sr:player:3146920",
+      "player_name": "박지훈",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 3,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 0,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249961",
+      "team_name": "두산 베어스",
+      "player_id": "sr:player:3146926",
+      "player_name": "박준순",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 4,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 0,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249961",
+      "team_name": "두산 베어스",
+      "player_id": "sr:player:3148606",
+      "player_name": "김민석",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 5,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 0,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249961",
+      "team_name": "두산 베어스",
+      "player_id": "sr:player:3148612",
+      "player_name": "정수빈",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 4,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 2,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249961",
+      "team_name": "두산 베어스",
+      "player_id": "sr:player:3148616",
+      "player_name": "김인태",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 1,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 0,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249961",
+      "team_name": "두산 베어스",
+      "player_id": "sr:player:3149610",
+      "player_name": "박찬호",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 4,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 0,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249961",
+      "team_name": "두산 베어스",
+      "player_id": "sr:player:3155638",
+      "player_name": "손아섭",
+      "type": "batter",
+      "statistics": {
+        "at_bats": 4,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 1,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 1,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249961",
+      "team_name": "두산 베어스",
+      "player_id": "sr:player:3166826",
+      "player_name": "윤준호",
+      "type": null,
+      "statistics": {
+        "at_bats": 0,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 0,
+        "hits_allowed": 0,
+        "home_runs": 0,
+        "innings_pitched": 0,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 0,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    },
+    {
+      "team_id": "sr:competitor:249961",
+      "team_name": "두산 베어스",
+      "player_id": "sr:player:3173510",
+      "player_name": "다무라, 이치로",
+      "type": "pitcher",
+      "statistics": {
+        "at_bats": 0,
+        "earned_runs": 0,
+        "errors": 0,
+        "hits": 0,
+        "hits_allowed": 1,
+        "home_runs": 0,
+        "innings_pitched": 1,
+        "runs": 0,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 0,
+        "strikeouts": 2,
+        "walks": 0,
+        "walks_allowed": 0
+      }
+    }
+  ]
+}

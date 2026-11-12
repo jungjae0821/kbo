@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:39:27+00:00",
+  "player": {
+    "id": "sr:player:3147080",
+    "name": "태진김",
+    "type": "IF",
+    "date_of_birth": "1995-10-07",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 170,
+    "weight": 75,
+    "jersey_number": 1,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249975",
+      "name": "키움 히어로즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "키움",
+      "gender": "male"
+    }
+  ]
+}

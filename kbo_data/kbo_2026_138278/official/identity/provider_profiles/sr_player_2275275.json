@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:38:35+00:00",
+  "player": {
+    "id": "sr:player:2275275",
+    "name": "부슐리, 케일럽",
+    "type": "P",
+    "date_of_birth": "1993-10-01",
+    "nationality": "United states",
+    "country_code": "USA",
+    "height": 191,
+    "weight": 86,
+    "jersey_number": 36,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249967",
+      "name": "KT 위즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "WIZ",
+      "gender": "male"
+    }
+  ]
+}

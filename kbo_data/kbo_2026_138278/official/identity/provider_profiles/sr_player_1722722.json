@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:38:26+00:00",
+  "player": {
+    "id": "sr:player:1722722",
+    "name": "비스리, 제러미",
+    "type": "P",
+    "date_of_birth": "1995-11-20",
+    "nationality": "United states",
+    "country_code": "USA",
+    "height": 191,
+    "weight": 111,
+    "jersey_number": 23,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249971",
+      "name": "롯데 자이언츠",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "GIA",
+      "gender": "male"
+    }
+  ]
+}

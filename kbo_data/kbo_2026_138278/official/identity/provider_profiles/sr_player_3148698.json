@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:40:06+00:00",
+  "player": {
+    "id": "sr:player:3148698",
+    "name": "박상운",
+    "type": "C",
+    "date_of_birth": "1997-03-03",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 185,
+    "weight": 90,
+    "jersey_number": 42,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249963",
+      "name": "한화 이글스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "EAG",
+      "gender": "male"
+    }
+  ]
+}

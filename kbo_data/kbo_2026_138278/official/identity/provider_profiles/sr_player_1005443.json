@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:38:12+00:00",
+  "player": {
+    "id": "sr:player:1005443",
+    "name": "파다크, 크리스",
+    "type": "P",
+    "date_of_birth": "1996-01-08",
+    "nationality": "United states",
+    "country_code": "USA",
+    "height": 196,
+    "weight": 98,
+    "jersey_number": 59,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249977",
+      "name": "삼성 라이온즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "LIO",
+      "gender": "male"
+    }
+  ]
+}

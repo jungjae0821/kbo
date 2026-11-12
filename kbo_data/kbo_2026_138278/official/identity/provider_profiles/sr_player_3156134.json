@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:40:43+00:00",
+  "player": {
+    "id": "sr:player:3156134",
+    "name": "장재율",
+    "type": "OF",
+    "date_of_birth": "2007-09-12",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 187,
+    "weight": 99,
+    "jersey_number": 49,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249979",
+      "name": "SSG 랜더스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "SSG",
+      "gender": "male"
+    }
+  ]
+}

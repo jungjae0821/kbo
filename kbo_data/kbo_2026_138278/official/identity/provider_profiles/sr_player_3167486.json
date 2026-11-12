@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:41:33+00:00",
+  "player": {
+    "id": "sr:player:3167486",
+    "name": "조민영",
+    "type": "OF",
+    "date_of_birth": "2005-03-24",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 186,
+    "weight": 92,
+    "jersey_number": 68,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249971",
+      "name": "롯데 자이언츠",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "GIA",
+      "gender": "male"
+    }
+  ]
+}

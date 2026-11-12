@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:42:29+00:00",
+  "player": {
+    "id": "sr:player:3168232",
+    "name": "박시영",
+    "type": "P",
+    "date_of_birth": "1989-03-10",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 181,
+    "weight": 92,
+    "jersey_number": 62,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249971",
+      "name": "롯데 자이언츠",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "GIA",
+      "gender": "male"
+    }
+  ]
+}

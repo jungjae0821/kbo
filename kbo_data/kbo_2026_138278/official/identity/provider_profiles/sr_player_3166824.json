@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:40:57+00:00",
+  "player": {
+    "id": "sr:player:3166824",
+    "name": "태훈김",
+    "type": "OF",
+    "date_of_birth": "1996-03-31",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 177,
+    "weight": 78,
+    "jersey_number": 25,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249977",
+      "name": "삼성 라이온즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "LIO",
+      "gender": "male"
+    }
+  ]
+}

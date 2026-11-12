@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:38:25+00:00",
+  "player": {
+    "id": "sr:player:1710413",
+    "name": "로드리게즈, 엘빈",
+    "type": "P",
+    "date_of_birth": "1998-03-31",
+    "nationality": "Dominican republic",
+    "country_code": "DOM",
+    "height": 193,
+    "weight": 97,
+    "jersey_number": 31,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249971",
+      "name": "롯데 자이언츠",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "GIA",
+      "gender": "male"
+    }
+  ]
+}

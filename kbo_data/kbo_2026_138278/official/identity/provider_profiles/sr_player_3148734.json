@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:40:09+00:00",
+  "player": {
+    "id": "sr:player:3148734",
+    "name": "배승수",
+    "type": "IF",
+    "date_of_birth": "2006-05-15",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 184,
+    "weight": 73,
+    "jersey_number": 98,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249963",
+      "name": "한화 이글스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "EAG",
+      "gender": "male"
+    }
+  ]
+}

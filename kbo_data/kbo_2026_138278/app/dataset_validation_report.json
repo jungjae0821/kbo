@@ -1,0 +1,454 @@
+{
+  "data_version": "2026-80824eb4a8b7c7c8b89dba492b11b00bae47c787ba0dd64a4163b507282ed48d",
+  "validation_status": "passed",
+  "team_count": 10,
+  "player_count": 591,
+  "lineup_count": 10,
+  "unique_selected_players": 100,
+  "unassigned_player_ids": [],
+  "fallback_profiles": [
+    {
+      "player_id": "kbo:player:56708",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:52060",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:53754",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:50556",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:54610",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:51648",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:66291",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:56760",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:60146",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:73117",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:65060",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:62528",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:55631",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:55167",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:67143",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:65616",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:62951",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:53892",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:51897",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:54910",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:53029",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:67419",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:50662",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:63342",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:55267",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:56165",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:51526",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:69134",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:63950",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:52149",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:55764",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:54768",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:73211",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:50812",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:54808",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:64861",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:52868",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:52809",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:65062",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:69428",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:62754",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:52992",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:65048",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:56011",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:67048",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:69047",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:53058",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:65522",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:56531",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:67588",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:68529",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:56503",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:56554",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:68260",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:53609",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:65769",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:66609",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:51230",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:68830",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:68249",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:65639",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:55215",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:52202",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:52204",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:77211",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:56215",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:52206",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:56212",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:54319",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:75125",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:56337",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:63512",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    },
+    {
+      "player_id": "kbo:player:69360",
+      "role": "batting",
+      "reason": "zero_denominator",
+      "missing_fields": []
+    }
+  ],
+  "lineup_required_fields_valid": true,
+  "lineup_membership_valid": true,
+  "lineup_unique_across_teams": true,
+  "source_hashes_valid": true,
+  "scope": "Offline data contract validation only; Dart engine and Flutter app are not implemented."
+}

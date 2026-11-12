@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:42:27+00:00",
+  "player": {
+    "id": "sr:player:3168216",
+    "name": "이영재",
+    "type": "P",
+    "date_of_birth": "2006-10-20",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 180,
+    "weight": 71,
+    "jersey_number": 40,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249971",
+      "name": "롯데 자이언츠",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "GIA",
+      "gender": "male"
+    }
+  ]
+}

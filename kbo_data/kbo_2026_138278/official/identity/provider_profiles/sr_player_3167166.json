@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:41:16+00:00",
+  "player": {
+    "id": "sr:player:3167166",
+    "name": "손민석",
+    "type": "IF",
+    "date_of_birth": "2004-06-21",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 177,
+    "weight": 70,
+    "jersey_number": 57,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249967",
+      "name": "KT 위즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "WIZ",
+      "gender": "male"
+    }
+  ]
+}

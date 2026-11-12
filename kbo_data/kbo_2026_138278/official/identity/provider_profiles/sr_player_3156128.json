@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:40:41+00:00",
+  "player": {
+    "id": "sr:player:3156128",
+    "name": "김민준",
+    "type": "IF",
+    "date_of_birth": "2004-03-20",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 181,
+    "weight": 78,
+    "jersey_number": 5,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249979",
+      "name": "SSG 랜더스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "SSG",
+      "gender": "male"
+    }
+  ]
+}

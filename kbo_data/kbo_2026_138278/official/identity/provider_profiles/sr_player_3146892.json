@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:39:23+00:00",
+  "player": {
+    "id": "sr:player:3146892",
+    "name": "김동준",
+    "type": "IF",
+    "date_of_birth": "2002-09-04",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 193,
+    "weight": 100,
+    "jersey_number": 11,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249961",
+      "name": "두산 베어스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "BEA",
+      "gender": "male"
+    }
+  ]
+}

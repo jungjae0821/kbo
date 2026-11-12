@@ -1,0 +1,562 @@
+{
+  "metadata": {
+    "generated_at": "2026-11-12T06:54:44.396186+00:00",
+    "season": {
+      "id": "sr:season:138278",
+      "name": "KBO 리그 2026",
+      "start_date": "2026-03-28",
+      "end_date": "2026-11-08",
+      "year": "2026",
+      "competition_id": "sr:competition:2541"
+    },
+    "record_scope": "regular_season_observed_aggregate",
+    "target_games": 720,
+    "raw_games": 720,
+    "games_with_both_teams_player_statistics": 719,
+    "missing_raw_game_ids": [],
+    "missing_player_statistics_games": [
+      {
+        "event_id": "sr:sport_event:67204148",
+        "start_time": "2026-05-09T08:00:00+00:00",
+        "teams": [
+          {
+            "id": "sr:competitor:249971",
+            "name": "롯데 자이언츠",
+            "country": "대한민국",
+            "country_code": "KOR",
+            "abbreviation": "GIA",
+            "qualifier": "home",
+            "gender": "male"
+          },
+          {
+            "id": "sr:competitor:249965",
+            "name": "KIA 타이거즈",
+            "country": "대한민국",
+            "country_code": "KOR",
+            "abbreviation": "TIG",
+            "qualifier": "away",
+            "gender": "male"
+          }
+        ],
+        "missing_player_stats_team_ids": [
+          "sr:competitor:249971",
+          "sr:competitor:249965"
+        ],
+        "reason": "player_statistics_absent_in_saved_response"
+      }
+    ],
+    "team_count": 10,
+    "player_team_records": 674,
+    "unique_player_ids": 668,
+    "source_player_record_count": 23587,
+    "quality_issue_counts": {
+      "non_pitcher_role_with_pitching": 325,
+      "team_player_total_mismatch": 4037,
+      "invalid_stat_value": 1
+    },
+    "unavailable_statistics": [
+      "plate_appearances",
+      "doubles",
+      "triples",
+      "hit_by_pitch",
+      "sacrifice_flies",
+      "batters_faced",
+      "home_runs_allowed",
+      "pitcher_wins",
+      "pitcher_losses",
+      "pitcher_strikeouts"
+    ],
+    "rules": {
+      "team_results": "Final scores from all closed regular-season games; summary fallback if raw missing.",
+      "team_statistics": "Sum original team statistics, not sums of player rows.",
+      "player_key": "season_id + player_id + team_id; preserve team stints and combine source roles.",
+      "games_with_records": "Number of games containing a player record; not official appearances.",
+      "missing_values": "Never replace missing/invalid values with zero. Totals sum observed valid values only; null if none.",
+      "missing_game_players": "Flag every observed player of the affected teams; actual participation is unknown. Unobserved players cannot be listed.",
+      "innings_pitched": "Baseball n.1/n.2 notation converted to outs, summed, then emitted as n.r string; original raw files retained.",
+      "strikeouts": "Ambiguous original field preserved; not exposed as pitcher_strikeouts.",
+      "rates": "Derived from observed counts only, not official season rates; null for incomplete required fields or zero denominator.",
+      "quality": "Source inconsistencies are reported without correction; complete coverage does not guarantee source accuracy."
+    }
+  },
+  "teams": [
+    {
+      "team_id": "sr:competitor:249961",
+      "team_name": "두산 베어스",
+      "games": 144,
+      "wins": 73,
+      "losses": 66,
+      "ties": 5,
+      "runs_scored": 688,
+      "runs_allowed": 630,
+      "missing_score_game_ids": [],
+      "missing_player_stats_game_ids": [],
+      "run_differential": 58,
+      "win_percentage": 0.52518,
+      "observed_statistics": {
+        "at_bats": 4815,
+        "earned_runs": 476,
+        "errors": 63,
+        "hits": 1398,
+        "hits_allowed": 1357,
+        "home_runs": 110,
+        "innings_pitched": "1211.1",
+        "runs": 688,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 79,
+        "strikeouts": 1142,
+        "walks": 433,
+        "walks_allowed": 435,
+        "outs_pitched": 3634
+      },
+      "observed_rates": {
+        "batting_average": 0.290343,
+        "earned_run_average": 3.536599,
+        "on_base_percentage": null,
+        "slugging_percentage": null,
+        "ops": null
+      },
+      "coverage": {
+        "results_complete": true,
+        "team_stats_games": 144,
+        "missing_team_stats_game_ids": [],
+        "player_stats_games": 144,
+        "player_stats_complete": true,
+        "missing_or_invalid_field_counts_in_observed_records": {},
+        "team_stats_complete": true
+      }
+    },
+    {
+      "team_id": "sr:competitor:249963",
+      "team_name": "한화 이글스",
+      "games": 144,
+      "wins": 57,
+      "losses": 83,
+      "ties": 4,
+      "runs_scored": 821,
+      "runs_allowed": 835,
+      "missing_score_game_ids": [],
+      "missing_player_stats_game_ids": [],
+      "run_differential": -14,
+      "win_percentage": 0.407143,
+      "observed_statistics": {
+        "at_bats": 4774,
+        "earned_runs": 618,
+        "errors": 61,
+        "hits": 1516,
+        "hits_allowed": 1508,
+        "home_runs": 156,
+        "innings_pitched": "1191.1",
+        "runs": 821,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 62,
+        "strikeouts": 991,
+        "walks": 475,
+        "walks_allowed": 518,
+        "outs_pitched": 3574
+      },
+      "observed_rates": {
+        "batting_average": 0.317553,
+        "earned_run_average": 4.668719,
+        "on_base_percentage": null,
+        "slugging_percentage": null,
+        "ops": null
+      },
+      "coverage": {
+        "results_complete": true,
+        "team_stats_games": 144,
+        "missing_team_stats_game_ids": [],
+        "player_stats_games": 144,
+        "player_stats_complete": true,
+        "missing_or_invalid_field_counts_in_observed_records": {},
+        "team_stats_complete": true
+      }
+    },
+    {
+      "team_id": "sr:competitor:249965",
+      "team_name": "KIA 타이거즈",
+      "games": 144,
+      "wins": 79,
+      "losses": 63,
+      "ties": 2,
+      "runs_scored": 769,
+      "runs_allowed": 664,
+      "missing_score_game_ids": [],
+      "missing_player_stats_game_ids": [
+        "sr:sport_event:67204148"
+      ],
+      "run_differential": 105,
+      "win_percentage": 0.556338,
+      "observed_statistics": {
+        "at_bats": 4719,
+        "earned_runs": 467,
+        "errors": 65,
+        "hits": 1457,
+        "hits_allowed": 1322,
+        "home_runs": 158,
+        "innings_pitched": "1200.1",
+        "runs": 775,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 72,
+        "strikeouts": 961,
+        "walks": 450,
+        "walks_allowed": 479,
+        "outs_pitched": 3601
+      },
+      "observed_rates": {
+        "batting_average": 0.308752,
+        "earned_run_average": 3.501527,
+        "on_base_percentage": null,
+        "slugging_percentage": null,
+        "ops": null
+      },
+      "coverage": {
+        "results_complete": true,
+        "team_stats_games": 143,
+        "missing_team_stats_game_ids": [
+          "sr:sport_event:67204148"
+        ],
+        "player_stats_games": 143,
+        "player_stats_complete": false,
+        "missing_or_invalid_field_counts_in_observed_records": {},
+        "team_stats_complete": false
+      }
+    },
+    {
+      "team_id": "sr:competitor:249967",
+      "team_name": "KT 위즈",
+      "games": 144,
+      "wins": 90,
+      "losses": 49,
+      "ties": 5,
+      "runs_scored": 825,
+      "runs_allowed": 649,
+      "missing_score_game_ids": [],
+      "missing_player_stats_game_ids": [],
+      "run_differential": 176,
+      "win_percentage": 0.647482,
+      "observed_statistics": {
+        "at_bats": 4915,
+        "earned_runs": 477,
+        "errors": 39,
+        "hits": 1559,
+        "hits_allowed": 1447,
+        "home_runs": 118,
+        "innings_pitched": "1229.1",
+        "runs": 829,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 67,
+        "strikeouts": 1084,
+        "walks": 552,
+        "walks_allowed": 404,
+        "outs_pitched": 3688
+      },
+      "observed_rates": {
+        "batting_average": 0.317192,
+        "earned_run_average": 3.492137,
+        "on_base_percentage": null,
+        "slugging_percentage": null,
+        "ops": null
+      },
+      "coverage": {
+        "results_complete": true,
+        "team_stats_games": 144,
+        "missing_team_stats_game_ids": [],
+        "player_stats_games": 144,
+        "player_stats_complete": true,
+        "missing_or_invalid_field_counts_in_observed_records": {},
+        "team_stats_complete": true
+      }
+    },
+    {
+      "team_id": "sr:competitor:249969",
+      "team_name": "LG 트윈스",
+      "games": 144,
+      "wins": 78,
+      "losses": 65,
+      "ties": 1,
+      "runs_scored": 723,
+      "runs_allowed": 726,
+      "missing_score_game_ids": [],
+      "missing_player_stats_game_ids": [],
+      "run_differential": -3,
+      "win_percentage": 0.545455,
+      "observed_statistics": {
+        "at_bats": 4583,
+        "earned_runs": 537,
+        "errors": 68,
+        "hits": 1400,
+        "hits_allowed": 1471,
+        "home_runs": 131,
+        "innings_pitched": "1179.1",
+        "runs": 718,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 75,
+        "strikeouts": 903,
+        "walks": 502,
+        "walks_allowed": 423,
+        "outs_pitched": 3538
+      },
+      "observed_rates": {
+        "batting_average": 0.305477,
+        "earned_run_average": 4.098078,
+        "on_base_percentage": null,
+        "slugging_percentage": null,
+        "ops": null
+      },
+      "coverage": {
+        "results_complete": true,
+        "team_stats_games": 144,
+        "missing_team_stats_game_ids": [],
+        "player_stats_games": 144,
+        "player_stats_complete": true,
+        "missing_or_invalid_field_counts_in_observed_records": {},
+        "team_stats_complete": true
+      }
+    },
+    {
+      "team_id": "sr:competitor:249971",
+      "team_name": "롯데 자이언츠",
+      "games": 144,
+      "wins": 64,
+      "losses": 77,
+      "ties": 3,
+      "runs_scored": 679,
+      "runs_allowed": 742,
+      "missing_score_game_ids": [],
+      "missing_player_stats_game_ids": [
+        "sr:sport_event:67204148"
+      ],
+      "run_differential": -63,
+      "win_percentage": 0.453901,
+      "observed_statistics": {
+        "at_bats": 4771,
+        "earned_runs": 576,
+        "errors": 58,
+        "hits": 1460,
+        "hits_allowed": 1467,
+        "home_runs": 108,
+        "innings_pitched": "1202.2",
+        "runs": 675,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 94,
+        "strikeouts": 1082,
+        "walks": 394,
+        "walks_allowed": 485,
+        "outs_pitched": 3608
+      },
+      "observed_rates": {
+        "batting_average": 0.306016,
+        "earned_run_average": 4.310421,
+        "on_base_percentage": null,
+        "slugging_percentage": null,
+        "ops": null
+      },
+      "coverage": {
+        "results_complete": true,
+        "team_stats_games": 143,
+        "missing_team_stats_game_ids": [
+          "sr:sport_event:67204148"
+        ],
+        "player_stats_games": 143,
+        "player_stats_complete": false,
+        "missing_or_invalid_field_counts_in_observed_records": {},
+        "team_stats_complete": false
+      }
+    },
+    {
+      "team_id": "sr:competitor:249973",
+      "team_name": "NC 다이노스",
+      "games": 144,
+      "wins": 64,
+      "losses": 78,
+      "ties": 2,
+      "runs_scored": 719,
+      "runs_allowed": 772,
+      "missing_score_game_ids": [],
+      "missing_player_stats_game_ids": [],
+      "run_differential": -53,
+      "win_percentage": 0.450704,
+      "observed_statistics": {
+        "at_bats": 4704,
+        "earned_runs": 538,
+        "errors": 76,
+        "hits": 1444,
+        "hits_allowed": 1357,
+        "home_runs": 124,
+        "innings_pitched": "1191.2",
+        "runs": 719,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 122,
+        "strikeouts": 1030,
+        "walks": 457,
+        "walks_allowed": 546,
+        "outs_pitched": 3575
+      },
+      "observed_rates": {
+        "batting_average": 0.306973,
+        "earned_run_average": 4.063217,
+        "on_base_percentage": null,
+        "slugging_percentage": null,
+        "ops": null
+      },
+      "coverage": {
+        "results_complete": true,
+        "team_stats_games": 144,
+        "missing_team_stats_game_ids": [],
+        "player_stats_games": 144,
+        "player_stats_complete": true,
+        "missing_or_invalid_field_counts_in_observed_records": {},
+        "team_stats_complete": true
+      }
+    },
+    {
+      "team_id": "sr:competitor:249975",
+      "team_name": "키움 히어로즈",
+      "games": 144,
+      "wins": 50,
+      "losses": 90,
+      "ties": 4,
+      "runs_scored": 565,
+      "runs_allowed": 817,
+      "missing_score_game_ids": [],
+      "missing_player_stats_game_ids": [],
+      "run_differential": -252,
+      "win_percentage": 0.357143,
+      "observed_statistics": {
+        "at_bats": 4601,
+        "earned_runs": 616,
+        "errors": 70,
+        "hits": 1277,
+        "hits_allowed": 1527,
+        "home_runs": 109,
+        "innings_pitched": "1187.2",
+        "runs": 565,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 38,
+        "strikeouts": 971,
+        "walks": 447,
+        "walks_allowed": 489,
+        "outs_pitched": 3563
+      },
+      "observed_rates": {
+        "batting_average": 0.277548,
+        "earned_run_average": 4.667976,
+        "on_base_percentage": null,
+        "slugging_percentage": null,
+        "ops": null
+      },
+      "coverage": {
+        "results_complete": true,
+        "team_stats_games": 144,
+        "missing_team_stats_game_ids": [],
+        "player_stats_games": 144,
+        "player_stats_complete": true,
+        "missing_or_invalid_field_counts_in_observed_records": {},
+        "team_stats_complete": true
+      }
+    },
+    {
+      "team_id": "sr:competitor:249977",
+      "team_name": "삼성 라이온즈",
+      "games": 144,
+      "wins": 83,
+      "losses": 58,
+      "ties": 3,
+      "runs_scored": 806,
+      "runs_allowed": 669,
+      "missing_score_game_ids": [],
+      "missing_player_stats_game_ids": [],
+      "run_differential": 137,
+      "win_percentage": 0.588652,
+      "observed_statistics": {
+        "at_bats": 4797,
+        "earned_runs": 494,
+        "errors": 52,
+        "hits": 1469,
+        "hits_allowed": 1426,
+        "home_runs": 129,
+        "innings_pitched": "1204.1",
+        "runs": 805,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 89,
+        "strikeouts": 1021,
+        "walks": 563,
+        "walks_allowed": 424,
+        "outs_pitched": 3613
+      },
+      "observed_rates": {
+        "batting_average": 0.306233,
+        "earned_run_average": 3.691669,
+        "on_base_percentage": null,
+        "slugging_percentage": null,
+        "ops": null
+      },
+      "coverage": {
+        "results_complete": true,
+        "team_stats_games": 144,
+        "missing_team_stats_game_ids": [],
+        "player_stats_games": 144,
+        "player_stats_complete": true,
+        "missing_or_invalid_field_counts_in_observed_records": {},
+        "team_stats_complete": true
+      }
+    },
+    {
+      "team_id": "sr:competitor:249979",
+      "team_name": "SSG 랜더스",
+      "games": 144,
+      "wins": 65,
+      "losses": 74,
+      "ties": 5,
+      "runs_scored": 706,
+      "runs_allowed": 797,
+      "missing_score_game_ids": [],
+      "missing_player_stats_game_ids": [],
+      "run_differential": -91,
+      "win_percentage": 0.467626,
+      "observed_statistics": {
+        "at_bats": 4695,
+        "earned_runs": 575,
+        "errors": 51,
+        "hits": 1393,
+        "hits_allowed": 1417,
+        "home_runs": 136,
+        "innings_pitched": "1188.2",
+        "runs": 706,
+        "runs_batted_in": 0,
+        "saves": 0,
+        "stolen_bases": 97,
+        "strikeouts": 1017,
+        "walks": 487,
+        "walks_allowed": 557,
+        "outs_pitched": 3566
+      },
+      "observed_rates": {
+        "batting_average": 0.296699,
+        "earned_run_average": 4.353617,
+        "on_base_percentage": null,
+        "slugging_percentage": null,
+        "ops": null
+      },
+      "coverage": {
+        "results_complete": true,
+        "team_stats_games": 144,
+        "missing_team_stats_game_ids": [],
+        "player_stats_games": 144,
+        "player_stats_complete": true,
+        "missing_or_invalid_field_counts_in_observed_records": {},
+        "team_stats_complete": true
+      }
+    }
+  ]
+}

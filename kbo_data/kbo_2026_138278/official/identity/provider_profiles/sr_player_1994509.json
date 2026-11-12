@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:38:27+00:00",
+  "player": {
+    "id": "sr:player:1994509",
+    "name": "용규이",
+    "type": "OF",
+    "date_of_birth": "1985-08-26",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 170,
+    "weight": 74,
+    "jersey_number": 15,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249975",
+      "name": "키움 히어로즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "키움",
+      "gender": "male"
+    }
+  ]
+}

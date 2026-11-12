@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:40:45+00:00",
+  "player": {
+    "id": "sr:player:3156140",
+    "name": "석정우",
+    "type": "IF",
+    "date_of_birth": "1999-01-20",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 180,
+    "weight": 82,
+    "jersey_number": 52,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249979",
+      "name": "SSG 랜더스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "SSG",
+      "gender": "male"
+    }
+  ]
+}

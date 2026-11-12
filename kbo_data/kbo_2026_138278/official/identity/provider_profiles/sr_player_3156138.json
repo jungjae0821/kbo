@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:40:44+00:00",
+  "player": {
+    "id": "sr:player:3156138",
+    "name": "정동윤",
+    "type": "P",
+    "date_of_birth": "1997-10-22",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 193,
+    "weight": 103,
+    "jersey_number": 51,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249979",
+      "name": "SSG 랜더스",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "SSG",
+      "gender": "male"
+    }
+  ]
+}

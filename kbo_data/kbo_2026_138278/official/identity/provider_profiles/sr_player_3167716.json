@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-12T07:41:41+00:00",
+  "player": {
+    "id": "sr:player:3167716",
+    "name": "창용이",
+    "type": "IF",
+    "date_of_birth": "1999-06-03",
+    "nationality": "Korea, republic of",
+    "country_code": "KOR",
+    "height": 184,
+    "weight": 89,
+    "jersey_number": 50,
+    "gender": "male"
+  },
+  "competitors": [
+    {
+      "id": "sr:competitor:249977",
+      "name": "삼성 라이온즈",
+      "country": "대한민국",
+      "country_code": "KOR",
+      "abbreviation": "LIO",
+      "gender": "male"
+    }
+  ]
+}
