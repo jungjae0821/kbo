@@ -18,3 +18,8 @@ venv/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Dart generated files and local tool caches
+.dart_tool/
+.tool_cache/
+build/

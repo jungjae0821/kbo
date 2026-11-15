@@ -1,0 +1,119 @@
+{
+  "engine_version": "1.0.0",
+  "data_version": "2026-80824eb4a8b7c7c8b89dba492b11b00bae47c787ba0dd64a4163b507282ed48d",
+  "dart_version": "3.13.7 (stable) (Thu Oct 22 14:28:57 2026 -0700) on \"windows_x64\"",
+  "dataset_path": "../kbo_data/kbo_2026_138278/app/season_dataset.json",
+  "passed": 27,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "real dataset: 10 teams, 591 players, 10 validated lineups",
+      "passed": true
+    },
+    {
+      "name": "reject unsupported schema and rule versions",
+      "passed": true
+    },
+    {
+      "name": "reject changed combination rule or event order",
+      "passed": true
+    },
+    {
+      "name": "reject duplicate player IDs and unknown player references",
+      "passed": true
+    },
+    {
+      "name": "reject wrong affiliation, duplicate batters, missing slots and positions",
+      "passed": true
+    },
+    {
+      "name": "reject zero sample and fallback profiles for selected players",
+      "passed": true
+    },
+    {
+      "name": "reject missing, negative, nonfinite, all-zero and unnormalized probabilities",
+      "passed": true
+    },
+    {
+      "name": "matchup uses arithmetic mean without applying a second prior",
+      "passed": true
+    },
+    {
+      "name": "each of seven outcomes is selectable, including zero-weight edges",
+      "passed": true
+    },
+    {
+      "name": "PRNG known vectors, seed validation and deterministic sequence",
+      "passed": true
+    },
+    {
+      "name": "walk force advances for all eight base configurations",
+      "passed": true
+    },
+    {
+      "name": "all hit distances with loaded bases and scoring order",
+      "passed": true
+    },
+    {
+      "name": "runner conservation and no mutation across all 56 base/outcome cases",
+      "passed": true
+    },
+    {
+      "name": "strikeout and other out preserve runners and add one out",
+      "passed": true
+    },
+    {
+      "name": "third out clears bases, switches sides and records third out in log detail",
+      "passed": true
+    },
+    {
+      "name": "team batting orders continue across innings independently",
+      "passed": true
+    },
+    {
+      "name": "skip bottom ninth when home is ahead",
+      "passed": true
+    },
+    {
+      "name": "play bottom ninth when tied or away is ahead",
+      "passed": true
+    },
+    {
+      "name": "non-HR walk-off only credits winning run; HR credits all runners",
+      "passed": true
+    },
+    {
+      "name": "ninth inning away win and extra-inning away win",
+      "passed": true
+    },
+    {
+      "name": "tie after ninth starts tenth; tie after twelfth ends game",
+      "passed": true
+    },
+    {
+      "name": "walk-off allowed in extras and tying run does not finish game",
+      "passed": true
+    },
+    {
+      "name": "all-out full game ends at exactly 72 PAs, 12 innings",
+      "passed": true
+    },
+    {
+      "name": "same seed and inputs reproduce full JSON; step and playToEnd agree",
+      "passed": true
+    },
+    {
+      "name": "different seeds change play sequence; generated match IDs differ",
+      "passed": true
+    },
+    {
+      "name": "reject identical and unknown teams",
+      "passed": true
+    },
+    {
+      "name": "real-data games: totals, starter use, logs, score continuity, immutable snapshots",
+      "passed": true
+    }
+  ],
+  "scope": "Week 2 rules and real-data smoke tests; distribution calibration is week 5."
+}
