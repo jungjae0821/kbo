@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>F2 입장권과 게이트 보드</title>
+<style>
+  @font-face { font-family: '경기천년제목'; src: url('fonts/GyeonggiTitle-Bold.ttf'); font-weight: 700; }
+  @font-face { font-family: '경기천년제목'; src: url('fonts/GyeonggiTitle-Medium.ttf'); font-weight: 500; }
+  @font-face { font-family: '경기천년바탕'; src: url('fonts/GyeonggiBatang-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: '경기천년바탕'; src: url('fonts/GyeonggiBatang-Bold.ttf'); font-weight: 700; }
+  :root { --stock: #e6ebef; --paper: #fbfcfd; --navy: #15233f; --navy-2: #22355a; --on-navy: #f2f5f9; --on-navy-sub: #aab6ca; --ink: #15233f; --sub: #4e5a6d; --alert: #d2452a; --rule: #c9d2dc; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--stock); }
+  body { position: relative; width: 390px; height: 844px; overflow: hidden; color: var(--ink); font-family: '경기천년바탕', 'Pretendard', system-ui, sans-serif; word-break: keep-all; font-size: 14px; line-height: 1.5; }
+  .t { font-family: '경기천년제목', 'Pretendard', system-ui, sans-serif; }
+  .board { background: var(--navy); color: var(--on-navy); padding: 0 0 14px; border-radius: 0 0 22px 22px; }
+  .bar { height: 56px; display: flex; align-items: center; padding: 0 8px; }
+  .icon { width: 48px; height: 48px; border-radius: 24px; border: 0; background: transparent; font-size: 22px; color: var(--on-navy); }
+  .bar span { font-size: 15px; font-weight: 500; color: var(--on-navy-sub); }
+  .bar b { margin-left: auto; margin-right: 12px; font-size: 15px; }
+  .rowh, .row { display: grid; grid-template-columns: 1fr repeat(9, 22px) 40px; align-items: center; text-align: center; padding: 0 16px; }
+  .rowh { font-size: 12px; color: var(--on-navy-sub); }
+  .row { height: 46px; font-size: 15px; }
+  .row + .row { border-top: 1px solid var(--navy-2); }
+  .row .nm { text-align: left; font-size: 16px; font-weight: 700; }
+  .row .tot { font-size: 26px; font-weight: 700; text-align: right; }
+  .row .tot.lo { color: var(--on-navy-sub); }
+  .row .cur { color: var(--navy); background: var(--on-navy); border-radius: 6px; font-weight: 700; }
+  .pass { margin: 16px 16px 0; background: var(--paper); border-radius: 18px; }
+  .seg { display: grid; grid-template-columns: 1fr 1fr; }
+  .cell { padding: 12px 16px; }
+  .cell + .cell { border-left: 1px solid var(--rule); }
+  .seg + .seg { border-top: 1px solid var(--rule); }
+  .k { font-size: 12px; color: var(--sub); }
+  .v { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+  .d { font-size: 13px; color: var(--sub); }
+  .chg { color: var(--alert); }
+  .bases { display: flex; gap: 6px; margin-top: 4px; }
+  .bs { width: 34px; height: 26px; border-radius: 6px; background: var(--stock); font-size: 12px; display: grid; place-items: center; color: var(--sub); }
+  .bs.on { background: var(--alert); color: #fff; font-weight: 700; }
+  .outs { display: flex; gap: 6px; margin-top: 8px; }
+  .o { width: 14px; height: 14px; border-radius: 7px; background: var(--stock); }
+  .o.on { background: var(--ink); }
+  .log { margin: 12px 16px 0; padding: 0 4px; }
+  .log div { display: grid; grid-template-columns: 30px 1fr auto; font-size: 13px; padding: 3px 0; }
+  .log div span:first-child { color: var(--sub); }
+  .stub { position: absolute; left: 16px; right: 16px; bottom: 92px; background: var(--paper); border-radius: 18px; display: grid; grid-template-columns: 1fr 104px; }
+  .stub .main { padding: 12px 16px; }
+  .stub .side { padding: 12px 14px; border-left: 2px dashed var(--rule); text-align: center; }
+  .stub .v { font-size: 18px; }
+  .actions { position: absolute; left: 16px; right: 16px; bottom: 20px; display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+  .btn { height: 56px; border-radius: 28px; border: 0; font-family: '경기천년제목', sans-serif; font-size: 17px; font-weight: 700; padding: 0 22px; }
+  .btn.main { background: var(--navy); color: var(--on-navy); }
+  .btn.sub { background: var(--paper); color: var(--ink); font-weight: 500; font-size: 15px; }
+</style>
+</head>
+<body>
+  <section class="board t">
+    <header class="bar"><button class="icon" aria-label="뒤로">‹</button><span>가상 경기 · 2026 기록</span><b>5회말</b></header>
+    <div class="rowh"><span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span style="text-align:right">R</span></div>
+    <div class="row"><span class="nm">KT 위즈</span><span>0</span><span>5</span><span>0</span><span>0</span><span>2</span><span></span><span></span><span></span><span></span><span class="tot">7</span></div>
+    <div class="row"><span class="nm">삼성 라이온즈</span><span>0</span><span>0</span><span>0</span><span>0</span><span class="cur">0</span><span></span><span></span><span></span><span></span><span class="tot lo">0</span></div>
+  </section>
+  <section class="pass" aria-label="현재 타석">
+    <div class="seg">
+      <div class="cell"><div class="k">타자 · 3번 중견수</div><div class="v t">박승규</div><div class="d">타율 .265 · 홈런 13</div></div>
+      <div class="cell"><div class="k">투수 · KT 선발</div><div class="v t">소형준</div><div class="d">평균자책 3.15</div></div>
+    </div>
+    <div class="seg">
+      <div class="cell"><div class="k">주자 <span class="chg">· 방금 바뀜</span></div><div class="bases"><span class="bs on">1루</span><span class="bs on">2루</span><span class="bs">3루</span></div></div>
+      <div class="cell"><div class="k">아웃</div><div class="outs"><span class="o on"></span><span class="o on"></span><span class="o"></span></div></div>
+    </div>
+  </section>
+  <section class="log" aria-label="최근 타석">
+    <div><span>44</span><span><b>디아즈 단타</b></span><span>주자 1·2루</span></div>
+    <div><span>43</span><span>최형우 삼진</span><span>2아웃</span></div>
+    <div><span>42</span><span>류지혁 볼넷</span><span>주자 1루</span></div>
+  </section>
+  <section class="stub" aria-label="내 예측">
+    <div class="main"><div class="k">내 예측 · 확정됨</div><div class="v t">삼성 라이온즈 승리</div><div class="d">적중하면 +100점</div></div>
+    <div class="side"><div class="k">경기 번호</div><div class="v t">42</div><div class="d">seed</div></div>
+  </section>
+  <div class="actions"><button class="btn main">다음 타석</button><button class="btn sub">끝까지</button></div>
+</body>
+</html>

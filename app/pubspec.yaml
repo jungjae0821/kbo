@@ -1,0 +1,36 @@
+name: kbo_app
+description: "2026 KBO 시즌 기록 기반 가상야구 · 승부 예측 앱"
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.13.7
+
+dependencies:
+  flutter:
+    sdk: flutter
+  kbo_engine:
+    path: ../dart_engine
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/data/season_dataset.json
+  fonts:
+    - family: GyeonggiTitle
+      fonts:
+        - asset: assets/fonts/GyeonggiTitle-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/GyeonggiTitle-Bold.ttf
+          weight: 700
+    - family: GyeonggiBatang
+      fonts:
+        - asset: assets/fonts/GyeonggiBatang-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/GyeonggiBatang-Bold.ttf
+          weight: 700

@@ -23,3 +23,6 @@ Thumbs.db
 .dart_tool/
 .tool_cache/
 build/
+
+# 시안 비교용 폰트 복사본 (원본은 app/assets/fonts)
+.claude/screendoro-mocks/fonts/

@@ -1,0 +1,9 @@
+{
+  "impeccableDone": true,
+  "date": "2026-11-15",
+  "visualPreset": null,
+  "mockMode": "both",
+  "mockChoice": "F1 - 그라운드: 잔디·내야 흙 그라운드 위에 선수 이름, 아래는 한 크기 기록 시트 (자체 방향)",
+  "references": ["https://www.fieldrank.run/", "https://www.kepco.co.kr/sports/index.do", "https://pubgesports.com/"],
+  "refsNote": ".claude/screendoro-refs.md"
+}

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R1 기록실</title>
+<style>
+  @font-face { font-family: '경기천년제목'; src: url('fonts/GyeonggiTitle-Bold.ttf'); font-weight: 700; }
+  @font-face { font-family: '경기천년제목'; src: url('fonts/GyeonggiTitle-Medium.ttf'); font-weight: 500; }
+  @font-face { font-family: '경기천년바탕'; src: url('fonts/GyeonggiBatang-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: '경기천년바탕'; src: url('fonts/GyeonggiBatang-Bold.ttf'); font-weight: 700; }
+  :root {
+    --ground: #eef0ed; --card: #ffffff; --ink: #191c1a; --sub: #545b56; --rule: #e1e4e0;
+    --away: #23417a; --away-on: #ffffff; --home: #1f6a4a; --home-on: #ffffff; --act: #191c1a;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--ground); }
+  body { position: relative; width: 390px; height: 844px; overflow: hidden; color: var(--ink); font-family: '경기천년바탕', 'Pretendard', system-ui, sans-serif; word-break: keep-all; font-size: 14px; line-height: 1.5; }
+  .t { font-family: '경기천년제목', 'Pretendard', system-ui, sans-serif; }
+  .bar { height: 56px; display: flex; align-items: center; gap: 4px; padding: 0 8px; }
+  .icon { width: 48px; height: 48px; border-radius: 24px; border: 0; background: transparent; font-size: 22px; color: var(--ink); }
+  .bar h1 { margin: 0; font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
+  .bar small { display: block; font-family: '경기천년바탕', sans-serif; font-size: 12px; color: var(--sub); font-weight: 400; letter-spacing: 0; }
+  main { padding: 0 16px; display: grid; gap: 12px; }
+  .score { display: grid; grid-template-columns: 1fr auto 1fr; border-radius: 16px; overflow: hidden; }
+  .side { padding: 14px 16px; }
+  .side.a { background: var(--away); color: var(--away-on); }
+  .side.h { background: var(--home); color: var(--home-on); text-align: right; }
+  .side .name { font-size: 14px; font-weight: 500; }
+  .side .runs { font-size: 44px; font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; }
+  .mid { background: var(--card); padding: 12px 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .mid b { font-size: 17px; }
+  .mid span { font-size: 12px; color: var(--sub); }
+  .card { background: var(--card); border-radius: 16px; padding: 12px 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { font-weight: 400; color: var(--sub); font-size: 12px; padding: 2px 0 4px; }
+  td { text-align: center; padding: 3px 0; }
+  td:first-child, th:first-child { text-align: left; width: 44px; }
+  td.r, th.r { font-weight: 700; color: var(--ink); }
+  td.now { background: #fff4d6; border-radius: 6px; }
+  .duel { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .duel .card p { margin: 0; }
+  .role { font-size: 12px; color: var(--sub); }
+  .who { font-size: 18px; font-weight: 700; margin: 2px 0 2px; }
+  .stat { font-size: 13px; }
+  .state { display: flex; align-items: center; gap: 16px; }
+  .diamond { width: 76px; height: 76px; position: relative; flex: none; }
+  .base { position: absolute; width: 20px; height: 20px; transform: rotate(45deg); background: var(--rule); border-radius: 3px; }
+  .base.on { background: var(--home); }
+  .b2 { left: 28px; top: 4px; } .b3 { left: 4px; top: 28px; } .b1 { left: 52px; top: 28px; } .hp { left: 28px; top: 52px; background: #c9cdc8; }
+  .outs { display: flex; gap: 6px; margin-top: 4px; }
+  .dot { width: 12px; height: 12px; border-radius: 6px; background: var(--rule); }
+  .dot.on { background: var(--ink); }
+  .last b { font-size: 15px; }
+  .log { margin: 0; padding: 0; list-style: none; }
+  .log li { display: grid; grid-template-columns: 38px 1fr auto; gap: 8px; padding: 5px 0; font-size: 13px; }
+  .log li span:first-child { color: var(--sub); }
+  .log li b { font-weight: 700; }
+  .pick { display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+  .pick b { color: var(--home); }
+  .actions { position: absolute; left: 0; right: 0; bottom: 0; padding: 12px 16px 20px; background: var(--ground); display: grid; grid-template-columns: auto 1fr; gap: 8px; }
+  .btn { height: 52px; border-radius: 26px; border: 0; font-family: '경기천년제목', sans-serif; font-weight: 700; font-size: 16px; padding: 0 20px; }
+  .btn.main { background: var(--act); color: #fff; }
+  .btn.sub { background: var(--card); color: var(--ink); font-weight: 500; font-size: 15px; }
+</style>
+</head>
+<body>
+  <header class="bar">
+    <button class="icon" aria-label="뒤로">‹</button>
+    <h1 class="t">KT 위즈 vs 삼성 라이온즈<small>가상 경기 · 2026 시즌 기록 기반</small></h1>
+  </header>
+  <main>
+    <section class="score" aria-label="현재 점수">
+      <div class="side a t"><div class="name">KT 위즈 · 원정</div><div class="runs">7</div></div>
+      <div class="mid t"><b>5회말</b><span>2아웃</span></div>
+      <div class="side h t"><div class="name">삼성 · 홈</div><div class="runs">0</div></div>
+    </section>
+    <section class="card">
+      <table>
+        <tr><th>팀</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th class="r">R</th></tr>
+        <tr><td>KT</td><td>0</td><td>5</td><td>0</td><td>0</td><td>2</td><td></td><td></td><td></td><td></td><td class="r">7</td></tr>
+        <tr><td>삼성</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="now">0</td><td></td><td></td><td></td><td></td><td class="r">0</td></tr>
+      </table>
+    </section>
+    <section class="duel">
+      <div class="card"><p class="role">타석 · 3번 중견수</p><p class="who t">박승규</p><p class="stat">타율 .265 · 홈런 13</p></div>
+      <div class="card"><p class="role">투수 · KT 선발</p><p class="who t">소형준</p><p class="stat">평균자책 3.15</p></div>
+    </section>
+    <section class="card state">
+      <div class="diamond" aria-label="주자 1루, 2루">
+        <div class="base b2 on"></div><div class="base b3"></div><div class="base b1 on"></div><div class="base hp"></div>
+      </div>
+      <div class="last">
+        <div class="role">직전 타석</div>
+        <b class="t">디아즈 단타</b>
+        <div class="stat">주자 1·2루</div>
+        <div class="outs" aria-label="2아웃"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></div>
+      </div>
+    </section>
+    <section class="card">
+      <ul class="log">
+        <li><span>44</span><span>디아즈</span><b>단타</b></li>
+        <li><span>43</span><span>최형우</span><b>삼진</b></li>
+        <li><span>42</span><span>류지혁</span><b>볼넷</b></li>
+      </ul>
+    </section>
+    <section class="pick"><span>내 예측 <b>삼성 승리</b></span><span>확정됨 · 변경 불가</span></section>
+  </main>
+  <div class="actions">
+    <button class="btn sub">끝까지</button>
+    <button class="btn main">다음 타석 진행</button>
+  </div>
+</body>
+</html>
