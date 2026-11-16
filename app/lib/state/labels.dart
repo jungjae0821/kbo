@@ -62,3 +62,11 @@ String keepAll(String text) => text
     .split(' ')
     .map((word) => word.split('').join('\u2060'))
     .join(' ');
+
+/// 이름 뒤 목적격 조사: 받침이 있으면 "을", 없으면 "를". 한글이 아니면 "을(를)".
+String withObject(String name) {
+  if (name.isEmpty) return name;
+  final c = name.codeUnitAt(name.length - 1);
+  if (c < 0xAC00 || c > 0xD7A3) return '$name을(를)';
+  return (c - 0xAC00) % 28 == 0 ? '$name를' : '$name을';
+}

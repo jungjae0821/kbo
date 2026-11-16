@@ -20,6 +20,8 @@ class Diamond extends StatelessWidget {
     this.batter,
     this.pitcher,
     this.halfDiagonal = 100,
+    this.compact = false,
+    this.showOuts = true,
   });
 
   final List<FieldTag?> runners;
@@ -28,11 +30,24 @@ class Diamond extends StatelessWidget {
   final FieldTag? pitcher;
   final double halfDiagonal;
 
+  /// 작은 휴대폰용: 이름표를 한 줄로 줄이고 아래 여백을 줄인다.
+  final bool compact;
+
+  /// 아웃 표시를 다이아몬드 안에 그릴지. 작은 화면에서는 점수판 쪽에 둔다.
+  final bool showOuts;
+
+  /// 이름표 높이: 이름(titleSmall 15sp, 행간 1.35)과 기록(bodySmall 12sp, 행간 1.3), 글자 크기 설정 반영.
+  static double tagHeight(TextScaler scaler, {required bool compact}) => compact
+      ? scaler.scale(15) * 1.35 + 4
+      : scaler.scale(15) * 1.35 + scaler.scale(12) * 1.3 + 6;
+
   @override
   Widget build(BuildContext context) {
     final k = context.kbo;
     final d = halfDiagonal;
-    final height = d * 2 + 76;
+    final below = compact ? 13.0 : 18.0;
+    // 맨 아래 타자 이름표가 칸 밖으로 나가지 않게 높이를 이름표 실제 높이로 잡는다.
+    final height = (d + 22) + d + below + tagHeight(MediaQuery.textScalerOf(context), compact: compact) + 2;
     final reduce = MediaQuery.of(context).disableAnimations;
     final dur = reduce ? Duration.zero : motion;
 
@@ -64,18 +79,19 @@ class Diamond extends StatelessWidget {
               ),
             );
 
-        Widget tag(FieldTag? t, Offset anchor, {Alignment align = Alignment.topCenter}) {
+        // [above]이면 이름표 아래 끝을 anchor에 맞춘다 (베이스 위쪽에 놓을 때).
+        Widget tag(FieldTag? t, Offset anchor, {Alignment align = Alignment.topCenter, bool above = false}) {
           return Positioned(
             left: anchor.dx,
             top: anchor.dy,
             child: FractionalTranslation(
-              translation: Offset(-(align.x + 1) / 2, 0),
+              translation: Offset(-(align.x + 1) / 2, above ? -1 : 0),
               child: AnimatedSwitcher(
                 duration: dur,
                 switchInCurve: motionCurve,
                 child: t == null
                     ? const SizedBox.shrink()
-                    : _NameTag(key: ValueKey(t.id), tag: t),
+                    : _NameTag(key: ValueKey(t.id), tag: t, inline: compact),
               ),
             ),
           );
@@ -100,15 +116,18 @@ class Diamond extends StatelessWidget {
             base(third, runners[2] != null),
             base(home, true),
             tag(runners[1], second + const Offset(18, -14), align: Alignment.topLeft),
-            tag(runners[0], first + const Offset(0, 18)),
-            tag(runners[2], third + const Offset(0, 18)),
-            tag(pitcher, Offset(cx, cy + 14)),
-            tag(batter, home + const Offset(0, 18)),
-            Positioned(
-              left: 16,
-              bottom: 4,
-              child: _Outs(outs: outs),
-            ),
+            // 1·3루 주자 이름표는 베이스 위쪽(바깥)에 둔다. 아래쪽은 가운데 투수 이름표와
+            // 같은 높이라 만루일 때 서로 겹친다.
+            tag(runners[0], first + Offset(0, -below), above: true),
+            tag(runners[2], third + Offset(0, -below), above: true),
+            tag(pitcher, Offset(cx, cy + (compact ? 10 : 14))),
+            tag(batter, home + Offset(0, below)),
+            if (showOuts)
+              Positioned(
+                left: 16,
+                bottom: 4,
+                child: OutsBoard(outs: outs),
+              ),
           ],
         );
       }),
@@ -117,8 +136,11 @@ class Diamond extends StatelessWidget {
 }
 
 class _NameTag extends StatelessWidget {
-  const _NameTag({super.key, required this.tag});
+  const _NameTag({super.key, required this.tag, this.inline = false});
   final FieldTag tag;
+
+  /// 이름과 기록을 한 줄에 (작은 화면).
+  final bool inline;
 
   @override
   Widget build(BuildContext context) {
@@ -130,9 +152,12 @@ class _NameTag extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-        child: Column(
+        padding: EdgeInsets.symmetric(horizontal: inline ? 6 : 8, vertical: inline ? 2 : 3),
+        child: Flex(
+          direction: inline ? Axis.horizontal : Axis.vertical,
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: inline ? CrossAxisAlignment.baseline : CrossAxisAlignment.center,
+          textBaseline: TextBaseline.alphabetic,
           children: [
             Text(
               tag.name,
@@ -141,6 +166,7 @@ class _NameTag extends StatelessWidget {
                 fontWeight: FontWeight.w700,
               ),
             ),
+            if (tag.detail != null && inline) const SizedBox(width: 4),
             if (tag.detail != null)
               Text(
                 tag.detail!,
@@ -153,36 +179,46 @@ class _NameTag extends StatelessWidget {
   }
 }
 
-class _Outs extends StatelessWidget {
-  const _Outs({required this.outs});
+/// 아웃 카운트: 어두운 면 위 빨간 동그라미 3개와 "N아웃".
+class OutsBoard extends StatelessWidget {
+  const OutsBoard({super.key, required this.outs});
   final int outs;
 
   @override
   Widget build(BuildContext context) {
     final k = context.kbo;
+    final reduce = MediaQuery.of(context).disableAnimations;
+    // 빨간 아웃 표시는 잔디 위에서 잘 안 보여 전광판처럼 어두운 면 위에 둔다.
     return Semantics(
       label: '$outs아웃',
       excludeSemantics: true,
-      child: Row(
-        children: [
-          for (var i = 0; i < 3; i++) ...[
-            AnimatedContainer(
-              duration: MediaQuery.of(context).disableAnimations ? Duration.zero : motion,
-              width: 12,
-              height: 12,
-              decoration: BoxDecoration(
-                color: i < outs ? k.chalk : Colors.transparent,
-                shape: BoxShape.circle,
-                border: Border.all(color: k.chalk, width: 2),
+      child: DecoratedBox(
+        decoration: BoxDecoration(color: k.board, borderRadius: BorderRadius.circular(12)),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(10, 6, 12, 6),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              for (var i = 0; i < 3; i++) ...[
+                AnimatedContainer(
+                  duration: reduce ? Duration.zero : motion,
+                  width: 12,
+                  height: 12,
+                  decoration: BoxDecoration(
+                    color: i < outs ? k.outRed : Colors.transparent,
+                    shape: BoxShape.circle,
+                    border: Border.all(color: k.outRed, width: 2),
+                  ),
+                ),
+                const SizedBox(width: 6),
+              ],
+              Text(
+                '$outs아웃',
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(color: k.chalkSub, height: 1.2),
               ),
-            ),
-            const SizedBox(width: 6),
-          ],
-          Text(
-            '$outs아웃',
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(color: k.chalkSub),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

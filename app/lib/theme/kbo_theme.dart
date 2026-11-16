@@ -17,6 +17,8 @@ class KboColors extends ThemeExtension<KboColors> {
     required this.inkSub,
     required this.line,
     required this.accentText,
+    this.outRed = const Color(0xFFFF5A4E),
+    this.board = const Color(0xFF14201A),
   });
 
   final Color grass;
@@ -34,6 +36,12 @@ class KboColors extends ThemeExtension<KboColors> {
 
   /// 시트 위에서 현재 이닝·강조 숫자에 쓰는 흙색 글자.
   final Color accentText;
+
+  /// 아웃 카운트 빨강. 잔디 위 대비가 낮아(2.3:1) 항상 [board] 위에 둔다 (5.45:1).
+  final Color outRed;
+
+  /// 아웃 카운트를 받치는 전광판 면.
+  final Color board;
 
   static const light = KboColors(
     grass: Color(0xFF2C6440),
@@ -88,6 +96,8 @@ class KboColors extends ThemeExtension<KboColors> {
       inkSub: l(inkSub, other.inkSub),
       line: l(line, other.line),
       accentText: l(accentText, other.accentText),
+      outRed: l(outRed, other.outRed),
+      board: l(board, other.board),
     );
   }
 }

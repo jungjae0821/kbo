@@ -35,10 +35,14 @@ class ResultScreen extends StatelessWidget {
             ? '예측 적중, ${RecordBook.pointsPerHit}점을 받았습니다.'
             : '예측이 빗나갔습니다. 0점입니다.';
 
-    // 이닝 공수별로 타석을 묶는다.
-    final halves = <(int, bool), List<PlateAppearanceLog>>{};
-    for (final log in logs) {
-      halves.putIfAbsent((log.inning, log.isTop), () => []).add(log);
+    // 이닝 공수별로 타석과 교체를 일어난 순서대로 묶는다.
+    final subs = engine.substitutions;
+    final halves = <(int, bool), List<Object>>{};
+    for (final event in playEvents(logs, subs)) {
+      final key = event is PlateAppearanceLog
+          ? (event.inning, event.isTop)
+          : ((event as Substitution).inning, event.isTop);
+      halves.putIfAbsent(key, () => []).add(event);
     }
 
     void again() {
@@ -92,19 +96,27 @@ class ResultScreen extends StatelessWidget {
           LineScore(awayName: away.shortName, homeName: home.shortName, state: s, logs: logs),
           const SheetHeading('타석 기록'),
           for (final entry in halves.entries) ...[
-            Padding(
-              padding: const EdgeInsets.only(top: 12, bottom: 2),
-              child: Text(
-                '${halfLabel(entry.key.$1, entry.key.$2)}  ${entry.key.$2 ? away.shortName : home.shortName} 공격',
-                style: text.bodyMedium?.copyWith(fontWeight: FontWeight.w700),
-              ),
+            HalfHeader(
+              inning: entry.key.$1,
+              isTop: entry.key.$2,
+              attackingTeam: entry.key.$2 ? away.shortName : home.shortName,
             ),
-            for (final log in entry.value)
-              PlateRow(log: log, batterName: data.player(log.batterId).name),
+            for (final event in entry.value)
+              if (event is PlateAppearanceLog)
+                PlateRow(log: event, batterName: data.player(event.batterId).name)
+              else if (event is Substitution)
+                SubstitutionRow(
+                  sub: event,
+                  inName: data.player(event.inPlayerId).name,
+                  outName: data.player(event.outPlayerId).name,
+                  teamName: data.team(event.teamId).shortName,
+                ),
           ],
           const SizedBox(height: 12),
           Text(
-            keepAll('가상 경기 결과입니다. 경기 번호 ${engine.seed}로 같은 대진을 다시 하면 같은 경기가 나옵니다.'),
+            keepAll(subs.isEmpty
+                ? '가상 경기 결과입니다. 경기 번호 ${engine.seed}로 같은 대진을 다시 하면 같은 경기가 나옵니다.'
+                : '가상 경기 결과입니다. 경기 번호 ${engine.seed}로 같은 대진을 다시 하고 같은 시점에 같은 교체를 하면 같은 경기가 나옵니다.'),
             style: text.bodySmall?.copyWith(color: k.inkSub),
           ),
         ],

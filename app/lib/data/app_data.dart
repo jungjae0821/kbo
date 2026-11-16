@@ -67,6 +67,10 @@ class PlayerCard {
     this.wins,
     this.losses,
     this.inningsPitched,
+    this.plateAppearances,
+    this.outsPitched,
+    this.saves,
+    this.holds,
   });
 
   factory PlayerCard.fromJson(Map<String, dynamic> j) {
@@ -82,6 +86,10 @@ class PlayerCard {
       wins: p?['wins'] as int?,
       losses: p?['losses'] as int?,
       inningsPitched: p?['innings_pitched'] as String?,
+      plateAppearances: b?['plate_appearances'] as int?,
+      outsPitched: p?['outs_pitched'] as int?,
+      saves: p?['saves'] as int?,
+      holds: p?['holds'] as int?,
     );
   }
 
@@ -94,6 +102,10 @@ class PlayerCard {
   final int? wins;
   final int? losses;
   final String? inningsPitched;
+  final int? plateAppearances;
+  final int? outsPitched;
+  final int? saves;
+  final int? holds;
 }
 
 /// 앱이 쓰는 시즌 데이터 한 벌. 엔진 입력은 [season]이 계약 검사를 통과한 것만 담는다.
