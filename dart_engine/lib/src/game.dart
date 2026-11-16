@@ -260,6 +260,51 @@ class PlateAppearanceLog {
       };
 }
 
+enum SubstitutionKind {
+  pitcher('pitcher'),
+  pinchHitter('pinch_hitter');
+
+  const SubstitutionKind(this.key);
+  final String key;
+}
+
+/// A substitution applied between plate appearances. [beforePlateAppearance]
+/// is the number of the first plate appearance that uses the new player.
+class Substitution {
+  Substitution({
+    required this.kind,
+    required this.teamId,
+    required this.outPlayerId,
+    required this.inPlayerId,
+    required this.beforePlateAppearance,
+    required this.inning,
+    required this.isTop,
+    this.battingOrder,
+  });
+
+  final SubstitutionKind kind;
+  final String teamId;
+  final String outPlayerId;
+  final String inPlayerId;
+  final int beforePlateAppearance;
+  final int inning;
+  final bool isTop;
+
+  /// 1-9 for a pinch hitter; null for a pitching change.
+  final int? battingOrder;
+
+  Map<String, dynamic> toJson() => {
+        'kind': kind.key,
+        'team_id': teamId,
+        'out_player_id': outPlayerId,
+        'in_player_id': inPlayerId,
+        'before_plate_appearance': beforePlateAppearance,
+        'inning': inning,
+        'half': isTop ? 'top' : 'bottom',
+        'batting_order': battingOrder,
+      };
+}
+
 class GameEngine {
   GameEngine({
     required this.dataset,
@@ -267,6 +312,7 @@ class GameEngine {
     required this.homeTeamId,
     required this.seed,
     String? gameId,
+    Map<String, String> startingPitchers = const {},
   })  : gameId = gameId ??
             'kbo-${DateTime.now().microsecondsSinceEpoch}-${_sequence++}',
         _random = SeededRandom(seed) {
@@ -276,9 +322,59 @@ class GameEngine {
       throw ArgumentError('Select two different teams from the dataset');
     }
     if (this.gameId.isEmpty) throw ArgumentError('gameId cannot be empty');
+    for (final teamId in startingPitchers.keys) {
+      if (teamId != awayTeamId && teamId != homeTeamId) {
+        throw ArgumentError.value(teamId, 'startingPitchers', 'Team is not in this game');
+      }
+    }
+    for (final teamId in [awayTeamId, homeTeamId]) {
+      final lineup = dataset.lineups[teamId]!;
+      final starter = startingPitchers[teamId] ?? lineup.pitcherId;
+      if (!starterCandidates(dataset, teamId).contains(starter)) {
+        throw ArgumentError.value(
+          starter,
+          'startingPitchers',
+          'Not an eligible starter: off the roster, no usable pitching record, '
+              'or already in the batting order',
+        );
+      }
+      _pitchers[teamId] = starter;
+      _orders[teamId] = lineup.battingOrder.map((s) => s.playerId).toList();
+      _appeared[teamId] = {starter, ..._orders[teamId]!};
+    }
   }
 
-  static const version = '1.0.0';
+  /// Pitchers who may start for [teamId]: on its roster, with a usable
+  /// pitching profile, and not in its automatic batting order. Includes the
+  /// automatic starter.
+  static List<String> starterCandidates(SeasonDataset dataset, String teamId) {
+    final team = dataset.teams[teamId];
+    final lineup = dataset.lineups[teamId];
+    if (team == null || lineup == null) {
+      throw ArgumentError.value(teamId, 'teamId', 'Unknown team');
+    }
+    final batters = {for (final s in lineup.battingOrder) s.playerId};
+    return [
+      for (final id in team.rosterIds)
+        if (!batters.contains(id) &&
+            dataset.players[id]?.teamId == teamId &&
+            dataset.players[id]!.validPitcher)
+          id,
+    ]..sort();
+  }
+
+  /// The pitcher who started for [teamId].
+  String startingPitcherFor(String teamId) {
+    _team(teamId);
+    final first = _substitutions
+        .where((s) => s.teamId == teamId && s.kind == SubstitutionKind.pitcher)
+        .firstOrNull;
+    return first?.outPlayerId ?? _pitchers[teamId]!;
+  }
+
+  /// 1.1.0: pitching changes and pinch hitters. Without substitutions a game
+  /// replays exactly as in 1.0.0 for the same inputs and seed.
+  static const version = '1.1.0';
   static int _sequence = 0;
   final SeasonDataset dataset;
   final String awayTeamId;
@@ -287,9 +383,120 @@ class GameEngine {
   final String gameId;
   final SeededRandom _random;
   final List<PlateAppearanceLog> _logs = [];
+  final Map<String, String> _pitchers = {};
+  final Map<String, List<String>> _orders = {};
+  final Map<String, Set<String>> _appeared = {};
+  final List<Substitution> _substitutions = [];
   GameState _state = GameState();
   GameState get state => _state;
   List<PlateAppearanceLog> get logs => List.unmodifiable(_logs);
+  List<Substitution> get substitutions => List.unmodifiable(_substitutions);
+
+  /// The pitcher currently assigned to [teamId].
+  String pitcherFor(String teamId) => _pitchers[_team(teamId)]!;
+
+  /// Player IDs in batting order 1-9 as currently assigned to [teamId].
+  List<String> battingOrderFor(String teamId) =>
+      List.unmodifiable(_orders[_team(teamId)]!);
+
+  /// The batter who comes up next for [teamId].
+  String nextBatterFor(String teamId) =>
+      _orders[_team(teamId)]![_battingIndex(teamId)];
+
+  /// Everyone who has played in this game for [teamId]; none may re-enter.
+  Set<String> appearedFor(String teamId) =>
+      Set.unmodifiable(_appeared[_team(teamId)]!);
+
+  /// Roster pitchers with a usable pitching profile who have not played yet.
+  List<String> pitcherCandidates(String teamId) =>
+      _candidates(teamId, (p) => p.validPitcher);
+
+  /// Roster batters with a usable batting profile who have not played yet.
+  List<String> pinchHitterCandidates(String teamId) =>
+      _candidates(teamId, (p) => p.validBatter);
+
+  /// Replaces [teamId]'s pitcher from the next plate appearance on.
+  Substitution substitutePitcher(String teamId, String playerId) {
+    _checkSubstitution(teamId, playerId, pitcherCandidates(teamId));
+    final sub = _record(Substitution(
+      kind: SubstitutionKind.pitcher,
+      teamId: teamId,
+      outPlayerId: _pitchers[teamId]!,
+      inPlayerId: playerId,
+      beforePlateAppearance: state.plateAppearances + 1,
+      inning: state.inning,
+      isTop: state.isTop,
+    ));
+    _pitchers[teamId] = playerId;
+    return sub;
+  }
+
+  /// Sends [playerId] up for [teamId]'s next batter. The pinch hitter keeps
+  /// that batting slot for the rest of the game.
+  Substitution pinchHit(String teamId, String playerId) {
+    _checkSubstitution(teamId, playerId, pinchHitterCandidates(teamId));
+    final index = _battingIndex(teamId);
+    final sub = _record(Substitution(
+      kind: SubstitutionKind.pinchHitter,
+      teamId: teamId,
+      outPlayerId: _orders[teamId]![index],
+      inPlayerId: playerId,
+      beforePlateAppearance: state.plateAppearances + 1,
+      inning: state.inning,
+      isTop: state.isTop,
+      battingOrder: index + 1,
+    ));
+    _orders[teamId]![index] = playerId;
+    return sub;
+  }
+
+  String _team(String teamId) {
+    if (teamId != awayTeamId && teamId != homeTeamId) {
+      throw ArgumentError.value(teamId, 'teamId', 'Team is not in this game');
+    }
+    return teamId;
+  }
+
+  int _battingIndex(String teamId) => _team(teamId) == awayTeamId
+      ? state.awayBattingIndex
+      : state.homeBattingIndex;
+
+  List<String> _candidates(
+    String teamId,
+    bool Function(PlayerSeasonStats) usable,
+  ) {
+    final team = dataset.teams[_team(teamId)]!;
+    final appeared = _appeared[teamId]!;
+    return [
+      for (final id in team.rosterIds)
+        if (!appeared.contains(id) &&
+            dataset.players[id]?.teamId == teamId &&
+            usable(dataset.players[id]!))
+          id,
+    ]..sort();
+  }
+
+  void _checkSubstitution(
+    String teamId,
+    String playerId,
+    List<String> candidates,
+  ) {
+    if (state.isFinished) throw StateError('Game is already finished');
+    if (!candidates.contains(playerId)) {
+      throw ArgumentError.value(
+        playerId,
+        'playerId',
+        'Not an eligible substitute: off the roster, no usable record, '
+            'or already played in this game',
+      );
+    }
+  }
+
+  Substitution _record(Substitution sub) {
+    _substitutions.add(sub);
+    _appeared[sub.teamId]!.add(sub.inPlayerId);
+    return sub;
+  }
 
   String? get winnerTeamId =>
       !state.isFinished || state.homeScore == state.awayScore
@@ -306,11 +513,10 @@ class GameEngine {
         'Exceeded 10000 plate appearances; game remains unfinished',
       );
     }
-    final offense = dataset.lineups[state.isTop ? awayTeamId : homeTeamId]!;
-    final defense = dataset.lineups[state.isTop ? homeTeamId : awayTeamId]!;
-    final index = state.isTop ? state.awayBattingIndex : state.homeBattingIndex;
-    final batter = dataset.players[offense.battingOrder[index].playerId]!;
-    final pitcher = dataset.players[defense.pitcherId]!;
+    final offenseId = state.isTop ? awayTeamId : homeTeamId;
+    final defenseId = state.isTop ? homeTeamId : awayTeamId;
+    final batter = dataset.players[nextBatterFor(offenseId)]!;
+    final pitcher = dataset.players[_pitchers[defenseId]]!;
     final probabilities = EventProbabilities.matchup(
       batter.batting!,
       pitcher.pitching!,
@@ -354,6 +560,11 @@ class GameEngine {
         'home_team_id': homeTeamId,
         'winner_team_id': winnerTeamId,
         'state': state.toJson(),
+        'starting_pitchers': {
+          awayTeamId: startingPitcherFor(awayTeamId),
+          homeTeamId: startingPitcherFor(homeTeamId),
+        },
+        'substitutions': _substitutions.map((s) => s.toJson()).toList(),
         'plate_appearances': _logs.map((log) => log.toJson()).toList(),
       };
 }

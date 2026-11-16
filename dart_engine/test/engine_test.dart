@@ -514,6 +514,116 @@ void main(List<String> args) {
       );
     }
   });
+  test('1.1.0 without substitutions replays the week 2 example exactly', () {
+    final file = File('../outputs/week2_example_game.json');
+    check(file.existsSync(), 'Run from dart_engine/ so the example is found');
+    final example = jsonDecode(file.readAsStringSync()) as Map<String, dynamic>;
+    final game = GameEngine(
+      dataset: dataset,
+      awayTeamId: example['away_team_id'] as String,
+      homeTeamId: example['home_team_id'] as String,
+      seed: example['seed'] as int,
+      gameId: example['game_id'] as String,
+    )..playToEnd();
+    final now = game.toJson();
+    for (final key in ['state', 'plate_appearances', 'random_state']) {
+      equal(now[key], example[key]);
+    }
+    equal(now['substitutions'], []);
+  });
+  test('pitching change: new pitcher faces later batters, no re-entry', () {
+    final game = engine(7);
+    final home = ids[1];
+    final starter = game.pitcherFor(home);
+    final reliever = game.pitcherCandidates(home).first;
+    check(!game.pitcherCandidates(home).contains(starter), 'Starter listed');
+    for (var i = 0; i < 3; i++) {
+      game.step();
+    }
+    final sub = game.substitutePitcher(home, reliever);
+    equal(sub.outPlayerId, starter);
+    equal(sub.beforePlateAppearance, game.state.plateAppearances + 1);
+    game.playToEnd();
+    for (final log in game.logs.where((l) => l.isTop)) {
+      equal(log.pitcherId, log.number <= 3 ? starter : reliever);
+    }
+    throws(() => game.substitutePitcher(home, starter));
+  });
+  test('pinch hitter keeps the batting slot; replaced batter cannot return',
+      () {
+    final game = engine(8);
+    final away = ids[0];
+    final original = game.nextBatterFor(away);
+    final pinch = game.pinchHitterCandidates(away).first;
+    final sub = game.pinchHit(away, pinch);
+    equal(sub.battingOrder, 1);
+    equal(game.battingOrderFor(away).first, pinch);
+    game.playToEnd();
+    final awayLogs = game.logs.where((l) => l.isTop).toList();
+    for (var i = 0; i < awayLogs.length; i += 9) {
+      equal(awayLogs[i].batterId, pinch);
+    }
+    check(!awayLogs.any((l) => l.batterId == original), 'Original returned');
+    throws(() => game.pinchHit(away, original));
+  });
+  test('reject ineligible substitutes and changes after the game', () {
+    final game = engine(9);
+    final away = ids[0], home = ids[1];
+    throws(() => game.substitutePitcher(away, game.pitcherFor(home)));
+    throws(() => game.pinchHit(away, game.battingOrderFor(away)[3]));
+    throws(() => game.pinchHit(away, game.pinchHitterCandidates(home).first));
+    throws(() => game.substitutePitcher('unknown', 'kbo:player:0'));
+    game.playToEnd();
+    throws(() => game.substitutePitcher(home, game.pitcherCandidates(home).first));
+  });
+  test('substitutions are logged and replay identically', () {
+    GameEngine play() {
+      final g = engine(10);
+      for (var i = 0; i < 20; i++) {
+        g.step();
+      }
+      g.substitutePitcher(ids[0], g.pitcherCandidates(ids[0]).first);
+      g.pinchHit(ids[1], g.pinchHitterCandidates(ids[1]).last);
+      return g..playToEnd();
+    }
+
+    final a = play(), b = play();
+    equal(a.toJson(), b.toJson());
+    equal((a.toJson()['substitutions'] as List).length, 2);
+  });
+  test('chosen starting pitchers pitch from the first plate appearance', () {
+    final away = ids[0], home = ids[1];
+    final auto = dataset.lineups[home]!.pitcherId;
+    final candidates = GameEngine.starterCandidates(dataset, home);
+    check(candidates.contains(auto), 'Automatic starter must be a candidate');
+    final chosen = candidates.firstWhere((id) => id != auto);
+    final game = GameEngine(
+      dataset: dataset,
+      awayTeamId: away,
+      homeTeamId: home,
+      seed: 11,
+      gameId: 'starter-11',
+      startingPitchers: {home: chosen},
+    )..playToEnd();
+    for (final log in game.logs.where((l) => l.isTop)) {
+      equal(log.pitcherId, chosen);
+    }
+    equal(game.startingPitcherFor(home), chosen);
+    equal(game.startingPitcherFor(away), dataset.lineups[away]!.pitcherId);
+    equal((game.toJson()['starting_pitchers'] as Map)[home], chosen);
+    check(game.substitutions.isEmpty, 'A chosen starter is not a substitution');
+    // 바뀐 자동 선발은 교체 후보로 남는다 (경기에 나오지 않았으므로).
+    final g2 = GameEngine(dataset: dataset, awayTeamId: away, homeTeamId: home, seed: 12, startingPitchers: {home: chosen});
+    check(g2.pitcherCandidates(home).contains(auto), 'Unused starter should stay in the bullpen');
+  });
+  test('reject ineligible starting pitchers', () {
+    final away = ids[0], home = ids[1];
+    GameEngine make(Map<String, String> sp) =>
+        GameEngine(dataset: dataset, awayTeamId: away, homeTeamId: home, seed: 1, startingPitchers: sp);
+    throws(() => make({home: dataset.lineups[home]!.battingOrder.first.playerId}));
+    throws(() => make({home: dataset.lineups[away]!.pitcherId}));
+    throws(() => make({'unknown': dataset.lineups[home]!.pitcherId}));
+  });
   stdout.writeln('\n$passed passed, ${failures.length} failed');
   // Optional positional arguments: dataset path, report output path.
   if (args.length > 1) {
