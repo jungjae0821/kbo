@@ -70,3 +70,17 @@ String withObject(String name) {
   if (c < 0xAC00 || c > 0xD7A3) return '$name을(를)';
   return (c - 0xAC00) % 28 == 0 ? '$name를' : '$name을';
 }
+
+/// 전광판식 한 글자 포지션: 포수 "포", 유격수 "유", 중견수 "중", 1루수 "1".
+String positionShort(String code) => switch (code) {
+      'C' => '포',
+      '1B' => '1',
+      '2B' => '2',
+      '3B' => '3',
+      'SS' => '유',
+      'LF' => '좌',
+      'CF' => '중',
+      'RF' => '우',
+      'DH' => '지',
+      _ => code,
+    };

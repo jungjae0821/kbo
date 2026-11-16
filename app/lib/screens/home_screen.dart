@@ -3,36 +3,83 @@ import 'package:flutter/material.dart';
 import '../app_scope.dart';
 import '../data/data_controller.dart';
 import '../state/labels.dart';
+import '../state/record_book.dart';
 import '../theme/kbo_theme.dart';
 import '../widgets/ground_layout.dart';
-import '../widgets/stat_tile.dart';
+import '../widgets/record_sheet.dart';
 import 'records_screen.dart';
 import 'team_select_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+  /// 홈 기록지에 보여 주는 최근 경기 수. 나머지는 개인 기록 화면에서 본다.
+  static const _recentCount = 5;
+
   @override
   Widget build(BuildContext context) {
     final scope = AppScope.of(context);
+    final k = context.kbo;
+    final text = Theme.of(context).textTheme;
     return ListenableBuilder(
       listenable: Listenable.merge([scope.data, scope.records]),
       builder: (context, _) {
         final data = scope.data;
         final records = scope.records;
         final ready = data.status == DataStatus.ready;
+
+        final Widget recent;
+        if (data.status == DataStatus.loading) {
+          recent = Row(
+            children: [
+              SizedBox.square(
+                dimension: 16,
+                child: CircularProgressIndicator(strokeWidth: 2, color: k.inkSub),
+              ),
+              const SizedBox(width: 10),
+              Text('시즌 기록을 읽는 중입니다', style: text.bodyMedium?.copyWith(color: k.inkSub)),
+            ],
+          );
+        } else if (data.status == DataStatus.failed) {
+          recent = Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(keepAll(data.error ?? ''), style: text.bodyMedium),
+              const SizedBox(height: 8),
+              FilledButton(
+                style: secondaryButtonStyle(context),
+                onPressed: data.load,
+                child: const Text('다시 불러오기'),
+              ),
+            ],
+          );
+        } else if (records.recent.isEmpty) {
+          recent = Text(
+            keepAll('아직 끝낸 경기가 없습니다. 두 팀을 고르고 이길 팀을 예측해 보세요.'),
+            style: text.bodyMedium,
+          );
+        } else {
+          recent = PredictionLedger(
+            games: records.recent.take(_recentCount).toList(),
+            data: data.data!,
+          );
+        }
+
         return GroundLayout(
           title: 'KBO 가상야구',
-          ground: _HomeGround(data: data),
+          ground: Padding(
+            padding: const EdgeInsets.fromLTRB(24, 4, 24, 32),
+            child: PredictionStatLine(records: records),
+          ),
           sheet: SheetBody(
             children: [
-              const SheetHeading('내 예측 기록', first: true),
-              StatRow(
-                tiles: [
-                  StatTile(label: '누적 점수', value: '${records.totalPoints}'),
-                  StatTile(label: '적중률', value: formatRate(records.hitRate)),
-                  StatTile(label: '예측', value: '${records.predictionCount}경기'),
-                ],
+              const SheetHeading('최근 예측', first: true),
+              recent,
+              const SizedBox(height: 24),
+              Text(
+                keepAll('2026 정규시즌 기록으로 치르는 가상 경기입니다. '
+                    '이긴 팀을 맞히면 ${RecordBook.pointsPerHit}점, 무승부는 0점이고 적중률에서 빠집니다.'),
+                style: text.bodySmall?.copyWith(color: k.inkSub),
               ),
             ],
           ),
@@ -47,72 +94,16 @@ class HomeScreen extends StatelessWidget {
             ),
             secondary: FilledButton(
               style: secondaryButtonStyle(context),
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => const RecordsScreen()),
-              ),
+              onPressed: ready
+                  ? () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const RecordsScreen()),
+                      )
+                  : null,
               child: const Text('개인 기록'),
             ),
           ),
         );
       },
-    );
-  }
-}
-
-class _HomeGround extends StatelessWidget {
-  const _HomeGround({required this.data});
-  final DataController data;
-
-  @override
-  Widget build(BuildContext context) {
-    final k = context.kbo;
-    final text = Theme.of(context).textTheme;
-    final Widget status = switch (data.status) {
-      DataStatus.loading => Row(
-          children: [
-            const SizedBox.square(dimension: 16, child: CircularProgressIndicator(strokeWidth: 2)),
-            const SizedBox(width: 10),
-            Text('시즌 데이터를 확인하고 있습니다', style: text.bodyMedium?.copyWith(color: k.chalkSub)),
-          ],
-        ),
-      DataStatus.ready => Text(
-          keepAll('${data.data!.teams.length}개 팀, 선수 ${data.data!.playerCount}명의 기록이 준비됐습니다'),
-          style: text.bodyMedium?.copyWith(color: k.chalkSub),
-        ),
-      DataStatus.failed => Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(keepAll(data.error ?? ''), style: text.bodyMedium?.copyWith(color: k.chalk)),
-            const SizedBox(height: 8),
-            FilledButton(
-              style: FilledButton.styleFrom(
-                backgroundColor: k.chalk,
-                foregroundColor: k.grass,
-              ),
-              onPressed: data.load,
-              child: const Text('다시 불러오기'),
-            ),
-          ],
-        ),
-    };
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(24, 20, 24, 36),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            '오늘의 승리 팀은?',
-            style: text.displaySmall?.copyWith(color: k.chalk, fontSize: 38, height: 1.2),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            keepAll('2026 KBO 정규시즌 기록으로 두 팀의 가상 경기를 치릅니다. 이길 팀을 맞히면 100점.'),
-            style: text.bodyLarge?.copyWith(color: k.chalk),
-          ),
-          const SizedBox(height: 20),
-          status,
-        ],
-      ),
     );
   }
 }

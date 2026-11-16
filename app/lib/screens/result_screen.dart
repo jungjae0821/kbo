@@ -7,6 +7,7 @@ import '../state/record_book.dart';
 import '../theme/kbo_theme.dart';
 import '../widgets/ground_layout.dart';
 import '../widgets/line_score.dart';
+import '../widgets/record_sheet.dart';
 import 'records_screen.dart';
 import 'team_select_screen.dart';
 
@@ -30,10 +31,10 @@ class ResultScreen extends StatelessWidget {
     final logs = engine.logs;
 
     final verdict = tie
-        ? '무승부라 0점입니다. 적중률 계산에서 빠집니다.'
+        ? '무승부 0점 (적중률에서 제외)'
         : hit
-            ? '예측 적중, ${RecordBook.pointsPerHit}점을 받았습니다.'
-            : '예측이 빗나갔습니다. 0점입니다.';
+            ? '적중 +${RecordBook.pointsPerHit}점'
+            : '빗나감 0점';
 
     // 이닝 공수별로 타석과 교체를 일어난 순서대로 묶는다.
     final subs = engine.substitutions;
@@ -58,34 +59,44 @@ class ResultScreen extends StatelessWidget {
         onPressed: () => Navigator.of(context).popUntil((r) => r.isFirst),
       ),
       ground: Padding(
-        padding: const EdgeInsets.fromLTRB(24, 8, 24, 28),
+        padding: const EdgeInsets.fromLTRB(24, 0, 24, 28),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              '${endLabel(s.end!)}, ${s.plateAppearances}타석',
-              style: text.bodyMedium?.copyWith(color: k.chalkSub),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 8),
-            Row(
-              children: [
-                Expanded(child: _FinalSide(name: away.name, runs: s.awayScore, won: winnerId == away.id)),
-                Text(':', style: text.displaySmall?.copyWith(color: k.chalkSub)),
-                Expanded(child: _FinalSide(name: home.name, runs: s.homeScore, won: winnerId == home.id, end: true)),
-              ],
-            ),
-            const SizedBox(height: 16),
-            Text(
-              tie ? '무승부' : '${data.team(winnerId).name} 승리',
-              style: text.headlineSmall?.copyWith(color: k.chalk),
-              textAlign: TextAlign.center,
+              keepAll('${tie ? '무승부' : '${data.team(winnerId).name} 승리'}, ${endLabel(s.end!)} (${s.plateAppearances}타석)'),
+              style: text.bodyMedium?.copyWith(color: k.chalk),
             ),
             const SizedBox(height: 4),
-            Text(
-              keepAll('내 예측 ${data.team(predictedWinnerId).shortName} 승리. $verdict'),
-              style: text.bodyMedium?.copyWith(color: k.chalk),
-              textAlign: TextAlign.center,
+            GroundTeamRow(
+              side: '원정',
+              name: away.name,
+              score: s.awayScore,
+              muted: !tie && winnerId != away.id,
+              semanticsLabel: '원정 ${away.name} ${s.awayScore}점',
+            ),
+            GroundTeamRow(
+              side: '홈',
+              name: home.name,
+              score: s.homeScore,
+              muted: !tie && winnerId != home.id,
+              semanticsLabel: '홈 ${home.name} ${s.homeScore}점',
+            ),
+            const SizedBox(height: 12),
+            Semantics(
+              liveRegion: true,
+              child: Text.rich(
+                TextSpan(children: [
+                  TextSpan(
+                    text: '내 예측 ${data.team(predictedWinnerId).shortName} 승리, ',
+                    style: text.bodyMedium?.copyWith(color: k.chalkSub),
+                  ),
+                  TextSpan(
+                    text: verdict,
+                    style: text.bodyMedium?.copyWith(color: k.chalk, fontWeight: FontWeight.w700),
+                  ),
+                ]),
+              ),
             ),
           ],
         ),
@@ -132,28 +143,6 @@ class ResultScreen extends StatelessWidget {
           child: const Text('개인 기록'),
         ),
       ),
-    );
-  }
-}
-
-class _FinalSide extends StatelessWidget {
-  const _FinalSide({required this.name, required this.runs, required this.won, this.end = false});
-
-  final String name;
-  final int runs;
-  final bool won;
-  final bool end;
-
-  @override
-  Widget build(BuildContext context) {
-    final k = context.kbo;
-    final text = Theme.of(context).textTheme;
-    return Column(
-      crossAxisAlignment: end ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-      children: [
-        Text(name, style: text.bodyMedium?.copyWith(color: k.chalkSub), maxLines: 1, overflow: TextOverflow.ellipsis),
-        Text('$runs', style: text.displaySmall?.copyWith(color: won ? k.chalk : k.chalkSub)),
-      ],
     );
   }
 }

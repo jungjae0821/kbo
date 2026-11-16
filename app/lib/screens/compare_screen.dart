@@ -6,8 +6,10 @@ import 'package:kbo_engine/kbo_engine.dart';
 import '../app_scope.dart';
 import '../data/app_data.dart';
 import '../state/labels.dart';
+import '../state/record_book.dart';
 import '../theme/kbo_theme.dart';
 import '../widgets/ground_layout.dart';
+import '../widgets/record_sheet.dart';
 import '../widgets/substitute_sheet.dart';
 import 'game_screen.dart';
 
@@ -23,7 +25,6 @@ class CompareScreen extends StatefulWidget {
 
 class _CompareScreenState extends State<CompareScreen> {
   String? _pick;
-  late String _lineupTeam = widget.awayId;
 
   /// 경기 전에 고른 선발투수. 비어 있으면 자동 선정 선발.
   final Map<String, String> _starters = {};
@@ -61,7 +62,8 @@ class _CompareScreenState extends State<CompareScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(keepAll('${winner.name} 승리로 확정할까요?')),
-        content: Text(keepAll('확정하면 경기가 끝날 때까지 바꿀 수 없습니다. 맞히면 100점을 받습니다.')),
+        content: Text(keepAll(
+            '확정하면 경기가 끝날 때까지 바꿀 수 없습니다. 맞히면 ${RecordBook.pointsPerHit}점을 받습니다.')),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
@@ -96,127 +98,89 @@ class _CompareScreenState extends State<CompareScreen> {
     final k = context.kbo;
     final text = Theme.of(context).textTheme;
 
+    Widget pickRow(String side, TeamSummary team) => GroundTeamRow(
+          side: side,
+          name: team.name,
+          detail: '${team.wins}승 ${team.losses}패 ${team.ties}무',
+          selected: _pick == team.id,
+          radio: true,
+          onTap: () => setState(() => _pick = team.id),
+          semanticsLabel: '$side ${team.name} 승리 예측',
+        );
+
+    final awayP = data.player(_starterOf(data, away.id));
+    final homeP = data.player(_starterOf(data, home.id));
+    String? replaced(String teamId) {
+      final auto = data.season.lineups[teamId]!.pitcherId;
+      return _starterOf(data, teamId) == auto ? null : '자동 선발 ${data.player(auto).name} 대신';
+    }
+
     return GroundLayout(
       title: '전력 비교와 예측',
       ground: Padding(
-        padding: const EdgeInsets.fromLTRB(24, 8, 24, 28),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
+        padding: const EdgeInsets.fromLTRB(16, 0, 16, 28),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Expanded(
-              child: _GroundTeam(label: '원정', team: away),
-            ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              child: Text(
-                'vs',
-                style: text.titleMedium?.copyWith(color: k.chalkSub),
-              ),
+              padding: const EdgeInsets.fromLTRB(8, 0, 8, 10),
+              child: Text('어느 팀이 이길까요?', style: text.headlineSmall?.copyWith(color: k.chalk)),
             ),
-            Expanded(
-              child: _GroundTeam(label: '홈', team: home, end: true),
-            ),
+            pickRow('원정', away),
+            const SizedBox(height: 6),
+            pickRow('홈', home),
           ],
         ),
       ),
       sheet: SheetBody(
         children: [
           const SheetHeading('시즌 전력', first: true),
-          _CompareTable(
-            rows: [
-              _Cmp(
-                '승률',
-                away.winRate,
-                home.winRate,
-                (v) => avg(v),
-                higherIsBetter: true,
-              ),
-              _Cmp(
-                '득점',
-                away.runsScored.toDouble(),
-                home.runsScored.toDouble(),
-                (v) => '${v.round()}',
-                higherIsBetter: true,
-              ),
-              _Cmp(
-                '실점',
-                away.runsAllowed.toDouble(),
-                home.runsAllowed.toDouble(),
-                (v) => '${v.round()}',
-                higherIsBetter: false,
-              ),
-              _Cmp(
-                '팀 타율',
-                away.battingAverage,
-                home.battingAverage,
-                avg,
-                higherIsBetter: true,
-              ),
-              _Cmp(
-                '팀 홈런',
-                away.homeRuns?.toDouble(),
-                home.homeRuns?.toDouble(),
-                (v) => '${v.round()}',
-                higherIsBetter: true,
-              ),
-              _Cmp('팀 평균자책', away.era, home.era, era, higherIsBetter: false),
-            ],
+          _AxisTable(
             awayName: away.shortName,
             homeName: home.shortName,
+            rows: [
+              _Cmp.num('승률', away.winRate, home.winRate, avg, higherIsBetter: true),
+              _Cmp.num('득점', away.runsScored.toDouble(), home.runsScored.toDouble(), _int, higherIsBetter: true),
+              _Cmp.num('실점', away.runsAllowed.toDouble(), home.runsAllowed.toDouble(), _int, higherIsBetter: false),
+              _Cmp.num('팀 타율', away.battingAverage, home.battingAverage, avg, higherIsBetter: true),
+              _Cmp.num('팀 홈런', away.homeRuns?.toDouble(), home.homeRuns?.toDouble(), _int, higherIsBetter: true),
+              _Cmp.num('팀 평균자책', away.era, home.era, era, higherIsBetter: false),
+            ],
           ),
-          const SheetHeading('선발투수'),
-          // 두 카드 높이를 맞춰 '선발 바꾸기' 버튼이 같은 줄에 오게 한다.
-          IntrinsicHeight(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                for (final (i, id) in [away.id, home.id].indexed) ...[
-                  if (i == 1) const SizedBox(width: 8),
-                  Expanded(
-                    child: _Pitcher(
-                      data: data,
-                      teamId: id,
-                      pitcherId: _starterOf(data, id),
-                      onChange: () => _changeStarter(data, id),
+          const SheetHeading('선발 맞대결'),
+          _AxisTable(
+            rows: [
+              _Cmp.text('선발', awayP.name, homeP.name, strong: true),
+              if (replaced(away.id) != null || replaced(home.id) != null)
+                _Cmp.text('', replaced(away.id) ?? '', replaced(home.id) ?? '', accent: true),
+              _Cmp.num('평균자책', awayP.era, homeP.era, era, higherIsBetter: false),
+              _Cmp.text('승패', '${awayP.wins ?? 0}승 ${awayP.losses ?? 0}패', '${homeP.wins ?? 0}승 ${homeP.losses ?? 0}패'),
+              _Cmp.text('이닝', awayP.inningsPitched ?? '—', homeP.inningsPitched ?? '—'),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              for (final (i, team) in [away, home].indexed) ...[
+                if (i == 1) const SizedBox(width: 8),
+                Expanded(
+                  child: FilledButton(
+                    style: secondaryButtonStyle(context).copyWith(
+                      minimumSize: const WidgetStatePropertyAll(Size(64, 48)),
+                      padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 12)),
                     ),
+                    onPressed: () => _changeStarter(data, team.id),
+                    child: Text('${team.shortName} 선발 바꾸기', maxLines: 1, overflow: TextOverflow.ellipsis),
                   ),
-                ],
+                ),
               ],
-            ),
+            ],
           ),
           const SheetHeading('타순'),
-          SegmentedButton<String>(
-            showSelectedIcon: false,
-            segments: [
-              ButtonSegment(value: away.id, label: Text(away.name)),
-              ButtonSegment(value: home.id, label: Text(home.name)),
-            ],
-            selected: {_lineupTeam},
-            onSelectionChanged: (s) => setState(() => _lineupTeam = s.first),
-          ),
-          const SizedBox(height: 8),
-          _Lineup(data: data, teamId: _lineupTeam),
-          const SheetHeading('어느 팀이 이길까요?'),
-          SegmentedButton<String>(
-            emptySelectionAllowed: true,
-            showSelectedIcon: false,
-            segments: [
-              ButtonSegment(
-                value: away.id,
-                label: Text('${away.shortName} 승리'),
-              ),
-              ButtonSegment(
-                value: home.id,
-                label: Text('${home.shortName} 승리'),
-              ),
-            ],
-            selected: {?_pick},
-            onSelectionChanged: (s) =>
-                setState(() => _pick = s.isEmpty ? null : s.first),
-          ),
-          const SizedBox(height: 8),
+          _LineupCards(data: data, awayId: away.id, homeId: home.id),
+          const SizedBox(height: 24),
           Text(
-            keepAll('경기 전에 한 팀을 골라 확정해야 시작할 수 있습니다. 무승부면 0점이고 적중률 계산에서 빠집니다.'),
+            keepAll('예측은 확정하면 경기가 끝날 때까지 바꿀 수 없습니다. 무승부면 0점이고 적중률 계산에서 빠집니다.'),
             style: text.bodySmall?.copyWith(color: k.inkSub),
           ),
         ],
@@ -224,279 +188,146 @@ class _CompareScreenState extends State<CompareScreen> {
       actions: ActionRow(
         primary: FilledButton(
           onPressed: _pick == null ? null : () => _confirm(data),
-          child: const Text('예측 확정'),
+          child: Text(_pick == null ? '이길 팀을 고르세요' : '${data.team(_pick!).shortName} 승리로 확정'),
         ),
       ),
     );
   }
 }
 
-class _GroundTeam extends StatelessWidget {
-  const _GroundTeam({
-    required this.label,
-    required this.team,
-    this.end = false,
-  });
+String _int(double v) => '${v.round()}';
+
+/// 가운데 항목 이름을 축으로 두 팀 값을 좌우에 놓는 한 줄.
+class _Cmp {
+  _Cmp.num(this.label, double? a, double? h, String Function(double) f, {required bool higherIsBetter})
+      : away = a == null ? '—' : f(a),
+        home = h == null ? '—' : f(h),
+        better = (a == null || h == null || a == h)
+            ? 0
+            : ((higherIsBetter ? a > h : a < h) ? -1 : 1),
+        strong = false,
+        accent = false;
+
+  _Cmp.text(this.label, this.away, this.home, {this.strong = false, this.accent = false}) : better = 0;
 
   final String label;
-  final TeamSummary team;
-  final bool end;
+  final String away;
+  final String home;
+
+  /// 더 나은 쪽: -1 원정, 1 홈, 0 같음·비교 안 함.
+  final int better;
+  final bool strong;
+  final bool accent;
+}
+
+/// 시트 위에 카드 없이 놓는 비교표. 더 나은 값은 굵게 쓴다.
+class _AxisTable extends StatelessWidget {
+  const _AxisTable({required this.rows, this.awayName, this.homeName});
+
+  final List<_Cmp> rows;
+  final String? awayName;
+  final String? homeName;
 
   @override
   Widget build(BuildContext context) {
     final k = context.kbo;
-    final text = Theme.of(context).textTheme;
-    final align = end ? CrossAxisAlignment.end : CrossAxisAlignment.start;
+    final base = Theme.of(context).textTheme.bodyMedium!;
+    final bold = base.copyWith(fontWeight: FontWeight.w700);
+    final sub = base.copyWith(color: k.inkSub);
+    final accent = Theme.of(context).textTheme.bodySmall!.copyWith(color: k.accentText);
+
+    Widget line(String a, String label, String h, TextStyle sa, TextStyle sh, {TextStyle? sl}) => Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(flex: 3, child: Text(keepAll(a), style: sa)),
+              Expanded(flex: 2, child: Text(label, style: sl ?? sub, textAlign: TextAlign.center)),
+              Expanded(flex: 3, child: Text(keepAll(h), style: sh, textAlign: TextAlign.end)),
+            ],
+          ),
+        );
+
     return Column(
-      crossAxisAlignment: align,
       children: [
-        Text(label, style: text.bodySmall?.copyWith(color: k.chalkSub)),
-        Text(
-          team.name,
-          style: text.headlineSmall?.copyWith(color: k.chalk),
-          textAlign: end ? TextAlign.end : TextAlign.start,
-        ),
-        Text(
-          '${team.wins}승 ${team.losses}패 ${team.ties}무',
-          style: text.bodyMedium?.copyWith(color: k.chalkSub),
-        ),
+        if (awayName != null) ExcludeSemantics(child: line(awayName!, '', homeName!, sub, sub)),
+        for (final r in rows)
+          Semantics(
+            label: r.label.isEmpty ? '${r.away} ${r.home}' : '${r.label}, ${r.away} 대 ${r.home}',
+            excludeSemantics: true,
+            child: r.accent
+                ? line(r.away, '', r.home, accent, accent)
+                : line(
+                    r.away,
+                    r.label,
+                    r.home,
+                    r.strong || r.better == -1 ? bold : base,
+                    r.strong || r.better == 1 ? bold : base,
+                  ),
+          ),
       ],
     );
   }
 }
 
-class _Cmp {
-  _Cmp(
-    this.label,
-    this.away,
-    this.home,
-    this.format, {
-    required this.higherIsBetter,
-  });
-  final String label;
-  final double? away;
-  final double? home;
-  final String Function(double) format;
-  final bool higherIsBetter;
-}
-
-/// 두 팀 값을 나란히 놓고 더 나은 쪽을 굵게 쓴다.
-class _CompareTable extends StatelessWidget {
-  const _CompareTable({
-    required this.rows,
-    required this.awayName,
-    required this.homeName,
-  });
-
-  final List<_Cmp> rows;
-  final String awayName;
-  final String homeName;
+/// 양 팀 타순을 나란히 적은 라인업 카드. 포지션은 전광판처럼 한 글자.
+class _LineupCards extends StatelessWidget {
+  const _LineupCards({required this.data, required this.awayId, required this.homeId});
+  final AppData data;
+  final String awayId;
+  final String homeId;
 
   @override
   Widget build(BuildContext context) {
     final k = context.kbo;
     final base = Theme.of(context).textTheme.bodyMedium!;
-    final strong = base.copyWith(fontWeight: FontWeight.w700);
     final sub = base.copyWith(color: k.inkSub);
+    final bold = base.copyWith(fontWeight: FontWeight.w700);
 
-    TextStyle styleFor(double? mine, double? theirs, bool higher) {
-      if (mine == null || theirs == null || mine == theirs) return base;
-      final better = higher ? mine > theirs : mine < theirs;
-      return better ? strong : base;
-    }
-
-    Widget line(
-      String a,
-      String label,
-      String h,
-      TextStyle sa,
-      TextStyle sl,
-      TextStyle sh,
-    ) => Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Row(
+    Widget column(String teamId) {
+      final lineup = data.season.lineups[teamId]!;
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Expanded(child: Text(a, style: sa)),
-          Expanded(
-            flex: 2,
-            child: Text(label, style: sl, textAlign: TextAlign.center),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 4),
+            child: Text(data.team(teamId).shortName, style: sub),
           ),
-          Expanded(
-            child: Text(h, style: sh, textAlign: TextAlign.end),
-          ),
-        ],
-      ),
-    );
-
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: k.sheetRaised,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-        child: Column(
-          children: [
-            line(awayName, '', homeName, sub, sub, sub),
-            for (final r in rows)
-              line(
-                r.away == null ? '—' : r.format(r.away!),
-                r.label,
-                r.home == null ? '—' : r.format(r.home!),
-                styleFor(r.away, r.home, r.higherIsBetter),
-                sub,
-                styleFor(r.home, r.away, r.higherIsBetter),
-              ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _Pitcher extends StatelessWidget {
-  const _Pitcher({
-    required this.data,
-    required this.teamId,
-    required this.pitcherId,
-    required this.onChange,
-  });
-  final AppData data;
-  final String teamId;
-  final String pitcherId;
-  final VoidCallback onChange;
-
-  @override
-  Widget build(BuildContext context) {
-    final k = context.kbo;
-    final text = Theme.of(context).textTheme;
-    final autoId = data.season.lineups[teamId]!.pitcherId;
-    final p = data.player(pitcherId);
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: k.sheetRaised,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(14, 10, 14, 12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              data.team(teamId).shortName,
-              style: text.bodySmall?.copyWith(color: k.inkSub),
-            ),
-            Text(p.name, style: text.titleMedium),
-            Text('평균자책 ${era(p.era)}', style: text.bodyMedium),
-            Text(
-              '${p.wins ?? 0}승 ${p.losses ?? 0}패, ${p.inningsPitched ?? '—'}이닝',
-              style: text.bodySmall?.copyWith(color: k.inkSub),
-            ),
-            if (pitcherId != autoId)
-              Text(
-                '자동 선발 ${data.player(autoId).name} 대신',
-                style: text.bodySmall?.copyWith(color: k.accentText),
-              ),
-            const Spacer(),
-            const SizedBox(height: 8),
-            FilledButton(
-              style: secondaryButtonStyle(context).copyWith(
-                minimumSize: const WidgetStatePropertyAll(Size(64, 48)),
-              ),
-              onPressed: onChange,
-              child: const Text('선발 바꾸기'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _Lineup extends StatelessWidget {
-  const _Lineup({required this.data, required this.teamId});
-  final AppData data;
-  final String teamId;
-
-  @override
-  Widget build(BuildContext context) {
-    final k = context.kbo;
-    final base = Theme.of(context).textTheme.bodyMedium!;
-    final sub = base.copyWith(color: k.inkSub);
-    final lineup = data.season.lineups[teamId]!;
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: k.sheetRaised,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4),
-              child: Row(
-                children: [
-                  SizedBox(width: 28, child: Text('', style: sub)),
-                  Expanded(child: Text('타자', style: sub)),
-                  SizedBox(
-                    width: 64,
-                    child: Text('타율', style: sub, textAlign: TextAlign.end),
-                  ),
-                  SizedBox(
-                    width: 48,
-                    child: Text('홈런', style: sub, textAlign: TextAlign.end),
-                  ),
-                ],
-              ),
-            ),
-            for (final slot in lineup.battingOrder)
-              Padding(
+          for (final slot in lineup.battingOrder)
+            Semantics(
+              label: '${slot.order}번 ${positionLabel(slot.position)} ${data.player(slot.playerId).name}, '
+                  '타율 ${avg(data.player(slot.playerId).battingAverage)}',
+              excludeSemantics: true,
+              child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4),
                 child: Row(
                   children: [
-                    SizedBox(
-                      width: 28,
-                      child: Text('${slot.order}', style: sub),
-                    ),
+                    SizedBox(width: 18, child: Text('${slot.order}', style: sub)),
+                    SizedBox(width: 20, child: Text(positionShort(slot.position), style: sub)),
                     Expanded(
-                      child: Text.rich(
-                        TextSpan(
-                          children: [
-                            TextSpan(
-                              text: data.player(slot.playerId).name,
-                              style: base.copyWith(fontWeight: FontWeight.w700),
-                            ),
-                            TextSpan(
-                              text: '  ${positionLabel(slot.position)}',
-                              style: sub,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 64,
                       child: Text(
-                        avg(data.player(slot.playerId).battingAverage),
-                        style: base,
-                        textAlign: TextAlign.end,
+                        data.player(slot.playerId).name,
+                        style: bold,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    SizedBox(
-                      width: 48,
-                      child: Text(
-                        '${data.player(slot.playerId).homeRuns ?? '—'}',
-                        style: base,
-                        textAlign: TextAlign.end,
-                      ),
-                    ),
+                    Text(avg(data.player(slot.playerId).battingAverage), style: base),
                   ],
                 ),
               ),
-          ],
-        ),
-      ),
+            ),
+        ],
+      );
+    }
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(child: column(awayId)),
+        const SizedBox(width: 20),
+        Expanded(child: column(homeId)),
+      ],
     );
   }
 }
