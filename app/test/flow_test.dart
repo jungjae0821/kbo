@@ -42,29 +42,29 @@ void main() {
     // 원정 → 홈 순서로 두 팀 선택. 이미 고른 팀은 다른 쪽에서 고를 수 없다.
     await tester.tap(find.text('KT 위즈').last);
     await tester.pumpAndSettle();
-    expect(find.text('원정팀로 선택됨'), findsOneWidget);
+    expect(find.bySemanticsLabel(RegExp('원정팀으로 선택됨')), findsOneWidget);
     await tester.tap(find.text('삼성 라이온즈').last);
     await tester.pumpAndSettle();
     await tester.tap(find.text('전력 비교'));
     await tester.pumpAndSettle();
 
     // 경기 전 KT 선발을 바꾼다. 되돌릴 수 있는 선택이라 확인 창 없이 바로 바뀐다.
-    await tester.dragUntilVisible(find.text('선발 바꾸기').first, find.byType(ListView), const Offset(0, -200));
+    await tester.dragUntilVisible(find.text('KT 선발 바꾸기'), find.byType(ListView), const Offset(0, -200));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('선발 바꾸기').first);
+    await tester.tap(find.text('KT 선발 바꾸기'));
     await tester.pumpAndSettle();
     expect(_plain('KT 선발투수 고르기'), findsOneWidget);
     await tester.tap(find.descendant(of: find.byType(BottomSheet), matching: find.byType(InkWell)).first);
     await tester.pumpAndSettle();
-    expect(find.text('자동 선발 소형준 대신'), findsOneWidget);
+    expect(_plain('자동 선발 소형준 대신'), findsOneWidget);
 
     // 예측 전에는 확정 버튼이 꺼져 있다.
-    final confirm = find.widgetWithText(FilledButton, '예측 확정');
-    expect(tester.widget<FilledButton>(confirm).onPressed, isNull);
-    await tester.dragUntilVisible(find.text('삼성 승리'), find.byType(ListView), const Offset(0, -300));
+    expect(tester.widget<FilledButton>(find.widgetWithText(FilledButton, '이길 팀을 고르세요')).onPressed, isNull);
+    // 예측 줄은 스크롤하지 않는 그라운드에 있다.
+    await tester.tap(find.text('삼성 라이온즈'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('삼성 승리'));
-    await tester.pumpAndSettle();
+    final confirm = find.widgetWithText(FilledButton, '삼성 승리로 확정');
+    expect(tester.widget<FilledButton>(confirm).onPressed, isNotNull);
     await tester.tap(confirm);
     await tester.pumpAndSettle();
     await tester.tap(find.text('확정하고 시작'));
