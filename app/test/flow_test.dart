@@ -36,7 +36,7 @@ void main() {
     await tester.pumpWidget(KboApp(data: data, records: records));
     await tester.pumpAndSettle();
 
-    await tester.tap(find.text('경기 시작'));
+    await tester.tap(find.text('경기 만들기'));
     await tester.pumpAndSettle();
 
     // 원정 → 홈 순서로 두 팀 선택. 이미 고른 팀은 다른 쪽에서 고를 수 없다.
@@ -60,7 +60,7 @@ void main() {
 
     // 예측 전에는 확정 버튼이 꺼져 있다.
     expect(tester.widget<FilledButton>(find.widgetWithText(FilledButton, '이길 팀을 고르세요')).onPressed, isNull);
-    // 예측 줄은 스크롤하지 않는 그라운드에 있다.
+    // 예측 줄은 스크롤하지 않는 위쪽 고정 칸에 있다.
     await tester.tap(find.text('삼성 라이온즈'));
     await tester.pumpAndSettle();
     final confirm = find.widgetWithText(FilledButton, '삼성 승리로 확정');
@@ -89,7 +89,7 @@ void main() {
     await tester.pumpAndSettle();
     // 최근 기록에 교체 줄이 생기고, 묻는 문구는 사라진다.
     expect(
-      find.byWidgetPredicate((w) => w is Text && (w.data ?? '').replaceAll('⁠', '').contains('후라도 대신')),
+      find.byWidgetPredicate((w) => w is Text && (w.data ?? w.textSpan?.toPlainText() ?? '').replaceAll('⁠', '').contains('후라도 대신')),
       findsOneWidget,
     );
     expect(find.text('1회초 삼성 수비 시작'), findsNothing);
@@ -109,7 +109,7 @@ void main() {
     expect(find.text('소형준'), findsNothing);
 
     // 기록 줄이 반쯤 잘리지 않는다: 보이는 기록 줄은 모두 '내 예측' 줄보다 위에서 끝난다.
-    // 휴대폰, 태블릿, 넓은 화면(그라운드 왼쪽·시트 오른쪽)에서 확인한다.
+    // 휴대폰, 태블릿, 넓은 화면에서 확인한다.
     for (final size in const [Size(1080, 1920), Size(1080, 2220), Size(2304, 3072), Size(3840, 2160)]) {
       tester.view.physicalSize = size;
       await tester.pumpAndSettle();

@@ -6,8 +6,7 @@ import '../data/app_data.dart';
 import '../state/labels.dart';
 import '../state/record_book.dart';
 import '../theme/kbo_theme.dart';
-import '../widgets/diamond.dart';
-import '../widgets/ground_layout.dart';
+import '../widgets/feed_layout.dart';
 import '../widgets/line_score.dart';
 import '../widgets/substitute_sheet.dart';
 import 'result_screen.dart';
@@ -152,36 +151,51 @@ class _GameScreenState extends State<GameScreen> {
     final away = _data.team(widget.awayId);
     final home = _data.team(widget.homeId);
     final finished = s.isFinished;
-    // 작은 휴대폰(높이 860 미만의 좁은 화면)은 그라운드를 가로로 접어 기록 칸을 확보한다.
-    final screen = MediaQuery.sizeOf(context);
-    final compact = screen.width < 840 && screen.height < 860;
+    final k = context.kbo;
+    final text = Theme.of(context).textTheme;
+    final predicted = _data.team(widget.predictedWinnerId);
+    final inningText = finished ? '경기 종료' : halfLabel(s.inning, s.isTop);
 
     return PopScope(
       canPop: finished,
       onPopInvokedWithResult: (didPop, _) {
         if (!didPop) _confirmLeave();
       },
-      child: GroundLayout(
+      child: FeedScaffold(
         title: '가상 경기',
-        ground: _GameGround(
-          data: _data,
-          engine: engine,
-          away: away,
-          home: home,
-          compact: compact,
-          predictedTeamName: _data.team(widget.predictedWinnerId).name,
+        appBarActions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: Center(
+              child: Text(
+                finished ? '내 예측 ${predicted.shortName}, 채점 완료' : '내 예측 ${predicted.shortName} 승리',
+                style: text.bodySmall?.copyWith(color: k.inkSub),
+              ),
+            ),
+          ),
+        ],
+        header: StatusBar(
+          awayName: away.shortName,
+          awayScore: s.awayScore,
+          homeName: home.shortName,
+          homeScore: s.homeScore,
+          center: inningText,
+          outs: finished ? null : s.outs.clamp(0, 3),
+          semanticsLabel: '$inningText, ${s.outs}아웃, ${away.name} ${s.awayScore}점, ${home.name} ${s.homeScore}점',
         ),
-        sheet: _GameSheet(
-          data: _data,
-          engine: engine,
-          away: away,
-          home: home,
-          predictedTeamName: _data.team(widget.predictedWinnerId).name,
-          // 작은 화면에서는 내 예측을 그라운드 점수판에 두고 시트는 기록에 쓴다.
-          showPrediction: !compact,
+        body: Padding(
+          padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(child: _PlayFeed(data: _data, engine: engine, away: away, home: home)),
+              const SizedBox(height: 6),
+              _AtBatCard(data: _data, engine: engine, away: away, home: home),
+            ],
+          ),
         ),
-        // 교체 묻기와 진행 버튼은 시트 밖 고정 영역에 둬서 스크롤 없이 항상 보인다.
-        actions: finished
+        // 교체 묻기와 진행 버튼은 피드 밖 고정 영역에 둬서 스크롤 없이 항상 보인다.
+        dock: finished
             ? ActionRow(
                 primary: FilledButton(onPressed: _openResult, child: const Text('경기 결과 보기')),
               )
@@ -189,7 +203,7 @@ class _GameScreenState extends State<GameScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   _ManagerBar(
-                    teamName: _data.team(widget.predictedWinnerId).shortName,
+                    teamName: predicted.shortName,
                     attacking: _myTeamAttacking,
                     askingAtDefenseStart: _defenseJustStarted &&
                         !engine.substitutions.any((x) =>
@@ -217,118 +231,144 @@ class _GameScreenState extends State<GameScreen> {
   }
 }
 
-/// 경기 화면 시트: 라인스코어, 최근 기록, 내 예측을 스크롤 없이 보여준다.
-/// 기록은 남은 높이에 온전히 들어가는 줄만 최신순으로 넣는다. 줄이 반쯤 잘려 보이지 않게,
-/// 줄마다 한 줄 높이로 고정하고(넘치면 말줄임) 들어갈 수 있는 개수를 미리 센다.
-class _GameSheet extends StatelessWidget {
-  const _GameSheet({
-    required this.data,
-    required this.engine,
-    required this.away,
-    required this.home,
-    required this.predictedTeamName,
-    this.showPrediction = true,
-  });
+/// 문자중계 피드: 타석과 교체가 아래에서 위로 쌓이고, 이닝 공수가 바뀌는 곳에만 제목이 한 번 나온다.
+/// 남은 높이에 온전히 들어가는 칸만 넣는다. 칸마다 한 줄 높이로 고정하고(넘치면 말줄임)
+/// 들어갈 수 있는 개수를 미리 세서, 반쯤 잘린 칸이 보이지 않게 한다.
+class _PlayFeed extends StatelessWidget {
+  const _PlayFeed({required this.data, required this.engine, required this.away, required this.home});
 
   final AppData data;
   final GameEngine engine;
   final TeamSummary away;
   final TeamSummary home;
-  final String predictedTeamName;
-  final bool showPrediction;
 
-  /// 기록 목록 위·아래 고정 요소가 차지하는 최소 높이. 이보다 낮으면 스크롤로 되돌아간다.
-  static const _minHeight = 160.0;
+  static const _gap = 6.0;
 
   @override
   Widget build(BuildContext context) {
-    final s = engine.state;
-    final logs = engine.logs;
     final text = Theme.of(context).textTheme;
-    final lineScore = LineScore(awayName: away.shortName, homeName: home.shortName, state: s, logs: logs);
-    final prediction = _PredictionLine(teamName: predictedTeamName, finished: s.isFinished);
-    final events = playEvents(logs, engine.substitutions).reversed.toList();
+    final scaler = MediaQuery.textScalerOf(context);
+    final events = playEvents(engine.logs, engine.substitutions);
+    final rowHeight = scaler.scale(14) * 1.55 + playRowPadding * 2 + _gap;
+    final headerHeight = scaler.scale(12) * 1.3 + HalfHeader.top + HalfHeader.bottom;
 
-    // 한 줄 높이: bodyMedium 14sp, 행간 1.6, 글자 크기 설정 반영.
-    final line = MediaQuery.textScalerOf(context).scale(14) * 1.6;
-    final rowHeight = line + 8 + 1; // PlateRow 위아래 4
-    final headerHeight = line + 12 + 1; // HalfHeader 위 10, 아래 2
-
-    Widget feed(double available) {
-      if (events.isEmpty) {
-        return Text(
-          keepAll('첫 타석을 진행하세요. ${away.shortName}의 1번 타자가 나옵니다.'),
-          style: text.bodyMedium,
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-        );
-      }
-      final children = <Widget>[];
-      var used = 0.0;
-      for (var i = 0; i < events.length; i++) {
-        final event = events[i];
-        final half = eventHalf(event);
-        final needsHeader = i == 0 || eventHalf(events[i - 1]) != half;
-        final needed = rowHeight + (needsHeader ? headerHeight : 0);
-        if (used + needed > available) break; // 제목만 남고 줄이 빠지는 경우도 여기서 막힌다.
-        used += needed;
-        if (needsHeader) {
-          children.add(HalfHeader(
-            inning: half.$1,
-            isTop: half.$2,
-            attackingTeam: half.$2 ? away.shortName : home.shortName,
-          ));
-        }
-        children.add(event is PlateAppearanceLog
-            ? PlateRow(
-                log: event,
-                batterName: data.player(event.batterId).name,
-                emphasize: i == 0,
-                singleLine: true,
-              )
-            : SubstitutionRow(
-                sub: event as Substitution,
-                inName: data.player(event.inPlayerId).name,
-                outName: data.player(event.outPlayerId).name,
-                singleLine: true,
-              ));
-      }
-      return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: children);
-    }
-
-    return LayoutBuilder(builder: (context, box) {
-      if (box.maxHeight < _minHeight) {
-        // 가로로 눕힌 휴대폰처럼 아주 낮은 화면: 기록을 최근 3개로 줄여 스크롤로 보여준다.
-        return SheetBody(children: [
-          lineScore,
-          const SizedBox(height: 10),
-          SizedBox(height: rowHeight * 3 + headerHeight * 2, child: LayoutBuilder(builder: (_, b) => feed(b.maxHeight))),
-          if (showPrediction) prediction,
-        ]);
-      }
-      return Padding(
-        padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
-        child: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 600),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                lineScore,
-                const SizedBox(height: 4),
-                Expanded(
-                  child: LayoutBuilder(builder: (_, b) => ClipRect(child: feed(b.maxHeight))),
-                ),
-                if (showPrediction) ...[
-                  const SizedBox(height: 6),
-                  prediction,
-                ],
-              ],
-            ),
+    if (events.isEmpty) {
+      return Align(
+        alignment: Alignment.bottomLeft,
+        child: Bubble(
+          child: Text(
+            keepAll('첫 타석을 진행하세요. ${away.shortName}의 1번 타자가 나옵니다.'),
+            style: text.bodyMedium,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
           ),
         ),
       );
+    }
+
+    return LayoutBuilder(builder: (context, box) {
+      // 최신 칸부터 거꾸로 채운다. 공수 묶음의 제목 높이는 그 묶음의 첫 칸을 넣을 때 함께 잡는다.
+      final groups = <((int, bool), List<Object>)>[];
+      var used = 0.0;
+      for (final event in events.reversed) {
+        final half = eventHalf(event);
+        final newGroup = groups.isEmpty || groups.last.$1 != half;
+        final needed = rowHeight + (newGroup ? headerHeight : 0);
+        if (used + needed > box.maxHeight) break;
+        used += needed;
+        if (newGroup) groups.add((half, <Object>[]));
+        groups.last.$2.add(event);
+      }
+      final latest = events.last;
+      final children = <Widget>[];
+      for (final (half, items) in groups.reversed) {
+        children.add(HalfHeader(
+          inning: half.$1,
+          isTop: half.$2,
+          attackingTeam: half.$2 ? away.shortName : home.shortName,
+        ));
+        for (final event in items.reversed) {
+          children.add(Padding(
+            padding: const EdgeInsets.only(top: _gap),
+            child: event is PlateAppearanceLog
+                ? PlateRow(
+                    log: event,
+                    batterName: data.player(event.batterId).name,
+                    emphasize: identical(event, latest),
+                    singleLine: true,
+                  )
+                : SubstitutionRow(
+                    sub: event as Substitution,
+                    inName: data.player(event.inPlayerId).name,
+                    outName: data.player(event.outPlayerId).name,
+                    singleLine: true,
+                  ),
+          ));
+        }
+      }
+      return ClipRect(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: children,
+        ),
+      );
     });
+  }
+}
+
+/// 피드 맨 아래 "지금 타석" 칸: 다음 타자와 투수, 주자 상황.
+class _AtBatCard extends StatelessWidget {
+  const _AtBatCard({required this.data, required this.engine, required this.away, required this.home});
+
+  final AppData data;
+  final GameEngine engine;
+  final TeamSummary away;
+  final TeamSummary home;
+
+  @override
+  Widget build(BuildContext context) {
+    final k = context.kbo;
+    final text = Theme.of(context).textTheme;
+    final s = engine.state;
+    final String title;
+    final String detail;
+    if (s.isFinished) {
+      title = '경기가 끝났습니다';
+      detail = '${endLabel(s.end!)}, ${s.plateAppearances}타석';
+    } else {
+      final offenseId = s.isTop ? away.id : home.id;
+      final b = data.player(engine.nextBatterFor(offenseId));
+      final p = data.player(engine.pitcherFor(s.isTop ? home.id : away.id));
+      final order = (s.isTop ? s.awayBattingIndex : s.homeBattingIndex) + 1;
+      title = '$order번 ${b.name} 타석';
+      detail = '타율 ${avg(b.battingAverage)}, 투수 ${p.name} 평균자책 ${era(p.era)}';
+    }
+    return Semantics(
+      label: '$title, $detail${s.isFinished ? '' : ', 주자 ${basesLabel(s.bases)}'}',
+      excludeSemantics: true,
+      child: Bubble(
+        stretch: true,
+        padding: const EdgeInsets.fromLTRB(14, 10, 12, 10),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: text.titleMedium, maxLines: 1, overflow: TextOverflow.ellipsis),
+                  Text(detail, style: text.bodySmall?.copyWith(color: k.inkSub), maxLines: 1, overflow: TextOverflow.ellipsis),
+                ],
+              ),
+            ),
+            if (!s.isFinished) ...[
+              const SizedBox(width: 8),
+              BasesMini(bases: [for (final b in s.bases) b != null]),
+            ],
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -356,257 +396,53 @@ class _ManagerBar extends StatelessWidget {
     final k = context.kbo;
     final base = Theme.of(context).textTheme.bodyMedium!;
     // 좁은 화면에서도 두 줄을 넘지 않게: 위 줄은 상황, 아래 줄은 선수 (각각 한 줄, 넘치면 말줄임).
-    final headline = askingAtDefenseStart
-        ? '$halfText $teamName 수비 시작'
-        : '$teamName ${attacking ? '공격' : '수비'} 중';
+    final headline = askingAtDefenseStart ? '$halfText $teamName 수비 시작' : '$teamName ${attacking ? '공격' : '수비'} 중';
     final detail = askingAtDefenseStart ? '$playerText, 바꿀까요?' : playerText;
-    return Center(
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 600),
-        child: DecoratedBox(
-          decoration: BoxDecoration(color: k.sheetRaised, borderRadius: BorderRadius.circular(16)),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(14, 8, 8, 8),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Semantics(
-                    liveRegion: askingAtDefenseStart,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          headline,
-                          style: askingAtDefenseStart
-                              ? base.copyWith(fontWeight: FontWeight.w700)
-                              : base.copyWith(color: k.inkSub),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
-                          detail,
-                          style: askingAtDefenseStart ? base.copyWith(fontWeight: FontWeight.w700) : base,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                FilledButton(
-                  style: askingAtDefenseStart
-                      ? FilledButton.styleFrom(
-                          backgroundColor: k.grass,
-                          foregroundColor: k.chalk,
-                          minimumSize: const Size(64, 48),
-                          shape: const StadiumBorder(),
-                          textStyle: Theme.of(context).textTheme.labelMedium,
-                        )
-                      : secondaryButtonStyle(context).copyWith(
-                          minimumSize: const WidgetStatePropertyAll(Size(64, 48)),
-                        ),
-                  onPressed: onPressed,
-                  child: Text(attacking ? '대타 내기' : '투수 교체'),
-                ),
-              ],
-            ),
-          ),
-        ),
+    return DecoratedBox(
+      // 지금 묻는 중이면 강조 면으로 칠해 눈에 띄게 한다.
+      decoration: BoxDecoration(
+        color: askingAtDefenseStart ? k.soft : k.surface,
+        borderRadius: BorderRadius.circular(bubbleRadius),
       ),
-    );
-  }
-}
-
-class _PredictionLine extends StatelessWidget {
-  const _PredictionLine({required this.teamName, required this.finished});
-  final String teamName;
-  final bool finished;
-
-  @override
-  Widget build(BuildContext context) {
-    final k = context.kbo;
-    final base = Theme.of(context).textTheme.bodyMedium!;
-    return Text.rich(
-      TextSpan(children: [
-        TextSpan(text: '내 예측 ', style: base.copyWith(color: k.inkSub)),
-        TextSpan(text: '$teamName 승리', style: base.copyWith(fontWeight: FontWeight.w700)),
-        TextSpan(text: finished ? ', 채점 완료' : ', 확정됨', style: base.copyWith(color: k.inkSub)),
-      ]),
-    );
-  }
-}
-
-class _GameGround extends StatelessWidget {
-  const _GameGround({
-    required this.data,
-    required this.engine,
-    required this.away,
-    required this.home,
-    required this.compact,
-    required this.predictedTeamName,
-  });
-
-  final AppData data;
-  final GameEngine engine;
-  final TeamSummary away;
-  final TeamSummary home;
-
-  /// 작은 휴대폰: 다이아몬드 왼쪽, 점수판 오른쪽으로 높이를 아낀다.
-  final bool compact;
-  final String predictedTeamName;
-
-  @override
-  Widget build(BuildContext context) {
-    final k = context.kbo;
-    final text = Theme.of(context).textTheme;
-    final s = engine.state;
-    final size = MediaQuery.sizeOf(context);
-
-    // 다음 타석의 타자·투수 (경기가 끝났으면 표시하지 않는다).
-    FieldTag? batter;
-    FieldTag? pitcher;
-    if (!s.isFinished) {
-      // 교체가 반영된 현재 타자·투수는 엔진이 가지고 있다.
-      final offenseId = s.isTop ? away.id : home.id;
-      final b = data.player(engine.nextBatterFor(offenseId));
-      final p = data.player(engine.pitcherFor(s.isTop ? home.id : away.id));
-      final order = (s.isTop ? s.awayBattingIndex : s.homeBattingIndex) + 1;
-      batter = FieldTag(b.id, b.name, '$order번 ${avg(b.battingAverage)}');
-      pitcher = FieldTag(p.id, p.name, compact ? '자책 ${era(p.era)}' : '평균자책 ${era(p.era)}');
-    }
-    FieldTag? runner(String? id) => id == null ? null : FieldTag(id, data.player(id).name);
-
-    final inningText = s.isFinished ? '경기 종료' : halfLabel(s.inning, s.isTop);
-    final attack = s.isFinished ? endLabel(s.end!) : '${s.isTop ? away.shortName : home.shortName} 공격';
-    final scoreLabel = '$inningText, ${away.name} ${s.awayScore}점, ${home.name} ${s.homeScore}점';
-    final fieldLabel = '주자 ${basesLabel(s.bases)}, ${s.outs}아웃'
-        '${batter != null ? ', 타자 ${batter.name}, 투수 ${pitcher!.name}' : ''}';
-
-    if (compact) {
-      // 점수판 칸 128, 다이아몬드 칸은 남은 폭. 이름표가 칸 밖으로 나가지 않게 반대각을 정한다.
-      const boardWidth = 128.0;
-      final d = ((size.width - 32 - boardWidth - 8 - 80) / 2).clamp(48.0, 58.0);
-      Widget scoreLine(String name, int runs) => Row(
-            crossAxisAlignment: CrossAxisAlignment.baseline,
-            textBaseline: TextBaseline.alphabetic,
-            children: [
-              Expanded(
-                child: Text(name,
-                    style: text.titleSmall?.copyWith(color: k.chalkSub),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis),
-              ),
-              Text('$runs', style: text.displaySmall?.copyWith(color: k.chalk, fontSize: 30, height: 1.15)),
-            ],
-          );
-      return Padding(
-        padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(14, 8, 8, 8),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
               child: Semantics(
-                label: fieldLabel,
-                excludeSemantics: true,
-                child: Diamond(
-                  runners: [runner(s.bases[0]), runner(s.bases[1]), runner(s.bases[2])],
-                  outs: s.outs.clamp(0, 3),
-                  batter: batter,
-                  pitcher: pitcher,
-                  halfDiagonal: d,
-                  compact: true,
-                  showOuts: false,
+                liveRegion: askingAtDefenseStart,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      headline,
+                      style: askingAtDefenseStart
+                          ? base.copyWith(fontWeight: FontWeight.w700)
+                          : base.copyWith(color: k.inkSub),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      detail,
+                      style: askingAtDefenseStart ? base.copyWith(fontWeight: FontWeight.w700) : base,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
                 ),
               ),
             ),
             const SizedBox(width: 8),
-            SizedBox(
-              width: boardWidth,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Semantics(
-                    liveRegion: true,
-                    label: scoreLabel,
-                    excludeSemantics: true,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(inningText, style: text.titleMedium?.copyWith(color: k.chalk)),
-                        Text(attack,
-                            style: text.bodySmall?.copyWith(color: k.chalkSub),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis),
-                        const SizedBox(height: 4),
-                        scoreLine(away.shortName, s.awayScore),
-                        scoreLine(home.shortName, s.homeScore),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  OutsBoard(outs: s.outs.clamp(0, 3)),
-                  const SizedBox(height: 6),
-                  Text(
-                    keepAll('내 예측 $predictedTeamName 승리'),
-                    style: text.bodySmall?.copyWith(color: k.chalkSub),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
+            FilledButton(
+              style: secondaryButtonStyle(context).copyWith(
+                minimumSize: const WidgetStatePropertyAll(Size(64, 48)),
+                backgroundColor: WidgetStatePropertyAll(askingAtDefenseStart ? k.surface : k.fill),
               ),
+              onPressed: onPressed,
+              child: Text(attacking ? '대타 내기' : '투수 교체'),
             ),
           ],
         ),
-      );
-    }
-
-    final halfDiagonal = (size.height * 0.11).clamp(64.0, 104.0);
-    Widget score(String name, int runs, bool end) => Column(
-          crossAxisAlignment: end ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-          children: [
-            Text(name, style: text.bodyMedium?.copyWith(color: k.chalkSub), maxLines: 1, overflow: TextOverflow.ellipsis),
-            Text('$runs', style: text.displaySmall?.copyWith(color: k.chalk)),
-          ],
-        );
-
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: Column(
-        children: [
-          Semantics(
-            liveRegion: true,
-            label: scoreLabel,
-            excludeSemantics: true,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Row(
-                children: [
-                  Expanded(child: score(away.name, s.awayScore, false)),
-                  Column(
-                    children: [
-                      Text(inningText, style: text.titleMedium?.copyWith(color: k.chalk)),
-                      Text(attack, style: text.bodySmall?.copyWith(color: k.chalkSub)),
-                    ],
-                  ),
-                  Expanded(child: score(home.name, s.homeScore, true)),
-                ],
-              ),
-            ),
-          ),
-          Semantics(
-            label: fieldLabel,
-            excludeSemantics: true,
-            child: Diamond(
-              runners: [runner(s.bases[0]), runner(s.bases[1]), runner(s.bases[2])],
-              outs: s.outs.clamp(0, 3),
-              batter: batter,
-              pitcher: pitcher,
-              halfDiagonal: halfDiagonal,
-            ),
-          ),
-        ],
       ),
     );
   }

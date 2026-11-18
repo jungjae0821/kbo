@@ -26,8 +26,8 @@ Future<String?> pickSubstitute(
     context: context,
     isScrollControlled: true,
     showDragHandle: true,
-    backgroundColor: context.kbo.sheet,
-    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(22))),
+    backgroundColor: context.kbo.bg,
+    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
     builder: (context) => _SubstituteList(
       title: title,
       candidates: candidates,

@@ -218,7 +218,7 @@ kbo/
 ├─ DESIGN.md                   # 화면 디자인 기준 (색·글꼴·간격·구성 규칙)
 ├─ app/                        # Flutter 앱 (3주 차)
 │  ├─ lib/screens/             # 화면 6개
-│  ├─ lib/widgets/             # 그라운드 배치, 다이아몬드, 라인스코어
+│  ├─ lib/widgets/             # 피드 배치(상태 띠·메시지), 라인스코어, 교체 시트
 │  ├─ lib/data/ · lib/state/   # 시즌 데이터 로딩, 채점·표기
 │  ├─ assets/                  # 시즌 JSON 복사본, 경기천년체
 │  └─ test/                    # 데이터 계약·채점·전체 흐름 테스트
