@@ -3,6 +3,7 @@ import 'package:kbo_engine/kbo_engine.dart';
 
 import '../state/labels.dart';
 import '../theme/kbo_theme.dart';
+import 'feed_layout.dart';
 
 /// 이닝별 점수표. 기록 시트 규칙대로 한 크기(14)로 쓰고 굵기·색으로만 구분한다.
 class LineScore extends StatelessWidget {
@@ -91,7 +92,7 @@ class LineScore extends StatelessWidget {
     ? (event.inning, event.isTop)
     : ((event as Substitution).inning, event.isTop);
 
-/// 이닝 공수가 시작될 때 한 번만 나오는 제목 줄 (예: "3회말 삼성 공격").
+/// 이닝 공수가 시작될 때 한 번만 나오는 제목 줄 (예: "3회말 삼성 공격"). 피드 가운데에 작게.
 class HalfHeader extends StatelessWidget {
   const HalfHeader({super.key, required this.inning, required this.isTop, required this.attackingTeam});
 
@@ -99,15 +100,23 @@ class HalfHeader extends StatelessWidget {
   final bool isTop;
   final String attackingTeam;
 
+  /// 피드 높이 계산용: 위 [top] + 글자 한 줄 + 아래 [bottom].
+  static const top = 8.0;
+  static const bottom = 4.0;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10, bottom: 2),
-      child: Text(
-        '${halfLabel(inning, isTop)} $attackingTeam 공격',
-        style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w700),
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
+      padding: const EdgeInsets.only(top: top, bottom: bottom),
+      child: Semantics(
+        header: true,
+        child: Text(
+          '${halfLabel(inning, isTop)} $attackingTeam 공격',
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(color: context.kbo.inkSub),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
       ),
     );
   }
@@ -127,7 +136,10 @@ List<Object> playEvents(List<PlateAppearanceLog> logs, List<Substitution> subs) 
   return events;
 }
 
-/// 교체 한 줄: "투수 교체 김민수, 소형준 대신" / "대타 김지찬, 3번 박승규 대신".
+/// 피드 메시지 한 칸의 세로 여백 (높이 계산용).
+const playRowPadding = 7.0;
+
+/// 교체 한 줄: "투수 김민수, 소형준 대신" / "대타 김지찬, 3번 박승규 대신".
 class SubstitutionRow extends StatelessWidget {
   const SubstitutionRow({
     super.key,
@@ -151,30 +163,24 @@ class SubstitutionRow extends StatelessWidget {
     final k = context.kbo;
     final base = Theme.of(context).textTheme.bodyMedium!;
     final pitcher = sub.kind == SubstitutionKind.pitcher;
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('교체', style: base.copyWith(color: k.accentText, fontWeight: FontWeight.w700)),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Text(
-              keepAll(pitcher
-                  ? '${teamName == null ? '' : '$teamName '}투수 $inName, $outName 대신'
-                  : '${teamName == null ? '' : '$teamName '}대타 $inName, ${sub.battingOrder}번 $outName 대신'),
-              style: base,
-              maxLines: singleLine ? 1 : null,
-              overflow: singleLine ? TextOverflow.ellipsis : null,
-            ),
-          ),
-        ],
+    final team = teamName == null ? '' : '$teamName ';
+    return Bubble(
+      color: k.fill,
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: playRowPadding),
+      child: Text.rich(
+        TextSpan(children: [
+          TextSpan(text: pitcher ? '$team투수 교체 ' : '$team대타 ', style: base.copyWith(color: k.inkSub)),
+          TextSpan(text: inName, style: base.copyWith(fontWeight: FontWeight.w700)),
+          TextSpan(text: pitcher ? ', $outName 대신' : ', ${sub.battingOrder}번 $outName 대신', style: base),
+        ]),
+        maxLines: singleLine ? 1 : null,
+        overflow: singleLine ? TextOverflow.ellipsis : null,
       ),
     );
   }
 }
 
-/// 타석 한 줄: 번호, 타자와 결과, 그 뒤의 상황.
+/// 타석 한 칸: 타자와 결과, 그 뒤의 상황. 점수가 나면 강조 면.
 class PlateRow extends StatelessWidget {
   const PlateRow({
     super.key,
@@ -186,6 +192,8 @@ class PlateRow extends StatelessWidget {
 
   final PlateAppearanceLog log;
   final String batterName;
+
+  /// 가장 최근 타석이면 true.
   final bool emphasize;
 
   /// 높이가 정해진 목록에서는 한 줄로 줄이고 넘치면 말줄임.
@@ -202,29 +210,26 @@ class PlateRow extends StatelessWidget {
     } else if (log.outcome == PlateOutcome.strikeout || log.outcome == PlateOutcome.otherOut) {
       after = '${log.transition.outsAfterPlay}아웃';
     } else {
-      after = basesLabel(log.transition.basesAfterPlay);
+      final b = basesLabel(log.transition.basesAfterPlay);
+      after = b == '주자 없음' || b == '만루' ? b : '주자 $b';
     }
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: Text(
-              '$batterName ${outcomeLabel(log.outcome)}',
-              style: emphasize ? base.copyWith(fontWeight: FontWeight.w700) : base,
-              maxLines: singleLine ? 1 : null,
-              overflow: singleLine ? TextOverflow.ellipsis : null,
-            ),
-          ),
-          const SizedBox(width: 8),
-          Text(
-            after,
+    return Bubble(
+      soft: runs > 0,
+      stretch: emphasize,
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: playRowPadding),
+      child: Text.rich(
+        TextSpan(children: [
+          TextSpan(text: batterName, style: base.copyWith(fontWeight: FontWeight.w700)),
+          TextSpan(text: ' ${outcomeLabel(log.outcome)}', style: base),
+          TextSpan(
+            text: ', $after',
             style: runs > 0
                 ? base.copyWith(color: k.accentText, fontWeight: FontWeight.w700)
                 : base.copyWith(color: k.inkSub),
           ),
-        ],
+        ]),
+        maxLines: singleLine ? 1 : null,
+        overflow: singleLine ? TextOverflow.ellipsis : null,
       ),
     );
   }

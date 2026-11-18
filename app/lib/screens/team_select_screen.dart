@@ -4,7 +4,7 @@ import '../app_scope.dart';
 import '../data/app_data.dart';
 import '../state/labels.dart';
 import '../theme/kbo_theme.dart';
-import '../widgets/ground_layout.dart';
+import '../widgets/feed_layout.dart';
 import '../widgets/record_sheet.dart';
 import 'compare_screen.dart';
 
@@ -53,10 +53,9 @@ class _TeamSelectScreenState extends State<TeamSelectScreen> {
       final label = side == _Side.away ? '원정' : '홈';
       final active = _active == side;
       final name = id == null ? (active ? '아래 순위표에서 고르세요' : '선택 전') : data.team(id).name;
-      return GroundTeamRow(
+      return TeamPickRow(
         side: label,
         name: name,
-        muted: id == null,
         placeholder: id == null,
         selected: active,
         onTap: () => setState(() => _active = side),
@@ -64,47 +63,56 @@ class _TeamSelectScreenState extends State<TeamSelectScreen> {
       );
     }
 
-    return GroundLayout(
+    return FeedScaffold(
       title: '팀 선택',
-      ground: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 4, 8, 28),
+      header: Bubble(
+        stretch: true,
+        padding: const EdgeInsets.fromLTRB(6, 6, 0, 6),
         child: Row(
           children: [
             Expanded(
               child: Column(
                 children: [
                   slot(_Side.away),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 4),
                   slot(_Side.home),
                 ],
               ),
             ),
-            const SizedBox(width: 4),
             IconButton(
               tooltip: '원정과 홈 바꾸기',
               onPressed: _awayId == null && _homeId == null ? null : _swap,
-              color: k.chalk,
-              disabledColor: k.chalkSub.withValues(alpha: 0.5),
+              color: k.ink,
+              disabledColor: k.baseOff,
               icon: const Icon(Icons.swap_vert),
             ),
           ],
         ),
       ),
-      sheet: SheetBody(
+      body: FeedList(
         children: [
-          SheetHeading('${_active == _Side.away ? '원정' : '홈'}팀 고르기', first: true),
-          const _StandingsHeader(),
-          for (final (i, team) in teams.indexed)
-            _StandingsRow(
-              rank: i + 1,
-              team: team,
-              selected: team.id == activeId,
-              takenBy: team.id == otherId ? (_active == _Side.away ? '홈' : '원정') : null,
-              onTap: () => _pick(team),
+          FeedHeading('${_active == _Side.away ? '원정' : '홈'}팀 고르기, 2026 순위', first: true),
+          Bubble(
+            stretch: true,
+            padding: const EdgeInsets.fromLTRB(4, 8, 4, 4),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const _StandingsHeader(),
+                for (final (i, team) in teams.indexed)
+                  _StandingsRow(
+                    rank: i + 1,
+                    team: team,
+                    selected: team.id == activeId,
+                    takenBy: team.id == otherId ? (_active == _Side.away ? '홈' : '원정') : null,
+                    onTap: () => _pick(team),
+                  ),
+              ],
             ),
+          ),
         ],
       ),
-      actions: ActionRow(
+      dock: ActionRow(
         primary: FilledButton(
           onPressed: _awayId != null && _homeId != null
               ? () => Navigator.of(context).push(
@@ -173,9 +181,9 @@ class _StandingsRow extends StatelessWidget {
     final k = context.kbo;
     final base = Theme.of(context).textTheme.bodyMedium!;
     final disabled = takenBy != null;
-    final fg = selected ? k.chalk : (disabled ? k.inkSub : k.ink);
+    final fg = selected ? k.onAccent : (disabled ? k.inkSub : k.ink);
     final style = base.copyWith(color: fg);
-    final sub = base.copyWith(color: selected ? k.chalkSub : k.inkSub);
+    final sub = base.copyWith(color: selected ? k.onAccent : k.inkSub);
     Widget n(String s, double w) => SizedBox(width: w, child: Text(s, style: style, textAlign: TextAlign.end));
 
     return Semantics(
@@ -186,7 +194,7 @@ class _StandingsRow extends StatelessWidget {
           '${disabled ? ', $takenBy팀으로 선택됨' : ''}',
       excludeSemantics: true,
       child: Material(
-        color: selected ? k.grass : Colors.transparent,
+        color: selected ? k.accent : Colors.transparent,
         borderRadius: BorderRadius.circular(12),
         child: InkWell(
           borderRadius: BorderRadius.circular(12),

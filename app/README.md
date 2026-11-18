@@ -19,6 +19,8 @@ New-Item -ItemType Junction -Path C:\dev\kbo -Target "<이 저장소 경로>"
 cd C:\dev\kbo\app; flutter analyze
 ```
 
+웹 빌드(`flutter build web`)는 연결 폴더가 아니라 원래 경로에서 하세요. 연결 폴더에서 빌드하면 `build/web/assets`에 `FontManifest.json`과 글꼴 파일이 빠져 경기천년체가 적용되지 않습니다(2026-11-19 확인). 이미 그렇게 됐으면 원래 경로에서 `flutter clean` 후 다시 빌드합니다.
+
 ## 데이터와 글꼴
 
 - `assets/data/season_dataset.json`은 `kbo_data/kbo_2026_138278/app/season_dataset.json`의 복사본입니다. 시즌 데이터를 다시 생성했다면 이 파일도 덮어써야 합니다.

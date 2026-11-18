@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>시안 비교</title>
+<style>
+  @font-face { font-family: '경기천년제목'; src: url('fonts/GyeonggiTitle-Bold.ttf'); font-weight: 700; }
+  @font-face { font-family: '경기천년바탕'; src: url('fonts/GyeonggiBatang-Regular.ttf'); font-weight: 400; }
+  :root { --bg: #e9ebe8; --ink: #1b1d1a; --sub: #4c514b; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: '경기천년바탕', 'Pretendard', system-ui, sans-serif; word-break: keep-all; line-height: 1.6; }
+  main { padding: 28px 16px 64px; max-width: 1760px; margin: 0 auto; }
+  h1, h2, h3 { font-family: '경기천년제목', 'Pretendard', system-ui, sans-serif; font-weight: 700; margin: 0; }
+  h1 { font-size: 26px; }
+  .lead { color: var(--sub); margin: 6px 0 28px; max-width: 80ch; }
+  h2 { font-size: 20px; margin: 0 0 14px; }
+  .group { margin-bottom: 40px; }
+  .row { display: flex; flex-wrap: wrap; gap: 28px; }
+  figure { margin: 0; width: 390px; }
+  figcaption { margin-bottom: 12px; min-height: 150px; }
+  h3 { font-size: 18px; margin-bottom: 4px; }
+  figcaption p { margin: 0 0 4px; font-size: 14px; color: var(--sub); }
+  figcaption p b { color: var(--ink); }
+  iframe { width: 390px; height: 844px; border: 0; border-radius: 28px; display: block; background: #fff; }
+</style>
+</head>
+<body>
+<main>
+  <h1>경기 진행 화면 시안 4개</h1>
+  <p class="lead">대표 화면은 앱의 핵심인 경기 진행 화면입니다. 내용은 엔진 예제 경기(seed 42, KT 위즈 원정 · 삼성 라이온즈 홈) 5회말 2아웃 1·2루 상황의 실제 데이터이고, 가상 결과입니다. 폭 390 기준 휴대폰 화면입니다.</p>
+
+  <section class="group">
+    <h2>레퍼런스 기반</h2>
+    <div class="row">
+      <figure>
+        <figcaption><h3>R1 기록실</h3>
+          <p><b>방향</b> 밝은 회색 바탕 위 흰 카드, 원정·홈이 각자 단색 면을 가진 점수판, 촘촘한 기록표.</p>
+          <p><b>장점</b> 정보가 가장 많이, 가장 차분하게 읽힘. 팀 선택·전력 비교 화면으로 그대로 확장.</p>
+          <p><b>위험</b> 카드가 많아 흔한 스포츠 앱처럼 보일 수 있음.</p>
+          <p><b>근거</b> 1 Field Rank(기록표 밀도·카드 면 단계) · 7 한전 스포츠단(한글 제목 조판·팀 단색 면)</p></figcaption>
+        <iframe src="option-r1.html" title="R1 기록실 시안"></iframe>
+      </figure>
+      <figure>
+        <figcaption><h3>R2 야간 중계</h3>
+          <p><b>방향</b> 어두운 바탕, 거대한 점수 숫자, 강조색(조명 노랑)은 다음 타석 버튼과 현재 이닝에만.</p>
+          <p><b>장점</b> 한 타석씩 지켜보는 긴장감이 가장 큼. 누를 곳이 한눈에 보임.</p>
+          <p><b>위험</b> 어두운 화면 + 강조색 하나는 흔한 조합. 낮에 보면 무거움.</p>
+          <p><b>근거</b> 9 PUBG(두 색 고대비·강조색은 행동에만) · 1 Field Rank(어두운 면 단계·숫자 위계)</p></figcaption>
+        <iframe src="option-r2.html" title="R2 야간 중계 시안"></iframe>
+      </figure>
+    </div>
+  </section>
+
+  <section class="group">
+    <h2>자체 방향</h2>
+    <div class="row">
+      <figure>
+        <figcaption><h3>F1 그라운드</h3>
+          <p><b>방향</b> 화면 위쪽이 잔디와 내야 흙으로 칠해진 실제 그라운드. 주자·타자·투수 이름이 베이스 위에 서 있음. 아래는 기록 시트.</p>
+          <p><b>장점</b> 야구장 그 자체라 첫눈에 무엇인지 앎. 진루가 이름째 움직이는 장면이 이 앱만의 것.</p>
+          <p><b>위험</b> 초록·흙색이 강해 다른 화면(개인 기록 등)에서 색 비중 조절이 필요.</p></figcaption>
+        <iframe src="option-f1.html" title="F1 그라운드 시안"></iframe>
+      </figure>
+      <figure>
+        <figcaption><h3>F2 입장권과 게이트 보드</h3>
+          <p><b>방향</b> 위쪽은 남색 이닝 보드, 가운데는 항목별로 칸이 나뉜 타석 정보, 아래에 절취선이 있는 예측 입장권. 방금 바뀐 값만 주홍색으로 표시.</p>
+          <p><b>장점</b> "확정된 예측"이 손에 쥔 표처럼 보여 규칙이 분명함. 변화가 어디서 생겼는지 바로 보임.</p>
+          <p><b>위험</b> 칸 나눔이 많아 정보가 늘면 빽빽해질 수 있음.</p></figcaption>
+        <iframe src="option-f2.html" title="F2 입장권과 게이트 보드 시안"></iframe>
+      </figure>
+    </div>
+  </section>
+</main>
+</body>
+</html>
