@@ -1,0 +1,40 @@
+{
+  "verified_on": "2026-11-19",
+  "endpoint": "https://objectstorage.ap-osaka-1.oraclecloud.com/n/axeqzwyoa6h9/b/kbo-season-data/o/season_dataset.json",
+  "hosting": "OCI Object Storage, ap-osaka-1, gamestock compartment",
+  "bucket": "kbo-season-data",
+  "bucket_access": "ObjectReadWithoutList",
+  "versioning": "Disabled",
+  "stored_object_count": 1,
+  "stored_bytes": 114333,
+  "decoded_bytes": 950762,
+  "decoded_sha256": "5ab91f5f7a7e7235ad88a9a89e6034b67f0f653735211a1a03d946785b858413",
+  "source_commit": "70a5478017abbfce11ac116774338226c7bd9564",
+  "http_status": 200,
+  "content_type": "application/json; charset=utf-8",
+  "content_encoding": "gzip",
+  "access_control_allow_origin": "*",
+  "cache_control": "public,max-age=3600",
+  "teams": 10,
+  "players": 591,
+  "new_vm_count": 0,
+  "new_database_count": 0,
+  "new_daemon_count": 0,
+  "flutter_live_test_command": "flutter test --dart-define=VERIFY_OCI_REMOTE=true",
+  "flutter_tests": {"passed": 19, "failed": 0},
+  "verified_behaviors": [
+    "Actual HTTPS request from DataController to OCI, with bundled fallback disabled",
+    "Automatic gzip decoding, UTF-8 and engine data contract validation",
+    "Downloaded JSON matches the bundled dataset",
+    "Game runs to completion using the downloaded dataset",
+    "A new controller restores downloaded data from the injected cache when HTTP is unavailable",
+    "Existing UI flow and mock failure-path regression tests pass"
+  ],
+  "flutter_analyze": "passed; no issues",
+  "flutter_build_web": "passed; Wasm dry run succeeded",
+  "deployment_screenshot": "oci_dataset_deployment.jpg",
+  "limitations": [
+    "Android hardware networking and platform cache persistence remain final device verification work",
+    "Personal-record and interrupted-game persistence remain week 4 scope"
+  ]
+}

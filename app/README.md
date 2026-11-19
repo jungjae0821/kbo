@@ -37,18 +37,25 @@ cd C:\dev\kbo\app; flutter analyze
 
 ## 원격 데이터 설정
 
-주소를 지정하지 않으면 앱에 포함된 2026 시즌 데이터와 기기 캐시로 동작합니다. 실제 시즌 JSON을 제공하는 HTTPS 주소를 확보한 경우 다음처럼 지정합니다.
+기본 주소는 OCI Object Storage의 공개 읽기 전용 시즌 파일입니다. `flutter run`만으로 실제 HTTPS 다운로드를 시도하고, 실패하면 검증된 기기 캐시·포함된 데이터로 이어갑니다. 기본 주소는 `lib/data/remote_config.dart`에 있습니다. OCI 키·토큰이나 별도 로그인은 필요하지 않습니다.
+
+기본 주소: https://objectstorage.ap-osaka-1.oraclecloud.com/n/axeqzwyoa6h9/b/kbo-season-data/o/season_dataset.json
+
+다른 제공처로 바꾸거나 원격 요청을 끄려면 다음처럼 지정합니다.
 
 ```powershell
 flutter run --dart-define=KBO_DATA_URL=https://your-host.example/season_dataset.json
 flutter build web --dart-define=KBO_DATA_URL=https://your-host.example/season_dataset.json
+flutter run --dart-define=KBO_DATA_URL=
 ```
 
-위 주소는 예시이므로 실제 호스트로 바꿉니다. 제공 파일은 `assets/data/season_dataset.json`과 같은 계약이어야 하며 웹에서는 앱 출처에 대한 CORS 허용이 필요합니다. 인증 키를 URL이나 앱에 넣지 않습니다. Android 릴리스 manifest에 인터넷 권한을 선언했습니다. 실제 호스팅·재배포 조건 확인은 최종 배포 작업이며 이번에 원격 데이터 서버를 게시하지 않았습니다.
+대체 주소는 예시이므로 실제 호스트로 바꿉니다. 제공 파일은 `assets/data/season_dataset.json`과 같은 계약이어야 하며 웹에서는 앱 출처에 대한 CORS 허용이 필요합니다. 기본 OCI 주소는 HTTPS 200·UTF-8·gzip·CORS 응답과 데이터 일치를 확인했습니다. Android 릴리스 manifest에 인터넷 권한을 선언했습니다.
+
+OCI에는 gzip 파일 하나(114,333바이트)만 저장했습니다. `Content-Encoding: gzip`으로 자동 압축 해제되며 디코딩 후 950,762바이트입니다. 전용 `kbo-season-data` 버킷은 객체 다운로드만 공개하고 목록 조회·쓰기에는 인증을 요구합니다. 버전 저장·복제·자동 계층화를 켜지 않았고 새 VM·DB·상시 실행 서버를 추가하지 않았습니다. 최초 배치 절차는 `tools/deploy_oci_dataset.py`이며 기존 버킷의 공개 범위를 바꾸지 않도록 이미 존재하는 버킷에서는 중단합니다. 원본을 바꿀 때는 앱 번들과 원격 객체를 같은 검증된 데이터로 갱신해야 합니다.
 
 ## 3주 차 검증 (2026-11-19)
 
 - `flutter test`: 18개 통과. 원격 다운로드·캐시 저장, 새 컨트롤러의 오프라인 복원, 잘못된 원격 데이터의 캐시 보호, 손상 캐시·HTTP 오류·시간 초과 시 번들 대체, 저장소 오류, 재시도 복구와 중복 요청 방지, 화면의 시작 제한·재시도 및 전체 경기 흐름을 검사합니다. 대체 데이터 안내의 360·768·1280 폭과 밝은·어두운 테마에서 레이아웃 오류가 없는지도 위젯 테스트로 검사합니다.
 - `flutter analyze`: 지적 없음. `flutter build web`: 성공(Wasm dry run 포함).
 - 엔진 v2.0.0: 38개 검사 통과. `outputs/engine_2_0_0_validation_report.json` 참조.
-- 테스트에서 원격 장애는 HTTP 모의 응답으로 재현합니다. 실제 운영 호스트·Android 기기의 통신 및 저장 동작은 별도 배포·기기 검증 대상입니다.
+- 원격 장애는 HTTP 모의 응답으로 재현합니다. 실제 OCI 연결 검증은 `flutter test --dart-define=VERIFY_OCI_REMOTE=true`로 실행하며 전체 19개 테스트가 통과했습니다. 실제 `DataController`의 HTTPS 로딩·입력 계약 검사·번들과의 일치·경기 종료·통신 차단 시 다운로드 캐시 복원까지 확인합니다. 일반 `flutter test`는 실통신 검사 한 건을 건너뛰어 네트워크 없이 실행할 수 있습니다. 검증 결과는 `outputs/remote_connection_report.json`에 남겼습니다. Android 실기기의 통신·저장 확인은 최종 기기 검증에 남습니다.

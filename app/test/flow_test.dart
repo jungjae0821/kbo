@@ -28,7 +28,7 @@ void main() {
     tester.view.devicePixelRatio = 3;
     addTearDown(tester.view.reset);
 
-    final data = DataController(bundle: _FileBundle());
+    final data = DataController(bundle: _FileBundle(), remoteUrl: '');
     final records = RecordBook();
     await tester.runAsync(data.load);
     expect(data.status, DataStatus.ready);
