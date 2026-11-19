@@ -1,0 +1,163 @@
+{
+  "engine_version": "2.0.0",
+  "data_version": "2026-ea23f11532d3428a3d281f9fdbb692781b439ff33b7864d4269c300458985a5b",
+  "dart_version": "3.13.7 (stable) (Thu Oct 22 14:28:57 2026 -0700) on \"windows_x64\"",
+  "dataset_path": "../kbo_data/kbo_2026_138278/app/season_dataset.json",
+  "passed": 38,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "real dataset: 10 teams, 591 players, 10 validated lineups",
+      "passed": true
+    },
+    {
+      "name": "reject unsupported schema and rule versions",
+      "passed": true
+    },
+    {
+      "name": "reject changed combination rule or event order",
+      "passed": true
+    },
+    {
+      "name": "reject duplicate player IDs and unknown player references",
+      "passed": true
+    },
+    {
+      "name": "reject wrong affiliation, duplicate batters, missing slots and positions",
+      "passed": true
+    },
+    {
+      "name": "reject zero sample and fallback profiles for selected players",
+      "passed": true
+    },
+    {
+      "name": "reject missing, negative, nonfinite, all-zero and unnormalized probabilities",
+      "passed": true
+    },
+    {
+      "name": "matchup uses arithmetic mean without applying a second prior",
+      "passed": true
+    },
+    {
+      "name": "each of eight outcomes is selectable, including zero-weight edges",
+      "passed": true
+    },
+    {
+      "name": "PRNG known vectors, seed validation and deterministic sequence",
+      "passed": true
+    },
+    {
+      "name": "walk and hit by pitch force advances for all eight base configurations",
+      "passed": true
+    },
+    {
+      "name": "all hit distances with loaded bases and scoring order",
+      "passed": true
+    },
+    {
+      "name": "runner conservation and no mutation for every base/outcome/out/draw case",
+      "passed": true
+    },
+    {
+      "name": "situational base running on hits",
+      "passed": true
+    },
+    {
+      "name": "double play and runs scoring on outs follow the out count",
+      "passed": true
+    },
+    {
+      "name": "strikeout and other out preserve runners and add one out",
+      "passed": true
+    },
+    {
+      "name": "third out clears bases, switches sides and records third out in log detail",
+      "passed": true
+    },
+    {
+      "name": "team batting orders continue across innings independently",
+      "passed": true
+    },
+    {
+      "name": "skip bottom ninth when home is ahead",
+      "passed": true
+    },
+    {
+      "name": "play bottom ninth when tied or away is ahead",
+      "passed": true
+    },
+    {
+      "name": "non-HR walk-off only credits winning run; HR credits all runners",
+      "passed": true
+    },
+    {
+      "name": "ninth inning away win and extra-inning away win",
+      "passed": true
+    },
+    {
+      "name": "tie after ninth starts tenth; tie after eleventh ends game",
+      "passed": true
+    },
+    {
+      "name": "walk-off allowed in extras and tying run does not finish game",
+      "passed": true
+    },
+    {
+      "name": "all-out full game ends at exactly 66 PAs, 11 innings",
+      "passed": true
+    },
+    {
+      "name": "same seed and inputs reproduce full JSON; step and playToEnd agree",
+      "passed": true
+    },
+    {
+      "name": "different seeds change play sequence; generated match IDs differ",
+      "passed": true
+    },
+    {
+      "name": "reject identical and unknown teams",
+      "passed": true
+    },
+    {
+      "name": "real-data games: totals, starter use, logs, score continuity, immutable snapshots",
+      "passed": true
+    },
+    {
+      "name": "2.0.0 without substitutions replays the saved example exactly",
+      "passed": true
+    },
+    {
+      "name": "pitching change: new pitcher faces later batters, no re-entry",
+      "passed": true
+    },
+    {
+      "name": "a pitcher must face one batter before being replaced",
+      "passed": true
+    },
+    {
+      "name": "baserunning draws are logged and the same seed replays them",
+      "passed": true
+    },
+    {
+      "name": "pinch hitter keeps the batting slot; replaced batter cannot return",
+      "passed": true
+    },
+    {
+      "name": "reject ineligible substitutes and changes after the game",
+      "passed": true
+    },
+    {
+      "name": "substitutions are logged and replay identically",
+      "passed": true
+    },
+    {
+      "name": "chosen starting pitchers pitch from the first plate appearance",
+      "passed": true
+    },
+    {
+      "name": "reject ineligible starting pitchers",
+      "passed": true
+    }
+  ],
+  "scope": "Engine 2.0.0 rules and real-data smoke tests."
+}

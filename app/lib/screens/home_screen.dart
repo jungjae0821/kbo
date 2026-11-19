@@ -6,6 +6,7 @@ import '../state/labels.dart';
 import '../state/record_book.dart';
 import '../theme/kbo_theme.dart';
 import '../widgets/feed_layout.dart';
+import '../widgets/home_board.dart';
 import '../widgets/record_sheet.dart';
 import 'records_screen.dart';
 import 'team_select_screen.dart';
@@ -28,9 +29,9 @@ class HomeScreen extends StatelessWidget {
         final records = scope.records;
         final ready = data.status == DataStatus.ready;
 
-        final Widget recent;
+        final Widget season;
         if (data.status == DataStatus.loading) {
-          recent = Bubble(
+          season = Bubble(
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -41,7 +42,7 @@ class HomeScreen extends StatelessWidget {
             ),
           );
         } else if (data.status == DataStatus.failed) {
-          recent = Bubble(
+          season = Bubble(
             stretch: true,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,11 +53,11 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           );
-        } else if (records.recent.isEmpty) {
-          recent = Bubble(child: Text(keepAll('아직 끝낸 경기가 없습니다.'), style: text.bodyMedium));
         } else {
-          recent = PredictionFeed(games: records.recent.take(_recentCount).toList(), data: data.data!);
+          season = SeasonStandings(teams: data.data!.teams);
         }
+
+        final year = ready && data.data!.year.isNotEmpty ? data.data!.year : '2026';
 
         return FeedScaffold(
           title: 'KBO 가상야구',
@@ -65,26 +66,28 @@ class HomeScreen extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(4, 0, 4, 12),
-                child: Text('2026 정규시즌 기록으로 치르는 가상 경기', style: text.bodySmall?.copyWith(color: k.inkSub)),
+                child: Text('$year 정규시즌 기록으로 치르는 가상 경기', style: text.bodySmall?.copyWith(color: k.inkSub)),
               ),
-              PredictionSummary(records: records),
-              const FeedHeading('지난 경기'),
-              recent,
-              const FeedHeading('새 경기'),
-              Bubble(
-                stretch: true,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(keepAll('두 팀을 고르면 전력을 비교하고 이길 팀을 예측합니다.'), style: text.titleSmall?.copyWith(fontWeight: FontWeight.w700)),
-                    const SizedBox(height: 2),
-                    Text(
-                      keepAll('맞히면 ${RecordBook.pointsPerHit}점, 무승부는 0점이고 적중률에서 빠집니다.'),
-                      style: text.bodySmall?.copyWith(color: k.inkSub),
-                    ),
-                  ],
+              PredictionBoard(records: records),
+              if (ready && records.recent.isNotEmpty) ...[
+                const FeedHeading('지난 경기'),
+                PredictionFeed(games: records.recent.take(_recentCount).toList(), data: data.data!),
+              ],
+              if (ready && data.notice != null) ...[
+                const SizedBox(height: 12),
+                Bubble(
+                  stretch: true,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(keepAll(data.notice!), style: text.bodySmall?.copyWith(color: k.inkSub)),
+                      if (data.canRetry) TextButton(onPressed: data.load, child: const Text('다시 불러오기')),
+                    ],
+                  ),
                 ),
-              ),
+              ],
+              FeedHeading('$year 정규시즌 순위'),
+              season,
             ],
           ),
           dock: ActionRow(
