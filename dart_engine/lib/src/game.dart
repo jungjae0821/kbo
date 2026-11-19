@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'dataset.dart';
 import 'probability.dart';
 
@@ -720,6 +722,138 @@ class GameEngine {
       step();
     }
     return state;
+  }
+
+  static const checkpointFormat = 'kbo_game_checkpoint';
+  static const checkpointVersion = 1;
+
+  /// The smallest record that rebuilds this game exactly: the game is
+  /// deterministic, so [restore] replays the plate appearances with the same
+  /// seed and substitutions. Random state and the current state are kept to
+  /// detect a checkpoint that no longer replays to the same point.
+  Map<String, dynamic> toCheckpoint() => {
+        'format': checkpointFormat,
+        'checkpoint_version': checkpointVersion,
+        'game_id': gameId,
+        'engine_version': version,
+        'data_version': dataset.dataVersion,
+        'random_algorithm': SeededRandom.algorithm,
+        'seed': seed,
+        'away_team_id': awayTeamId,
+        'home_team_id': homeTeamId,
+        'starting_pitchers': {
+          awayTeamId: startingPitcherFor(awayTeamId),
+          homeTeamId: startingPitcherFor(homeTeamId),
+        },
+        'substitutions': _substitutions.map((s) => s.toJson()).toList(),
+        'plate_appearances': state.plateAppearances,
+        'random_state': _random.state,
+        'state': state.toJson(),
+      };
+
+  /// Rebuilds a game from [toCheckpoint]. Throws [FormatException] when the
+  /// checkpoint is malformed, was made by another engine or data version, or
+  /// does not replay to the saved state.
+  factory GameEngine.restore(
+    SeasonDataset dataset,
+    Map<String, dynamic> checkpoint,
+  ) {
+    T field<T>(String key) {
+      final value = checkpoint[key];
+      if (value is! T) throw FormatException('Checkpoint field "$key" is invalid');
+      return value;
+    }
+
+    if (checkpoint['format'] != checkpointFormat ||
+        checkpoint['checkpoint_version'] != checkpointVersion) {
+      throw const FormatException('Not a supported game checkpoint');
+    }
+    if (field<String>('engine_version') != version) {
+      throw FormatException(
+          'Checkpoint engine ${checkpoint['engine_version']} != $version');
+    }
+    if (field<String>('data_version') != dataset.dataVersion) {
+      throw FormatException(
+          'Checkpoint data ${checkpoint['data_version']} != ${dataset.dataVersion}');
+    }
+    if (field<String>('random_algorithm') != SeededRandom.algorithm) {
+      throw const FormatException('Checkpoint random algorithm differs');
+    }
+    final target = field<int>('plate_appearances');
+    if (target < 0 || target > 10000) {
+      throw const FormatException('Checkpoint plate appearance count is invalid');
+    }
+    final subs = field<List>('substitutions').map((raw) {
+      if (raw is! Map) throw const FormatException('Checkpoint substitution is invalid');
+      final kind = SubstitutionKind.values
+          .where((k) => k.key == raw['kind'])
+          .firstOrNull;
+      final before = raw['before_plate_appearance'];
+      if (kind == null ||
+          raw['team_id'] is! String ||
+          raw['in_player_id'] is! String ||
+          raw['out_player_id'] is! String ||
+          before is! int) {
+        throw const FormatException('Checkpoint substitution is invalid');
+      }
+      return raw.cast<String, dynamic>();
+    }).toList();
+
+    final GameEngine engine;
+    try {
+      engine = GameEngine(
+        dataset: dataset,
+        awayTeamId: field<String>('away_team_id'),
+        homeTeamId: field<String>('home_team_id'),
+        seed: field<int>('seed'),
+        gameId: field<String>('game_id'),
+        startingPitchers: field<Map>('starting_pitchers').map(
+          (k, v) => MapEntry(k as String, v as String),
+        ),
+      );
+      var next = 0;
+      void applyDue() {
+        while (next < subs.length &&
+            subs[next]['before_plate_appearance'] ==
+                engine.state.plateAppearances + 1) {
+          final s = subs[next++];
+          final teamId = s['team_id'] as String;
+          final expectedOut = s['kind'] == SubstitutionKind.pitcher.key
+              ? engine.pitcherFor(teamId)
+              : engine.nextBatterFor(teamId);
+          if (expectedOut != s['out_player_id']) {
+            throw const FormatException('Checkpoint substitution does not replay');
+          }
+          if (s['kind'] == SubstitutionKind.pitcher.key) {
+            engine.substitutePitcher(teamId, s['in_player_id'] as String);
+          } else {
+            engine.pinchHit(teamId, s['in_player_id'] as String);
+          }
+        }
+      }
+
+      while (engine.state.plateAppearances < target) {
+        applyDue();
+        if (engine.state.isFinished) {
+          throw const FormatException('Checkpoint replays past the end of the game');
+        }
+        engine.step();
+      }
+      applyDue();
+      if (next != subs.length) {
+        throw const FormatException('Checkpoint has substitutions that never replay');
+      }
+    } on FormatException {
+      rethrow;
+    } on Object catch (error) {
+      throw FormatException('Checkpoint does not replay: $error');
+    }
+    final saved = checkpoint['state'];
+    if (checkpoint['random_state'] != engine._random.state ||
+        (saved != null && jsonEncode(saved) != jsonEncode(engine.state.toJson()))) {
+      throw const FormatException('Checkpoint does not replay to the saved state');
+    }
+    return engine;
   }
 
   Map<String, dynamic> toJson() => {
