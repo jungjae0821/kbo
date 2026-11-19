@@ -220,7 +220,7 @@ class PlateRow extends StatelessWidget {
       child: Text.rich(
         TextSpan(children: [
           TextSpan(text: batterName, style: base.copyWith(fontWeight: FontWeight.w700)),
-          TextSpan(text: ' ${outcomeLabel(log.outcome)}', style: base),
+          TextSpan(text: ' ${playLabel(log)}', style: base),
           TextSpan(
             text: ', $after',
             style: runs > 0

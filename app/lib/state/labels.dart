@@ -3,11 +3,19 @@ import 'package:kbo_engine/kbo_engine.dart';
 String outcomeLabel(PlateOutcome o) => switch (o) {
       PlateOutcome.strikeout => '삼진',
       PlateOutcome.walk => '볼넷',
+      PlateOutcome.hitByPitch => '몸에 맞는 공',
       PlateOutcome.single => '단타',
       PlateOutcome.doubleHit => '2루타',
       PlateOutcome.triple => '3루타',
       PlateOutcome.homeRun => '홈런',
       PlateOutcome.otherOut => '아웃',
+    };
+
+/// 타석 결과 이름. 병살·희생플라이처럼 아웃 중에 생긴 상황은 그 이름으로 보여 준다.
+String playLabel(PlateAppearanceLog log) => switch (log.transition.note) {
+      PlayNote.doublePlay => '병살타',
+      PlayNote.runScoredOnOut => '희생플라이',
+      null => outcomeLabel(log.outcome),
     };
 
 bool isHit(PlateOutcome o) =>
@@ -36,7 +44,7 @@ String endLabel(GameEnd end) => switch (end) {
       GameEnd.walkOff => '끝내기',
       GameEnd.regulation => '9회 종료',
       GameEnd.extraInnings => '연장 종료',
-      GameEnd.tie => '12회 무승부',
+      GameEnd.tie => '$maxInnings회 무승부',
     };
 
 /// ".265"처럼 앞의 0을 뺀 타율 표기.

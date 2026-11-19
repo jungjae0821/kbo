@@ -206,14 +206,19 @@ class _GameScreenState extends State<GameScreen> {
                     teamName: predicted.shortName,
                     attacking: _myTeamAttacking,
                     askingAtDefenseStart: _defenseJustStarted &&
+                        engine.canSubstitutePitcher(widget.predictedWinnerId) &&
                         !engine.substitutions.any((x) =>
                             x.kind == SubstitutionKind.pitcher && x.inning == s.inning && x.isTop == s.isTop),
                     halfText: halfLabel(s.inning, s.isTop),
                     playerText: _myTeamAttacking
                         ? '다음 타자 ${(s.isTop ? s.awayBattingIndex : s.homeBattingIndex) + 1}번 '
                             '${_data.player(engine.nextBatterFor(widget.predictedWinnerId)).name}'
-                        : '투수 ${_data.player(engine.pitcherFor(widget.predictedWinnerId)).name}',
-                    onPressed: _substitute,
+                        : '투수 ${_data.player(engine.pitcherFor(widget.predictedWinnerId)).name}'
+                            '${engine.canSubstitutePitcher(widget.predictedWinnerId) ? '' : ', 첫 타자 상대 전'}',
+                    // 투수는 한 타자 이상 상대한 뒤에만 바꿀 수 있다 (야구 규칙 5.10).
+                    onPressed: _myTeamAttacking || engine.canSubstitutePitcher(widget.predictedWinnerId)
+                        ? _substitute
+                        : null,
                   ),
                   const SizedBox(height: 8),
                   ActionRow(
@@ -389,7 +394,8 @@ class _ManagerBar extends StatelessWidget {
   final bool askingAtDefenseStart;
   final String halfText;
   final String playerText;
-  final VoidCallback onPressed;
+  /// null이면 버튼을 끈다 (예: 투수가 아직 한 타자도 상대하지 않음).
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {

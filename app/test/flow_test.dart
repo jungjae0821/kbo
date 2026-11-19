@@ -72,14 +72,22 @@ void main() {
 
     expect(find.text('1회초'), findsOneWidget);
 
-    // 1회초는 KT 공격, 삼성(내 예측) 수비 시작이라 투수 교체를 묻는다. 스크롤 없이 화면 안에 있어야 한다.
-    expect(find.text('1회초 삼성 수비 시작'), findsOneWidget);
-    expect(find.text('투수 후라도, 바꿀까요?'), findsOneWidget);
+    // 1회초는 KT 공격, 삼성(내 예측) 수비 시작. 선발은 첫 타자를 상대하기 전이라 바꿀 수 없다.
+    expect(find.text('삼성 수비 중'), findsOneWidget);
+    expect(find.text('투수 후라도, 첫 타자 상대 전'), findsOneWidget);
+    expect(tester.widget<FilledButton>(find.widgetWithText(FilledButton, '투수 교체')).onPressed, isNull);
     final screen = Offset.zero & tester.view.physicalSize / tester.view.devicePixelRatio;
     for (final label in ['투수 교체', '다음 타석', '다음 수비까지']) {
       final rect = tester.getRect(find.text(label));
       expect(screen.contains(rect.topLeft) && screen.contains(rect.bottomRight), isTrue, reason: '$label 버튼이 화면 밖');
     }
+
+    // 첫 타석 뒤 기록에는 타석 번호 대신 이닝 제목이 한 번 나온다.
+    await tester.tap(find.text('다음 타석'));
+    await tester.pumpAndSettle();
+    expect(find.text('1회초 KT 공격'), findsOneWidget);
+
+    // 한 타자를 상대했으니 이제 바꿀 수 있다.
     await tester.tap(find.text('투수 교체'));
     await tester.pumpAndSettle();
     expect(_plain('후라도 대신 던질 투수'), findsOneWidget);
@@ -87,17 +95,12 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.widgetWithText(FilledButton, '투수 교체').last);
     await tester.pumpAndSettle();
-    // 최근 기록에 교체 줄이 생기고, 묻는 문구는 사라진다.
+    // 최근 기록에 교체 줄이 생기고, 새 투수도 첫 타자 전이라 버튼이 다시 꺼진다.
     expect(
       find.byWidgetPredicate((w) => w is Text && (w.data ?? w.textSpan?.toPlainText() ?? '').replaceAll('⁠', '').contains('후라도 대신')),
       findsOneWidget,
     );
-    expect(find.text('1회초 삼성 수비 시작'), findsNothing);
-
-    // 첫 타석 뒤 기록에는 타석 번호 대신 이닝 제목이 한 번 나온다.
-    await tester.tap(find.text('다음 타석'));
-    await tester.pumpAndSettle();
-    expect(find.text('1회초 KT 공격'), findsOneWidget);
+    expect(tester.widget<FilledButton>(find.widgetWithText(FilledButton, '투수 교체')).onPressed, isNull);
 
     // 삼성 공격이 오면 대타 버튼이 같은 자리에 보인다.
     for (var i = 0; i < 30 && find.text('대타 내기').evaluate().isEmpty; i++) {
