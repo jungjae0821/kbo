@@ -82,7 +82,7 @@ void main(List<String> args) {
     for (final key in ['schema_version', 'rules']) {
       final value = copy();
       if (key == 'rules') {
-        value['rules']['version'] = '2.0.0';
+        value['rules']['version'] = '1.0.0';
       } else {
         value[key] = '2.0.0';
       }
@@ -96,6 +96,9 @@ void main(List<String> args) {
     final b = copy();
     b['rules']['events'] = (b['rules']['events'] as List).reversed.toList();
     throws(() => SeasonDataset.fromJson(b));
+    final c = copy();
+    c['rules']['max_innings'] = 12;
+    throws(() => SeasonDataset.fromJson(c));
   });
   test('reject duplicate player IDs and unknown player references', () {
     final a = copy();
@@ -146,18 +149,18 @@ void main(List<String> args) {
       'reject missing, negative, nonfinite, all-zero and unnormalized probabilities',
       () {
     for (final invalid in [-0.1, double.nan, double.infinity, '0.5', null, 2]) {
-      final value = profile([0, 0, 0, 0, 0, 0, 1]);
+      final value = profile([0, 0, 0, 0, 0, 0, 0, 1]);
       value['strikeout'] = invalid;
       throws(() => EventProbabilities.fromJson(value));
     }
-    throws(() => EventProbabilities.fromJson(profile(List.filled(7, 0))));
-    throws(() => EventProbabilities.fromJson(profile(List.filled(7, 0.5))));
+    throws(() => EventProbabilities.fromJson(profile(List.filled(8, 0))));
+    throws(() => EventProbabilities.fromJson(profile(List.filled(8, 0.5))));
   });
   test('matchup uses arithmetic mean without applying a second prior', () {
-    final a = EventProbabilities.fromJson(profile([1, 0, 0, 0, 0, 0, 0]));
-    final b = EventProbabilities.fromJson(profile([0, 1, 0, 0, 0, 0, 0]));
+    final a = EventProbabilities.fromJson(profile([1, 0, 0, 0, 0, 0, 0, 0]));
+    final b = EventProbabilities.fromJson(profile([0, 1, 0, 0, 0, 0, 0, 0]));
     final mixed = EventProbabilities.matchup(a, b);
-    equal(mixed.values, [0.5, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0]);
+    equal(mixed.values, [0.5, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]);
     equal(mixed.sample(0).key, 'strikeout');
     equal(mixed.sample(0.499999).key, 'strikeout');
     equal(mixed.sample(0.5).key, 'walk');
@@ -166,9 +169,9 @@ void main(List<String> args) {
       throws(() => mixed.sample(draw));
     }
   });
-  test('each of seven outcomes is selectable, including zero-weight edges', () {
+  test('each of eight outcomes is selectable, including zero-weight edges', () {
     for (final event in PlateOutcome.values) {
-      final weights = List<double>.filled(7, 0)..[event.index] = 1;
+      final weights = List<double>.filled(8, 0)..[event.index] = 1;
       final p = EventProbabilities.fromJson(profile(weights));
       equal(p.sample(0).key, event.key);
       equal(p.sample(0.999999999999).key, event.key);
@@ -189,7 +192,7 @@ void main(List<String> args) {
       equal(a.nextDouble(), b.nextDouble());
     }
   });
-  test('walk force advances for all eight base configurations', () {
+  test('walk and hit by pitch force advances for all eight base configurations', () {
     final expectedBases = [
       ['B', null, null],
       ['B', '1', null],
@@ -205,10 +208,12 @@ void main(List<String> args) {
         3,
         (i) => mask & (1 << i) == 0 ? null : '${i + 1}',
       );
-      final result = advanceBases(bases, 'B', PlateOutcome.walk);
-      equal(result.bases, expectedBases[mask]);
-      equal(result.scored, mask == 7 ? ['3'] : []);
-      equal(result.outsAdded, 0);
+      for (final free in [PlateOutcome.walk, PlateOutcome.hitByPitch]) {
+        final result = advanceBases(bases, 'B', free);
+        equal(result.bases, expectedBases[mask]);
+        equal(result.scored, mask == 7 ? ['3'] : []);
+        equal(result.outsAdded, 0);
+      }
     }
   });
   test('all hit distances with loaded bases and scoring order', () {
@@ -237,28 +242,93 @@ void main(List<String> args) {
     }
   });
   test(
-    'runner conservation and no mutation across all 56 base/outcome cases',
+    'runner conservation and no mutation for every base/outcome/out/draw case',
     () {
       for (var mask = 0; mask < 8; mask++) {
         for (final outcome in PlateOutcome.values) {
-          final bases = List<String?>.generate(
-            3,
-            (i) => mask & (1 << i) == 0 ? null : '${i + 1}',
-          );
-          final before = List<String?>.of(bases);
-          final result = advanceBases(bases, 'B', outcome);
-          final remaining = result.bases.whereType<String>().toList();
-          final all = [...remaining, ...result.scored];
-          equal(
-            all.length,
-            bases.whereType<String>().length + (result.outsAdded == 0 ? 1 : 0),
-          );
-          equal(all.toSet().length, all.length);
-          equal(bases, before);
+          for (final outs in [0, 1, 2]) {
+            // 0.0 makes every situational event happen, null makes none.
+            for (final value in [null, 0.0]) {
+              final bases = List<String?>.generate(
+                3,
+                (i) => mask & (1 << i) == 0 ? null : '${i + 1}',
+              );
+              final before = List<String?>.of(bases);
+              final result = advanceBases(
+                bases,
+                'B',
+                outcome,
+                outs: outs,
+                draw: value == null ? null : () => value,
+              );
+              final remaining = result.bases.whereType<String>().toList();
+              final all = [...remaining, ...result.scored];
+              final inningOver = outs + result.outsAdded >= 3;
+              if (!inningOver) {
+                // Every runner and the batter is on base, scored, or out.
+                equal(
+                  all.length + result.outsAdded,
+                  bases.whereType<String>().length + 1,
+                );
+              }
+              check(!all.contains('B') || result.outsAdded == 0,
+                  'Batter out but still on base');
+              check(!inningOver || result.scored.isEmpty,
+                  'No run on a play that ends the inning');
+              equal(all.toSet().length, all.length);
+              equal(bases, before);
+            }
+          }
         }
       }
     },
   );
+  test('situational base running on hits', () {
+    final hit = advanceBases(['1', '2', null], 'B', PlateOutcome.single,
+        draw: () => 0.0);
+    equal(hit.scored, ['2']);
+    equal(hit.bases, ['B', null, '1']);
+    equal(hit.draws.length, 2);
+    final held = advanceBases(['1', '2', null], 'B', PlateOutcome.single,
+        draw: () => 0.99);
+    equal(held.scored, []);
+    equal(held.bases, ['B', '1', '2']);
+    final blocked = advanceBases(['1', null, '3'], 'B', PlateOutcome.single,
+        draw: () => 0.99);
+    equal(blocked.bases, ['B', '1', null]);
+    equal(blocked.scored, ['3']);
+    final two = advanceBases(['1', null, null], 'B', PlateOutcome.doubleHit,
+        draw: () => 0.0);
+    equal(two.scored, ['1']);
+    equal(two.bases, [null, 'B', null]);
+  });
+  test('double play and runs scoring on outs follow the out count', () {
+    final dp = advanceBases(['1', null, '3'], 'B', PlateOutcome.otherOut,
+        outs: 0, draw: () => 0.0);
+    equal([dp.outsAdded, dp.scored, dp.bases, dp.note?.key],
+        [2, ['3'], [null, null, null], 'double_play']);
+    final endsInning = advanceBases(['1', null, '3'], 'B',
+        PlateOutcome.otherOut, outs: 1, draw: () => 0.0);
+    equal([endsInning.outsAdded, endsInning.scored], [2, []]);
+    final twoOuts = advanceBases(['1', null, '3'], 'B', PlateOutcome.otherOut,
+        outs: 2, draw: () => 0.0);
+    equal([twoOuts.outsAdded, twoOuts.scored, twoOuts.draws], [1, [], []]);
+    final sacFly = advanceBases([null, '2', '3'], 'B', PlateOutcome.otherOut,
+        outs: 1, draw: () => 0.0);
+    equal([sacFly.outsAdded, sacFly.scored, sacFly.bases, sacFly.note?.key],
+        [1, ['3'], [null, '2', null], 'run_scored_on_out']);
+    final strikeout = advanceBases(['1', null, '3'], 'B',
+        PlateOutcome.strikeout, draw: () => 0.0);
+    equal([strikeout.outsAdded, strikeout.scored], [1, []]);
+    final play = applyPlateAppearance(
+      GameState(outs: 1, bases: ['1', null, '3']),
+      'B',
+      PlateOutcome.otherOut,
+      draw: () => 0.0,
+    );
+    equal([play.state.awayScore, play.state.isTop, play.outsAfterPlay],
+        [0, false, 3]);
+  });
   test('strikeout and other out preserve runners and add one out', () {
     for (final outcome in [PlateOutcome.strikeout, PlateOutcome.otherOut]) {
       final result = advanceBases(['1', null, '3'], 'B', outcome);
@@ -344,7 +414,7 @@ void main(List<String> args) {
     equal(walk.state.end?.name, 'walkOff');
   });
   test('ninth inning away win and extra-inning away win', () {
-    for (final inning in [9, 10, 12]) {
+    for (final inning in [9, 10, 11]) {
       final state = applyPlateAppearance(
         late(inning: inning, away: 1, outs: 2),
         'B',
@@ -353,7 +423,7 @@ void main(List<String> args) {
       equal(state.end?.name, inning == 9 ? 'regulation' : 'extraInnings');
     }
   });
-  test('tie after ninth starts tenth; tie after twelfth ends game', () {
+  test('tie after ninth starts tenth; tie after eleventh ends game', () {
     final extra = applyPlateAppearance(
       late(outs: 2),
       'B',
@@ -361,16 +431,18 @@ void main(List<String> args) {
     ).state;
     equal([extra.inning, extra.isTop, extra.isFinished], [10, true, false]);
     final end = applyPlateAppearance(
-      late(inning: 12, outs: 2),
+      late(inning: 11, outs: 2),
       'B',
       PlateOutcome.otherOut,
     ).state;
     equal(end.end?.name, 'tie');
     throws(() => applyPlateAppearance(end, 'B', PlateOutcome.homeRun));
+    throws(() => applyPlateAppearance(
+        late(inning: 12, outs: 0), 'B', PlateOutcome.strikeout));
   });
   test('walk-off allowed in extras and tying run does not finish game', () {
     final walkoff = applyPlateAppearance(
-      late(inning: 12, bases: [null, null, '3']),
+      late(inning: 11, bases: [null, null, '3']),
       'B',
       PlateOutcome.single,
     ).state;
@@ -383,14 +455,14 @@ void main(List<String> args) {
     check(!tying.isFinished, 'Tying run must not end game');
     equal(tying.homeScore, 1);
   });
-  test('all-out full game ends at exactly 72 PAs, 12 innings', () {
+  test('all-out full game ends at exactly 66 PAs, 11 innings', () {
     var state = GameState();
     while (!state.isFinished) {
       state = applyPlateAppearance(state, 'B', PlateOutcome.strikeout).state;
     }
     equal(
       [state.plateAppearances, state.inning, state.awayScore, state.homeScore],
-      [72, 12, 0, 0],
+      [66, 11, 0, 0],
     );
     equal(state.end?.name, 'tie');
   });
@@ -480,7 +552,8 @@ void main(List<String> args) {
         state.homeScore,
       );
       equal(state.plateAppearances, game.logs.length);
-      check(state.inning >= 9 && state.inning <= 12, 'Invalid final inning');
+      check(state.inning >= 9 && state.inning <= maxInnings,
+          'Invalid final inning');
       var awayPAs = 0, homePAs = 0;
       for (final log in game.logs) {
         final battingTeam = log.isTop ? game.awayTeamId : game.homeTeamId;
@@ -514,8 +587,8 @@ void main(List<String> args) {
       );
     }
   });
-  test('1.1.0 without substitutions replays the week 2 example exactly', () {
-    final file = File('../outputs/week2_example_game.json');
+  test('2.0.0 without substitutions replays the saved example exactly', () {
+    final file = File('../outputs/engine_2_0_0_example_game.json');
     check(file.existsSync(), 'Run from dart_engine/ so the example is found');
     final example = jsonDecode(file.readAsStringSync()) as Map<String, dynamic>;
     final game = GameEngine(
@@ -548,6 +621,32 @@ void main(List<String> args) {
       equal(log.pitcherId, log.number <= 3 ? starter : reliever);
     }
     throws(() => game.substitutePitcher(home, starter));
+  });
+  test('a pitcher must face one batter before being replaced', () {
+    final game = engine(13);
+    final home = ids[1], away = ids[0];
+    check(!game.canSubstitutePitcher(home), 'Starter has faced nobody');
+    throws(() =>
+        game.substitutePitcher(home, game.pitcherCandidates(home).first));
+    game.step();
+    check(game.canSubstitutePitcher(home), 'Starter faced a batter');
+    check(!game.canSubstitutePitcher(away), 'Away starter has not pitched');
+    game.substitutePitcher(home, game.pitcherCandidates(home).first);
+    check(!game.canSubstitutePitcher(home), 'Reliever has faced nobody');
+    throws(() =>
+        game.substitutePitcher(home, game.pitcherCandidates(home).first));
+    game.step();
+    check(game.canSubstitutePitcher(home), 'Reliever faced a batter');
+  });
+  test('baserunning draws are logged and the same seed replays them', () {
+    final a = engine(21)..playToEnd();
+    final b = engine(21)..playToEnd();
+    equal(a.toJson(), b.toJson());
+    check(a.logs.any((l) => l.transition.draws.isNotEmpty),
+        'Expected situational base running');
+    final json = a.toJson();
+    equal(json['max_innings'], 11);
+    equal((json['baserunning_rates'] as Map)['double_play'], 0.18);
   });
   test('pinch hitter keeps the batting slot; replaced batter cannot return',
       () {
@@ -638,7 +737,7 @@ void main(List<String> args) {
           'failed': failures.length,
           'checks': checks,
           'scope':
-              'Week 2 rules and real-data smoke tests; distribution calibration is week 5.',
+              'Engine 2.0.0 rules and real-data smoke tests.',
         })}\n');
   }
   if (failures.isNotEmpty) exitCode = 1;

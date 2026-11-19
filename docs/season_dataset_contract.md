@@ -21,8 +21,8 @@ JSON 키는 snake_case를 유지합니다. Dart에서 `Map<String, dynamic>`으�
 | `schema_version`, `data_version` | `String` | 구조·데이터 버전 |
 | `season` | `Map<String, dynamic>` | 기존 공식 수정본의 시즌 객체. `id`, `year`, `name`은 문자열; 날짜·대회 ID도 보존 |
 | `sources` | `Map<String, String>` | 입력 3개 파일 해시 |
-| `rules` | `Map<String, dynamic>` | 버전, 7종 사건, prior PA/BF, 결합·소속 규칙, 최대 12회, 선발 전 경기 적용 |
-| `league_baselines` | `Map<String, dynamic>` | 타격·투구의 7종 확률, 비홈런 안타 분배 비율, PA/BF 표본 합계·유효 선수 수 |
+| `rules` | `Map<String, dynamic>` | 버전(`2.0.0`), 8종 사건, prior PA/BF, 결합·소속 규칙, 최대 11회, 선발 전 경기 적용 |
+| `league_baselines` | `Map<String, dynamic>` | 타격·투구의 8종 확률, 비홈런 안타 분배 비율, PA/BF 표본 합계·유효 선수 수 |
 | `teams` | `List<Team>` | 팀 10개, 원본 팀 통계와 로스터 ID·소속 안내 |
 | `players` | `List<PlayerSeasonStats>` | 공식 선수 전체 기록, 소속과 엔진 입력 확률 |
 | `lineups` | `List<Lineup>` | 팀별 타자 9명·선발 ID |
@@ -43,24 +43,25 @@ JSON 키는 snake_case를 유지합니다. Dart에서 `Map<String, dynamic>`으�
 | `missing_fields` | `List<String>` | 미제공 필수 필드 |
 | `fallback_reason` | `String?` | null / zero_denominator / missing_required_fields |
 | `uses_league_hit_split` | `bool` | 투수 피2·3루타 대신 리그 비홈런 안타 분포 사용 여부 |
-| `probabilities` | `Map<String, double>` | 아래 7종 확률, 비음수·합계 1 |
+| `probabilities` | `Map<String, double>` | 아래 8종 확률, 비음수·합계 1 |
 
-## 필수 필드와 7종 결과
+## 필수 필드와 8종 결과
 
-타자 필수 정수: `plate_appearances`, `at_bats`, `hits`, `doubles`, `triples`, `home_runs`, `walks`, `batting_strikeouts`.
+타자 필수 정수: `plate_appearances`, `at_bats`, `hits`, `doubles`, `triples`, `home_runs`, `walks`, `hit_by_pitch`, `batting_strikeouts`.
 
-투수 필수 정수: `batters_faced`, `outs_pitched`, `hits_allowed`, `home_runs_allowed`, `walks_allowed`, `pitcher_strikeouts`. 이닝은 소수 연산 대신 아웃 수를 사용합니다. 피2·3루타는 선택 항목입니다.
+투수 필수 정수: `batters_faced`, `outs_pitched`, `hits_allowed`, `home_runs_allowed`, `walks_allowed`, `hit_batters`, `pitcher_strikeouts`. 이닝은 소수 연산 대신 아웃 수를 사용합니다. 피2·3루타는 선택 항목입니다.
 
 | 사건 키 | 타자 관측 건수 | 투수 관측 건수 |
 | --- | --- | --- |
 | `strikeout` | 타격 삼진 | 투수 탈삼진 |
 | `walk` | 볼넷(고의4구 포함, 별도 가산 안 함) | 허용 볼넷 |
+| `hit_by_pitch` | 몸에 맞는 공 | 허용 사구 |
 | `single` | H−2B−3B−HR | 피안타−피2루타−피3루타−피홈런 |
 | `double`, `triple` | 2루타, 3루타 | 피2루타, 피3루타 |
 | `home_run` | 홈런 | 피홈런 |
-| `other_out` | PA−H−BB−K | BF−피안타−허용볼넷−탈삼진 |
+| `other_out` | PA−H−BB−HBP−K | BF−피안타−허용볼넷−허용사구−탈삼진 |
 
-사구·희생타 등은 초기 단순화 규칙에 따라 잔여 사건 `other_out`에 포함합니다. 따라서 이 사건은 실제 야구의 아웃만 집계한 수치가 아닙니다. 게임에서는 1아웃·주자 유지로 처리하며 득점 편향은 5주 차 반복 검증 대상입니다. 타율 H/AB를 타석 안타 확률로 쓰지 않습니다.
+희생타·실책·야수선택 출루 등은 잔여 사건 `other_out`에 포함합니다. 따라서 이 사건은 실제 야구의 아웃만 집계한 수치가 아닙니다. 게임에서는 아웃 1개를 기본으로 하고, 엔진이 병살과 3루 주자 득점을 상황에 따라 추첨합니다. 타율 H/AB를 타석 안타 확률로 쓰지 않습니다.
 
 ## 누락·0분모·소표본 기준
 

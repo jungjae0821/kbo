@@ -6,12 +6,14 @@ from tools.prepare_season_dataset import EVENTS, counts, league_baselines, profi
 
 def batter(pa=100):
     return {'plate_appearances': pa, 'at_bats': pa - 10, 'hits': 30,
-            'doubles': 6, 'triples': 1, 'home_runs': 3, 'walks': 8, 'batting_strikeouts': 20}
+            'doubles': 6, 'triples': 1, 'home_runs': 3, 'walks': 8, 'hit_by_pitch': 2,
+            'batting_strikeouts': 20}
 
 
 def pitcher():
     return {'batters_faced': 100, 'outs_pitched': 60, 'hits_allowed': 25,
-            'home_runs_allowed': 2, 'walks_allowed': 10, 'pitcher_strikeouts': 20}
+            'home_runs_allowed': 2, 'walks_allowed': 10, 'hit_batters': 1,
+            'pitcher_strikeouts': 20}
 
 
 class DatasetTests(unittest.TestCase):
@@ -22,7 +24,8 @@ class DatasetTests(unittest.TestCase):
         c, missing = counts(batter(), 'batting')
         self.assertEqual(missing, [])
         self.assertEqual(c['single'], 20)
-        self.assertEqual(c['other_out'], 42)
+        self.assertEqual(c['hit_by_pitch'], 2)
+        self.assertEqual(c['other_out'], 40)
         self.assertEqual(sum(c.values()), 100)
 
     def test_zero_sample_is_league_prior_and_source_stays_zero(self):

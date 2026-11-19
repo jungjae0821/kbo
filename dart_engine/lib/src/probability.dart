@@ -1,6 +1,7 @@
 enum PlateOutcome {
   strikeout('strikeout'),
   walk('walk'),
+  hitByPitch('hit_by_pitch'),
   single('single'),
   doubleHit('double'),
   triple('triple'),
@@ -11,7 +12,7 @@ enum PlateOutcome {
   final String key;
 }
 
-/// Event order is part of engine version 1.0.0's reproducibility contract.
+/// Event order is part of the engine's reproducibility contract (rules 2.0.0).
 class EventProbabilities {
   EventProbabilities._(List<double> values)
       : values = List.unmodifiable(values);

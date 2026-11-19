@@ -11,11 +11,11 @@ if __package__:
 else:  # Also support python tools/prepare_season_dataset.py
     from fetch_kbo import write_json
 
-EVENTS = ('strikeout', 'walk', 'single', 'double', 'triple', 'home_run', 'other_out')
+EVENTS = ('strikeout', 'walk', 'hit_by_pitch', 'single', 'double', 'triple', 'home_run', 'other_out')
 BAT_FIELDS = ('plate_appearances', 'at_bats', 'hits', 'doubles', 'triples',
-              'home_runs', 'walks', 'batting_strikeouts')
+              'home_runs', 'walks', 'hit_by_pitch', 'batting_strikeouts')
 PITCH_FIELDS = ('batters_faced', 'outs_pitched', 'hits_allowed', 'home_runs_allowed',
-                'walks_allowed', 'pitcher_strikeouts')
+                'walks_allowed', 'hit_batters', 'pitcher_strikeouts')
 POSITIONS = {'C', '1B', '2B', '3B', 'SS', 'LF', 'CF', 'RF', 'DH'}
 PRIOR_PA = 200
 PRIOR_BF = 200
@@ -45,15 +45,16 @@ def counts(stats, role, hit_split=None):
     if any(not valid_count(stats[f]) for f in fields):
         raise ValueError(f'Invalid {role} count')
     if role == 'batting':
-        n, hits, hr, bb, k = (stats[f] for f in
-                              ('plate_appearances', 'hits', 'home_runs', 'walks', 'batting_strikeouts'))
+        n, hits, hr, bb, hbp, k = (stats[f] for f in
+                                   ('plate_appearances', 'hits', 'home_runs', 'walks',
+                                    'hit_by_pitch', 'batting_strikeouts'))
         double, triple = stats['doubles'], stats['triples']
         if hits > stats['at_bats'] or stats['at_bats'] > n:
             raise ValueError('Inconsistent PA/AB/H')
     else:
-        n, hits, hr, bb, k = (stats[f] for f in
-                              ('batters_faced', 'hits_allowed', 'home_runs_allowed',
-                               'walks_allowed', 'pitcher_strikeouts'))
+        n, hits, hr, bb, hbp, k = (stats[f] for f in
+                                   ('batters_faced', 'hits_allowed', 'home_runs_allowed',
+                                    'walks_allowed', 'hit_batters', 'pitcher_strikeouts'))
         double, triple = stats.get('doubles_allowed'), stats.get('triples_allowed')
         if double is None or triple is None:
             # The caller supplies an explicit documented league non-HR hit split.
@@ -64,12 +65,12 @@ def counts(stats, role, hit_split=None):
         elif not valid_count(double) or not valid_count(triple):
             raise ValueError('Invalid extra-base hits allowed')
     single = hits - hr - double - triple
-    other = n - hits - bb - k
+    other = n - hits - bb - hbp - k
     if min(single, other, hits - hr) < -1e-9:
         raise ValueError(f'Inconsistent {role} event partition')
-    if n == 0 and (hits or hr or bb or k or double or triple):
+    if n == 0 and (hits or hr or bb or hbp or k or double or triple):
         raise ValueError('Nonzero events with zero denominator')
-    return dict(zip(EVENTS, (k, bb, max(0, single), double, triple, hr, max(0, other)))), []
+    return dict(zip(EVENTS, (k, bb, hbp, max(0, single), double, triple, hr, max(0, other)))), []
 
 
 def league_baselines(players):
@@ -201,12 +202,12 @@ def build(folder):
         t['roster_player_ids'] = [p['player_id'] for p in players if p['assigned_team_id'] == t['team_id']]
         t['membership_notice'] = '공식 시즌 표의 팀 분류입니다. 성적은 시즌 전체 합계이며 해당 팀 소속 기간만의 기록이나 현재 등록 명단을 뜻하지 않습니다.'
     result = {'schema_version': '1.0.0', 'season': season,
-              'sources': hashes, 'rules': {'version': '1.0.0', 'events': list(EVENTS),
+              'sources': hashes, 'rules': {'version': '2.0.0', 'events': list(EVENTS),
                   'prior_pa': PRIOR_PA, 'prior_bf': PRIOR_BF,
-                  'matchup': 'arithmetic_mean_then_normalize', 'max_innings': 12,
+                  'matchup': 'arithmetic_mean_then_normalize', 'max_innings': 11,
                   'pitcher_usage': 'starter_for_entire_game',
                   'membership': 'unique_official_season_label_no_split_no_duplicate',
-                  'omitted_events': 'HBP/sacrifices count as other_out; no steals/errors/double plays'},
+                  'omitted_events': 'sacrifices/errors/fielder choices count as other_out; double plays and runs on outs are situational in the engine; no steals'},
               'league_baselines': league, 'teams': teams, 'players': players, 'lineups': lineups}
     result['data_version'] = str(season['year']) + '-' + digest(result)
     report = {'data_version': result['data_version'], 'validation_status': 'passed',

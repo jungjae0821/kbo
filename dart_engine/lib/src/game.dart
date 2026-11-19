@@ -3,28 +3,169 @@ import 'probability.dart';
 
 enum GameEnd { homeAheadAfterTop, walkOff, regulation, extraInnings, tie }
 
+/// KBO regular season: extra innings end after the 11th (since 2025).
+const maxInnings = 11;
+
+/// Situational base-running odds applied on top of the plate outcome.
+///
+/// Hit advancement rates are long-run professional averages. The double play
+/// and run-scoring-out rates were calibrated so simulated 2026 games match
+/// the league's GIDP and sacrifice fly totals per plate appearance (see
+/// dart_engine/README.md).
+class BaserunningRates {
+  const BaserunningRates({
+    this.singleRunnerFromSecondScores = 0.60,
+    this.singleRunnerFromFirstToThird = 0.28,
+    this.doubleRunnerFromFirstScores = 0.42,
+    this.doublePlay = 0.18,
+    this.runnerFromThirdScoresOnOut = 0.52,
+  });
+
+  /// Single: runner on second scores instead of stopping at third.
+  final double singleRunnerFromSecondScores;
+
+  /// Single: runner on first takes third when it is open.
+  final double singleRunnerFromFirstToThird;
+
+  /// Double: runner on first scores instead of stopping at third.
+  final double doubleRunnerFromFirstScores;
+
+  /// Other out with a runner on first and fewer than two outs.
+  final double doublePlay;
+
+  /// Other out (not a double play) with a runner on third and fewer than two
+  /// outs: sacrifice fly or run-scoring groundout.
+  final double runnerFromThirdScoresOnOut;
+
+  Map<String, double> toJson() => {
+        'single_runner_from_second_scores': singleRunnerFromSecondScores,
+        'single_runner_from_first_to_third': singleRunnerFromFirstToThird,
+        'double_runner_from_first_scores': doubleRunnerFromFirstScores,
+        'double_play': doublePlay,
+        'runner_from_third_scores_on_out': runnerFromThirdScoresOnOut,
+      };
+}
+
+/// What happened beyond the plate outcome itself, for logs and the UI.
+enum PlayNote {
+  doublePlay('double_play'),
+  runScoredOnOut('run_scored_on_out');
+
+  const PlayNote(this.key);
+  final String key;
+}
+
 class BaseAdvance {
-  BaseAdvance(List<String?> bases, List<String> scored, this.outsAdded)
-      : bases = List.unmodifiable(bases),
-        scored = List.unmodifiable(scored);
+  BaseAdvance(
+    List<String?> bases,
+    List<String> scored,
+    this.outsAdded, {
+    this.note,
+    List<double> draws = const [],
+  })  : bases = List.unmodifiable(bases),
+        scored = List.unmodifiable(scored),
+        draws = List.unmodifiable(draws);
   final List<String?> bases;
   final List<String> scored;
   final int outsAdded;
+  final PlayNote? note;
+
+  /// Random draws consumed for situational base running, in order.
+  final List<double> draws;
 }
 
 /// Bases are [first, second, third]. Scoring order starts at third base.
+///
+/// [outs] is the number of outs before the play. [draw] supplies uniform
+/// values in [0, 1) for situational base running; without it, every
+/// situational event (extra base, double play, run on an out) is skipped.
 BaseAdvance advanceBases(
   List<String?> bases,
   String batterId,
-  PlateOutcome outcome,
-) {
+  PlateOutcome outcome, {
+  int outs = 0,
+  double Function()? draw,
+  BaserunningRates rates = const BaserunningRates(),
+}) {
   if (bases.length != 3) throw ArgumentError('Exactly three bases required');
+  final draws = <double>[];
+  bool chance(double probability) {
+    if (draw == null) return false;
+    final value = draw();
+    draws.add(value);
+    return value < probability;
+  }
+
   final next = List<String?>.of(bases);
   final scored = <String>[];
-  if (outcome == PlateOutcome.strikeout || outcome == PlateOutcome.otherOut) {
+  if (outcome == PlateOutcome.strikeout) {
     return BaseAdvance(next, scored, 1);
   }
-  if (outcome == PlateOutcome.walk) {
+  if (outcome == PlateOutcome.otherOut) {
+    if (outs < 2 && next[0] != null && chance(rates.doublePlay)) {
+      // Batter and the runner from first are out; others move up one base,
+      // but no run counts when the double play ends the inning.
+      final inningOver = outs + 2 >= 3;
+      final third = next[2], second = next[1];
+      next.fillRange(0, 3, null);
+      if (!inningOver) {
+        if (third != null) scored.add(third);
+        next[2] = second;
+      } else {
+        next[1] = second;
+        next[2] = third;
+      }
+      return BaseAdvance(next, scored, 2,
+          note: PlayNote.doublePlay, draws: draws);
+    }
+    if (outs < 2 &&
+        next[2] != null &&
+        chance(rates.runnerFromThirdScoresOnOut)) {
+      scored.add(next[2]!);
+      next[2] = null;
+      return BaseAdvance(next, scored, 1,
+          note: PlayNote.runScoredOnOut, draws: draws);
+    }
+    return BaseAdvance(next, scored, 1, draws: draws);
+  }
+  if (outcome == PlateOutcome.single) {
+    if (next[2] != null) scored.add(next[2]!);
+    next[2] = null;
+    if (next[1] != null) {
+      if (chance(rates.singleRunnerFromSecondScores)) {
+        scored.add(next[1]!);
+      } else {
+        next[2] = next[1];
+      }
+      next[1] = null;
+    }
+    if (next[0] != null) {
+      if (next[2] == null && chance(rates.singleRunnerFromFirstToThird)) {
+        next[2] = next[0];
+      } else {
+        next[1] = next[0];
+      }
+    }
+    next[0] = batterId;
+    return BaseAdvance(next, scored, 0, draws: draws);
+  }
+  if (outcome == PlateOutcome.doubleHit) {
+    for (final base in [2, 1]) {
+      if (next[base] != null) scored.add(next[base]!);
+    }
+    final first = next[0];
+    next.fillRange(0, 3, null);
+    if (first != null) {
+      if (chance(rates.doubleRunnerFromFirstScores)) {
+        scored.add(first);
+      } else {
+        next[2] = first;
+      }
+    }
+    next[1] = batterId;
+    return BaseAdvance(next, scored, 0, draws: draws);
+  }
+  if (outcome == PlateOutcome.walk || outcome == PlateOutcome.hitByPitch) {
     if (next[0] != null) {
       if (next[1] != null) {
         if (next[2] != null) scored.add(next[2]!);
@@ -35,26 +176,15 @@ BaseAdvance advanceBases(
     next[0] = batterId;
     return BaseAdvance(next, scored, 0);
   }
-  final distance = switch (outcome) {
-    PlateOutcome.single => 1,
-    PlateOutcome.doubleHit => 2,
-    PlateOutcome.triple => 3,
-    PlateOutcome.homeRun => 4,
-    _ => throw StateError('Unsupported outcome'),
-  };
-  next.fillRange(0, 3, null);
+  // Triple and home run: every runner scores.
   for (var base = 2; base >= 0; base--) {
-    if (bases[base] == null) continue;
-    if (base + distance >= 3) {
-      scored.add(bases[base]!);
-    } else {
-      next[base + distance] = bases[base];
-    }
+    if (bases[base] != null) scored.add(bases[base]!);
   }
-  if (distance == 4) {
+  next.fillRange(0, 3, null);
+  if (outcome == PlateOutcome.homeRun) {
     scored.add(batterId);
   } else {
-    next[distance - 1] = batterId;
+    next[2] = batterId;
   }
   return BaseAdvance(next, scored, 0);
 }
@@ -114,23 +244,31 @@ class PlayTransition {
     this.state,
     this.basesAfterPlay,
     this.outsAfterPlay,
-    this.scored,
-  );
+    this.scored, {
+    this.note,
+    this.draws = const [],
+  });
   final GameState state;
   final List<String?> basesAfterPlay;
   final int outsAfterPlay;
   final List<String> scored;
+  final PlayNote? note;
+
+  /// Random draws consumed for situational base running.
+  final List<double> draws;
 }
 
 /// Pure rules, separate from probability sampling and the Flutter UI.
 PlayTransition applyPlateAppearance(
   GameState before,
   String batterId,
-  PlateOutcome outcome,
-) {
+  PlateOutcome outcome, {
+  double Function()? draw,
+  BaserunningRates rates = const BaserunningRates(),
+}) {
   if (before.isFinished) throw StateError('Game is already finished');
   if (before.inning < 1 ||
-      before.inning > 12 ||
+      before.inning > maxInnings ||
       before.outs < 0 ||
       before.outs > 2 ||
       before.bases.length != 3 ||
@@ -142,7 +280,14 @@ PlayTransition applyPlateAppearance(
       before.homeBattingIndex > 8) {
     throw ArgumentError('Invalid game state');
   }
-  final advance = advanceBases(before.bases, batterId, outcome);
+  final advance = advanceBases(
+    before.bases,
+    batterId,
+    outcome,
+    outs: before.outs,
+    draw: draw,
+    rates: rates,
+  );
   var scored = advance.scored;
   // Non-HR walk-offs stop when the winning run crosses home.
   if (!before.isTop &&
@@ -166,7 +311,7 @@ PlayTransition applyPlateAppearance(
   GameEnd? end;
   if (!isTop && inning >= 9 && homeScore > awayScore) {
     end = GameEnd.walkOff;
-  } else if (outs == 3) {
+  } else if (outs >= 3) {
     if (isTop) {
       if (inning >= 9 && homeScore > awayScore) {
         end = GameEnd.homeAheadAfterTop;
@@ -176,7 +321,7 @@ PlayTransition applyPlateAppearance(
       }
     } else if (inning >= 9 && awayScore != homeScore) {
       end = inning == 9 ? GameEnd.regulation : GameEnd.extraInnings;
-    } else if (inning == 12) {
+    } else if (inning == maxInnings) {
       end = GameEnd.tie;
     } else {
       inning++;
@@ -211,6 +356,8 @@ PlayTransition applyPlateAppearance(
     advance.bases,
     before.outs + advance.outsAdded,
     scored,
+    note: advance.note,
+    draws: advance.draws,
   );
 }
 
@@ -255,6 +402,8 @@ class PlateAppearanceLog {
         'scored_player_ids': transition.scored,
         'bases_after_play': transition.basesAfterPlay,
         'outs_after_play': transition.outsAfterPlay,
+        'play_note': transition.note?.key,
+        'baserunning_draws': transition.draws,
         'before': before.toJson(),
         'after': after.toJson(),
       };
@@ -372,9 +521,11 @@ class GameEngine {
     return first?.outPlayerId ?? _pitchers[teamId]!;
   }
 
-  /// 1.1.0: pitching changes and pinch hitters. Without substitutions a game
-  /// replays exactly as in 1.0.0 for the same inputs and seed.
-  static const version = '1.1.0';
+  /// 2.0.0: hit by pitch, situational base running (extra bases, double
+  /// plays, runs on outs), 11-inning limit and the one-batter minimum for
+  /// pitchers. Games from 1.x do not replay under 2.0.0.
+  static const version = '2.0.0';
+  static const baserunning = BaserunningRates();
   static int _sequence = 0;
   final SeasonDataset dataset;
   final String awayTeamId;
@@ -415,9 +566,25 @@ class GameEngine {
   List<String> pinchHitterCandidates(String teamId) =>
       _candidates(teamId, (p) => p.validBatter);
 
+  /// Batters the current pitcher of [teamId] has faced in this game.
+  int battersFacedByCurrentPitcher(String teamId) {
+    final pitcher = pitcherFor(teamId);
+    return _logs.where((log) => log.pitcherId == pitcher).length;
+  }
+
+  /// A pitcher must face at least one batter before being replaced
+  /// (Official Baseball Rules 5.10(f), (g)).
+  bool canSubstitutePitcher(String teamId) =>
+      !state.isFinished && battersFacedByCurrentPitcher(teamId) > 0;
+
   /// Replaces [teamId]'s pitcher from the next plate appearance on.
   Substitution substitutePitcher(String teamId, String playerId) {
     _checkSubstitution(teamId, playerId, pitcherCandidates(teamId));
+    if (!canSubstitutePitcher(teamId)) {
+      throw StateError(
+        'The current pitcher must face at least one batter before a change',
+      );
+    }
     final sub = _record(Substitution(
       kind: SubstitutionKind.pitcher,
       teamId: teamId,
@@ -523,7 +690,13 @@ class GameEngine {
     );
     final draw = _random.nextDouble();
     final outcome = probabilities.sample(draw);
-    final transition = applyPlateAppearance(state, batter.id, outcome);
+    final transition = applyPlateAppearance(
+      state,
+      batter.id,
+      outcome,
+      draw: _random.nextDouble,
+      rates: baserunning,
+    );
     final log = PlateAppearanceLog(
       number: state.plateAppearances + 1,
       inning: state.inning,
@@ -555,6 +728,8 @@ class GameEngine {
         'data_version': dataset.dataVersion,
         'seed': seed,
         'random_algorithm': SeededRandom.algorithm,
+        'max_innings': maxInnings,
+        'baserunning_rates': baserunning.toJson(),
         'random_state': _random.state,
         'away_team_id': awayTeamId,
         'home_team_id': homeTeamId,

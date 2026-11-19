@@ -1,3 +1,4 @@
+import 'game.dart' show maxInnings;
 import 'probability.dart';
 
 Map<String, dynamic> object(dynamic value) {
@@ -103,9 +104,9 @@ class SeasonDataset {
   factory SeasonDataset.fromJson(Map<String, dynamic> json) {
     final rules = object(json['rules']);
     if (json['schema_version'] != '1.0.0' ||
-        rules['version'] != '1.0.0' ||
+        rules['version'] != '2.0.0' ||
         rules['matchup'] != 'arithmetic_mean_then_normalize' ||
-        rules['max_innings'] != 12 ||
+        rules['max_innings'] != maxInnings ||
         rules['pitcher_usage'] != 'starter_for_entire_game' ||
         rules['prior_pa'] != 200 ||
         rules['prior_bf'] != 200 ||
