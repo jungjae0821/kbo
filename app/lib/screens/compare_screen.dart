@@ -189,7 +189,10 @@ class _CompareScreenState extends State<CompareScreen> {
           card(_LineupCards(data: data, awayId: away.id, homeId: home.id)),
           const SizedBox(height: 16),
           Text(
-            keepAll('예측은 확정하면 경기가 끝날 때까지 바꿀 수 없습니다. 무승부면 0점이고 적중률 계산에서 빠집니다.'),
+            keepAll([
+              ...{for (final id in [away.id, home.id]) data.season.teams[id]!.membershipNotice},
+              '예측은 확정하면 경기가 끝날 때까지 바꿀 수 없습니다. 무승부면 0점이고 적중률 계산에서 빠집니다.',
+            ].join('\n\n')),
             textAlign: TextAlign.center,
             style: text.bodySmall?.copyWith(color: k.inkSub),
           ),

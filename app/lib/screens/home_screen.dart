@@ -82,6 +82,12 @@ class HomeScreen extends StatelessWidget {
                       keepAll('맞히면 ${RecordBook.pointsPerHit}점, 무승부는 0점이고 적중률에서 빠집니다.'),
                       style: text.bodySmall?.copyWith(color: k.inkSub),
                     ),
+                    if (ready && data.notice != null) ...[
+                      const SizedBox(height: 8),
+                      Text(keepAll(data.notice!), style: text.bodySmall?.copyWith(color: k.inkSub)),
+                      if (data.canRetry)
+                        TextButton(onPressed: data.load, child: const Text('다시 불러오기')),
+                    ],
                   ],
                 ),
               ),

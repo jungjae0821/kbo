@@ -1,0 +1,27 @@
+{
+  "verified_on": "2026-11-19",
+  "scope": "Week 3 Flutter integration and remaining data-loading requirements",
+  "flutter_tests": {"passed": 18, "failed": 0},
+  "engine_tests": {"version": "2.0.0", "passed": 38, "failed": 0, "report": "engine_2_0_0_validation_report.json"},
+  "flutter_analyze": "passed; no issues",
+  "flutter_build_web": "passed; Wasm dry run succeeded",
+  "verified_behaviors": [
+    "HTTPS UTF-8 season JSON loading with a request timeout",
+    "Validate schema, engine rules, season year and team count before cache replacement",
+    "Fallback to validated device cache or bundled JSON",
+    "Reject corrupted JSON, incompatible rules and wrong season without replacing valid cache",
+    "Continue playing when cache storage is unavailable",
+    "Retry recovery and deduplicate concurrent loads",
+    "Block game creation until data is ready",
+    "Fallback notice and retry in existing home components",
+    "Fallback UI widget checks at widths 360, 768 and 1280 in light and dark themes",
+    "Membership notice in the existing comparison screen footer",
+    "Existing team selection, starter selection, prediction, substitutions, game result and single scoring flow"
+  ],
+  "design": "Existing design tokens, theme, shared components and screen structure retained",
+  "limitations": [
+    "Network errors and recovery tested with mock HTTP responses; no production data host deployed",
+    "Cache behavior tested through an injected cache; platform storage and networking on Android hardware are final device verification work",
+    "Personal records and interrupted-game persistence remain week 4 scope"
+  ]
+}

@@ -58,6 +58,14 @@ void main() {
     await tester.pumpAndSettle();
     expect(_plain('자동 선발 소형준 대신'), findsOneWidget);
 
+    // 소속 안내는 기존 비교 화면의 하단 안내 영역에 표시한다.
+    final membership = find.byWidgetPredicate((w) => w is Text &&
+        (w.data ?? '').replaceAll('⁠', '').contains('공식 시즌 표의 팀 분류입니다.'));
+    await tester.dragUntilVisible(membership, find.byType(ListView), const Offset(0, -200));
+    await tester.pumpAndSettle();
+    expect(membership, findsOneWidget);
+    expect(tester.takeException(), isNull);
+
     // 예측 전에는 확정 버튼이 꺼져 있다.
     expect(tester.widget<FilledButton>(find.widgetWithText(FilledButton, '이길 팀을 고르세요')).onPressed, isNull);
     // 예측 줄은 스크롤하지 않는 위쪽 고정 칸에 있다.
