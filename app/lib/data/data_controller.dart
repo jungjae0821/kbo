@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
 import 'app_data.dart';
+import 'remote_config.dart';
 import 'season_cache.dart';
 
 enum DataStatus { loading, ready, failed }
@@ -18,7 +19,10 @@ class DataController extends ChangeNotifier {
     AssetBundle? bundle,
     SeasonCache? cache,
     http.Client Function()? clientFactory,
-    this.remoteUrl = const String.fromEnvironment('KBO_DATA_URL'),
+    this.remoteUrl = const String.fromEnvironment(
+      'KBO_DATA_URL',
+      defaultValue: defaultSeasonDataUrl,
+    ),
     this.requestTimeout = const Duration(seconds: 10),
   }) : _bundle = bundle ?? rootBundle,
        _cache = cache ?? PreferencesSeasonCache(),

@@ -1,7 +1,8 @@
 {
   "verified_on": "2026-11-19",
   "scope": "Week 3 Flutter integration and remaining data-loading requirements",
-  "flutter_tests": {"passed": 18, "failed": 0},
+  "flutter_tests": {"passed": 19, "failed": 0, "command": "flutter test --dart-define=VERIFY_OCI_REMOTE=true"},
+  "live_connection_report": "remote_connection_report.json",
   "engine_tests": {"version": "2.0.0", "passed": 38, "failed": 0, "report": "engine_2_0_0_validation_report.json"},
   "flutter_analyze": "passed; no issues",
   "flutter_build_web": "passed; Wasm dry run succeeded",
@@ -20,7 +21,7 @@
   ],
   "design": "Existing design tokens, theme, shared components and screen structure retained",
   "limitations": [
-    "Network errors and recovery tested with mock HTTP responses; no production data host deployed",
+    "Network failure paths use mock responses; the separate opt-in OCI test verifies real HTTPS loading and offline recovery",
     "Cache behavior tested through an injected cache; platform storage and networking on Android hardware are final device verification work",
     "Personal records and interrupted-game persistence remain week 4 scope"
   ]
