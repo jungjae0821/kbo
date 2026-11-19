@@ -6,7 +6,7 @@ import '../state/labels.dart';
 import '../theme/kbo_theme.dart';
 import '../widgets/feed_layout.dart';
 import '../widgets/record_sheet.dart';
-import 'team_select_screen.dart';
+import '../widgets/saved_game_card.dart';
 
 class RecordsScreen extends StatelessWidget {
   const RecordsScreen({super.key});
@@ -34,7 +34,7 @@ class RecordsScreen extends StatelessWidget {
                 PredictionFeed(games: r.recent, data: data, showDate: true),
               const SizedBox(height: 16),
               Text(
-                keepAll('앱을 닫으면 이 기록은 지워집니다.'),
+                keepAll(r.store == null ? '앱을 닫으면 이 기록은 지워집니다.' : '기록은 이 기기에 저장되어 앱을 다시 열어도 남습니다.'),
                 textAlign: TextAlign.center,
                 style: text.bodySmall?.copyWith(color: k.inkSub),
               ),
@@ -42,11 +42,7 @@ class RecordsScreen extends StatelessWidget {
           ),
           dock: ActionRow(
             primary: FilledButton(
-              onPressed: ready
-                  ? () => Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (_) => const TeamSelectScreen()),
-                      )
-                  : null,
+              onPressed: ready ? () => startNewGame(context, replace: true) : null,
               child: const Text('경기 만들기'),
             ),
           ),

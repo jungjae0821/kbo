@@ -1,0 +1,40 @@
+{
+  "verified_on": "2026-11-19",
+  "scope": "Week 4 personal record persistence, interrupted game save and restore, no re-scoring after relaunch",
+  "flutter_tests": {"passed": 32, "skipped": 1, "failed": 0, "command": "flutter test", "skipped_reason": "Live OCI check runs only with --dart-define=VERIFY_OCI_REMOTE=true; not re-run this week"},
+  "new_flutter_tests": "app/test/persistence_test.dart (14 tests)",
+  "engine_tests": {"version": "2.0.0", "passed": 41, "failed": 0, "report": "week4_engine_validation_report.json", "added": ["checkpoint restores a game mid-way and finishes identically", "checkpoint restores new and finished games", "checkpoint rejects other versions and tampered state"]},
+  "flutter_analyze": "passed; no issues",
+  "flutter_build_web": "passed",
+  "manual_web_check": "Built web app in the browser: created a game, played to the 2nd inning, reloaded, resumed the identical state, finished the game, reloaded again; the record stayed (1 game) and no interrupted game remained",
+  "storage": {
+    "android_and_desktop": "JSON files in the app support directory (kbo_save/records.json, kbo_save/saved_game.json); written to <name>.json.tmp then renamed over the original; writes are serialized",
+    "web": "SharedPreferences keys kbo_store.records and kbo_store.saved_game",
+    "records_format": {"format": "kbo_records", "schema_version": 1, "per_game_versions": ["engine_version", "data_version"]},
+    "saved_game_format": {"format": "kbo_saved_game", "schema_version": 1, "checkpoint": "kbo_game_checkpoint v1 with engine_version, data_version, random_algorithm, seed, starting pitchers, substitutions, plate appearance count, random state and current state"}
+  },
+  "verified_behaviors": [
+    "Records survive relaunch: points, prediction count, decided count, hits, current and best streak, recent games",
+    "A game ID already scored is never scored again after relaunch",
+    "Corrupted record file is kept as records.corrupt and the app starts with empty records and a notice",
+    "Unsupported record schema and malformed entries are rejected",
+    "Games finished before stored records are loaded are merged instead of overwriting the file",
+    "A failed record save shows a notice and keeps the record in memory",
+    "File store replaces through a temporary file, serializes concurrent writes and leaves no temporary file",
+    "Interrupted game is saved at start, after every plate appearance and every substitution",
+    "Engine checkpoint replays seed and substitutions to the same state, random state, lineup, pitchers and final result",
+    "Checkpoint from another engine version, data version, seed, random state or tampered score is rejected",
+    "Home shows the interrupted game with score, half inning and prediction; resume continues it",
+    "Leaving the game screen saves progress without a confirmation dialog",
+    "A game saved as finished but not yet scored is scored once on resume; a second resume of the same file does not add points",
+    "The interrupted game file is deleted only after the record save completes",
+    "Starting a new game while an interrupted game exists asks before discarding it",
+    "An interrupted game from another data version shows discard only",
+    "Existing week 3 flow test (team selection, prediction, substitutions, result, single scoring) still passes"
+  ],
+  "limitations": [
+    "Android device storage and app kill during a write were not tested on hardware; file replacement was tested on the Windows host file system",
+    "Restoring replays all plate appearances, which is fast for one game (under 10,000 plate appearances by engine guard)",
+    "No separate settings screen exists yet, so there are no user preferences to persist"
+  ]
+}

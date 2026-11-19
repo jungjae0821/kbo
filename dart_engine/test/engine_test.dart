@@ -723,6 +723,71 @@ void main(List<String> args) {
     throws(() => make({home: dataset.lineups[away]!.pitcherId}));
     throws(() => make({'unknown': dataset.lineups[home]!.pitcherId}));
   });
+  test('checkpoint restores a game mid-way and finishes identically', () {
+    final away = ids[2], home = ids[3];
+    GameEngine make() => GameEngine(
+        dataset: dataset, awayTeamId: away, homeTeamId: home, seed: 2026, gameId: 'cp-1');
+    final original = make();
+    for (var i = 0; i < 4; i++) {
+      original.step();
+    }
+    original.substitutePitcher(home, original.pitcherCandidates(home).first);
+    for (var i = 0; i < 20 && !original.state.isFinished; i++) {
+      original.step();
+    }
+    original.pinchHit(away, original.pinchHitterCandidates(away).first);
+    // Round-trip through JSON text, as the app stores it.
+    final checkpoint = jsonDecode(jsonEncode(original.toCheckpoint())) as Map<String, dynamic>;
+    final restored = GameEngine.restore(dataset, checkpoint);
+    equal(restored.state.toJson(), original.state.toJson());
+    equal(restored.substitutions.map((s) => s.toJson()).toList(),
+        original.substitutions.map((s) => s.toJson()).toList());
+    equal(restored.battingOrderFor(away), original.battingOrderFor(away));
+    equal(restored.pitcherFor(home), original.pitcherFor(home));
+    original.playToEnd();
+    restored.playToEnd();
+    equal(restored.toJson(), original.toJson());
+  });
+  test('checkpoint restores new and finished games', () {
+    final away = ids[4], home = ids[5];
+    final fresh = GameEngine(dataset: dataset, awayTeamId: away, homeTeamId: home, seed: 9, gameId: 'cp-2');
+    final restoredFresh = GameEngine.restore(dataset, fresh.toCheckpoint());
+    equal(restoredFresh.state.plateAppearances, 0);
+    fresh.playToEnd();
+    final restoredDone = GameEngine.restore(dataset, fresh.toCheckpoint());
+    check(restoredDone.state.isFinished, 'Finished game should restore finished');
+    equal(restoredDone.toJson(), fresh.toJson());
+  });
+  test('checkpoint rejects other versions and tampered state', () {
+    final away = ids[0], home = ids[1];
+    final game = GameEngine(dataset: dataset, awayTeamId: away, homeTeamId: home, seed: 5, gameId: 'cp-3');
+    for (var i = 0; i < 10; i++) {
+      game.step();
+    }
+    Map<String, dynamic> cp() => jsonDecode(jsonEncode(game.toCheckpoint())) as Map<String, dynamic>;
+    void rejects(void Function(Map<String, dynamic>) tamper) {
+      final c = cp();
+      tamper(c);
+      var formatError = false;
+      try {
+        GameEngine.restore(dataset, c);
+      } on FormatException {
+        formatError = true;
+      }
+      check(formatError, 'Expected FormatException');
+    }
+
+    rejects((c) => c['engine_version'] = '1.1.0');
+    rejects((c) => c['data_version'] = 'other');
+    rejects((c) => c['format'] = 'x');
+    rejects((c) => c['random_state'] = 1);
+    rejects((c) => c['seed'] = 6);
+    rejects((c) => (c['state'] as Map)['away_score'] = 99);
+    rejects((c) => c['plate_appearances'] = 'ten');
+    rejects((c) => c['substitutions'] = [
+          {'kind': 'pitcher', 'team_id': home, 'out_player_id': 'x', 'in_player_id': 'y', 'before_plate_appearance': 3}
+        ]);
+  });
   stdout.writeln('\n$passed passed, ${failures.length} failed');
   // Optional positional arguments: dataset path, report output path.
   if (args.length > 1) {

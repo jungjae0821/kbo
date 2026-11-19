@@ -5,6 +5,7 @@ import '../app_scope.dart';
 import '../data/app_data.dart';
 import '../state/labels.dart';
 import '../state/record_book.dart';
+import '../state/saved_game.dart';
 import '../theme/kbo_theme.dart';
 import '../widgets/feed_layout.dart';
 import '../widgets/line_score.dart';
@@ -19,7 +20,15 @@ class GameScreen extends StatefulWidget {
     required this.predictedWinnerId,
     required this.seed,
     this.startingPitchers = const {},
-  });
+  }) : restored = null;
+
+  /// 기기에 저장해 둔 중단 경기를 이어서 진행한다.
+  GameScreen.resume({super.key, required GameEngine engine, required this.predictedWinnerId})
+    : awayId = engine.awayTeamId,
+      homeId = engine.homeTeamId,
+      seed = engine.seed,
+      startingPitchers = const {},
+      restored = engine;
 
   final String awayId;
   final String homeId;
@@ -29,6 +38,9 @@ class GameScreen extends StatefulWidget {
   /// 경기 전에 고른 선발투수 (팀 ID → 선수 ID). 없으면 자동 선발.
   final Map<String, String> startingPitchers;
 
+  /// 이어하기로 되살린 엔진. 새 경기면 null.
+  final GameEngine? restored;
+
   @override
   State<GameScreen> createState() => _GameScreenState();
 }
@@ -36,31 +48,49 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> {
   GameEngine? _engine;
   late AppData _data;
+  late RecordBook _records;
+  late SavedGameStore _savedGame;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (_engine != null) return;
-    _data = AppScope.of(context).data.data!;
-    _engine = GameEngine(
-      dataset: _data.season,
-      awayTeamId: widget.awayId,
-      homeTeamId: widget.homeId,
-      seed: widget.seed,
-      startingPitchers: widget.startingPitchers,
-    );
+    final scope = AppScope.of(context);
+    _data = scope.data.data!;
+    _records = scope.records;
+    _savedGame = scope.savedGame;
+    _engine =
+        widget.restored ??
+        GameEngine(
+          dataset: _data.season,
+          awayTeamId: widget.awayId,
+          homeTeamId: widget.homeId,
+          seed: widget.seed,
+          startingPitchers: widget.startingPitchers,
+        );
+    // 새 경기는 바로 저장하고, 저장된 뒤 채점 전에 꺼진 경기는 이어하자마자 채점한다.
+    // 빌드 중에 홈 화면을 다시 그리게 하지 않도록 다음 프레임에 한다.
+    WidgetsBinding.instance.addPostFrameCallback((_) => _afterChange());
   }
 
   GameEngine get engine => _engine!;
 
+  /// 타석·교체마다 기기에 저장한다. 끝났으면 채점하고 중단 경기를 지운다.
+  void _afterChange() {
+    if (engine.state.isFinished) {
+      _score();
+    } else {
+      _savedGame.save(engine, widget.predictedWinnerId);
+    }
+  }
+
   void _step() {
     setState(() => engine.step());
-    if (engine.state.isFinished) _score();
+    _afterChange();
   }
 
   /// 내 팀이 지금 공격 중인가.
-  bool get _myTeamAttacking =>
-      (engine.state.isTop ? widget.awayId : widget.homeId) == widget.predictedWinnerId;
+  bool get _myTeamAttacking => (engine.state.isTop ? widget.awayId : widget.homeId) == widget.predictedWinnerId;
 
   /// 내 팀 수비가 막 시작됐다: 이 공수에서 아직 타석이 없다.
   bool get _defenseJustStarted {
@@ -77,22 +107,30 @@ class _GameScreenState extends State<GameScreen> {
         engine.step();
       } while (!engine.state.isFinished && !_defenseJustStarted);
     });
-    if (engine.state.isFinished) _score();
+    _afterChange();
   }
 
-  /// 경기가 끝나면 한 번만 채점한다 (RecordBook이 경기 ID 중복을 막는다).
-  void _score() {
+  /// 경기가 끝나면 한 번만 채점한다. RecordBook이 저장된 경기 ID로 중복을 막으므로
+  /// 채점 직후 앱이 꺼져 이어하기로 다시 와도 점수는 한 번만 들어간다.
+  /// 기록 저장이 끝난 뒤에 중단 경기를 지워, 둘 사이에 꺼져도 점수를 잃지 않는다.
+  Future<void> _score() async {
     final s = engine.state;
-    AppScope.of(context).records.score(GameRecord(
-          gameId: engine.gameId,
-          awayTeamId: widget.awayId,
-          homeTeamId: widget.homeId,
-          awayScore: s.awayScore,
-          homeScore: s.homeScore,
-          predictedWinnerId: widget.predictedWinnerId,
-          winnerTeamId: engine.winnerTeamId,
-          finishedAt: DateTime.now(),
-        ));
+    _records.score(
+      GameRecord(
+        gameId: engine.gameId,
+        awayTeamId: widget.awayId,
+        homeTeamId: widget.homeId,
+        awayScore: s.awayScore,
+        homeScore: s.homeScore,
+        predictedWinnerId: widget.predictedWinnerId,
+        winnerTeamId: engine.winnerTeamId,
+        finishedAt: DateTime.now(),
+        engineVersion: GameEngine.version,
+        dataVersion: _data.season.dataVersion,
+      ),
+    );
+    await _records.saved;
+    _savedGame.clear(gameId: engine.gameId);
   }
 
   /// 예측한 팀만 교체할 수 있다. 공격 중이면 대타, 수비 중이면 투수 교체.
@@ -120,6 +158,7 @@ class _GameScreenState extends State<GameScreen> {
         engine.substitutePitcher(teamId, chosen);
       }
     });
+    _afterChange();
   }
 
   void _openResult() {
@@ -128,21 +167,6 @@ class _GameScreenState extends State<GameScreen> {
         builder: (_) => ResultScreen(engine: engine, predictedWinnerId: widget.predictedWinnerId),
       ),
     );
-  }
-
-  Future<void> _confirmLeave() async {
-    final leave = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('경기를 그만둘까요?'),
-        content: Text(keepAll('진행 중인 경기와 예측은 아직 저장되지 않아 처음부터 다시 해야 합니다.')),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('계속 보기')),
-          FilledButton(onPressed: () => Navigator.pop(context, true), child: const Text('그만두기')),
-        ],
-      ),
-    );
-    if (leave == true && mounted) Navigator.of(context).pop();
   }
 
   @override
@@ -156,82 +180,81 @@ class _GameScreenState extends State<GameScreen> {
     final predicted = _data.team(widget.predictedWinnerId);
     final inningText = finished ? '경기 종료' : halfLabel(s.inning, s.isTop);
 
-    return PopScope(
-      canPop: finished,
-      onPopInvokedWithResult: (didPop, _) {
-        if (!didPop) _confirmLeave();
-      },
-      child: FeedScaffold(
-        title: '가상 경기',
-        appBarActions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16),
-            child: Center(
-              child: Text(
-                finished ? '내 예측 ${predicted.shortName}, 채점 완료' : '내 예측 ${predicted.shortName} 승리',
-                style: text.bodySmall?.copyWith(color: k.inkSub),
-              ),
+    // 타석마다 저장하므로 확인 없이 나가도 된다. 홈의 '이어하기'로 돌아온다.
+    return FeedScaffold(
+      title: '가상 경기',
+      appBarActions: [
+        Padding(
+          padding: const EdgeInsets.only(right: 16),
+          child: Center(
+            child: Text(
+              finished ? '내 예측 ${predicted.shortName}, 채점 완료' : '내 예측 ${predicted.shortName} 승리',
+              style: text.bodySmall?.copyWith(color: k.inkSub),
             ),
           ),
-        ],
-        header: StatusBar(
-          awayName: away.shortName,
-          awayScore: s.awayScore,
-          homeName: home.shortName,
-          homeScore: s.homeScore,
-          center: inningText,
-          outs: finished ? null : s.outs.clamp(0, 3),
-          semanticsLabel: '$inningText, ${s.outs}아웃, ${away.name} ${s.awayScore}점, ${home.name} ${s.homeScore}점',
         ),
-        body: Padding(
-          padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(child: _PlayFeed(data: _data, engine: engine, away: away, home: home)),
-              const SizedBox(height: 6),
-              _AtBatCard(data: _data, engine: engine, away: away, home: home),
-            ],
-          ),
-        ),
-        // 교체 묻기와 진행 버튼은 피드 밖 고정 영역에 둬서 스크롤 없이 항상 보인다.
-        dock: finished
-            ? ActionRow(
-                primary: FilledButton(onPressed: _openResult, child: const Text('경기 결과 보기')),
-              )
-            : Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  _ManagerBar(
-                    teamName: predicted.shortName,
-                    attacking: _myTeamAttacking,
-                    askingAtDefenseStart: _defenseJustStarted &&
-                        engine.canSubstitutePitcher(widget.predictedWinnerId) &&
-                        !engine.substitutions.any((x) =>
-                            x.kind == SubstitutionKind.pitcher && x.inning == s.inning && x.isTop == s.isTop),
-                    halfText: halfLabel(s.inning, s.isTop),
-                    playerText: _myTeamAttacking
-                        ? '다음 타자 ${(s.isTop ? s.awayBattingIndex : s.homeBattingIndex) + 1}번 '
-                            '${_data.player(engine.nextBatterFor(widget.predictedWinnerId)).name}'
-                        : '투수 ${_data.player(engine.pitcherFor(widget.predictedWinnerId)).name}'
-                            '${engine.canSubstitutePitcher(widget.predictedWinnerId) ? '' : ', 첫 타자 상대 전'}',
-                    // 투수는 한 타자 이상 상대한 뒤에만 바꿀 수 있다 (야구 규칙 5.10).
-                    onPressed: _myTeamAttacking || engine.canSubstitutePitcher(widget.predictedWinnerId)
-                        ? _substitute
-                        : null,
-                  ),
-                  const SizedBox(height: 8),
-                  ActionRow(
-                    primary: FilledButton(onPressed: _step, child: const Text('다음 타석')),
-                    secondary: FilledButton(
-                      style: secondaryButtonStyle(context),
-                      onPressed: _playToNextDefense,
-                      child: const Text('다음 수비까지'),
-                    ),
-                  ),
-                ],
-              ),
+      ],
+      header: StatusBar(
+        awayName: away.shortName,
+        awayScore: s.awayScore,
+        homeName: home.shortName,
+        homeScore: s.homeScore,
+        center: inningText,
+        outs: finished ? null : s.outs.clamp(0, 3),
+        semanticsLabel: '$inningText, ${s.outs}아웃, ${away.name} ${s.awayScore}점, ${home.name} ${s.homeScore}점',
       ),
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: _PlayFeed(data: _data, engine: engine, away: away, home: home),
+            ),
+            const SizedBox(height: 6),
+            _AtBatCard(data: _data, engine: engine, away: away, home: home),
+          ],
+        ),
+      ),
+      // 교체 묻기와 진행 버튼은 피드 밖 고정 영역에 둬서 스크롤 없이 항상 보인다.
+      dock: finished
+          ? ActionRow(
+              primary: FilledButton(onPressed: _openResult, child: const Text('경기 결과 보기')),
+            )
+          : Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _ManagerBar(
+                  teamName: predicted.shortName,
+                  attacking: _myTeamAttacking,
+                  askingAtDefenseStart:
+                      _defenseJustStarted &&
+                      engine.canSubstitutePitcher(widget.predictedWinnerId) &&
+                      !engine.substitutions.any(
+                        (x) => x.kind == SubstitutionKind.pitcher && x.inning == s.inning && x.isTop == s.isTop,
+                      ),
+                  halfText: halfLabel(s.inning, s.isTop),
+                  playerText: _myTeamAttacking
+                      ? '다음 타자 ${(s.isTop ? s.awayBattingIndex : s.homeBattingIndex) + 1}번 '
+                            '${_data.player(engine.nextBatterFor(widget.predictedWinnerId)).name}'
+                      : '투수 ${_data.player(engine.pitcherFor(widget.predictedWinnerId)).name}'
+                            '${engine.canSubstitutePitcher(widget.predictedWinnerId) ? '' : ', 첫 타자 상대 전'}',
+                  // 투수는 한 타자 이상 상대한 뒤에만 바꿀 수 있다 (야구 규칙 5.10).
+                  onPressed: _myTeamAttacking || engine.canSubstitutePitcher(widget.predictedWinnerId)
+                      ? _substitute
+                      : null,
+                ),
+                const SizedBox(height: 8),
+                ActionRow(
+                  primary: FilledButton(onPressed: _step, child: const Text('다음 타석')),
+                  secondary: FilledButton(
+                    style: secondaryButtonStyle(context),
+                    onPressed: _playToNextDefense,
+                    child: const Text('다음 수비까지'),
+                  ),
+                ),
+              ],
+            ),
     );
   }
 }
@@ -271,54 +294,56 @@ class _PlayFeed extends StatelessWidget {
       );
     }
 
-    return LayoutBuilder(builder: (context, box) {
-      // 최신 칸부터 거꾸로 채운다. 공수 묶음의 제목 높이는 그 묶음의 첫 칸을 넣을 때 함께 잡는다.
-      final groups = <((int, bool), List<Object>)>[];
-      var used = 0.0;
-      for (final event in events.reversed) {
-        final half = eventHalf(event);
-        final newGroup = groups.isEmpty || groups.last.$1 != half;
-        final needed = rowHeight + (newGroup ? headerHeight : 0);
-        if (used + needed > box.maxHeight) break;
-        used += needed;
-        if (newGroup) groups.add((half, <Object>[]));
-        groups.last.$2.add(event);
-      }
-      final latest = events.last;
-      final children = <Widget>[];
-      for (final (half, items) in groups.reversed) {
-        children.add(HalfHeader(
-          inning: half.$1,
-          isTop: half.$2,
-          attackingTeam: half.$2 ? away.shortName : home.shortName,
-        ));
-        for (final event in items.reversed) {
-          children.add(Padding(
-            padding: const EdgeInsets.only(top: _gap),
-            child: event is PlateAppearanceLog
-                ? PlateRow(
-                    log: event,
-                    batterName: data.player(event.batterId).name,
-                    emphasize: identical(event, latest),
-                    singleLine: true,
-                  )
-                : SubstitutionRow(
-                    sub: event as Substitution,
-                    inName: data.player(event.inPlayerId).name,
-                    outName: data.player(event.outPlayerId).name,
-                    singleLine: true,
-                  ),
-          ));
+    return LayoutBuilder(
+      builder: (context, box) {
+        // 최신 칸부터 거꾸로 채운다. 공수 묶음의 제목 높이는 그 묶음의 첫 칸을 넣을 때 함께 잡는다.
+        final groups = <((int, bool), List<Object>)>[];
+        var used = 0.0;
+        for (final event in events.reversed) {
+          final half = eventHalf(event);
+          final newGroup = groups.isEmpty || groups.last.$1 != half;
+          final needed = rowHeight + (newGroup ? headerHeight : 0);
+          if (used + needed > box.maxHeight) break;
+          used += needed;
+          if (newGroup) groups.add((half, <Object>[]));
+          groups.last.$2.add(event);
         }
-      }
-      return ClipRect(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: children,
-        ),
-      );
-    });
+        final latest = events.last;
+        final children = <Widget>[];
+        for (final (half, items) in groups.reversed) {
+          children.add(
+            HalfHeader(inning: half.$1, isTop: half.$2, attackingTeam: half.$2 ? away.shortName : home.shortName),
+          );
+          for (final event in items.reversed) {
+            children.add(
+              Padding(
+                padding: const EdgeInsets.only(top: _gap),
+                child: event is PlateAppearanceLog
+                    ? PlateRow(
+                        log: event,
+                        batterName: data.player(event.batterId).name,
+                        emphasize: identical(event, latest),
+                        singleLine: true,
+                      )
+                    : SubstitutionRow(
+                        sub: event as Substitution,
+                        inName: data.player(event.inPlayerId).name,
+                        outName: data.player(event.outPlayerId).name,
+                        singleLine: true,
+                      ),
+              ),
+            );
+          }
+        }
+        return ClipRect(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: children,
+          ),
+        );
+      },
+    );
   }
 }
 
@@ -362,7 +387,12 @@ class _AtBatCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(title, style: text.titleMedium, maxLines: 1, overflow: TextOverflow.ellipsis),
-                  Text(detail, style: text.bodySmall?.copyWith(color: k.inkSub), maxLines: 1, overflow: TextOverflow.ellipsis),
+                  Text(
+                    detail,
+                    style: text.bodySmall?.copyWith(color: k.inkSub),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ],
               ),
             ),
@@ -394,6 +424,7 @@ class _ManagerBar extends StatelessWidget {
   final bool askingAtDefenseStart;
   final String halfText;
   final String playerText;
+
   /// null이면 버튼을 끈다 (예: 투수가 아직 한 타자도 상대하지 않음).
   final VoidCallback? onPressed;
 
