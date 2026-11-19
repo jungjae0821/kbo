@@ -7,7 +7,7 @@
 - 입력: `aggregated/corrected_team_season_stats.json`, `corrected_player_season_stats.json`, `team_lineups.json`.
 - 출력: `app/season_dataset.json`, `app/dataset_validation_report.json`(시즌 폴더 내부).
 - `schema_version`: JSON 구조 버전 `1.0.0`. 앱은 지원하지 않는 버전을 거부합니다.
-- `rules.version`: 보정·경기 입력 규칙 버전 `1.0.0`. 200 PA/BF는 초기 기준이며 반복 검증으로 조정하면 규칙·데이터 버전을 갱신합니다.
+- `rules.version`: 현재 보정·경기 입력 규칙 버전 `2.0.0` (8종 결과·최대 11회). 200 PA/BF는 초기 기준이며 반복 검증으로 조정하면 규칙·데이터 버전을 갱신합니다.
 - `data_version`: 시즌 연도와 내용 SHA-256. 이 필드 자체를 제외한 JSON을 키 정렬·UTF-8·공백 없는 형식으로 직렬화한 해시입니다. 같은 원본·규칙이면 동일합니다. Dart 앱은 이를 불투명한 문자열 ID로 저장하면 됩니다.
 - `sources`: 입력 파일명별 원본 바이트 SHA-256. 라인업이 참조한 선수 원본 해시가 현재 입력과 다르면 생성을 중단합니다.
 - 데이터 버전과 엔진 버전은 별도입니다. 경기 저장 시 둘 다 기록하며 다른 데이터로 조용히 복구하지 않습니다.
