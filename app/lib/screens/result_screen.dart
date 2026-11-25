@@ -2,14 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:kbo_engine/kbo_engine.dart';
 
 import '../app_scope.dart';
+import '../data/app_data.dart';
+import '../state/box_score.dart';
+import '../state/game_setup.dart';
 import '../state/labels.dart';
 import '../state/record_book.dart';
 import '../theme/kbo_theme.dart';
-import '../widgets/feed_layout.dart';
-import '../widgets/line_score.dart';
-import 'records_screen.dart';
-import 'team_select_screen.dart';
+import '../widgets/frame.dart';
+import '../widgets/saved_game_actions.dart';
+import '../widgets/scoreboard.dart';
+import 'box_score_screen.dart';
 
+/// 경기 결과: 스코어보드로 간략하게 → 승리·패전·세이브·홀드 투수 → 예측 결과.
+/// 상세보기는 타자·투수 기록, 다시하기는 준비 화면(직전 설정), 처음으로는 메인 (초안 확정 구조 4).
 class ResultScreen extends StatelessWidget {
   const ResultScreen({super.key, required this.engine, required this.predictedWinnerId});
 
@@ -27,122 +32,115 @@ class ResultScreen extends StatelessWidget {
     final winnerId = engine.winnerTeamId;
     final tie = winnerId == null;
     final hit = winnerId == predictedWinnerId;
-    final logs = engine.logs;
+    final box = BoxScore.from(engine);
 
-    final verdict = tie
-        ? '무승부 0점 (적중률에서 제외)'
-        : hit
-            ? '적중 +${RecordBook.pointsPerHit}점'
-            : '빗나감 0점';
-
-    // 이닝 공수별로 타석과 교체를 일어난 순서대로 묶는다.
-    final subs = engine.substitutions;
-    final halves = <(int, bool), List<Object>>{};
-    for (final event in playEvents(logs, subs)) {
-      final key = event is PlateAppearanceLog
-          ? (event.inning, event.isTop)
-          : ((event as Substitution).inning, event.isTop);
-      halves.putIfAbsent(key, () => []).add(event);
-    }
-
+    void toHome() => Navigator.of(context).popUntil((r) => r.isFirst);
     void again() {
       Navigator.of(context).popUntil((r) => r.isFirst);
-      Navigator.of(context).push(MaterialPageRoute(builder: (_) => const TeamSelectScreen()));
+      startNewGame(context, setup: GameSetup.from(engine));
     }
 
-    return FeedScaffold(
-      title: '경기 결과',
-      leading: IconButton(
-        tooltip: '홈으로',
-        icon: const Icon(Icons.close),
-        onPressed: () => Navigator.of(context).popUntil((r) => r.isFirst),
-      ),
-      header: StatusBar(
-        awayName: away.shortName,
-        awayScore: s.awayScore,
-        homeName: home.shortName,
-        homeScore: s.homeScore,
-        center: '경기 종료',
-        semanticsLabel: '경기 종료, ${away.name} ${s.awayScore}점, ${home.name} ${s.homeScore}점',
-      ),
-      body: FeedList(
-        children: [
-          Bubble(
-            stretch: true,
-            child: Text(
-              keepAll('${tie ? '무승부' : '${data.team(winnerId).name} 승리'}, ${endLabel(s.end!)} (${s.plateAppearances}타석)'),
-              style: text.titleSmall?.copyWith(fontWeight: FontWeight.w700),
+    final verdict = tie ? '무승부, 0점 (적중률에서 제외)' : (hit ? '적중, +${RecordBook.pointsPerHit}점' : '빗나감, 0점');
+
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) toHome();
+      },
+      child: AppFrame(
+        band: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            BandTitle(
+              title: '경기 결과',
+              trailing: Text(endLabel(s.end!), style: text.bodySmall!.copyWith(color: k.bandSub)),
             ),
-          ),
-          const SizedBox(height: 6),
-          Semantics(
-            liveRegion: true,
-            child: Bubble(
-              soft: hit && !tie,
-              stretch: true,
-              child: Text.rich(
-                TextSpan(children: [
-                  TextSpan(
-                    text: '내 예측 ${data.team(predictedWinnerId).shortName} 승리, ',
-                    style: text.bodyMedium?.copyWith(color: k.inkSub),
-                  ),
+            ScoreBand(
+              awayName: away.shortName,
+              awayScore: s.awayScore,
+              homeName: home.shortName,
+              homeScore: s.homeScore,
+              center: tie ? '무승부' : '${data.team(winnerId).shortName} 승리',
+            ),
+          ],
+        ),
+        body: ListView(
+          padding: const EdgeInsets.fromLTRB(8, 10, 8, 8),
+          children: [
+            Scoreboard(awayName: away.shortName, homeName: home.shortName, state: s, box: box),
+            const SizedBox(height: 14),
+            _Decisions(box: box, data: data),
+            const SizedBox(height: 10),
+            Semantics(
+              liveRegion: true,
+              child: Panel(
+                color: hit && !tie ? k.accentSoft : k.stripe,
+                child: Text.rich(TextSpan(children: [
+                  TextSpan(text: '내 예측 ${data.team(predictedWinnerId).shortName} 승리, ', style: text.bodyMedium!.copyWith(color: k.inkSub)),
                   TextSpan(
                     text: verdict,
-                    style: text.bodyMedium?.copyWith(
-                      color: hit && !tie ? k.accentText : k.ink,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    style: text.bodyMedium!.copyWith(fontWeight: FontWeight.w700),
                   ),
-                ]),
+                ])),
               ),
             ),
-          ),
-          const FeedHeading('이닝별 점수'),
-          Bubble(
-            stretch: true,
-            padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
-            child: LineScore(awayName: away.shortName, homeName: home.shortName, state: s, logs: logs),
-          ),
-          const FeedHeading('타석 기록'),
-          for (final entry in halves.entries) ...[
-            HalfHeader(
-              inning: entry.key.$1,
-              isTop: entry.key.$2,
-              attackingTeam: entry.key.$2 ? away.shortName : home.shortName,
-            ),
-            for (final event in entry.value)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 6),
-                child: event is PlateAppearanceLog
-                    ? PlateRow(log: event, batterName: data.player(event.batterId).name)
-                    : SubstitutionRow(
-                        sub: event as Substitution,
-                        inName: data.player(event.inPlayerId).name,
-                        outName: data.player(event.outPlayerId).name,
-                        teamName: data.team(event.teamId).shortName,
-                      ),
-              ),
           ],
-          const SizedBox(height: 10),
-          Text(
-            keepAll(subs.isEmpty
-                ? '가상 경기 결과입니다. 경기 번호 ${engine.seed}로 같은 대진을 다시 하면 같은 경기가 나옵니다.'
-                : '가상 경기 결과입니다. 경기 번호 ${engine.seed}로 같은 대진을 다시 하고 같은 시점에 같은 교체를 하면 같은 경기가 나옵니다.'),
-            textAlign: TextAlign.center,
-            style: text.bodySmall?.copyWith(color: k.inkSub),
-          ),
-        ],
-      ),
-      dock: ActionRow(
-        primary: FilledButton(onPressed: again, child: const Text('다시 경기')),
-        secondary: FilledButton(
-          style: secondaryButtonStyle(context),
-          onPressed: () {
-            Navigator.of(context).popUntil((r) => r.isFirst);
-            Navigator.of(context).push(MaterialPageRoute(builder: (_) => const RecordsScreen()));
-          },
-          child: const Text('개인 기록'),
         ),
+        dock: Row(
+          children: [
+            TextButton(onPressed: toHome, child: const Text('처음으로')),
+            const SizedBox(width: 4),
+            FilledButton(
+              style: bandButtonStyle(context, height: 56),
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => BoxScoreScreen(engine: engine))),
+              child: const Text('상세보기'),
+            ),
+            const SizedBox(width: 8),
+            Expanded(child: FilledButton(onPressed: again, child: const Text('다시하기'))),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// 승리·패전·세이브·홀드 투수. 기록지처럼 두 줄로. 없으면 "-".
+class _Decisions extends StatelessWidget {
+  const _Decisions({required this.box, required this.data});
+
+  final BoxScore box;
+  final AppData data;
+
+  @override
+  Widget build(BuildContext context) {
+    final k = context.kbo;
+    final text = Theme.of(context).textTheme;
+    String name(String? id) => id == null ? '-' : data.player(id).name;
+    final rows = [
+      ('승리', name(box.winningPitcherId)),
+      ('패전', name(box.losingPitcherId)),
+      ('세이브', name(box.savePitcherId)),
+      ('홀드', box.holdPitcherIds.isEmpty ? '-' : box.holdPitcherIds.map(name).join(', ')),
+    ];
+    Widget cell((String, String) r) => Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+            child: Row(
+              children: [
+                SizedBox(width: 44, child: Text(r.$1, style: text.bodySmall!.copyWith(color: k.inkSub))),
+                Expanded(child: Text(r.$2, style: text.titleSmall, maxLines: 1, overflow: TextOverflow.ellipsis)),
+              ],
+            ),
+          ),
+        );
+    return Semantics(
+      label: '투수 기록. ${rows.map((r) => '${r.$1} ${r.$2 == '-' ? '없음' : r.$2}').join(', ')}',
+      excludeSemantics: true,
+      child: Column(
+        children: [
+          Row(children: [cell(rows[0]), cell(rows[1])]),
+          Row(children: [cell(rows[2]), cell(rows[3])]),
+        ],
       ),
     );
   }

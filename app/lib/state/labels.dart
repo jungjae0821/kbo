@@ -50,12 +50,12 @@ String endLabel(GameEnd end) => switch (end) {
 
 /// ".265"처럼 앞의 0을 뺀 타율 표기.
 String avg(double? v) {
-  if (v == null) return '—';
+  if (v == null) return '-';
   final s = v.toStringAsFixed(3);
   return s.startsWith('0') ? s.substring(1) : s;
 }
 
-String era(double? v) => v == null ? '—' : v.toStringAsFixed(2);
+String era(double? v) => v == null ? '-' : v.toStringAsFixed(2);
 
 /// 주자 상태를 "1·2루", "만루", "주자 없음"으로.
 String basesLabel(List<String?> bases) {

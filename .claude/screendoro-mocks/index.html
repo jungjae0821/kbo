@@ -3,60 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>재구성 시안 비교</title>
+<title>메인 화면 시안 2차</title>
+<link rel="stylesheet" href="base.css">
 <style>
-  @font-face { font-family: '경기천년제목'; src: url('fonts/GyeonggiTitle-Bold.ttf'); font-weight: 700; }
-  @font-face { font-family: '경기천년바탕'; src: url('fonts/GyeonggiBatang-Regular.ttf'); font-weight: 400; }
-  :root { --bg: #ECEDEF; --ink: #1B1D22; --sub: #4C505A; }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font-family: '경기천년바탕', 'Pretendard', system-ui, sans-serif; word-break: keep-all; line-height: 1.6; }
-  main { padding: 28px 16px 64px; max-width: 1600px; margin: 0 auto; }
-  h1, h2 { font-family: '경기천년제목', 'Pretendard', system-ui, sans-serif; font-weight: 700; margin: 0; }
-  h1 { font-size: 26px; }
-  .lead { color: var(--sub); margin: 6px 0 28px; max-width: 80ch; }
-  section { margin-bottom: 48px; }
-  h2 { font-size: 20px; margin-bottom: 6px; }
-  .cap { max-width: 744px; margin-bottom: 14px; }
-  .cap p { margin: 0 0 4px; font-size: 14px; color: var(--sub); }
-  .cap b { color: var(--ink); }
-  .frame { overflow-x: auto; }
-  iframe { width: 744px; height: 740px; border: 0; display: block; }
+  body { padding: 24px 16px 40px; background: #F0F1F3; color: #1D2026; }
+  main { display: block; }
+  h1 { font-size: 22px; margin: 0 0 8px; }
+  .lead { margin: 0 0 24px; font-size: 14px; color: #4B505A; max-width: 68ch; line-height: 1.65; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 28px 20px; }
+  h2 { font-size: 18px; margin: 0 0 6px; }
+  .desc { margin: 0 0 12px; font-size: 13px; line-height: 1.6; color: #3B3F47; max-width: 46ch; }
+  iframe { display: block; width: 100%; max-width: 392px; height: 772px; border: 0; }
 </style>
 </head>
 <body>
 <main>
-  <h1>재구성 시안 3개 (레퍼런스 없이)</h1>
-  <p class="lead">각 시안마다 홈(왼쪽)과 경기 진행(오른쪽)을 그렸습니다. 경기 내용은 엔진 예제 경기(seed 42, KT 위즈 원정, 삼성 라이온즈 홈) 5회말 2아웃 1·2루의 실제 기록이고 가상 결과입니다. 선수 성적은 2026 시즌 데이터입니다. 홈의 예측 기록 1건은 이 예제 경기를 삼성 승리로 예측했다고 가정한 예시입니다.</p>
-
-  <section>
-    <h2>A 스코어북</h2>
-    <div class="cap">
-      <p><b>방향</b> 손으로 적는 야구 기록지. 경기 화면의 주인공은 타순 9줄 × 이닝 칸의 표이고, 칸마다 그 타석 결과와 출루 표시가 남습니다. 푸른 잉크와 빨간 연필 두 색.</p>
-      <p><b>장점</b> 지금까지 누가 무엇을 했는지 한 장에 다 보임. 경기 결과·개인 기록 화면도 같은 기록지로 자연스럽게 이어짐.</p>
-      <p><b>위험</b> 정보가 촘촘해 작은 화면에서 글자가 작아지고, 다이아몬드 위 주자 움직임 같은 "장면"은 약함.</p>
-    </div>
-    <div class="frame"><iframe src="option-a.html" title="A 스코어북"></iframe></div>
-  </section>
-
-  <section>
-    <h2>B 맞대결 카드</h2>
-    <div class="cap">
-      <p><b>방향</b> 지금 붙는 투수와 타자를 큰 선수 카드 두 장으로 엇갈려 세움. 자두색 카드와 뼈색 카드, 행동은 겨자색 버튼 하나. 홈도 내 점수를 카드 한 장으로 보여줌.</p>
-      <p><b>장점</b> 한 타석씩 지켜보는 긴장감이 가장 큼. 실제 시즌 성적이 카드에 바로 붙어 "기록으로 싸운다"가 분명함.</p>
-      <p><b>위험</b> 지난 타석 흐름과 이닝별 점수는 거의 숨겨짐. 결과 화면에서 기록을 보여줄 다른 장치가 필요함.</p>
-    </div>
-    <div class="frame"><iframe src="option-b.html" title="B 맞대결 카드"></iframe></div>
-  </section>
-
-  <section>
-    <h2>C 문자중계 피드</h2>
-    <div class="cap">
-      <p><b>방향</b> 포털 문자중계처럼 타석이 메시지로 아래에서 위로 쌓임. 위에는 점수·이닝·아웃만 담은 어두운 상태 띠, 맨 아래 "지금 타석" 칸과 버튼. 코발트 한 색.</p>
-      <p><b>장점</b> 야구팬에게 가장 익숙한 읽는 방식. 이닝이 바뀌는 곳만 제목으로 끊어 흐름이 잘 읽힘. 화면이 가벼움.</p>
-      <p><b>위험</b> 메신저 앱처럼 보일 수 있고, 야구장 느낌은 가장 약함.</p>
-    </div>
-    <div class="frame"><iframe src="option-c.html" title="C 문자중계 피드"></iframe></div>
-  </section>
+  <h1>메인 화면 시안 2차</h1>
+  <p class="lead">세 시안 모두 스크롤 없이 한 화면에 들어가요. 순서는 같아요: 내 기록, 이어하기, 2026 정규시즌 순위표(열 10개), 시뮬레이션 시작. 순위표 숫자는 시즌 데이터에서 계산한 실제 값이에요. 내 기록은 처음 설치한 상태(0경기)이고, 이어하기 줄은 멈춘 경기가 있을 때만 나오는 예시예요.</p>
+  <div class="grid">
+    <section>
+      <h2>A 등번호</h2>
+      <p class="desc">순위 숫자를 등번호처럼 크게 세우고, 흰 판 하나에 표를 담았어요. 청록은 승률과 시작 버튼에만 써요. 위험: 차분해서 첫인상이 약할 수 있어요.</p>
+      <iframe src="option-a.html" title="시안 A 등번호" width="392" height="772"></iframe>
+    </section>
+    <section>
+      <h2>B 중계 자막</h2>
+      <p class="desc">TV 중계 자막 같은 남색 띠에 내 기록을 올리고, 이어하기를 띠 경계에 걸쳐 띄웠어요. 표는 줄무늬예요. 자홍은 승률과 시작 버튼에만 써요. 위험: 위쪽 띠가 넓어 순위표 공간이 가장 좁아요.</p>
+      <iframe src="option-b.html" title="시안 B 중계 자막" width="392" height="772"></iframe>
+    </section>
+    <section>
+      <h2>C 글러브 가죽</h2>
+      <p class="desc">가운데 정렬, 가는 제목, 열을 "성적"과 "팀 기록"으로 묶은 표. 가죽 갈색은 승률과 시작 버튼에만 써요. 위험: 갈색이 어두운 화면에서는 탁해 보일 수 있어요.</p>
+      <iframe src="option-c.html" title="시안 C 글러브 가죽" width="392" height="772"></iframe>
+    </section>
+  </div>
 </main>
 </body>
 </html>

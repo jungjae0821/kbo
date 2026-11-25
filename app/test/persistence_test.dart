@@ -4,10 +4,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:kbo_app/data/app_data.dart';
 import 'package:kbo_app/data/data_controller.dart';
 import 'package:kbo_app/data/local_store.dart';
 import 'package:kbo_app/data/local_store_io.dart';
 import 'package:kbo_app/main.dart';
+import 'package:kbo_app/state/auto_bullpen.dart';
 import 'package:kbo_app/state/record_book.dart';
 import 'package:kbo_app/state/saved_game.dart';
 import 'package:kbo_engine/kbo_engine.dart';
@@ -229,8 +231,8 @@ void main() {
           SavedGame(checkpoint: game.toCheckpoint(), predictedWinnerId: away, savedAt: DateTime.now()).encode();
 
       var (records, saved) = await launch(tester);
-      expect(find.text('중단된 경기'), findsOneWidget);
-      expect(_plainContains('${halfLabel(game.state.inning, game.state.isTop)} 진행 중'), findsOneWidget);
+      expect(find.text('이어하기'), findsOneWidget);
+      expect(_plainContains('${halfLabel(game.state.inning, game.state.isTop)}에서 멈춤'), findsOneWidget);
 
       await tester.tap(find.text('이어하기'));
       await tester.pumpAndSettle();
@@ -241,9 +243,9 @@ void main() {
       expect(SavedGame.decode(store.files[SavedGameStore.fileName]!).plateAppearances, 13);
 
       // 뒤로 나가면 확인 없이 홈으로 가고, 홈에 다시 이어하기가 보인다.
-      await tester.pageBack();
+      await tester.tap(find.byTooltip('뒤로'));
       await tester.pumpAndSettle();
-      expect(find.text('중단된 경기'), findsOneWidget);
+      expect(find.text('이어하기'), findsOneWidget);
 
       // 앱을 다시 켜고 이어서 끝까지 진행한다.
       (records, saved) = await launch(tester);
@@ -263,15 +265,19 @@ void main() {
       expect(saved.current, isNull);
       expect(store.files.containsKey(SavedGameStore.fileName), isFalse);
 
-      // 같은 경기를 끝까지 돌린 결과와 같다 (교체 없음).
-      game.playToEnd();
+      // 같은 경기를 끝까지 돌린 결과와 같다 (사용자 교체 없음, 상대 팀 홈은 자동 교체).
+      final appData = AppData.parse(File(_datasetPath).readAsStringSync());
+      while (!game.state.isFinished) {
+        autoPitchingChange(game, appData, home);
+        game.step();
+      }
       expect(records.recent.single.awayScore, game.state.awayScore);
       expect(records.recent.single.homeScore, game.state.homeScore);
 
       // 다시 켜도 기록은 남고 중단 경기는 없다.
       (records, saved) = await launch(tester);
       expect(records.predictionCount, 1);
-      expect(find.text('중단된 경기'), findsNothing);
+      expect(find.text('이어하기'), findsNothing);
     });
 
     testWidgets('채점 전에 꺼진 끝난 경기는 이어하면 바로 한 번만 채점한다', (tester) async {
@@ -312,19 +318,19 @@ void main() {
           SavedGame(checkpoint: game.toCheckpoint(), predictedWinnerId: teamIds[0], savedAt: DateTime.now()).encode();
       final (_, saved) = await launch(tester);
 
-      await tester.tap(find.text('경기 만들기'));
+      await tester.tap(find.text('시뮬레이션 시작'));
       await tester.pumpAndSettle();
       expect(find.text('중단된 경기를 버릴까요?'), findsOneWidget);
       await tester.tap(find.text('남겨 두기'));
       await tester.pumpAndSettle();
       expect(saved.current, isNotNull);
 
-      await tester.tap(find.text('경기 만들기'));
+      await tester.tap(find.text('시뮬레이션 시작'));
       await tester.pumpAndSettle();
       await tester.tap(find.widgetWithText(FilledButton, '버리기'));
       await tester.pumpAndSettle();
       expect(saved.current, isNull);
-      expect(find.text('팀 선택'), findsOneWidget);
+      expect(find.text('시뮬레이션 준비'), findsOneWidget);
     });
 
     testWidgets('다른 데이터 버전의 중단 경기는 이어하기 없이 버리기만 보인다', (tester) async {
@@ -336,7 +342,7 @@ void main() {
         savedAt: DateTime.now(),
       ).encode();
       await launch(tester);
-      expect(find.text('중단된 경기'), findsOneWidget);
+      expect(find.text('이어할 수 없는 경기'), findsOneWidget);
       expect(find.text('이어하기'), findsNothing);
       expect(find.text('버리기'), findsOneWidget);
     });

@@ -201,7 +201,7 @@ void main() {
         await tester.pumpAndSettle();
         expect(
           tester
-              .widget<FilledButton>(find.widgetWithText(FilledButton, '경기 만들기'))
+              .widget<FilledButton>(find.widgetWithText(FilledButton, '시뮬레이션 시작'))
               .onPressed,
           isNotNull,
         );
@@ -232,7 +232,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(
       tester
-          .widget<FilledButton>(find.widgetWithText(FilledButton, '경기 만들기'))
+          .widget<FilledButton>(find.widgetWithText(FilledButton, '시뮬레이션 시작'))
           .onPressed,
       isNull,
     );
@@ -244,7 +244,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(
       tester
-          .widget<FilledButton>(find.widgetWithText(FilledButton, '경기 만들기'))
+          .widget<FilledButton>(find.widgetWithText(FilledButton, '시뮬레이션 시작'))
           .onPressed,
       isNotNull,
     );

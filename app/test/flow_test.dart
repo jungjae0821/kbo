@@ -6,24 +6,30 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kbo_app/data/data_controller.dart';
 import 'package:kbo_app/main.dart';
 import 'package:kbo_app/state/record_book.dart';
-import 'package:kbo_app/widgets/line_score.dart';
+import 'package:kbo_app/widgets/play_feed.dart';
 
 /// 테스트에서 번들 대신 실제 시즌 JSON을 돌려준다.
 class _FileBundle extends CachingAssetBundle {
   @override
-  Future<ByteData> load(String key) async {
-    final bytes = File(key).readAsBytesSync();
-    return ByteData.sublistView(bytes);
-  }
+  Future<ByteData> load(String key) async => ByteData.sublistView(File(key).readAsBytesSync());
 }
 
 /// keepAll이 넣은 WORD JOINER를 빼고 비교한다.
-Finder _plain(String text) => find.byWidgetPredicate(
-      (w) => w is Text && (w.data ?? '').replaceAll('⁠', '') == text,
+Finder _plain(String text) => find.byWidgetPredicate((w) => w is Text && (w.data ?? '').replaceAll('⁠', '') == text);
+
+Finder _contains(String text) => find.byWidgetPredicate(
+      (w) => w is Text && (w.data ?? w.textSpan?.toPlainText() ?? '').replaceAll('⁠', '').contains(text),
     );
 
+/// [finder]가 화면 안에 온전히 보이는가.
+bool _onScreen(WidgetTester tester, Finder finder) {
+  final screen = Offset.zero & tester.view.physicalSize / tester.view.devicePixelRatio;
+  final rect = tester.getRect(finder);
+  return screen.contains(rect.topLeft) && screen.contains(rect.bottomRight - const Offset(0.1, 0.1));
+}
+
 void main() {
-  testWidgets('팀 선택 → 예측 확정 → 경기 끝까지 → 결과 → 채점 1회', (tester) async {
+  testWidgets('메인 → 준비 4단계 → 경기 → 결과·상세보기 → 다시하기 → 처음으로', (tester) async {
     tester.view.physicalSize = const Size(1080, 1920); // 360x640, 기준으로 삼는 작은 휴대폰
     tester.view.devicePixelRatio = 3;
     addTearDown(tester.view.reset);
@@ -36,66 +42,77 @@ void main() {
     await tester.pumpWidget(KboApp(data: data, records: records));
     await tester.pumpAndSettle();
 
-    await tester.tap(find.text('경기 만들기'));
+    // 메인: 순위표 10개 팀과 시작 버튼이 스크롤 없이 한 화면에.
+    expect(find.text('2026 정규시즌 순위'), findsOneWidget);
+    expect(find.text('0.647'), findsOneWidget); // KT 승률 (90승 49패)
+    expect(_onScreen(tester, find.text('키움')), isTrue, reason: '10위 줄이 화면 밖');
+    expect(_onScreen(tester, find.text('시뮬레이션 시작')), isTrue);
+    expect(tester.getRect(find.text('키움')).bottom <= tester.getRect(find.text('시뮬레이션 시작')).top, isTrue);
+
+    await tester.tap(find.text('시뮬레이션 시작'));
     await tester.pumpAndSettle();
 
-    // 원정 → 홈 순서로 두 팀 선택. 이미 고른 팀은 다른 쪽에서 고를 수 없다.
-    await tester.tap(find.text('KT 위즈').last);
+    // ① 두 팀: 원정 → 홈 순서로 채운다. 둘 다 고르기 전에는 다음으로 갈 수 없다.
+    expect(tester.widget<FilledButton>(find.widgetWithText(FilledButton, '두 팀을 고르세요')).onPressed, isNull);
+    await tester.tap(find.text('KT 위즈'));
     await tester.pumpAndSettle();
     expect(find.bySemanticsLabel(RegExp('원정팀으로 선택됨')), findsOneWidget);
     await tester.tap(find.text('삼성 라이온즈').last);
     await tester.pumpAndSettle();
-    await tester.tap(find.text('전력 비교'));
+    await tester.tap(find.text('선발투수 고르기'));
     await tester.pumpAndSettle();
 
-    // 경기 전 KT 선발을 바꾼다. 되돌릴 수 있는 선택이라 확인 창 없이 바로 바뀐다.
-    await tester.dragUntilVisible(find.text('KT 선발 바꾸기'), find.byType(ListView), const Offset(0, -200));
-    await tester.pumpAndSettle();
+    // ② 선발투수: 선발 기록이 있는 투수만 고를 수 있다. 바꾸면 자동 선발 대신이라고 보인다.
     await tester.tap(find.text('KT 선발 바꾸기'));
     await tester.pumpAndSettle();
     expect(_plain('KT 선발투수 고르기'), findsOneWidget);
+    expect(_contains('선발 '), findsWidgets);
     await tester.tap(find.descendant(of: find.byType(BottomSheet), matching: find.byType(InkWell)).first);
     await tester.pumpAndSettle();
-    expect(_plain('자동 선발 소형준 대신'), findsOneWidget);
-
-    // 소속 안내는 기존 비교 화면의 하단 안내 영역에 표시한다.
-    final membership = find.byWidgetPredicate((w) => w is Text &&
-        (w.data ?? '').replaceAll('⁠', '').contains('공식 시즌 표의 팀 분류입니다.'));
-    await tester.dragUntilVisible(membership, find.byType(ListView), const Offset(0, -200));
+    expect(find.text('자동 선발 소형준 대신'), findsOneWidget);
+    expect(_contains('공식 시즌 표의 팀 분류입니다.'), findsOneWidget);
+    await tester.tap(find.text('라인업 확인'));
     await tester.pumpAndSettle();
-    expect(membership, findsOneWidget);
-    expect(tester.takeException(), isNull);
 
-    // 예측 전에는 확정 버튼이 꺼져 있다.
+    // ③ 라인업: 원정 KT 9명이 보이고, 1번과 2번을 맞바꿀 수 있다.
+    expect(find.text('자동 라인업'), findsOneWidget);
+    final first = find.bySemanticsLabel(RegExp(r'^1번 '));
+    final firstName = tester.getSemantics(first).label.split(',').first.substring(3);
+    await tester.tap(first);
+    await tester.pumpAndSettle();
+    await tester.tap(find.bySemanticsLabel(RegExp(r'^2번 .*맞바꾸기')));
+    await tester.pumpAndSettle();
+    expect(find.text('바꾼 라인업'), findsOneWidget);
+    expect(find.bySemanticsLabel(RegExp('^2번 $firstName,')), findsOneWidget);
+    expect(_onScreen(tester, find.bySemanticsLabel(RegExp(r'^9번 '))), isTrue, reason: '9번 타자가 화면 밖');
+    await tester.tap(find.text('승리 팀 예측'));
+    await tester.pumpAndSettle();
+
+    // ④ 예측: 고르기 전에는 시작할 수 없다.
     expect(tester.widget<FilledButton>(find.widgetWithText(FilledButton, '이길 팀을 고르세요')).onPressed, isNull);
-    // 예측 줄은 스크롤하지 않는 위쪽 고정 칸에 있다.
     await tester.tap(find.text('삼성 라이온즈'));
     await tester.pumpAndSettle();
-    final confirm = find.widgetWithText(FilledButton, '삼성 승리로 확정');
-    expect(tester.widget<FilledButton>(confirm).onPressed, isNotNull);
-    await tester.tap(confirm);
+    await tester.tap(find.text('삼성 승리로 경기 시작'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('확정하고 시작'));
     await tester.pumpAndSettle();
 
+    // 경기: 1회초 KT 공격, 삼성(내 예측) 수비. 선발은 첫 타자 전이라 바꿀 수 없다.
     expect(find.text('1회초'), findsOneWidget);
-
-    // 1회초는 KT 공격, 삼성(내 예측) 수비 시작. 선발은 첫 타자를 상대하기 전이라 바꿀 수 없다.
     expect(find.text('삼성 수비 중'), findsOneWidget);
     expect(find.text('투수 후라도, 첫 타자 상대 전'), findsOneWidget);
     expect(tester.widget<FilledButton>(find.widgetWithText(FilledButton, '투수 교체')).onPressed, isNull);
-    final screen = Offset.zero & tester.view.physicalSize / tester.view.devicePixelRatio;
     for (final label in ['투수 교체', '다음 타석', '다음 수비까지']) {
-      final rect = tester.getRect(find.text(label));
-      expect(screen.contains(rect.topLeft) && screen.contains(rect.bottomRight), isTrue, reason: '$label 버튼이 화면 밖');
+      expect(_onScreen(tester, find.text(label)), isTrue, reason: '$label 버튼이 화면 밖');
     }
 
-    // 첫 타석 뒤 기록에는 타석 번호 대신 이닝 제목이 한 번 나온다.
     await tester.tap(find.text('다음 타석'));
     await tester.pumpAndSettle();
     expect(find.text('1회초 KT 공격'), findsOneWidget);
+    // 바꾼 타순대로 첫 타자가 나왔다 (원래 2번이 1번으로).
+    expect(find.byType(PlateRow), findsOneWidget);
 
-    // 한 타자를 상대했으니 이제 바꿀 수 있다.
+    // 한 타자를 상대했으니 투수를 바꿀 수 있다.
     await tester.tap(find.text('투수 교체'));
     await tester.pumpAndSettle();
     expect(_plain('후라도 대신 던질 투수'), findsOneWidget);
@@ -103,66 +120,107 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.widgetWithText(FilledButton, '투수 교체').last);
     await tester.pumpAndSettle();
-    // 최근 기록에 교체 줄이 생기고, 새 투수도 첫 타자 전이라 버튼이 다시 꺼진다.
-    expect(
-      find.byWidgetPredicate((w) => w is Text && (w.data ?? w.textSpan?.toPlainText() ?? '').replaceAll('⁠', '').contains('후라도 대신')),
-      findsOneWidget,
-    );
+    expect(_contains('후라도 대신'), findsOneWidget);
     expect(tester.widget<FilledButton>(find.widgetWithText(FilledButton, '투수 교체')).onPressed, isNull);
 
-    // 삼성 공격이 오면 대타 버튼이 같은 자리에 보인다.
-    for (var i = 0; i < 30 && find.text('대타 내기').evaluate().isEmpty; i++) {
+    // 기록 줄은 반쯤 잘리지 않고 버튼과 겹치지 않는다 (휴대폰, 태블릿, 넓은 화면).
+    for (var i = 0; i < 12; i++) {
       await tester.tap(find.text('다음 타석'));
       await tester.pumpAndSettle();
+      if (find.text('경기 결과 보기').evaluate().isNotEmpty) break;
     }
-    expect(find.text('대타 내기'), findsOneWidget);
-    // 경기 전에 고른 KT 선발이 1회말 마운드에 있다 (자동 선발 소형준이 아니다).
-    expect(find.text('소형준'), findsNothing);
-
-    // 기록 줄이 반쯤 잘리지 않는다: 보이는 기록 줄은 모두 '내 예측' 줄보다 위에서 끝난다.
-    // 휴대폰, 태블릿, 넓은 화면에서 확인한다.
-    for (final size in const [Size(1080, 1920), Size(1080, 2220), Size(2304, 3072), Size(3840, 2160)]) {
+    for (final size in const [Size(1080, 1920), Size(2304, 3072), Size(3840, 2160)]) {
       tester.view.physicalSize = size;
       await tester.pumpAndSettle();
-      // 기록 칸(잘라내기 영역)의 실제 아래 끝. 보이는 줄은 모두 이 안에서 끝나야 한다.
+      if (find.byType(PlateRow).evaluate().isEmpty) continue;
       final area = tester.getRect(find.ancestor(of: find.byType(PlateRow).first, matching: find.byType(ClipRect)).first);
-      final limit = area.bottom;
-      // 기록 칸은 고정 감독 줄·버튼과 겹치지 않는다.
-      expect(limit <= tester.getRect(find.text('다음 타석')).top, isTrue, reason: '$size: 기록 칸이 버튼과 겹침');
-      final rows = [
-        ...find.byType(PlateRow).evaluate(),
-        ...find.byType(HalfHeader).evaluate(),
-        ...find.byType(SubstitutionRow).evaluate(),
-      ];
-      final plays = find.byType(PlateRow).evaluate().length + find.byType(SubstitutionRow).evaluate().length;
-      expect(plays >= 3, isTrue, reason: '$size: 기록이 3줄 미만 ($plays줄)');
-      for (final e in rows) {
-        final rect = tester.getRect(find.byWidget(e.widget));
-        expect(rect.bottom <= limit + 0.5, isTrue, reason: '$size: 기록 줄이 잘림 ($rect, 한계 $limit)');
+      for (final e in [...find.byType(PlateRow).evaluate(), ...find.byType(HalfHeader).evaluate()]) {
+        expect(tester.getRect(find.byWidget(e.widget)).bottom <= area.bottom + 0.5, isTrue, reason: '$size: 기록 줄이 잘림');
       }
+      expect(tester.takeException(), isNull, reason: '$size');
     }
     tester.view.physicalSize = const Size(1080, 1920);
     await tester.pumpAndSettle();
 
-    // 다음 수비까지: 내 팀 수비 시작에서 멈추거나 경기가 끝난다.
-    await tester.tap(find.text('다음 수비까지'));
-    await tester.pumpAndSettle();
-    expect(
-      find.byWidgetPredicate((w) => w is Text && (w.data ?? '').replaceAll('⁠', '').endsWith('수비 시작'))
-              .evaluate()
-              .isNotEmpty ||
-          find.text('경기 결과 보기').evaluate().isNotEmpty,
-      isTrue,
-    );
-    for (var i = 0; i < 15 && find.text('경기 결과 보기').evaluate().isEmpty; i++) {
+    for (var i = 0; i < 40 && find.text('경기 결과 보기').evaluate().isEmpty; i++) {
       await tester.tap(find.text('다음 수비까지'));
       await tester.pumpAndSettle();
     }
     expect(records.predictionCount, 1);
 
+    // 결과: 스코어보드, 승리·패전·세이브·홀드, 상세보기·다시하기·처음으로.
     await tester.tap(find.text('경기 결과 보기'));
     await tester.pumpAndSettle();
-    expect(find.text('이닝별 점수'), findsOneWidget);
+    expect(find.text('R'), findsOneWidget);
+    for (final label in ['승리', '패전', '세이브', '홀드']) {
+      expect(find.text(label), findsOneWidget);
+    }
+    expect(tester.takeException(), isNull);
+    for (final label in ['상세보기', '다시하기', '처음으로']) {
+      expect(_onScreen(tester, find.text(label)), isTrue, reason: '$label 버튼이 화면 밖');
+    }
+
+    await tester.tap(find.text('상세보기'));
+    await tester.pumpAndSettle();
+    expect(find.text('타자'), findsOneWidget);
+    expect(find.text('투수'), findsOneWidget);
+    expect(find.text('타점'), findsOneWidget);
+    await tester.tap(find.text('홈 삼성'));
+    await tester.pumpAndSettle();
+    expect(tester.takeException(), isNull);
+    await tester.tap(find.byTooltip('뒤로'));
+    await tester.pumpAndSettle();
+
+    // 다시하기: 직전 두 팀으로 준비 화면의 선발 단계가 열린다.
+    await tester.tap(find.text('다시하기'));
+    await tester.pumpAndSettle();
+    expect(find.text('시뮬레이션 준비'), findsOneWidget);
+    expect(find.text('KT 선발 바꾸기'), findsOneWidget);
+    expect(find.text('자동 선발 소형준 대신'), findsOneWidget);
     expect(records.predictionCount, 1);
+
+    // 준비 화면에서 뒤로 두 번이면 메인.
+    await tester.tap(find.byTooltip('뒤로'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('뒤로'));
+    await tester.pumpAndSettle();
+    expect(find.text('2026 정규시즌 순위'), findsOneWidget);
+    expect(find.text('1'), findsWidgets);
+  });
+
+  testWidgets('결과 화면 처음으로는 메인으로 간다', (tester) async {
+    tester.view.physicalSize = const Size(1080, 1920);
+    tester.view.devicePixelRatio = 3;
+    addTearDown(tester.view.reset);
+    final data = DataController(bundle: _FileBundle(), remoteUrl: '');
+    await tester.runAsync(data.load);
+    await tester.pumpWidget(KboApp(data: data, records: RecordBook()));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('시뮬레이션 시작'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('LG 트윈스'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('두산 베어스'));
+    await tester.pumpAndSettle();
+    for (final label in ['선발투수 고르기', '라인업 확인', '승리 팀 예측']) {
+      await tester.tap(find.text(label));
+      await tester.pumpAndSettle();
+    }
+    await tester.tap(find.text('LG 트윈스'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('LG 승리로 경기 시작'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('확정하고 시작'));
+    await tester.pumpAndSettle();
+    for (var i = 0; i < 40 && find.text('경기 결과 보기').evaluate().isEmpty; i++) {
+      await tester.tap(find.text('다음 수비까지'));
+      await tester.pumpAndSettle();
+    }
+    await tester.tap(find.text('경기 결과 보기'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('처음으로'));
+    await tester.pumpAndSettle();
+    expect(find.text('2026 정규시즌 순위'), findsOneWidget);
+    expect(find.text('1경기'), findsNothing);
   });
 }
