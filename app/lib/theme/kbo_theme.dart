@@ -1,99 +1,67 @@
 import 'package:flutter/material.dart';
 
-/// DESIGN.md 1절의 색 토큰 (「문자중계」 방향).
+/// DESIGN.md 「중계 자막」의 색 역할. 라이트·다크 모두 같은 이름을 쓴다.
 @immutable
 class KboColors extends ThemeExtension<KboColors> {
   const KboColors({
     required this.bg,
-    required this.surface,
-    required this.soft,
-    required this.fill,
+    required this.band,
+    required this.bandSub,
     required this.ink,
     required this.inkSub,
-    required this.line,
+    required this.stripe,
     required this.accent,
     required this.onAccent,
-    required this.accentText,
-    required this.status,
-    required this.onStatus,
-    required this.statusSub,
-    required this.statusOff,
+    required this.accentSoft,
+    required this.outRed,
+    required this.bandOff,
     required this.baseOff,
-    this.outRed = const Color(0xFFFF6B5E),
   });
 
-  /// 화면 바탕.
   final Color bg;
-
-  /// 메시지·목록 면.
-  final Color surface;
-
-  /// 점수가 난 메시지, 고른 항목처럼 한 단계 강조한 면.
-  final Color soft;
-
-  /// 보조 버튼 면.
-  final Color fill;
+  final Color band;
+  final Color bandSub;
   final Color ink;
   final Color inkSub;
-
-  /// 표 행 구분이 꼭 필요한 곳의 한 겹 선.
-  final Color line;
-
-  /// 주 행동(코발트). 화면당 주 버튼 하나와 고른 항목에만.
+  final Color stripe;
   final Color accent;
   final Color onAccent;
-
-  /// 바탕·면 위의 강조 글자 (현재 이닝, 득점).
-  final Color accentText;
-
-  /// 위쪽 상태 띠 면 (점수·이닝·아웃).
-  final Color status;
-  final Color onStatus;
-  final Color statusSub;
-
-  /// 상태 띠 위 꺼진 아웃 점.
-  final Color statusOff;
-
-  /// 면 위 비어 있는 베이스.
+  final Color accentSoft;
+  final Color outRed;
+  final Color bandOff;
   final Color baseOff;
 
-  /// 아웃 점. 항상 [status] 면 위에 둔다.
-  final Color outRed;
+  /// 띠 위 글자는 두 모드 모두 흰색 (띠 대비 12:1 이상).
+  Color get onBand => Colors.white;
 
   static const light = KboColors(
-    bg: Color(0xFFF2F3F7),
-    surface: Color(0xFFFFFFFF),
-    soft: Color(0xFFE4E9FA),
-    fill: Color(0xFFDDE0E9),
-    ink: Color(0xFF161A2B),
-    inkSub: Color(0xFF565C70),
-    line: Color(0xFFE1E3EA),
-    accent: Color(0xFF2546C8),
+    bg: Color(0xFFFFFFFF),
+    band: Color(0xFF1F2459),
+    bandSub: Color(0xFFC5C8EE),
+    ink: Color(0xFF1A1C2E),
+    inkSub: Color(0xFF575B72),
+    stripe: Color(0xFFF2F3F9),
+    accent: Color(0xFFB8175A),
     onAccent: Color(0xFFFFFFFF),
-    accentText: Color(0xFF2546C8),
-    status: Color(0xFF161A2B),
-    onStatus: Color(0xFFFFFFFF),
-    statusSub: Color(0xFFC9CEDD),
-    statusOff: Color(0xFF6B7391),
-    baseOff: Color(0xFF8D94A8),
+    accentSoft: Color(0xFFFBE7EF),
+    outRed: Color(0xFFFF6B5E),
+    bandOff: Color(0xFF7378BD),
+    baseOff: Color(0xFF8A8EA6),
   );
 
   static const dark = KboColors(
-    bg: Color(0xFF10131F),
-    surface: Color(0xFF1B1F2E),
-    soft: Color(0xFF24305A),
-    fill: Color(0xFF2A2F42),
-    ink: Color(0xFFECEEF5),
-    inkSub: Color(0xFFA6ACBF),
-    line: Color(0xFF2C3145),
-    accent: Color(0xFF7C95FF),
-    onAccent: Color(0xFF10131F),
-    accentText: Color(0xFF9DB0FF),
-    status: Color(0xFF272C42),
-    onStatus: Color(0xFFFFFFFF),
-    statusSub: Color(0xFFC9CEDD),
-    statusOff: Color(0xFF7A82A0),
-    baseOff: Color(0xFF6B7391),
+    bg: Color(0xFF121428),
+    band: Color(0xFF2A2F70),
+    bandSub: Color(0xFFC5C8EE),
+    ink: Color(0xFFECEDF7),
+    inkSub: Color(0xFFA9ACC6),
+    stripe: Color(0xFF1C1F3B),
+    accent: Color(0xFFFF7EB0),
+    onAccent: Color(0xFF2B0816),
+    accentSoft: Color(0xFF3A1A33),
+    outRed: Color(0xFFFF8A7E),
+    bandOff: Color(0xFF8A90D0),
+    baseOff: Color(0xFF6E739E),
   );
 
   @override
@@ -105,92 +73,77 @@ class KboColors extends ThemeExtension<KboColors> {
     Color l(Color a, Color b) => Color.lerp(a, b, t)!;
     return KboColors(
       bg: l(bg, other.bg),
-      surface: l(surface, other.surface),
-      soft: l(soft, other.soft),
-      fill: l(fill, other.fill),
+      band: l(band, other.band),
+      bandSub: l(bandSub, other.bandSub),
       ink: l(ink, other.ink),
       inkSub: l(inkSub, other.inkSub),
-      line: l(line, other.line),
+      stripe: l(stripe, other.stripe),
       accent: l(accent, other.accent),
       onAccent: l(onAccent, other.onAccent),
-      accentText: l(accentText, other.accentText),
-      status: l(status, other.status),
-      onStatus: l(onStatus, other.onStatus),
-      statusSub: l(statusSub, other.statusSub),
-      statusOff: l(statusOff, other.statusOff),
-      baseOff: l(baseOff, other.baseOff),
+      accentSoft: l(accentSoft, other.accentSoft),
       outRed: l(outRed, other.outRed),
+      bandOff: l(bandOff, other.bandOff),
+      baseOff: l(baseOff, other.baseOff),
     );
   }
 }
 
-extension KboThemeContext on BuildContext {
+extension KboContext on BuildContext {
   KboColors get kbo => Theme.of(this).extension<KboColors>()!;
 }
 
-/// 제목·버튼은 경기천년제목, 본문·표는 경기천년바탕.
 const titleFont = 'GyeonggiTitle';
 const bodyFont = 'GyeonggiBatang';
 
-/// DESIGN.md 5절: 모든 전환은 한 가지 길이와 곡선.
-const motion = Duration(milliseconds: 200);
+/// 모양 (DESIGN.md 6절).
+const rowRadius = 8.0;
+const cardRadius = 10.0;
+const buttonRadius = 10.0;
+const sheetRadius = 16.0;
+
+/// 상태 변화에만 쓰는 짧은 움직임 (MOTION 1).
+const motion = Duration(milliseconds: 180);
 const motionCurve = Curves.easeOutCubic;
 
-/// DESIGN.md 3절 반경. 버튼 16, 메시지·목록 16, 상태 띠 20.
-const buttonRadius = 16.0;
-const bubbleRadius = 16.0;
-const statusRadius = 20.0;
-
-const _buttonShape = RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(buttonRadius)));
-
 ThemeData buildKboTheme(Brightness brightness) {
-  final k = brightness == Brightness.light ? KboColors.light : KboColors.dark;
+  final k = brightness == Brightness.dark ? KboColors.dark : KboColors.light;
   final scheme = ColorScheme(
     brightness: brightness,
     primary: k.accent,
     onPrimary: k.onAccent,
-    secondary: k.status,
-    onSecondary: k.onStatus,
-    tertiary: k.soft,
-    onTertiary: k.ink,
-    error: const Color(0xFFB3261E),
-    onError: Colors.white,
+    secondary: k.band,
+    onSecondary: k.onBand,
+    error: brightness == Brightness.dark ? const Color(0xFFFF8A7E) : const Color(0xFFB3261E),
+    onError: brightness == Brightness.dark ? const Color(0xFF2B0816) : Colors.white,
     surface: k.bg,
     onSurface: k.ink,
     onSurfaceVariant: k.inkSub,
-    surfaceContainerLowest: k.bg,
-    surfaceContainerLow: k.surface,
-    surfaceContainer: k.surface,
-    surfaceContainerHigh: k.fill,
-    surfaceContainerHighest: k.fill,
-    outline: k.inkSub,
-    outlineVariant: k.line,
+    surfaceContainerHighest: k.stripe,
+    outline: k.baseOff,
   );
 
-  TextStyle t(double size, FontWeight w, {double height = 1.35, Color? c}) => TextStyle(
-        fontFamily: titleFont,
-        fontSize: size,
-        fontWeight: w,
-        height: height,
-        letterSpacing: size * -0.02,
-        color: c,
-      );
-  TextStyle b(double size, FontWeight w, {double height = 1.55}) =>
-      TextStyle(fontFamily: bodyFont, fontSize: size, fontWeight: w, height: height);
+  TextStyle t(double size, FontWeight w, {double height = 1.3}) =>
+      TextStyle(fontFamily: titleFont, fontSize: size, fontWeight: w, height: height, color: k.ink);
+  TextStyle b(double size, {FontWeight w = FontWeight.w400, double height = 1.5}) =>
+      TextStyle(fontFamily: bodyFont, fontSize: size, fontWeight: w, height: height, color: k.ink);
 
   final textTheme = TextTheme(
-    displaySmall: t(28, FontWeight.w700, height: 1.1),
+    displaySmall: t(30, FontWeight.w700, height: 1.1),
     headlineSmall: t(22, FontWeight.w700),
     titleLarge: t(20, FontWeight.w700),
-    titleMedium: t(17, FontWeight.w700),
-    titleSmall: t(15, FontWeight.w500),
-    labelLarge: t(17, FontWeight.w700, height: 1.2),
-    labelMedium: t(15, FontWeight.w500, height: 1.2),
-    labelSmall: t(12, FontWeight.w500, height: 1.3),
-    bodyLarge: b(15, FontWeight.w400),
-    bodyMedium: b(14, FontWeight.w400),
-    bodySmall: b(13, FontWeight.w400, height: 1.5),
-  ).apply(bodyColor: k.ink, displayColor: k.ink);
+    titleMedium: t(16, FontWeight.w700),
+    titleSmall: t(15, FontWeight.w700),
+    labelLarge: t(15, FontWeight.w700),
+    labelMedium: t(12, FontWeight.w500),
+    labelSmall: t(11, FontWeight.w500),
+    bodyLarge: b(15),
+    bodyMedium: b(14),
+    bodySmall: b(12.5, height: 1.45),
+  );
+
+  final buttonShape = WidgetStatePropertyAll(
+    RoundedRectangleBorder(borderRadius: BorderRadius.circular(buttonRadius)),
+  );
 
   return ThemeData(
     useMaterial3: true,
@@ -200,75 +153,81 @@ ThemeData buildKboTheme(Brightness brightness) {
     fontFamily: bodyFont,
     textTheme: textTheme,
     extensions: [k],
-    splashFactory: InkSparkle.splashFactory,
-    appBarTheme: AppBarTheme(
-      backgroundColor: k.bg,
-      foregroundColor: k.ink,
-      surfaceTintColor: Colors.transparent,
-      elevation: 0,
-      scrolledUnderElevation: 0,
-      centerTitle: false,
-      titleTextStyle: t(20, FontWeight.w700, c: k.ink),
+    splashFactory: InkRipple.splashFactory,
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: k.accent,
+      selectionColor: k.accent.withValues(alpha: 0.25),
+      selectionHandleColor: k.accent,
     ),
     filledButtonTheme: FilledButtonThemeData(
-      style: FilledButton.styleFrom(
-        backgroundColor: k.accent,
-        foregroundColor: k.onAccent,
-        disabledBackgroundColor: k.fill,
-        disabledForegroundColor: k.inkSub,
-        minimumSize: const Size(64, 54),
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        shape: _buttonShape,
-        textStyle: textTheme.labelLarge,
+      style: ButtonStyle(
+        minimumSize: const WidgetStatePropertyAll(Size(64, 56)),
+        shape: buttonShape,
+        textStyle: WidgetStatePropertyAll(t(17, FontWeight.w700)),
+        padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 20)),
+        backgroundColor: WidgetStateProperty.resolveWith(
+          (s) => s.contains(WidgetState.disabled) ? k.stripe : k.accent,
+        ),
+        foregroundColor: WidgetStateProperty.resolveWith(
+          (s) => s.contains(WidgetState.disabled) ? k.inkSub : k.onAccent,
+        ),
+        mouseCursor: WidgetStateProperty.resolveWith(
+          (s) => s.contains(WidgetState.disabled) ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
+        ),
       ),
     ),
     textButtonTheme: TextButtonThemeData(
-      style: TextButton.styleFrom(
-        foregroundColor: k.ink,
-        minimumSize: const Size(64, 48),
-        shape: _buttonShape,
-        textStyle: textTheme.labelMedium,
+      style: ButtonStyle(
+        minimumSize: const WidgetStatePropertyAll(Size(48, 48)),
+        shape: buttonShape,
+        textStyle: WidgetStatePropertyAll(t(15, FontWeight.w700)),
+        foregroundColor: WidgetStateProperty.resolveWith(
+          (s) => s.contains(WidgetState.disabled) ? k.inkSub : (brightness == Brightness.dark ? k.accent : k.band),
+        ),
       ),
     ),
     iconButtonTheme: IconButtonThemeData(
-      style: IconButton.styleFrom(foregroundColor: k.ink, minimumSize: const Size(48, 48)),
+      style: ButtonStyle(minimumSize: const WidgetStatePropertyAll(Size(48, 48)), shape: buttonShape),
     ),
     dialogTheme: DialogThemeData(
-      backgroundColor: k.surface,
-      surfaceTintColor: Colors.transparent,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(statusRadius)),
-      titleTextStyle: textTheme.titleLarge,
-      contentTextStyle: textTheme.bodyMedium,
+      backgroundColor: k.bg,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(sheetRadius)),
+      titleTextStyle: t(18, FontWeight.w700),
+      contentTextStyle: b(14),
     ),
     bottomSheetTheme: BottomSheetThemeData(
       backgroundColor: k.bg,
-      surfaceTintColor: Colors.transparent,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(sheetRadius))),
       dragHandleColor: k.baseOff,
     ),
-    snackBarTheme: SnackBarThemeData(
-      backgroundColor: k.status,
-      contentTextStyle: textTheme.bodyMedium?.copyWith(color: k.onStatus),
-      behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(bubbleRadius)),
+    tabBarTheme: TabBarThemeData(
+      labelColor: k.ink,
+      unselectedLabelColor: k.inkSub,
+      labelStyle: t(15, FontWeight.w700),
+      unselectedLabelStyle: t(15, FontWeight.w500),
+      indicatorColor: k.accent,
+      dividerHeight: 0,
     ),
-    progressIndicatorTheme: ProgressIndicatorThemeData(color: k.accent),
-    pageTransitionsTheme: const PageTransitionsTheme(
-      builders: {
-        TargetPlatform.android: FadeForwardsPageTransitionsBuilder(),
-      },
+    progressIndicatorTheme: ProgressIndicatorThemeData(color: k.accent, linearTrackColor: k.stripe),
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: k.band,
+      contentTextStyle: b(14).copyWith(color: k.onBand),
+      behavior: SnackBarBehavior.floating,
     ),
   );
 }
 
-/// 보조 행동 버튼: fill 면, 주 버튼과 같은 반경.
-ButtonStyle secondaryButtonStyle(BuildContext context) {
+/// 띠 색 보조 버튼 (이어하기, 투수 교체 등 주 버튼보다 한 단계 낮은 행동).
+ButtonStyle bandButtonStyle(BuildContext context, {double height = 48}) {
   final k = context.kbo;
-  return FilledButton.styleFrom(
-    backgroundColor: k.fill,
-    foregroundColor: k.ink,
-    minimumSize: const Size(64, 54),
-    padding: const EdgeInsets.symmetric(horizontal: 20),
-    shape: _buttonShape,
-    textStyle: Theme.of(context).textTheme.labelMedium,
+  return ButtonStyle(
+    minimumSize: WidgetStatePropertyAll(Size(64, height)),
+    textStyle: const WidgetStatePropertyAll(TextStyle(fontFamily: titleFont, fontSize: 15, fontWeight: FontWeight.w700)),
+    backgroundColor: WidgetStateProperty.resolveWith(
+      (s) => s.contains(WidgetState.disabled) ? k.stripe : k.band,
+    ),
+    foregroundColor: WidgetStateProperty.resolveWith(
+      (s) => s.contains(WidgetState.disabled) ? k.inkSub : k.onBand,
+    ),
   );
 }

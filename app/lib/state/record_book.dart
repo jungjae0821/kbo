@@ -122,7 +122,7 @@ class RecordBook extends ChangeNotifier {
   /// 진행 중인 저장이 모두 끝나면 완료된다.
   Future<void> get saved => _pending;
 
-  /// 적중률. 승패가 갈린 경기가 없으면 null (화면에는 "—").
+  /// 적중률. 승패가 갈린 경기가 없으면 null (화면에는 "-").
   double? get hitRate => decidedCount == 0 ? null : hitCount / decidedCount;
 
   bool isScored(String gameId) => _games.any((g) => g.gameId == gameId);

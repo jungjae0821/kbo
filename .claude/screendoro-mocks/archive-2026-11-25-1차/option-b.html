@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>B 공인구</title>
+<style>
+  @font-face { font-family: '경기천년제목'; src: url('fonts/GyeonggiTitle-Bold.ttf'); font-weight: 700; }
+  @font-face { font-family: '경기천년제목'; src: url('fonts/GyeonggiTitle-Medium.ttf'); font-weight: 500; }
+  @font-face { font-family: '경기천년바탕'; src: url('fonts/GyeonggiBatang-Regular.ttf'); font-weight: 400; }
+  @font-face { font-family: '경기천년바탕'; src: url('fonts/GyeonggiBatang-Bold.ttf'); font-weight: 700; }
+  :root {
+    --bg: #F5F5F3; --surface: #FFFFFF; --ink: #1D2026; --sub: #5E636E; --stitch: #C0282D; --stitchSoft: #FBECEC; --line: #ECECEA;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #DADAD6; }
+  body { padding: 16px; font-family: '경기천년바탕', 'Pretendard', system-ui, sans-serif; color: var(--ink); word-break: keep-all; }
+  .phone { position: relative; width: 360px; max-width: 100%; height: 740px; margin: 0 auto; background: var(--bg); border-radius: 28px; overflow: hidden; }
+  .scroll { position: absolute; inset: 0 0 84px; overflow-y: auto; padding-top: 18px; }
+
+  header { display: flex; align-items: center; padding: 0 16px; min-height: 48px; }
+  h1 { margin: 0; font-family: '경기천년제목', sans-serif; font-size: 19px; font-weight: 700; letter-spacing: -0.02em; }
+  .me { margin-left: auto; min-height: 48px; padding: 0 4px; background: none; border: 0; font-family: '경기천년바탕', sans-serif; font-size: 13px; color: var(--sub); cursor: pointer; }
+  .me strong { color: var(--ink); font-weight: 700; }
+
+  .resume { margin: 10px 16px 0; background: var(--stitchSoft); border-radius: 12px; padding: 10px 10px 10px 14px; display: flex; align-items: center; gap: 10px; font-size: 13px; }
+  .resume p { margin: 0; flex: 1; line-height: 1.5; }
+  .btn-s { height: 40px; min-width: 48px; padding: 0 14px; border: 0; border-radius: 20px; background: var(--surface); color: var(--stitch); font-family: '경기천년제목', sans-serif; font-weight: 700; font-size: 14px; }
+
+  .card { margin: 18px 0 0; background: var(--surface); }
+  h2 { margin: 0; padding: 16px 16px 6px; font-family: '경기천년제목', sans-serif; font-size: 15px; font-weight: 700; }
+  .tbl { overflow-x: auto; }
+  table { border-collapse: collapse; font-variant-numeric: tabular-nums; min-width: 100%; }
+  th, td { white-space: nowrap; }
+  thead th { font-family: '경기천년제목', sans-serif; font-weight: 500; font-size: 12px; color: var(--sub); height: 36px; padding: 0 9px; text-align: center; background: var(--surface); }
+  thead th.c-pct { color: var(--stitch); }
+  tbody td, tbody th { height: 46px; padding: 0 9px; font-size: 14px; text-align: center; border-top: 1px solid var(--line); background: var(--surface); }
+  .c-rank { position: sticky; left: 0; z-index: 2; width: 40px; padding-left: 16px !important; }
+  tbody .c-rank { color: var(--sub); font-weight: 700; }
+  .c-team { position: sticky; left: 40px; z-index: 2; text-align: left !important; font-weight: 400; }
+  .c-team .mark { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 15px; background: var(--bg); font-family: '경기천년제목', sans-serif; font-size: 10px; font-weight: 700; margin-right: 8px; vertical-align: middle; }
+  tbody td.c-pct { color: var(--stitch); font-weight: 700; }
+  .c-era { padding-right: 16px !important; }
+
+  .dock { position: absolute; left: 0; right: 0; bottom: 0; padding: 12px 16px 18px; background: var(--bg); }
+  .btn { width: 100%; height: 54px; border: 0; border-radius: 27px; background: var(--stitch); color: #fff; font-family: '경기천년제목', sans-serif; font-size: 17px; font-weight: 700; }
+  button:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="scroll">
+    <header>
+      <h1>KBO 가상야구</h1>
+      <button class="me" type="button"><strong>12</strong>경기 적중률 <strong>58%</strong> <strong>700</strong>점</button>
+    </header>
+    <div class="resume">
+      <p>KT 대 삼성 5회초에서 멈춘 경기가 있어요</p>
+      <button class="btn-s" type="button">이어하기</button>
+    </div>
+    <section class="card">
+      <h2>2026 정규시즌 순위</h2>
+      <div class="tbl" id="tbl"></div>
+    </section>
+  </div>
+  <div class="dock"><button class="btn" type="button">시뮬레이션 시작</button></div>
+</div>
+<script src="data.js"></script>
+<script>
+  renderTable(document.getElementById('tbl'));
+</script>
+</body>
+</html>

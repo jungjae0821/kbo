@@ -71,11 +71,17 @@ class PlayerCard {
     this.outsPitched,
     this.saves,
     this.holds,
+    this.pitcherStarts = 0,
   });
 
   factory PlayerCard.fromJson(Map<String, dynamic> j) {
     final b = (j['batting'] as Map?)?.cast<String, dynamic>();
     final p = (j['pitching'] as Map?)?.cast<String, dynamic>();
+    // 시즌 수비 기록에서 투수로 선발 출장한 경기 수 (선발 등판 수로 쓴다).
+    var starts = 0;
+    for (final f in (j['fielding_by_position'] as List?) ?? const []) {
+      if (f is Map && f['position'] == '투수' && f['starts'] is int) starts = f['starts'] as int;
+    }
     return PlayerCard(
       id: j['player_id'] as String,
       name: j['player_name'] as String,
@@ -90,6 +96,7 @@ class PlayerCard {
       outsPitched: p?['outs_pitched'] as int?,
       saves: p?['saves'] as int?,
       holds: p?['holds'] as int?,
+      pitcherStarts: starts,
     );
   }
 
@@ -106,6 +113,9 @@ class PlayerCard {
   final int? outsPitched;
   final int? saves;
   final int? holds;
+
+  /// 시즌에 선발투수로 나온 경기 수. 0이면 경기 전 선발 후보에서 뺀다.
+  final int pitcherStarts;
 }
 
 /// 앱이 쓰는 시즌 데이터 한 벌. 엔진 입력은 [season]이 계약 검사를 통과한 것만 담는다.

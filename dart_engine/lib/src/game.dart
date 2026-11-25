@@ -503,6 +503,7 @@ class GameEngine {
     required this.seed,
     String? gameId,
     Map<String, String> startingPitchers = const {},
+    Map<String, List<String>> battingOrders = const {},
     this.baserunning = defaultBaserunning,
   })  : gameId = gameId ??
             'kbo-${DateTime.now().microsecondsSinceEpoch}-${_sequence++}',
@@ -513,9 +514,9 @@ class GameEngine {
       throw ArgumentError('Select two different teams from the dataset');
     }
     if (this.gameId.isEmpty) throw ArgumentError('gameId cannot be empty');
-    for (final teamId in startingPitchers.keys) {
+    for (final teamId in [...startingPitchers.keys, ...battingOrders.keys]) {
       if (teamId != awayTeamId && teamId != homeTeamId) {
-        throw ArgumentError.value(teamId, 'startingPitchers', 'Team is not in this game');
+        throw ArgumentError.value(teamId, 'startingPitchers/battingOrders', 'Team is not in this game');
       }
     }
     for (final teamId in [awayTeamId, homeTeamId]) {
@@ -529,8 +530,21 @@ class GameEngine {
               'or already in the batting order',
         );
       }
+      final order = battingOrders[teamId] ?? lineup.battingOrder.map((s) => s.playerId).toList();
+      final batters = batterCandidates(dataset, teamId).toSet();
+      if (order.length != 9 ||
+          order.toSet().length != 9 ||
+          order.contains(starter) ||
+          !order.every(batters.contains)) {
+        throw ArgumentError.value(
+          order,
+          'battingOrders',
+          'Need nine different batters from the roster with a usable batting '
+              'record, not including the starting pitcher',
+        );
+      }
       _pitchers[teamId] = starter;
-      _orders[teamId] = lineup.battingOrder.map((s) => s.playerId).toList();
+      _orders[teamId] = List.of(order);
       _appeared[teamId] = {starter, ..._orders[teamId]!};
     }
   }
@@ -552,6 +566,28 @@ class GameEngine {
             dataset.players[id]!.validPitcher)
           id,
     ]..sort();
+  }
+
+  /// Batters who may be in [teamId]'s starting batting order: on its roster
+  /// with a usable batting profile.
+  static List<String> batterCandidates(SeasonDataset dataset, String teamId) {
+    final team = dataset.teams[teamId];
+    if (team == null) throw ArgumentError.value(teamId, 'teamId', 'Unknown team');
+    return [
+      for (final id in team.rosterIds)
+        if (dataset.players[id]?.teamId == teamId && dataset.players[id]!.validBatter) id,
+    ]..sort();
+  }
+
+  /// The batting order [teamId] started the game with.
+  List<String> startingBattingOrderFor(String teamId) {
+    final order = List.of(_orders[_team(teamId)]!);
+    for (final s in _substitutions.reversed) {
+      if (s.teamId == teamId && s.kind == SubstitutionKind.pinchHitter) {
+        order[s.battingOrder! - 1] = s.outPlayerId;
+      }
+    }
+    return order;
   }
 
   /// The pitcher who started for [teamId].
@@ -790,6 +826,10 @@ class GameEngine {
           awayTeamId: startingPitcherFor(awayTeamId),
           homeTeamId: startingPitcherFor(homeTeamId),
         },
+        'batting_orders': {
+          awayTeamId: startingBattingOrderFor(awayTeamId),
+          homeTeamId: startingBattingOrderFor(homeTeamId),
+        },
         'substitutions': _substitutions.map((s) => s.toJson()).toList(),
         'plate_appearances': state.plateAppearances,
         'random_state': _random.state,
@@ -855,6 +895,12 @@ class GameEngine {
         startingPitchers: field<Map>('starting_pitchers').map(
           (k, v) => MapEntry(k as String, v as String),
         ),
+        // Checkpoints saved before custom lineups have no batting orders.
+        battingOrders: checkpoint['batting_orders'] == null
+            ? const {}
+            : field<Map>('batting_orders').map(
+                (k, v) => MapEntry(k as String, (v as List).cast<String>()),
+              ),
       );
       var next = 0;
       void applyDue() {
@@ -917,6 +963,10 @@ class GameEngine {
         'starting_pitchers': {
           awayTeamId: startingPitcherFor(awayTeamId),
           homeTeamId: startingPitcherFor(homeTeamId),
+        },
+        'batting_orders': {
+          awayTeamId: startingBattingOrderFor(awayTeamId),
+          homeTeamId: startingBattingOrderFor(homeTeamId),
         },
         'substitutions': _substitutions.map((s) => s.toJson()).toList(),
         'plate_appearances': _logs.map((log) => log.toJson()).toList(),

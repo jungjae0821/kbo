@@ -38,8 +38,9 @@ class KboApp extends StatelessWidget {
       child: MaterialApp(
         title: 'KBO 가상야구',
         debugShowCheckedModeBanner: false,
+        // 라이트 모드 고정 (사용자 지시, 2026-11-25). 기기 다크 모드여도 밝게 보인다.
         theme: buildKboTheme(Brightness.light),
-        darkTheme: buildKboTheme(Brightness.dark),
+        themeMode: ThemeMode.light,
         home: const HomeScreen(),
       ),
     );

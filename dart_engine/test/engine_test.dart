@@ -778,6 +778,38 @@ void main(List<String> args) {
     throws(() => make({home: dataset.lineups[away]!.pitcherId}));
     throws(() => make({'unknown': dataset.lineups[home]!.pitcherId}));
   });
+  test('custom batting orders bat in that order and survive a checkpoint', () {
+    final away = ids[6], home = ids[7];
+    final auto = dataset.lineups[home]!.battingOrder.map((s) => s.playerId).toList();
+    final bench = GameEngine.batterCandidates(dataset, home).firstWhere((id) => !auto.contains(id));
+    final custom = [...auto.reversed]..[0] = bench;
+    final game = GameEngine(
+      dataset: dataset, awayTeamId: away, homeTeamId: home, seed: 31, gameId: 'order-31',
+      battingOrders: {home: custom},
+    );
+    equal(game.battingOrderFor(home), custom);
+    game.playToEnd();
+    final homeBatters = game.logs.where((l) => !l.isTop).map((l) => l.batterId).take(9).toList();
+    equal(homeBatters, custom.take(homeBatters.length).toList());
+    check(!game.pinchHitterCandidates(home).contains(bench), 'A starting batter is not on the bench');
+    final restored = GameEngine.restore(dataset, jsonDecode(jsonEncode(game.toCheckpoint())) as Map<String, dynamic>);
+    equal(restored.toJson(), game.toJson());
+    // 예전 체크포인트(타순 없음)도 자동 타순으로 되살린다.
+    final old = GameEngine(dataset: dataset, awayTeamId: away, homeTeamId: home, seed: 32, gameId: 'order-32');
+    old.step();
+    final cp = old.toCheckpoint()..remove('batting_orders');
+    equal(GameEngine.restore(dataset, cp).state.toJson(), old.state.toJson());
+  });
+  test('reject invalid batting orders', () {
+    final away = ids[6], home = ids[7];
+    final auto = dataset.lineups[home]!.battingOrder.map((s) => s.playerId).toList();
+    GameEngine make(List<String> order) =>
+        GameEngine(dataset: dataset, awayTeamId: away, homeTeamId: home, seed: 1, battingOrders: {home: order});
+    throws(() => make(auto.take(8).toList()));
+    throws(() => make([...auto.take(8), auto.first]));
+    throws(() => make([...auto.take(8), dataset.lineups[away]!.battingOrder.first.playerId]));
+    throws(() => make([...auto.take(8), dataset.lineups[home]!.pitcherId]));
+  });
   test('checkpoint restores a game mid-way and finishes identically', () {
     final away = ids[2], home = ids[3];
     GameEngine make() => GameEngine(

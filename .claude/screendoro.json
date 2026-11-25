@@ -1,8 +1,9 @@
 {
-  "impeccableDone": true,
-  "date": "2026-11-15",
+  "setupDone": true,
+  "date": "2026-11-25",
+  "surfaceMode": "operate",
   "visualPreset": null,
-  "mockMode": "none",
-  "mockChoice": "C - 문자중계 피드: 어두운 상태 띠, 아래에서 쌓이는 타석 메시지, 코발트 한 색 (자체 방향, 2026-11-19 재구성). 이전: F1 그라운드",
+  "mockMode": "draft",
+  "mockChoice": "B - 중계 자막: 남색 자막 띠, 띠에 걸친 이어하기 카드, 줄무늬 순위표, 자홍 강조 하나 (초안 기반 2차, 2026-11-25 리디자인). 이전: 문자중계(C)",
   "componentLib": "none"
 }
