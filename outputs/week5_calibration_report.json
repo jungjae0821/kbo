@@ -1,0 +1,194 @@
+{
+  "generated_on": "2026-11-25",
+  "engine_version": "2.1.0",
+  "data_version": "2026-ea23f11532d3428a3d281f9fdbb692781b439ff33b7864d4269c300458985a5b",
+  "command": "dart run bin/calibrate.dart ../outputs/week5_calibration_report.json",
+  "real_runs_per_team_game": 5.070138888888889,
+  "games_per_setting": 9000,
+  "seeds": "spreadSeeds(masterSeed: 20261125), the same seeds for every setting so differences come from the rates",
+  "out_advancement_sensitivity": [
+    {
+      "label": "2.0.0 (no advancement on outs)",
+      "rates": {
+        "single_runner_from_second_scores": 0.6,
+        "single_runner_from_first_to_third": 0.28,
+        "double_runner_from_first_scores": 0.42,
+        "double_play": 0.18,
+        "runner_from_third_scores_on_out": 0.52,
+        "runner_from_second_to_third_on_out": 0.0,
+        "runner_from_first_to_second_on_out": 0.0
+      },
+      "games": 9000,
+      "runs_per_team_game": 4.157388888888889,
+      "tie_rate": 0.03666666666666667,
+      "double_plays_per_pa": 0.01932911255595943,
+      "runs_on_outs_per_pa": 0.007855651689164207
+    },
+    {
+      "label": "2B->3B 0.25, 1B->2B 0.1",
+      "rates": {
+        "single_runner_from_second_scores": 0.6,
+        "single_runner_from_first_to_third": 0.28,
+        "double_runner_from_first_scores": 0.42,
+        "double_play": 0.18,
+        "runner_from_third_scores_on_out": 0.52,
+        "runner_from_second_to_third_on_out": 0.25,
+        "runner_from_first_to_second_on_out": 0.1
+      },
+      "games": 9000,
+      "runs_per_team_game": 4.195833333333334,
+      "tie_rate": 0.03333333333333333,
+      "double_plays_per_pa": 0.01920518564252318,
+      "runs_on_outs_per_pa": 0.00861517051393014
+    },
+    {
+      "label": "2B->3B 0.25, 1B->2B 0.2",
+      "rates": {
+        "single_runner_from_second_scores": 0.6,
+        "single_runner_from_first_to_third": 0.28,
+        "double_runner_from_first_scores": 0.42,
+        "double_play": 0.18,
+        "runner_from_third_scores_on_out": 0.52,
+        "runner_from_second_to_third_on_out": 0.25,
+        "runner_from_first_to_second_on_out": 0.2
+      },
+      "games": 9000,
+      "runs_per_team_game": 4.221722222222223,
+      "tie_rate": 0.031,
+      "double_plays_per_pa": 0.018975218399001605,
+      "runs_on_outs_per_pa": 0.008604742378320556
+    },
+    {
+      "label": "2B->3B 0.25, 1B->2B 0.3",
+      "rates": {
+        "single_runner_from_second_scores": 0.6,
+        "single_runner_from_first_to_third": 0.28,
+        "double_runner_from_first_scores": 0.42,
+        "double_play": 0.18,
+        "runner_from_third_scores_on_out": 0.52,
+        "runner_from_second_to_third_on_out": 0.25,
+        "runner_from_first_to_second_on_out": 0.3
+      },
+      "games": 9000,
+      "runs_per_team_game": 4.256111111111111,
+      "tie_rate": 0.03133333333333333,
+      "double_plays_per_pa": 0.018785735673648638,
+      "runs_on_outs_per_pa": 0.008530934082386324
+    },
+    {
+      "label": "2B->3B 0.35, 1B->2B 0.1",
+      "rates": {
+        "single_runner_from_second_scores": 0.6,
+        "single_runner_from_first_to_third": 0.28,
+        "double_runner_from_first_scores": 0.42,
+        "double_play": 0.18,
+        "runner_from_third_scores_on_out": 0.52,
+        "runner_from_second_to_third_on_out": 0.35,
+        "runner_from_first_to_second_on_out": 0.1
+      },
+      "games": 9000,
+      "runs_per_team_game": 4.230166666666666,
+      "tie_rate": 0.034666666666666665,
+      "double_plays_per_pa": 0.019115554903638976,
+      "runs_on_outs_per_pa": 0.008906256452906068
+    },
+    {
+      "label": "2B->3B 0.35, 1B->2B 0.2",
+      "rates": {
+        "single_runner_from_second_scores": 0.6,
+        "single_runner_from_first_to_third": 0.28,
+        "double_runner_from_first_scores": 0.42,
+        "double_play": 0.18,
+        "runner_from_third_scores_on_out": 0.52,
+        "runner_from_second_to_third_on_out": 0.35,
+        "runner_from_first_to_second_on_out": 0.2
+      },
+      "games": 9000,
+      "runs_per_team_game": 4.258,
+      "tie_rate": 0.03333333333333333,
+      "double_plays_per_pa": 0.018882439929222904,
+      "runs_on_outs_per_pa": 0.008912671208481854
+    },
+    {
+      "label": "2B->3B 0.35, 1B->2B 0.3",
+      "rates": {
+        "single_runner_from_second_scores": 0.6,
+        "single_runner_from_first_to_third": 0.28,
+        "double_runner_from_first_scores": 0.42,
+        "double_play": 0.18,
+        "runner_from_third_scores_on_out": 0.52,
+        "runner_from_second_to_third_on_out": 0.35,
+        "runner_from_first_to_second_on_out": 0.3
+      },
+      "games": 9000,
+      "runs_per_team_game": 4.295166666666667,
+      "tie_rate": 0.033777777777777775,
+      "double_plays_per_pa": 0.018698816458490593,
+      "runs_on_outs_per_pa": 0.008870152251007648
+    },
+    {
+      "label": "2B->3B 0.45, 1B->2B 0.1",
+      "rates": {
+        "single_runner_from_second_scores": 0.6,
+        "single_runner_from_first_to_third": 0.28,
+        "double_runner_from_first_scores": 0.42,
+        "double_play": 0.18,
+        "runner_from_third_scores_on_out": 0.52,
+        "runner_from_second_to_third_on_out": 0.45,
+        "runner_from_first_to_second_on_out": 0.1
+      },
+      "games": 9000,
+      "runs_per_team_game": 4.2427222222222225,
+      "tie_rate": 0.034888888888888886,
+      "double_plays_per_pa": 0.019061236929579953,
+      "runs_on_outs_per_pa": 0.009151786350080751
+    },
+    {
+      "label": "2B->3B 0.45, 1B->2B 0.2",
+      "rates": {
+        "single_runner_from_second_scores": 0.6,
+        "single_runner_from_first_to_third": 0.28,
+        "double_runner_from_first_scores": 0.42,
+        "double_play": 0.18,
+        "runner_from_third_scores_on_out": 0.52,
+        "runner_from_second_to_third_on_out": 0.45,
+        "runner_from_first_to_second_on_out": 0.2
+      },
+      "games": 9000,
+      "runs_per_team_game": 4.277833333333334,
+      "tie_rate": 0.03322222222222222,
+      "double_plays_per_pa": 0.018846692391953086,
+      "runs_on_outs_per_pa": 0.009189026726663847
+    },
+    {
+      "label": "2B->3B 0.45, 1B->2B 0.3",
+      "rates": {
+        "single_runner_from_second_scores": 0.6,
+        "single_runner_from_first_to_third": 0.28,
+        "double_runner_from_first_scores": 0.42,
+        "double_play": 0.18,
+        "runner_from_third_scores_on_out": 0.52,
+        "runner_from_second_to_third_on_out": 0.45,
+        "runner_from_first_to_second_on_out": 0.3
+      },
+      "games": 9000,
+      "runs_per_team_game": 4.318777777777778,
+      "tie_rate": 0.033,
+      "double_plays_per_pa": 0.018653283621625164,
+      "runs_on_outs_per_pa": 0.009122990905491738
+    }
+  ],
+  "league_average_input_baseline": {
+    "description": "Every plate appearance uses the league baseline probabilities; 400,000 half innings with dart:math Random(7)",
+    "results": [
+      {
+        "label": "2.0.0",
+        "runs_per_nine_innings": 4.42296
+      },
+      {
+        "label": "2.1.0",
+        "runs_per_nine_innings": 4.54725
+      }
+    ]
+  }
+}

@@ -11,10 +11,11 @@ String outcomeLabel(PlateOutcome o) => switch (o) {
       PlateOutcome.otherOut => '아웃',
     };
 
-/// 타석 결과 이름. 병살·희생플라이처럼 아웃 중에 생긴 상황은 그 이름으로 보여 준다.
+/// 타석 결과 이름. 병살·희생플라이·진루타처럼 아웃 중에 생긴 상황은 그 이름으로 보여 준다.
 String playLabel(PlateAppearanceLog log) => switch (log.transition.note) {
       PlayNote.doublePlay => '병살타',
       PlayNote.runScoredOnOut => '희생플라이',
+      PlayNote.runnerAdvancedOnOut => '진루타',
       null => outcomeLabel(log.outcome),
     };
 

@@ -1,0 +1,108 @@
+{
+  "verified_on": "2026-11-25",
+  "scope": "Week 5: repeated simulation (1,000+ games), comparison with the real 2026 league, base-running calibration (engine 2.1.0), batch tooling and tests",
+  "engine_version": "2.1.0",
+  "data_version": "2026-ea23f11532d3428a3d281f9fdbb692781b439ff33b7864d4269c300458985a5b",
+  "reports": {
+    "simulation": "week5_simulation_report.json",
+    "calibration": "week5_calibration_report.json",
+    "engine_tests": "week5_engine_validation_report.json",
+    "example_game": "engine_2_1_0_example_game.json"
+  },
+  "commands": [
+    "cd dart_engine; dart run bin/batch_simulate.dart --seeds 200 --fixed-seeds 2000 --output ../outputs/week5_simulation_report.json",
+    "cd dart_engine; dart run bin/calibrate.dart ../outputs/week5_calibration_report.json",
+    "cd dart_engine; dart run test/engine_test.dart ../kbo_data/kbo_2026_138278/app/season_dataset.json ../outputs/week5_engine_validation_report.json",
+    "cd app; flutter test",
+    "cd app; dart analyze",
+    "cd app; flutter build web"
+  ],
+  "results": {
+    "engine_tests": {"passed": 48, "failed": 0, "added": [
+      "runners on first and second advance on outs when the base is open",
+      "2.1.0 without substitutions replays the saved example exactly",
+      "2.1.0 with advancement on outs off still replays the 2.0.0 example",
+      "spreadSeeds: deterministic, distinct, in range, not consecutive",
+      "batch summary totals agree with the individual games",
+      "1,000 games of one matchup: every game valid, sampling unbiased",
+      "wilson interval and pearson helpers",
+      "league-average baseline is deterministic and rises with 2.1.0 rules"
+    ]},
+    "flutter_tests": {"passed": 33, "skipped": 1, "failed": 0, "added": "app/test/labels_test.dart (double play, sacrifice fly and productive out labels from real engine games)", "skipped_reason": "Live OCI check runs only with --dart-define=VERIFY_OCI_REMOTE=true"},
+    "static_analysis": "dart analyze: no issues in dart_engine and app. flutter analyze crashed inside the analysis server while parsing a JSON message containing the Korean project path (FormatException: Unterminated string), before reporting any lint; dart analyze uses the same analysis_options.yaml",
+    "flutter_build_web": "passed",
+    "manual_web_check": "Built web app: team selection, prediction, game played to the 7th inning with 2.1.0; play feed and score updated normally"
+  },
+  "fixed_matchup": {
+    "matchup": "KT (away) vs Samsung (home), automatic lineups and starters",
+    "games": 2000,
+    "away_win_percentage_excluding_ties": 0.5114,
+    "away_win_percentage_95ci_wilson": [0.4891, 0.5336],
+    "tie_rate": 0.032,
+    "team_runs_per_game": {"mean": 4.46, "standard_deviation": 2.98},
+    "total_runs_per_game": {"mean": 8.92, "standard_deviation": 4.28},
+    "extra_inning_rate": 0.0975
+  },
+  "league_run": {
+    "games": 18000,
+    "design": "all 90 ordered matchups x 200 games, every game with its own seed",
+    "comparison_with_real_2026": {
+      "runs_per_team_game": {"simulated": 4.2145, "real": 5.0701},
+      "tie_rate": {"simulated": 0.0346, "real": 0.0236},
+      "batting_average": {"simulated": 0.2585, "real": 0.2680},
+      "double_plays_per_pa": {"simulated": 0.0189, "real": 0.0184},
+      "runs_on_outs_per_pa": {"simulated": 0.0088, "real_sacrifice_flies_only": 0.0077},
+      "plate_appearances_per_team_game": {"simulated": 38.96, "real": 39.40}
+    },
+    "event_rates_sampled_vs_engine_input": "all eight outcomes within 0.1 percentage point of the matchup probabilities the engine sampled from",
+    "home_win_percentage_excluding_ties": 0.5043,
+    "extra_inning_rate": 0.1041,
+    "walk_off_rate": 0.0798,
+    "bottom_ninth_skipped_rate": 0.4071,
+    "team_runs_histogram_peak": "2-3 runs; maximum 24 runs in one team-game; maximum 113 plate appearances in one game",
+    "team_strength": {"runs_per_game_correlation": 0.931, "win_percentage_correlation": 0.346, "note": "Simulated win percentages span about 44-54% against 36-65% in reality: the engine uses each team's starter for the whole game and its regular nine, so bullpen and bench depth are absent"}
+  },
+  "findings": [
+    {
+      "issue": "Seed choice in batch runs biased the results",
+      "detail": "Park-Miller's first draw is (seed + 1) * 16807 / (2^31 - 1). Consecutive small seeds (1, 2, 3, ...) all opened with a strikeout draw (+1.7 percentage points of strikeouts). Seeds drawn from a Park-Miller stream are states of that stream, so games became shifted copies of one sequence (runs 6.5 per team-game). Reusing one seed list across matchups shrank the effective sample to the list length.",
+      "fix": "spreadSeeds draws distinct seeds with dart:math Random, the same way the app picks seeds (Random().nextInt), and each game in a batch gets its own seed. The app was never affected: it picks a uniform random seed per game.",
+      "evidence": "after the fix every sampled event rate matches the engine input; regression test 'spreadSeeds' and the 1,000-game z-score test"
+    },
+    {
+      "issue": "Run scoring about 19% below the real league (engine 2.0.0: 4.16 vs 5.07)",
+      "decomposition": {
+        "league_average_inputs_2_0_0_runs_per_nine": 4.42,
+        "league_average_inputs_2_1_0_runs_per_nine": 4.55,
+        "automatic_lineups_2_0_0": 4.16,
+        "automatic_lineups_2_1_0_same_seeds": 4.26,
+        "real": 5.07,
+        "reading": "With league-average plate appearances the engine still scores about 10% less (omitted steals, errors, wild pitches, balks). Regular nine against a starter for the whole game costs another 5-6%: starters strike out more and walk fewer batters than the league as a whole (strikeouts 20.3% vs 19.5%, walks 8.4% vs 9.4%)."
+      },
+      "decision": "Approved by the user on 2026-11-25: add only advancement on outs, with realistic mid-grid rates, and document the rest instead of fitting new events.",
+      "change": "Engine 2.1.0: on an other out with fewer than two outs (not a double play), the runner on second takes an open third with probability 0.35 and the runner on first takes an open second with probability 0.20. The play is logged as runner_advanced_on_out and shown as '진루타'.",
+      "sensitivity": "runs per team-game range only from 4.20 to 4.32 across 2B->3B 0.25-0.45 and 1B->2B 0.10-0.30 (week5_calibration_report.json), so the choice is not a fit to the real total"
+    }
+  ],
+  "compatibility": [
+    "Season dataset unchanged (same data_version), so the OCI file does not need to be redeployed",
+    "Interrupted games saved by engine 2.0.0 cannot be resumed under 2.1.0; the home card already explains this and offers discard only (existing persistence test)",
+    "Records keep engine_version per game; old records stay valid",
+    "With both new rates set to 0 the engine replays the 2.0.0 example exactly (test)"
+  ],
+  "week5_plan_coverage": {
+    "unit_tests_probabilities_baserunning_outs_order_ninth_walkoff_eleven_innings": "dart_engine/test/engine_test.dart (existing since weeks 2-3, extended this week)",
+    "same_seed_reproduction_and_no_double_scoring": "engine_test.dart reproduction tests; app/test/persistence_test.dart and app_data_test.dart scoring tests",
+    "integration_selection_to_scoring_saving_restoring": "app/test/flow_test.dart and app/test/persistence_test.dart",
+    "1000_plus_games_same_matchup": "2,000 games KT vs Samsung in week5_simulation_report.json; 1,000-game validity test in engine_test.dart",
+    "rates_across_team_combinations": "18,000 games over all 90 ordered matchups",
+    "calibration_and_evidence": "week5_calibration_report.json, findings above"
+  },
+  "limitations": [
+    "Run scoring remains about 17% below the real league (4.21 vs 5.07) because steals, errors, wild pitches and bullpen use are not modeled",
+    "Tie rate is higher than reality (3.5% vs 2.4%), a consequence of lower scoring",
+    "No home advantage is modeled (home win percentage 50.4%)",
+    "Team strength is compressed relative to real standings; the game is a virtual matchup of each team's regulars and starter, not a forecast",
+    "Advancement-on-out rates are approximations; the dataset has no KBO totals for runners advancing on outs to fit them against"
+  ]
+}

@@ -1,0 +1,6983 @@
+{
+  "game_id": "engine-2.1.0-example-42",
+  "engine_version": "2.1.0",
+  "data_version": "2026-ea23f11532d3428a3d281f9fdbb692781b439ff33b7864d4269c300458985a5b",
+  "seed": 42,
+  "random_algorithm": "park_miller_16807_v1",
+  "max_innings": 11,
+  "baserunning_rates": {
+    "single_runner_from_second_scores": 0.6,
+    "single_runner_from_first_to_third": 0.28,
+    "double_runner_from_first_scores": 0.42,
+    "double_play": 0.18,
+    "runner_from_third_scores_on_out": 0.52,
+    "runner_from_second_to_third_on_out": 0.35,
+    "runner_from_first_to_second_on_out": 0.2
+  },
+  "random_state": 1412301458,
+  "away_team_id": "sr:competitor:249967",
+  "home_team_id": "sr:competitor:249977",
+  "winner_team_id": "sr:competitor:249967",
+  "state": {
+    "inning": 9,
+    "half": "bottom",
+    "outs": 3,
+    "bases": [
+      "kbo:player:67449",
+      null,
+      null
+    ],
+    "away_score": 5,
+    "home_score": 4,
+    "away_batting_index": 3,
+    "home_batting_index": 0,
+    "away_innings": [
+      0,
+      3,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "home_innings": [
+      0,
+      2,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "plate_appearances": 75,
+    "finished": true,
+    "end_reason": "regulation"
+  },
+  "starting_pitchers": {
+    "sr:competitor:249967": "kbo:player:50030",
+    "sr:competitor:249977": "kbo:player:53375"
+  },
+  "substitutions": [],
+  "plate_appearances": [
+    {
+      "number": 1,
+      "inning": 1,
+      "half": "top",
+      "batter_id": "kbo:player:66606",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "strikeout",
+      "probabilities": {
+        "strikeout": 0.15305330493695535,
+        "walk": 0.08376636446648278,
+        "hit_by_pitch": 0.010401729126175992,
+        "single": 0.20018111381676001,
+        "double": 0.04105221966817388,
+        "triple": 0.005501093824263415,
+        "home_run": 0.02030545392176519,
+        "other_out": 0.48573872023942344
+      },
+      "draw": 0.0003365334126507243,
+      "random_state_after": 722701,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 1,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 0,
+        "home_batting_index": 0,
+        "away_innings": [
+          0
+        ],
+        "home_innings": [
+          null
+        ],
+        "plate_appearances": 0,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 1,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 1,
+        "home_batting_index": 0,
+        "away_innings": [
+          0
+        ],
+        "home_innings": [
+          null
+        ],
+        "plate_appearances": 1,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 2,
+      "inning": 1,
+      "half": "top",
+      "batter_id": "kbo:player:52001",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.1862369781573282,
+        "walk": 0.09674397782556242,
+        "hit_by_pitch": 0.025181918673032454,
+        "single": 0.16807560962212797,
+        "double": 0.037386683168511264,
+        "triple": 0.005009355849652366,
+        "home_run": 0.02766749323391072,
+        "other_out": 0.45369798346987467
+      },
+      "draw": 0.6561248899960191,
+      "random_state_after": 1409017472,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 2,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 1,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 1,
+        "home_batting_index": 0,
+        "away_innings": [
+          0
+        ],
+        "home_innings": [
+          null
+        ],
+        "plate_appearances": 1,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 1,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 2,
+        "home_batting_index": 0,
+        "away_innings": [
+          0
+        ],
+        "home_innings": [
+          null
+        ],
+        "plate_appearances": 2,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 3,
+      "inning": 1,
+      "half": "top",
+      "batter_id": "kbo:player:79240",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.14293962160114917,
+        "walk": 0.07058331974047541,
+        "hit_by_pitch": 0.0158558864822624,
+        "single": 0.19839606740266974,
+        "double": 0.03656439811857868,
+        "triple": 0.0034089437601694233,
+        "home_run": 0.019815481593801816,
+        "other_out": 0.5124362813008934
+      },
+      "draw": 0.4910288541494206,
+      "random_state_after": 1054476435,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 3,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 1,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 2,
+        "home_batting_index": 0,
+        "away_innings": [
+          0
+        ],
+        "home_innings": [
+          null
+        ],
+        "plate_appearances": 2,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 1,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 3,
+        "home_batting_index": 0,
+        "away_innings": [
+          0
+        ],
+        "home_innings": [
+          0
+        ],
+        "plate_appearances": 3,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 4,
+      "inning": 1,
+      "half": "bottom",
+      "batter_id": "kbo:player:72443",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.19210567165008988,
+        "walk": 0.0853406015960494,
+        "hit_by_pitch": 0.010469659293113168,
+        "single": 0.18138434081826016,
+        "double": 0.03869640176900567,
+        "triple": 0.002277800828040622,
+        "home_run": 0.02466881853544142,
+        "other_out": 0.46505670550999967
+      },
+      "draw": 0.7219556725788449,
+      "random_state_after": 1550388001,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 1,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 3,
+        "home_batting_index": 0,
+        "away_innings": [
+          0
+        ],
+        "home_innings": [
+          0
+        ],
+        "plate_appearances": 3,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 1,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 3,
+        "home_batting_index": 1,
+        "away_innings": [
+          0
+        ],
+        "home_innings": [
+          0
+        ],
+        "plate_appearances": 4,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 5,
+      "inning": 1,
+      "half": "bottom",
+      "batter_id": "kbo:player:54400",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.18017596480511433,
+        "walk": 0.084260562897227,
+        "hit_by_pitch": 0.008333831017622114,
+        "single": 0.17646691766772465,
+        "double": 0.0422285043992261,
+        "triple": 0.002249362861291313,
+        "home_run": 0.02860617908568113,
+        "other_out": 0.47767867726611335
+      },
+      "draw": 0.9089912086808972,
+      "random_state_after": 1952043756,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 2,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 1,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 3,
+        "home_batting_index": 1,
+        "away_innings": [
+          0
+        ],
+        "home_innings": [
+          0
+        ],
+        "plate_appearances": 4,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 1,
+        "half": "bottom",
+        "outs": 2,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 3,
+        "home_batting_index": 2,
+        "away_innings": [
+          0
+        ],
+        "home_innings": [
+          0
+        ],
+        "plate_appearances": 5,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 6,
+      "inning": 1,
+      "half": "bottom",
+      "batter_id": "kbo:player:69418",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "single",
+      "probabilities": {
+        "strikeout": 0.18319633927491621,
+        "walk": 0.09298358231961586,
+        "hit_by_pitch": 0.012176562778147874,
+        "single": 0.16717546164253258,
+        "double": 0.033721914195287375,
+        "triple": 0.007594126137873524,
+        "home_run": 0.025261905720756875,
+        "other_out": 0.4778901079308697
+      },
+      "draw": 0.4152450118355872,
+      "random_state_after": 891731873,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:69418",
+        null,
+        null
+      ],
+      "outs_after_play": 2,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 1,
+        "half": "bottom",
+        "outs": 2,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 3,
+        "home_batting_index": 2,
+        "away_innings": [
+          0
+        ],
+        "home_innings": [
+          0
+        ],
+        "plate_appearances": 5,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 1,
+        "half": "bottom",
+        "outs": 2,
+        "bases": [
+          "kbo:player:69418",
+          null,
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 3,
+        "home_batting_index": 3,
+        "away_innings": [
+          0
+        ],
+        "home_innings": [
+          0
+        ],
+        "plate_appearances": 6,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 7,
+      "inning": 1,
+      "half": "bottom",
+      "batter_id": "kbo:player:62404",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "strikeout",
+      "probabilities": {
+        "strikeout": 0.17605184509164812,
+        "walk": 0.0894509191571008,
+        "hit_by_pitch": 0.011037315950512367,
+        "single": 0.19053783634918453,
+        "double": 0.04535303046946556,
+        "triple": 0.006632782172113254,
+        "home_run": 0.024144981672865745,
+        "other_out": 0.45679128913710965
+      },
+      "draw": 0.022918496767914385,
+      "random_state_after": 49217098,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:69418",
+        null,
+        null
+      ],
+      "outs_after_play": 3,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 1,
+        "half": "bottom",
+        "outs": 2,
+        "bases": [
+          "kbo:player:69418",
+          null,
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 3,
+        "home_batting_index": 3,
+        "away_innings": [
+          0
+        ],
+        "home_innings": [
+          0
+        ],
+        "plate_appearances": 6,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 2,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 3,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          null
+        ],
+        "plate_appearances": 7,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 8,
+      "inning": 2,
+      "half": "top",
+      "batter_id": "kbo:player:56034",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "strikeout",
+      "probabilities": {
+        "strikeout": 0.20923827452268157,
+        "walk": 0.07959595538127115,
+        "hit_by_pitch": 0.007697723839339697,
+        "single": 0.1727148961957677,
+        "double": 0.032153592727889216,
+        "triple": 0.005023756461699986,
+        "home_run": 0.04151137564074932,
+        "other_out": 0.4520644252306014
+      },
+      "draw": 0.19118282496108005,
+      "random_state_after": 410561991,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 2,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 3,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          null
+        ],
+        "plate_appearances": 7,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 2,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 4,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          null
+        ],
+        "plate_appearances": 8,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 9,
+      "inning": 2,
+      "half": "top",
+      "batter_id": "kbo:player:53036",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "walk",
+      "probabilities": {
+        "strikeout": 0.1707297823713525,
+        "walk": 0.07049657109046538,
+        "hit_by_pitch": 0.010946387227053721,
+        "single": 0.19408210210520233,
+        "double": 0.040460758155790255,
+        "triple": 0.0036244500707441037,
+        "home_run": 0.01905866416091895,
+        "other_out": 0.4906012848184728
+      },
+      "draw": 0.20974545060633257,
+      "random_state_after": 450424926,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:53036",
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 2,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 4,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          null
+        ],
+        "plate_appearances": 8,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 2,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          "kbo:player:53036",
+          null,
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 5,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          null
+        ],
+        "plate_appearances": 9,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 10,
+      "inning": 2,
+      "half": "top",
+      "batter_id": "kbo:player:76290",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "walk",
+      "probabilities": {
+        "strikeout": 0.14800682081947367,
+        "walk": 0.07637027865026005,
+        "hit_by_pitch": 0.008987654570859191,
+        "single": 0.18226553363866183,
+        "double": 0.03741372449632746,
+        "triple": 0.0032446906366426246,
+        "home_run": 0.023864850561480286,
+        "other_out": 0.5198464466262949
+      },
+      "draw": 0.19179452507923778,
+      "random_state_after": 411875607,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:76290",
+        "kbo:player:53036",
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 2,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          "kbo:player:53036",
+          null,
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 5,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          null
+        ],
+        "plate_appearances": 9,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 2,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          "kbo:player:76290",
+          "kbo:player:53036",
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 6,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          null
+        ],
+        "plate_appearances": 10,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 11,
+      "inning": 2,
+      "half": "top",
+      "batter_id": "kbo:player:78548",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "triple",
+      "probabilities": {
+        "strikeout": 0.19363130985522237,
+        "walk": 0.10191411404554872,
+        "hit_by_pitch": 0.009431015283506119,
+        "single": 0.15010494660111348,
+        "double": 0.03438819401383024,
+        "triple": 0.003570717450920377,
+        "home_run": 0.030346928430303635,
+        "other_out": 0.4766127743195551
+      },
+      "draw": 0.49058933182674397,
+      "random_state_after": 1053532568,
+      "runs": 2,
+      "scored_player_ids": [
+        "kbo:player:53036",
+        "kbo:player:76290"
+      ],
+      "bases_after_play": [
+        null,
+        null,
+        "kbo:player:78548"
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 2,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          "kbo:player:76290",
+          "kbo:player:53036",
+          null
+        ],
+        "away_score": 0,
+        "home_score": 0,
+        "away_batting_index": 6,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          null
+        ],
+        "plate_appearances": 10,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 2,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          "kbo:player:78548"
+        ],
+        "away_score": 2,
+        "home_score": 0,
+        "away_batting_index": 7,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          2
+        ],
+        "home_innings": [
+          0,
+          null
+        ],
+        "plate_appearances": 11,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 12,
+      "inning": 2,
+      "half": "top",
+      "batter_id": "kbo:player:51003",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "single",
+      "probabilities": {
+        "strikeout": 0.2075038903391997,
+        "walk": 0.07822178527117239,
+        "hit_by_pitch": 0.009522671800908038,
+        "single": 0.17169867362415786,
+        "double": 0.04018052938248379,
+        "triple": 0.005753089510248789,
+        "home_run": 0.020896639577184614,
+        "other_out": 0.46622272049464486
+      },
+      "draw": 0.33490399861233683,
+      "random_state_after": 719200861,
+      "runs": 1,
+      "scored_player_ids": [
+        "kbo:player:78548"
+      ],
+      "bases_after_play": [
+        "kbo:player:51003",
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 2,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          "kbo:player:78548"
+        ],
+        "away_score": 2,
+        "home_score": 0,
+        "away_batting_index": 7,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          2
+        ],
+        "home_innings": [
+          0,
+          null
+        ],
+        "plate_appearances": 11,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 2,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          "kbo:player:51003",
+          null,
+          null
+        ],
+        "away_score": 3,
+        "home_score": 0,
+        "away_batting_index": 8,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          3
+        ],
+        "home_innings": [
+          0,
+          null
+        ],
+        "plate_appearances": 12,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 13,
+      "inning": 2,
+      "half": "top",
+      "batter_id": "kbo:player:79402",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.15354475095010967,
+        "walk": 0.08320511264809706,
+        "hit_by_pitch": 0.01282437450068637,
+        "single": 0.190011369918029,
+        "double": 0.02831804650134056,
+        "triple": 0.004053994980476334,
+        "home_run": 0.01664016055717793,
+        "other_out": 0.5114021899440832
+      },
+      "draw": 0.7315098827066924,
+      "random_state_after": 641776147,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:51003",
+        null,
+        null
+      ],
+      "outs_after_play": 2,
+      "play_note": null,
+      "baserunning_draws": [
+        0.48660075244177203,
+        0.29885030658808565
+      ],
+      "before": {
+        "inning": 2,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          "kbo:player:51003",
+          null,
+          null
+        ],
+        "away_score": 3,
+        "home_score": 0,
+        "away_batting_index": 8,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          3
+        ],
+        "home_innings": [
+          0,
+          null
+        ],
+        "plate_appearances": 12,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 2,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          "kbo:player:51003",
+          null,
+          null
+        ],
+        "away_score": 3,
+        "home_score": 0,
+        "away_batting_index": 0,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          3
+        ],
+        "home_innings": [
+          0,
+          null
+        ],
+        "plate_appearances": 13,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 14,
+      "inning": 2,
+      "half": "top",
+      "batter_id": "kbo:player:66606",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.15305330493695535,
+        "walk": 0.08376636446648278,
+        "hit_by_pitch": 0.010401729126175992,
+        "single": 0.20018111381676001,
+        "double": 0.04105221966817388,
+        "triple": 0.005501093824263415,
+        "home_run": 0.02030545392176519,
+        "other_out": 0.48573872023942344
+      },
+      "draw": 0.7771083133081983,
+      "random_state_after": 1668827395,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:51003",
+        null,
+        null
+      ],
+      "outs_after_play": 3,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 2,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          "kbo:player:51003",
+          null,
+          null
+        ],
+        "away_score": 3,
+        "home_score": 0,
+        "away_batting_index": 0,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          3
+        ],
+        "home_innings": [
+          0,
+          null
+        ],
+        "plate_appearances": 13,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 2,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 3,
+        "home_score": 0,
+        "away_batting_index": 1,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          3
+        ],
+        "home_innings": [
+          0,
+          0
+        ],
+        "plate_appearances": 14,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 15,
+      "inning": 2,
+      "half": "bottom",
+      "batter_id": "kbo:player:52415",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.1804671017667371,
+        "walk": 0.0799942983032814,
+        "hit_by_pitch": 0.020166817259407624,
+        "single": 0.15583796697690414,
+        "double": 0.03224698296720055,
+        "triple": 0.0025242432919920926,
+        "home_run": 0.03157252758594348,
+        "other_out": 0.4971900618485337
+      },
+      "draw": 0.8594235152559574,
+      "random_state_after": 1845597945,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 2,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 3,
+        "home_score": 0,
+        "away_batting_index": 1,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          3
+        ],
+        "home_innings": [
+          0,
+          0
+        ],
+        "plate_appearances": 14,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 2,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 3,
+        "home_score": 0,
+        "away_batting_index": 1,
+        "home_batting_index": 5,
+        "away_innings": [
+          0,
+          3
+        ],
+        "home_innings": [
+          0,
+          0
+        ],
+        "plate_appearances": 15,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 16,
+      "inning": 2,
+      "half": "bottom",
+      "batter_id": "kbo:player:74540",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "single",
+      "probabilities": {
+        "strikeout": 0.20375366306567913,
+        "walk": 0.07713837203656093,
+        "hit_by_pitch": 0.013561261631435973,
+        "single": 0.17136707736721177,
+        "double": 0.03850838006758104,
+        "triple": 0.0024722970863552633,
+        "home_run": 0.0263046978459956,
+        "other_out": 0.4668942508991804
+      },
+      "draw": 0.33102200676782245,
+      "random_state_after": 710864347,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:74540",
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 2,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 3,
+        "home_score": 0,
+        "away_batting_index": 1,
+        "home_batting_index": 5,
+        "away_innings": [
+          0,
+          3
+        ],
+        "home_innings": [
+          0,
+          0
+        ],
+        "plate_appearances": 15,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 2,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          "kbo:player:74540",
+          null,
+          null
+        ],
+        "away_score": 3,
+        "home_score": 0,
+        "away_batting_index": 1,
+        "home_batting_index": 6,
+        "away_innings": [
+          0,
+          3
+        ],
+        "home_innings": [
+          0,
+          0
+        ],
+        "plate_appearances": 16,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 17,
+      "inning": 2,
+      "half": "bottom",
+      "batter_id": "kbo:player:67449",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "home_run",
+      "probabilities": {
+        "strikeout": 0.16063416837972488,
+        "walk": 0.07897933022827665,
+        "hit_by_pitch": 0.008905749169741916,
+        "single": 0.18749889821391236,
+        "double": 0.037577856137212116,
+        "triple": 0.003774571535904204,
+        "home_run": 0.01773352388671979,
+        "other_out": 0.5048959024485081
+      },
+      "draw": 0.48687298222153724,
+      "random_state_after": 1045551768,
+      "runs": 2,
+      "scored_player_ids": [
+        "kbo:player:74540",
+        "kbo:player:67449"
+      ],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 2,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          "kbo:player:74540",
+          null,
+          null
+        ],
+        "away_score": 3,
+        "home_score": 0,
+        "away_batting_index": 1,
+        "home_batting_index": 6,
+        "away_innings": [
+          0,
+          3
+        ],
+        "home_innings": [
+          0,
+          0
+        ],
+        "plate_appearances": 16,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 2,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 3,
+        "home_score": 2,
+        "away_batting_index": 1,
+        "home_batting_index": 7,
+        "away_innings": [
+          0,
+          3
+        ],
+        "home_innings": [
+          0,
+          2
+        ],
+        "plate_appearances": 17,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 18,
+      "inning": 2,
+      "half": "bottom",
+      "batter_id": "kbo:player:65586",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.2145446215284599,
+        "walk": 0.07935265181908299,
+        "hit_by_pitch": 0.024177107182653076,
+        "single": 0.15879456736665665,
+        "double": 0.040360735117189614,
+        "triple": 0.003223456458413451,
+        "home_run": 0.02373597443545815,
+        "other_out": 0.4558108860920862
+      },
+      "draw": 0.8742162132395582,
+      "random_state_after": 1877365022,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 2,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 2,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 3,
+        "home_score": 2,
+        "away_batting_index": 1,
+        "home_batting_index": 7,
+        "away_innings": [
+          0,
+          3
+        ],
+        "home_innings": [
+          0,
+          2
+        ],
+        "plate_appearances": 17,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 2,
+        "half": "bottom",
+        "outs": 2,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 3,
+        "home_score": 2,
+        "away_batting_index": 1,
+        "home_batting_index": 8,
+        "away_innings": [
+          0,
+          3
+        ],
+        "home_innings": [
+          0,
+          2
+        ],
+        "plate_appearances": 18,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 19,
+      "inning": 2,
+      "half": "bottom",
+      "batter_id": "kbo:player:62234",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.17717062029217318,
+        "walk": 0.07841520723540256,
+        "hit_by_pitch": 0.014191890672986165,
+        "single": 0.18185228927096386,
+        "double": 0.03584504743819187,
+        "triple": 0.0064088283452861826,
+        "home_run": 0.016643876459859926,
+        "other_out": 0.48947224028513625
+      },
+      "draw": 0.9518969016632968,
+      "random_state_after": 2044183030,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 3,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 2,
+        "half": "bottom",
+        "outs": 2,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 3,
+        "home_score": 2,
+        "away_batting_index": 1,
+        "home_batting_index": 8,
+        "away_innings": [
+          0,
+          3
+        ],
+        "home_innings": [
+          0,
+          2
+        ],
+        "plate_appearances": 18,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 3,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 3,
+        "home_score": 2,
+        "away_batting_index": 1,
+        "home_batting_index": 0,
+        "away_innings": [
+          0,
+          3,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          null
+        ],
+        "plate_appearances": 19,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 20,
+      "inning": 3,
+      "half": "top",
+      "batter_id": "kbo:player:52001",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "home_run",
+      "probabilities": {
+        "strikeout": 0.1862369781573282,
+        "walk": 0.09674397782556242,
+        "hit_by_pitch": 0.025181918673032454,
+        "single": 0.16807560962212797,
+        "double": 0.037386683168511264,
+        "triple": 0.005009355849652366,
+        "home_run": 0.02766749323391072,
+        "other_out": 0.45369798346987467
+      },
+      "draw": 0.5312266312830398,
+      "random_state_after": 1140800504,
+      "runs": 1,
+      "scored_player_ids": [
+        "kbo:player:52001"
+      ],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 0,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 3,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 3,
+        "home_score": 2,
+        "away_batting_index": 1,
+        "home_batting_index": 0,
+        "away_innings": [
+          0,
+          3,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          null
+        ],
+        "plate_appearances": 19,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 3,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 2,
+        "home_batting_index": 0,
+        "away_innings": [
+          0,
+          3,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          null
+        ],
+        "plate_appearances": 20,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 21,
+      "inning": 3,
+      "half": "top",
+      "batter_id": "kbo:player:79240",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "single",
+      "probabilities": {
+        "strikeout": 0.14293962160114917,
+        "walk": 0.07058331974047541,
+        "hit_by_pitch": 0.0158558864822624,
+        "single": 0.19839606740266974,
+        "double": 0.03656439811857868,
+        "triple": 0.0034089437601694233,
+        "home_run": 0.019815481593801816,
+        "other_out": 0.5124362813008934
+      },
+      "draw": 0.32599564252979646,
+      "random_state_after": 700070312,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:79240",
+        null,
+        null
+      ],
+      "outs_after_play": 0,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 3,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 2,
+        "home_batting_index": 0,
+        "away_innings": [
+          0,
+          3,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          null
+        ],
+        "plate_appearances": 20,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 3,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          "kbo:player:79240",
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 3,
+        "home_batting_index": 0,
+        "away_innings": [
+          0,
+          3,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          null
+        ],
+        "plate_appearances": 21,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 22,
+      "inning": 3,
+      "half": "top",
+      "batter_id": "kbo:player:56034",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "strikeout",
+      "probabilities": {
+        "strikeout": 0.20923827452268157,
+        "walk": 0.07959595538127115,
+        "hit_by_pitch": 0.007697723839339697,
+        "single": 0.1727148961957677,
+        "double": 0.032153592727889216,
+        "triple": 0.005023756461699986,
+        "home_run": 0.04151137564074932,
+        "other_out": 0.4520644252306014
+      },
+      "draw": 0.008769272834779018,
+      "random_state_after": 18831871,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:79240",
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 3,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          "kbo:player:79240",
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 3,
+        "home_batting_index": 0,
+        "away_innings": [
+          0,
+          3,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          null
+        ],
+        "plate_appearances": 21,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 3,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          "kbo:player:79240",
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 4,
+        "home_batting_index": 0,
+        "away_innings": [
+          0,
+          3,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          null
+        ],
+        "plate_appearances": 22,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 23,
+      "inning": 3,
+      "half": "top",
+      "batter_id": "kbo:player:53036",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "single",
+      "probabilities": {
+        "strikeout": 0.1707297823713525,
+        "walk": 0.07049657109046538,
+        "hit_by_pitch": 0.010946387227053721,
+        "single": 0.19408210210520233,
+        "double": 0.040460758155790255,
+        "triple": 0.0036244500707441037,
+        "home_run": 0.01905866416091895,
+        "other_out": 0.4906012848184728
+      },
+      "draw": 0.3851762915823388,
+      "random_state_after": 1412909885,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:53036",
+        "kbo:player:79240",
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [
+        0.6579374360460205
+      ],
+      "before": {
+        "inning": 3,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          "kbo:player:79240",
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 4,
+        "home_batting_index": 0,
+        "away_innings": [
+          0,
+          3,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          null
+        ],
+        "plate_appearances": 22,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 3,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          "kbo:player:53036",
+          "kbo:player:79240",
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 5,
+        "home_batting_index": 0,
+        "away_innings": [
+          0,
+          3,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          null
+        ],
+        "plate_appearances": 23,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 24,
+      "inning": 3,
+      "half": "top",
+      "batter_id": "kbo:player:76290",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.14800682081947367,
+        "walk": 0.07637027865026005,
+        "hit_by_pitch": 0.008987654570859191,
+        "single": 0.18226553363866183,
+        "double": 0.03741372449632746,
+        "triple": 0.0032446906366426246,
+        "home_run": 0.023864850561480286,
+        "other_out": 0.5198464466262949
+      },
+      "draw": 0.954490302553857,
+      "random_state_after": 254509838,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        "kbo:player:79240",
+        null
+      ],
+      "outs_after_play": 3,
+      "play_note": "double_play",
+      "baserunning_draws": [
+        0.11851537844027893
+      ],
+      "before": {
+        "inning": 3,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          "kbo:player:53036",
+          "kbo:player:79240",
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 5,
+        "home_batting_index": 0,
+        "away_innings": [
+          0,
+          3,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          null
+        ],
+        "plate_appearances": 23,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 3,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 6,
+        "home_batting_index": 0,
+        "away_innings": [
+          0,
+          3,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0
+        ],
+        "plate_appearances": 24,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 25,
+      "inning": 3,
+      "half": "bottom",
+      "batter_id": "kbo:player:72443",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.19210567165008988,
+        "walk": 0.0853406015960494,
+        "hit_by_pitch": 0.010469659293113168,
+        "single": 0.18138434081826016,
+        "double": 0.03869640176900567,
+        "triple": 0.002277800828040622,
+        "home_run": 0.02466881853544142,
+        "other_out": 0.46505670550999967
+      },
+      "draw": 0.8879723445400338,
+      "random_state_after": 1906906089,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 3,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 6,
+        "home_batting_index": 0,
+        "away_innings": [
+          0,
+          3,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0
+        ],
+        "plate_appearances": 24,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 3,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 6,
+        "home_batting_index": 1,
+        "away_innings": [
+          0,
+          3,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0
+        ],
+        "plate_appearances": 25,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 26,
+      "inning": 3,
+      "half": "bottom",
+      "batter_id": "kbo:player:54400",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "strikeout",
+      "probabilities": {
+        "strikeout": 0.18017596480511433,
+        "walk": 0.084260562897227,
+        "hit_by_pitch": 0.008333831017622114,
+        "single": 0.17646691766772465,
+        "double": 0.0422285043992261,
+        "triple": 0.002249362861291313,
+        "home_run": 0.02860617908568113,
+        "other_out": 0.47767867726611335
+      },
+      "draw": 0.15119556072279397,
+      "random_state_after": 324689995,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 2,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 3,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 6,
+        "home_batting_index": 1,
+        "away_innings": [
+          0,
+          3,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0
+        ],
+        "plate_appearances": 25,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 3,
+        "half": "bottom",
+        "outs": 2,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 6,
+        "home_batting_index": 2,
+        "away_innings": [
+          0,
+          3,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0
+        ],
+        "plate_appearances": 26,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 27,
+      "inning": 3,
+      "half": "bottom",
+      "batter_id": "kbo:player:69418",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "strikeout",
+      "probabilities": {
+        "strikeout": 0.18319633927491621,
+        "walk": 0.09298358231961586,
+        "hit_by_pitch": 0.012176562778147874,
+        "single": 0.16717546164253258,
+        "double": 0.033721914195287375,
+        "triple": 0.007594126137873524,
+        "home_run": 0.025261905720756875,
+        "other_out": 0.4778901079308697
+      },
+      "draw": 0.14379571065660166,
+      "random_state_after": 308798938,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 3,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 3,
+        "half": "bottom",
+        "outs": 2,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 6,
+        "home_batting_index": 2,
+        "away_innings": [
+          0,
+          3,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0
+        ],
+        "plate_appearances": 26,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 4,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 6,
+        "home_batting_index": 3,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          null
+        ],
+        "plate_appearances": 27,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 28,
+      "inning": 4,
+      "half": "top",
+      "batter_id": "kbo:player:78548",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.19363130985522237,
+        "walk": 0.10191411404554872,
+        "hit_by_pitch": 0.009431015283506119,
+        "single": 0.15010494660111348,
+        "double": 0.03438819401383024,
+        "triple": 0.003570717450920377,
+        "home_run": 0.030346928430303635,
+        "other_out": 0.4766127743195551
+      },
+      "draw": 0.7745157063701337,
+      "random_state_after": 1663259814,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 4,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 6,
+        "home_batting_index": 3,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          null
+        ],
+        "plate_appearances": 27,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 4,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 7,
+        "home_batting_index": 3,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          null
+        ],
+        "plate_appearances": 28,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 29,
+      "inning": 4,
+      "half": "top",
+      "batter_id": "kbo:player:51003",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "walk",
+      "probabilities": {
+        "strikeout": 0.2075038903391997,
+        "walk": 0.07822178527117239,
+        "hit_by_pitch": 0.009522671800908038,
+        "single": 0.17169867362415786,
+        "double": 0.04018052938248379,
+        "triple": 0.005753089510248789,
+        "home_run": 0.020896639577184614,
+        "other_out": 0.46622272049464486
+      },
+      "draw": 0.2854787272265914,
+      "random_state_after": 613060899,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:51003",
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 4,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 7,
+        "home_batting_index": 3,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          null
+        ],
+        "plate_appearances": 28,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 4,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          "kbo:player:51003",
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 8,
+        "home_batting_index": 3,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          null
+        ],
+        "plate_appearances": 29,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 30,
+      "inning": 4,
+      "half": "top",
+      "batter_id": "kbo:player:79402",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "strikeout",
+      "probabilities": {
+        "strikeout": 0.15354475095010967,
+        "walk": 0.08320511264809706,
+        "hit_by_pitch": 0.01282437450068637,
+        "single": 0.190011369918029,
+        "double": 0.02831804650134056,
+        "triple": 0.004053994980476334,
+        "home_run": 0.01664016055717793,
+        "other_out": 0.5114021899440832
+      },
+      "draw": 0.04097408898265482,
+      "random_state_after": 87991187,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:51003",
+        null,
+        null
+      ],
+      "outs_after_play": 2,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 4,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          "kbo:player:51003",
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 8,
+        "home_batting_index": 3,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          null
+        ],
+        "plate_appearances": 29,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 4,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          "kbo:player:51003",
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 0,
+        "home_batting_index": 3,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          null
+        ],
+        "plate_appearances": 30,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 31,
+      "inning": 4,
+      "half": "top",
+      "batter_id": "kbo:player:66606",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.15305330493695535,
+        "walk": 0.08376636446648278,
+        "hit_by_pitch": 0.010401729126175992,
+        "single": 0.20018111381676001,
+        "double": 0.04105221966817388,
+        "triple": 0.005501093824263415,
+        "home_run": 0.02030545392176519,
+        "other_out": 0.48573872023942344
+      },
+      "draw": 0.6515210370081673,
+      "random_state_after": 1399130773,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:51003",
+        null,
+        null
+      ],
+      "outs_after_play": 3,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 4,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          "kbo:player:51003",
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 0,
+        "home_batting_index": 3,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          null
+        ],
+        "plate_appearances": 30,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 4,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 1,
+        "home_batting_index": 3,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          0
+        ],
+        "plate_appearances": 31,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 32,
+      "inning": 4,
+      "half": "bottom",
+      "batter_id": "kbo:player:62404",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "strikeout",
+      "probabilities": {
+        "strikeout": 0.17605184509164812,
+        "walk": 0.0894509191571008,
+        "hit_by_pitch": 0.011037315950512367,
+        "single": 0.19053783634918453,
+        "double": 0.04535303046946556,
+        "triple": 0.006632782172113254,
+        "home_run": 0.024144981672865745,
+        "other_out": 0.45679128913710965
+      },
+      "draw": 0.1140717231799585,
+      "random_state_after": 244967161,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 4,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 1,
+        "home_batting_index": 3,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          0
+        ],
+        "plate_appearances": 31,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 4,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 1,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          0
+        ],
+        "plate_appearances": 32,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 33,
+      "inning": 4,
+      "half": "bottom",
+      "batter_id": "kbo:player:52415",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "walk",
+      "probabilities": {
+        "strikeout": 0.1804671017667371,
+        "walk": 0.0799942983032814,
+        "hit_by_pitch": 0.020166817259407624,
+        "single": 0.15583796697690414,
+        "double": 0.03224698296720055,
+        "triple": 0.0025242432919920926,
+        "home_run": 0.03157252758594348,
+        "other_out": 0.4971900618485337
+      },
+      "draw": 0.20345841879347193,
+      "random_state_after": 436923628,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:52415",
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 4,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 1,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          0
+        ],
+        "plate_appearances": 32,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 4,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          "kbo:player:52415",
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 1,
+        "home_batting_index": 5,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          0
+        ],
+        "plate_appearances": 33,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 34,
+      "inning": 4,
+      "half": "bottom",
+      "batter_id": "kbo:player:74540",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "home_run",
+      "probabilities": {
+        "strikeout": 0.20375366306567913,
+        "walk": 0.07713837203656093,
+        "hit_by_pitch": 0.013561261631435973,
+        "single": 0.17136707736721177,
+        "double": 0.03850838006758104,
+        "triple": 0.0024722970863552633,
+        "home_run": 0.0263046978459956,
+        "other_out": 0.4668942508991804
+      },
+      "draw": 0.5256508956902203,
+      "random_state_after": 1128826703,
+      "runs": 2,
+      "scored_player_ids": [
+        "kbo:player:52415",
+        "kbo:player:74540"
+      ],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 4,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          "kbo:player:52415",
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 2,
+        "away_batting_index": 1,
+        "home_batting_index": 5,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          0
+        ],
+        "plate_appearances": 33,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 4,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 1,
+        "home_batting_index": 6,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2
+        ],
+        "plate_appearances": 34,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 35,
+      "inning": 4,
+      "half": "bottom",
+      "batter_id": "kbo:player:67449",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.16063416837972488,
+        "walk": 0.07897933022827665,
+        "hit_by_pitch": 0.008905749169741916,
+        "single": 0.18749889821391236,
+        "double": 0.037577856137212116,
+        "triple": 0.003774571535904204,
+        "home_run": 0.01773352388671979,
+        "other_out": 0.5048959024485081
+      },
+      "draw": 0.6146075777845528,
+      "random_state_after": 1319859723,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 2,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 4,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 1,
+        "home_batting_index": 6,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2
+        ],
+        "plate_appearances": 34,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 4,
+        "half": "bottom",
+        "outs": 2,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 1,
+        "home_batting_index": 7,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2
+        ],
+        "plate_appearances": 35,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 36,
+      "inning": 4,
+      "half": "bottom",
+      "batter_id": "kbo:player:65586",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.2145446215284599,
+        "walk": 0.07935265181908299,
+        "hit_by_pitch": 0.024177107182653076,
+        "single": 0.15879456736665665,
+        "double": 0.040360735117189614,
+        "triple": 0.003223456458413451,
+        "home_run": 0.02373597443545815,
+        "other_out": 0.4558108860920862
+      },
+      "draw": 0.7095628410666835,
+      "random_state_after": 1523774598,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 3,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 4,
+        "half": "bottom",
+        "outs": 2,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 1,
+        "home_batting_index": 7,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2
+        ],
+        "plate_appearances": 35,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 5,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 1,
+        "home_batting_index": 8,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          null
+        ],
+        "plate_appearances": 36,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 37,
+      "inning": 5,
+      "half": "top",
+      "batter_id": "kbo:player:52001",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.1862369781573282,
+        "walk": 0.09674397782556242,
+        "hit_by_pitch": 0.025181918673032454,
+        "single": 0.16807560962212797,
+        "double": 0.037386683168511264,
+        "triple": 0.005009355849652366,
+        "home_run": 0.02766749323391072,
+        "other_out": 0.45369798346987467
+      },
+      "draw": 0.6226720806422383,
+      "random_state_after": 1337178111,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 5,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 1,
+        "home_batting_index": 8,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          null
+        ],
+        "plate_appearances": 36,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 5,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 2,
+        "home_batting_index": 8,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          null
+        ],
+        "plate_appearances": 37,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 38,
+      "inning": 5,
+      "half": "top",
+      "batter_id": "kbo:player:79240",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "single",
+      "probabilities": {
+        "strikeout": 0.14293962160114917,
+        "walk": 0.07058331974047541,
+        "hit_by_pitch": 0.0158558864822624,
+        "single": 0.19839606740266974,
+        "double": 0.03656439811857868,
+        "triple": 0.0034089437601694233,
+        "home_run": 0.019815481593801816,
+        "other_out": 0.5124362813008934
+      },
+      "draw": 0.24966230685791216,
+      "random_state_after": 536145722,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:79240",
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 5,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 2,
+        "home_batting_index": 8,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          null
+        ],
+        "plate_appearances": 37,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 5,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          "kbo:player:79240",
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 8,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          null
+        ],
+        "plate_appearances": 38,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 39,
+      "inning": 5,
+      "half": "top",
+      "batter_id": "kbo:player:56034",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "strikeout",
+      "probabilities": {
+        "strikeout": 0.20923827452268157,
+        "walk": 0.07959595538127115,
+        "hit_by_pitch": 0.007697723839339697,
+        "single": 0.1727148961957677,
+        "double": 0.032153592727889216,
+        "triple": 0.005023756461699986,
+        "home_run": 0.04151137564074932,
+        "other_out": 0.4520644252306014
+      },
+      "draw": 0.07439723291843872,
+      "random_state_after": 159766842,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:79240",
+        null,
+        null
+      ],
+      "outs_after_play": 2,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 5,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          "kbo:player:79240",
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 8,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          null
+        ],
+        "plate_appearances": 38,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 5,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          "kbo:player:79240",
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 4,
+        "home_batting_index": 8,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          null
+        ],
+        "plate_appearances": 39,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 40,
+      "inning": 5,
+      "half": "top",
+      "batter_id": "kbo:player:53036",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "single",
+      "probabilities": {
+        "strikeout": 0.1707297823713525,
+        "walk": 0.07049657109046538,
+        "hit_by_pitch": 0.010946387227053721,
+        "single": 0.19408210210520233,
+        "double": 0.040460758155790255,
+        "triple": 0.0036244500707441037,
+        "home_run": 0.01905866416091895,
+        "other_out": 0.4906012848184728
+      },
+      "draw": 0.3943009040265352,
+      "random_state_after": 32853739,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:53036",
+        null,
+        "kbo:player:79240"
+      ],
+      "outs_after_play": 2,
+      "play_note": null,
+      "baserunning_draws": [
+        0.01529871394419923
+      ],
+      "before": {
+        "inning": 5,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          "kbo:player:79240",
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 4,
+        "home_batting_index": 8,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          null
+        ],
+        "plate_appearances": 39,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 5,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          "kbo:player:53036",
+          null,
+          "kbo:player:79240"
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 5,
+        "home_batting_index": 8,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          null
+        ],
+        "plate_appearances": 40,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 41,
+      "inning": 5,
+      "half": "top",
+      "batter_id": "kbo:player:76290",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "strikeout",
+      "probabilities": {
+        "strikeout": 0.14800682081947367,
+        "walk": 0.07637027865026005,
+        "hit_by_pitch": 0.008987654570859191,
+        "single": 0.18226553363866183,
+        "double": 0.03741372449632746,
+        "triple": 0.0032446906366426246,
+        "home_run": 0.023864850561480286,
+        "other_out": 0.5198464466262949
+      },
+      "draw": 0.12549296638508603,
+      "random_state_after": 269494094,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:53036",
+        null,
+        "kbo:player:79240"
+      ],
+      "outs_after_play": 3,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 5,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          "kbo:player:53036",
+          null,
+          "kbo:player:79240"
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 5,
+        "home_batting_index": 8,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          null
+        ],
+        "plate_appearances": 40,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 5,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 6,
+        "home_batting_index": 8,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0
+        ],
+        "plate_appearances": 41,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 42,
+      "inning": 5,
+      "half": "bottom",
+      "batter_id": "kbo:player:62234",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "strikeout",
+      "probabilities": {
+        "strikeout": 0.17717062029217318,
+        "walk": 0.07841520723540256,
+        "hit_by_pitch": 0.014191890672986165,
+        "single": 0.18185228927096386,
+        "double": 0.03584504743819187,
+        "triple": 0.0064088283452861826,
+        "home_run": 0.016643876459859926,
+        "other_out": 0.48947224028513625
+      },
+      "draw": 0.16029287796494818,
+      "random_state_after": 344226335,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 5,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 6,
+        "home_batting_index": 8,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0
+        ],
+        "plate_appearances": 41,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 5,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 6,
+        "home_batting_index": 0,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0
+        ],
+        "plate_appearances": 42,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 43,
+      "inning": 5,
+      "half": "bottom",
+      "batter_id": "kbo:player:72443",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "strikeout",
+      "probabilities": {
+        "strikeout": 0.19210567165008988,
+        "walk": 0.0853406015960494,
+        "hit_by_pitch": 0.010469659293113168,
+        "single": 0.18138434081826016,
+        "double": 0.03869640176900567,
+        "triple": 0.002277800828040622,
+        "home_run": 0.02466881853544142,
+        "other_out": 0.46505670550999967
+      },
+      "draw": 0.04240652829632771,
+      "random_state_after": 91067327,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 2,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 5,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 6,
+        "home_batting_index": 0,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0
+        ],
+        "plate_appearances": 42,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 5,
+        "half": "bottom",
+        "outs": 2,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 6,
+        "home_batting_index": 1,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0
+        ],
+        "plate_appearances": 43,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 44,
+      "inning": 5,
+      "half": "bottom",
+      "batter_id": "kbo:player:54400",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.18017596480511433,
+        "walk": 0.084260562897227,
+        "hit_by_pitch": 0.008333831017622114,
+        "single": 0.17646691766772465,
+        "double": 0.0422285043992261,
+        "triple": 0.002249362861291313,
+        "home_run": 0.02860617908568113,
+        "other_out": 0.47767867726611335
+      },
+      "draw": 0.726528570732594,
+      "random_state_after": 1560208225,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 3,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 5,
+        "half": "bottom",
+        "outs": 2,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 6,
+        "home_batting_index": 1,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0
+        ],
+        "plate_appearances": 43,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 6,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 6,
+        "home_batting_index": 2,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          null
+        ],
+        "plate_appearances": 44,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 45,
+      "inning": 6,
+      "half": "top",
+      "batter_id": "kbo:player:78548",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.19363130985522237,
+        "walk": 0.10191411404554872,
+        "hit_by_pitch": 0.009431015283506119,
+        "single": 0.15010494660111348,
+        "double": 0.03438819401383024,
+        "triple": 0.003570717450920377,
+        "home_run": 0.030346928430303635,
+        "other_out": 0.4766127743195551
+      },
+      "draw": 0.7656904428877779,
+      "random_state_after": 1644307705,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 6,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 6,
+        "home_batting_index": 2,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          null
+        ],
+        "plate_appearances": 44,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 6,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 7,
+        "home_batting_index": 2,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          null
+        ],
+        "plate_appearances": 45,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 46,
+      "inning": 6,
+      "half": "top",
+      "batter_id": "kbo:player:51003",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.2075038903391997,
+        "walk": 0.07822178527117239,
+        "hit_by_pitch": 0.009522671800908038,
+        "single": 0.17169867362415786,
+        "double": 0.04018052938248379,
+        "triple": 0.005753089510248789,
+        "home_run": 0.020896639577184614,
+        "other_out": 0.46622272049464486
+      },
+      "draw": 0.9592754486568975,
+      "random_state_after": 2060028339,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 2,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 6,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 7,
+        "home_batting_index": 2,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          null
+        ],
+        "plate_appearances": 45,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 6,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 8,
+        "home_batting_index": 2,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          null
+        ],
+        "plate_appearances": 46,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 47,
+      "inning": 6,
+      "half": "top",
+      "batter_id": "kbo:player:79402",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.15354475095010967,
+        "walk": 0.08320511264809706,
+        "hit_by_pitch": 0.01282437450068637,
+        "single": 0.190011369918029,
+        "double": 0.02831804650134056,
+        "triple": 0.004053994980476334,
+        "home_run": 0.01664016055717793,
+        "other_out": 0.5114021899440832
+      },
+      "draw": 0.5424658949882406,
+      "random_state_after": 1164936639,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 3,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 6,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 8,
+        "home_batting_index": 2,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          null
+        ],
+        "plate_appearances": 46,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 6,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 0,
+        "home_batting_index": 2,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0
+        ],
+        "plate_appearances": 47,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 48,
+      "inning": 6,
+      "half": "bottom",
+      "batter_id": "kbo:player:69418",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "walk",
+      "probabilities": {
+        "strikeout": 0.18319633927491621,
+        "walk": 0.09298358231961586,
+        "hit_by_pitch": 0.012176562778147874,
+        "single": 0.16717546164253258,
+        "double": 0.033721914195287375,
+        "triple": 0.007594126137873524,
+        "home_run": 0.025261905720756875,
+        "other_out": 0.4778901079308697
+      },
+      "draw": 0.22430064782900797,
+      "random_state_after": 481681974,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:69418",
+        null,
+        null
+      ],
+      "outs_after_play": 0,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 6,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 0,
+        "home_batting_index": 2,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0
+        ],
+        "plate_appearances": 47,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 6,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          "kbo:player:69418",
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 0,
+        "home_batting_index": 3,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0
+        ],
+        "plate_appearances": 48,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 49,
+      "inning": 6,
+      "half": "bottom",
+      "batter_id": "kbo:player:62404",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.17605184509164812,
+        "walk": 0.0894509191571008,
+        "hit_by_pitch": 0.011037315950512367,
+        "single": 0.19053783634918453,
+        "double": 0.04535303046946556,
+        "triple": 0.006632782172113254,
+        "home_run": 0.024144981672865745,
+        "other_out": 0.45679128913710965
+      },
+      "draw": 0.8209941329630037,
+      "random_state_after": 343188541,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        "kbo:player:69418",
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": "runner_advanced_on_out",
+      "baserunning_draws": [
+        0.4483941099125837,
+        0.15980961747449787
+      ],
+      "before": {
+        "inning": 6,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          "kbo:player:69418",
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 0,
+        "home_batting_index": 3,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0
+        ],
+        "plate_appearances": 48,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 6,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          "kbo:player:69418",
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 0,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0
+        ],
+        "plate_appearances": 49,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 50,
+      "inning": 6,
+      "half": "bottom",
+      "batter_id": "kbo:player:52415",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.1804671017667371,
+        "walk": 0.0799942983032814,
+        "hit_by_pitch": 0.020166817259407624,
+        "single": 0.15583796697690414,
+        "double": 0.03224698296720055,
+        "triple": 0.0025242432919920926,
+        "home_run": 0.03157252758594348,
+        "other_out": 0.4971900618485337
+      },
+      "draw": 0.9202474694887618,
+      "random_state_after": 1286815842,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        "kbo:player:69418",
+        null
+      ],
+      "outs_after_play": 2,
+      "play_note": null,
+      "baserunning_draws": [
+        0.5992203216061185
+      ],
+      "before": {
+        "inning": 6,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          "kbo:player:69418",
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 0,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0
+        ],
+        "plate_appearances": 49,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 6,
+        "half": "bottom",
+        "outs": 2,
+        "bases": [
+          null,
+          "kbo:player:69418",
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 0,
+        "home_batting_index": 5,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0
+        ],
+        "plate_appearances": 50,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 51,
+      "inning": 6,
+      "half": "bottom",
+      "batter_id": "kbo:player:74540",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "strikeout",
+      "probabilities": {
+        "strikeout": 0.20375366306567913,
+        "walk": 0.07713837203656093,
+        "hit_by_pitch": 0.013561261631435973,
+        "single": 0.17136707736721177,
+        "double": 0.03850838006758104,
+        "triple": 0.0024722970863552633,
+        "home_run": 0.0263046978459956,
+        "other_out": 0.4668942508991804
+      },
+      "draw": 0.09594837026293238,
+      "random_state_after": 206047557,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        "kbo:player:69418",
+        null
+      ],
+      "outs_after_play": 3,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 6,
+        "half": "bottom",
+        "outs": 2,
+        "bases": [
+          null,
+          "kbo:player:69418",
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 0,
+        "home_batting_index": 5,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0
+        ],
+        "plate_appearances": 50,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 7,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 0,
+        "home_batting_index": 6,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 51,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 52,
+      "inning": 7,
+      "half": "top",
+      "batter_id": "kbo:player:66606",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.15305330493695535,
+        "walk": 0.08376636446648278,
+        "hit_by_pitch": 0.010401729126175992,
+        "single": 0.20018111381676001,
+        "double": 0.04105221966817388,
+        "triple": 0.005501093824263415,
+        "home_run": 0.02030545392176519,
+        "other_out": 0.48573872023942344
+      },
+      "draw": 0.6042660843620692,
+      "random_state_after": 1297651535,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 7,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 0,
+        "home_batting_index": 6,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 51,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 7,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 1,
+        "home_batting_index": 6,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 52,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 53,
+      "inning": 7,
+      "half": "top",
+      "batter_id": "kbo:player:52001",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.1862369781573282,
+        "walk": 0.09674397782556242,
+        "hit_by_pitch": 0.025181918673032454,
+        "single": 0.16807560962212797,
+        "double": 0.037386683168511264,
+        "triple": 0.005009355849652366,
+        "home_run": 0.02766749323391072,
+        "other_out": 0.45369798346987467
+      },
+      "draw": 0.9000829704106627,
+      "random_state_after": 1932913460,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 2,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 7,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 1,
+        "home_batting_index": 6,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 52,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 7,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 2,
+        "home_batting_index": 6,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 53,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 54,
+      "inning": 7,
+      "half": "top",
+      "batter_id": "kbo:player:79240",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.14293962160114917,
+        "walk": 0.07058331974047541,
+        "hit_by_pitch": 0.0158558864822624,
+        "single": 0.19839606740266974,
+        "double": 0.03656439811857868,
+        "triple": 0.0034089437601694233,
+        "home_run": 0.019815481593801816,
+        "other_out": 0.5124362813008934
+      },
+      "draw": 0.6944844738528919,
+      "random_state_after": 1491394051,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 3,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 7,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 2,
+        "home_batting_index": 6,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 53,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 7,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 6,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 54,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 55,
+      "inning": 7,
+      "half": "bottom",
+      "batter_id": "kbo:player:67449",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "walk",
+      "probabilities": {
+        "strikeout": 0.16063416837972488,
+        "walk": 0.07897933022827665,
+        "hit_by_pitch": 0.008905749169741916,
+        "single": 0.18749889821391236,
+        "double": 0.037577856137212116,
+        "triple": 0.003774571535904204,
+        "home_run": 0.01773352388671979,
+        "other_out": 0.5048959024485081
+      },
+      "draw": 0.20055443625948804,
+      "random_state_after": 430687373,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:67449",
+        null,
+        null
+      ],
+      "outs_after_play": 0,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 7,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 6,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 54,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 7,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          "kbo:player:67449",
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 7,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 55,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 56,
+      "inning": 7,
+      "half": "bottom",
+      "batter_id": "kbo:player:65586",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.2145446215284599,
+        "walk": 0.07935265181908299,
+        "hit_by_pitch": 0.024177107182653076,
+        "single": 0.15879456736665665,
+        "double": 0.040360735117189614,
+        "triple": 0.003223456458413451,
+        "home_run": 0.02373597443545815,
+        "other_out": 0.4558108860920862
+      },
+      "draw": 0.7184164698407207,
+      "random_state_after": 517538092,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:67449",
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [
+        0.4256108165025812,
+        0.24099745391029628
+      ],
+      "before": {
+        "inning": 7,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          "kbo:player:67449",
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 7,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 55,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 7,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          "kbo:player:67449",
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 8,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 56,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 57,
+      "inning": 7,
+      "half": "bottom",
+      "batter_id": "kbo:player:62234",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "single",
+      "probabilities": {
+        "strikeout": 0.17717062029217318,
+        "walk": 0.07841520723540256,
+        "hit_by_pitch": 0.014191890672986165,
+        "single": 0.18185228927096386,
+        "double": 0.03584504743819187,
+        "triple": 0.0064088283452861826,
+        "home_run": 0.016643876459859926,
+        "other_out": 0.48947224028513625
+      },
+      "draw": 0.444213810324868,
+      "random_state_after": 1935987603,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:62234",
+        "kbo:player:67449",
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [
+        0.901514479798744
+      ],
+      "before": {
+        "inning": 7,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          "kbo:player:67449",
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 8,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 56,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 7,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          "kbo:player:62234",
+          "kbo:player:67449",
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 0,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 57,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 58,
+      "inning": 7,
+      "half": "bottom",
+      "batter_id": "kbo:player:72443",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.19210567165008988,
+        "walk": 0.0853406015960494,
+        "hit_by_pitch": 0.010469659293113168,
+        "single": 0.18138434081826016,
+        "double": 0.03869640176900567,
+        "triple": 0.002277800828040622,
+        "home_run": 0.02466881853544142,
+        "other_out": 0.46505670550999967
+      },
+      "draw": 0.7538627481589678,
+      "random_state_after": 367671178,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        "kbo:player:67449",
+        null
+      ],
+      "outs_after_play": 3,
+      "play_note": "double_play",
+      "baserunning_draws": [
+        0.1712102337472236
+      ],
+      "before": {
+        "inning": 7,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          "kbo:player:62234",
+          "kbo:player:67449",
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 0,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 57,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 8,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 1,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 58,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 59,
+      "inning": 8,
+      "half": "top",
+      "batter_id": "kbo:player:56034",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "home_run",
+      "probabilities": {
+        "strikeout": 0.20923827452268157,
+        "walk": 0.07959595538127115,
+        "hit_by_pitch": 0.007697723839339697,
+        "single": 0.1727148961957677,
+        "double": 0.032153592727889216,
+        "triple": 0.005023756461699986,
+        "home_run": 0.04151137564074932,
+        "other_out": 0.4520644252306014
+      },
+      "draw": 0.5304050757832872,
+      "random_state_after": 1139036227,
+      "runs": 1,
+      "scored_player_ids": [
+        "kbo:player:56034"
+      ],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 0,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 8,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 4,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 1,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 58,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 8,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 4,
+        "home_batting_index": 1,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 59,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 60,
+      "inning": 8,
+      "half": "top",
+      "batter_id": "kbo:player:53036",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.1707297823713525,
+        "walk": 0.07049657109046538,
+        "hit_by_pitch": 0.010946387227053721,
+        "single": 0.19408210210520233,
+        "double": 0.040460758155790255,
+        "triple": 0.0036244500707441037,
+        "home_run": 0.01905866416091895,
+        "other_out": 0.4906012848184728
+      },
+      "draw": 0.5181123647076193,
+      "random_state_after": 1112637831,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 8,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 4,
+        "home_batting_index": 1,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 59,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 8,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 5,
+        "home_batting_index": 1,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 60,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 61,
+      "inning": 8,
+      "half": "top",
+      "batter_id": "kbo:player:76290",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.14800682081947367,
+        "walk": 0.07637027865026005,
+        "hit_by_pitch": 0.008987654570859191,
+        "single": 0.18226553363866183,
+        "double": 0.03741372449632746,
+        "triple": 0.0032446906366426246,
+        "home_run": 0.023864850561480286,
+        "other_out": 0.5198464466262949
+      },
+      "draw": 0.9145174123482009,
+      "random_state_after": 1963911188,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 2,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 8,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 5,
+        "home_batting_index": 1,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 60,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 8,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 6,
+        "home_batting_index": 1,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 61,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 62,
+      "inning": 8,
+      "half": "top",
+      "batter_id": "kbo:player:78548",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "walk",
+      "probabilities": {
+        "strikeout": 0.19363130985522237,
+        "walk": 0.10191411404554872,
+        "hit_by_pitch": 0.009431015283506119,
+        "single": 0.15010494660111348,
+        "double": 0.03438819401383024,
+        "triple": 0.003570717450920377,
+        "home_run": 0.030346928430303635,
+        "other_out": 0.4766127743195551
+      },
+      "draw": 0.29415000490299426,
+      "random_state_after": 631682326,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:78548",
+        null,
+        null
+      ],
+      "outs_after_play": 2,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 8,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 6,
+        "home_batting_index": 1,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 61,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 8,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          "kbo:player:78548",
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 7,
+        "home_batting_index": 1,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 62,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 63,
+      "inning": 8,
+      "half": "top",
+      "batter_id": "kbo:player:51003",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.2075038903391997,
+        "walk": 0.07822178527117239,
+        "hit_by_pitch": 0.009522671800908038,
+        "single": 0.17169867362415786,
+        "double": 0.04018052938248379,
+        "triple": 0.005753089510248789,
+        "home_run": 0.020896639577184614,
+        "other_out": 0.46622272049464486
+      },
+      "draw": 0.7791379287644643,
+      "random_state_after": 1673185961,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:78548",
+        null,
+        null
+      ],
+      "outs_after_play": 3,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 8,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          "kbo:player:78548",
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 7,
+        "home_batting_index": 1,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 62,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 8,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 8,
+        "home_batting_index": 1,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 63,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 64,
+      "inning": 8,
+      "half": "bottom",
+      "batter_id": "kbo:player:54400",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.18017596480511433,
+        "walk": 0.084260562897227,
+        "hit_by_pitch": 0.008333831017622114,
+        "single": 0.17646691766772465,
+        "double": 0.0422285043992261,
+        "triple": 0.002249362861291313,
+        "home_run": 0.02860617908568113,
+        "other_out": 0.47767867726611335
+      },
+      "draw": 0.9711704728856407,
+      "random_state_after": 2085572709,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 8,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 8,
+        "home_batting_index": 1,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 63,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 8,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 8,
+        "home_batting_index": 2,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 64,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 65,
+      "inning": 8,
+      "half": "bottom",
+      "batter_id": "kbo:player:69418",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "double",
+      "probabilities": {
+        "strikeout": 0.18319633927491621,
+        "walk": 0.09298358231961586,
+        "hit_by_pitch": 0.012176562778147874,
+        "single": 0.16717546164253258,
+        "double": 0.033721914195287375,
+        "triple": 0.007594126137873524,
+        "home_run": 0.025261905720756875,
+        "other_out": 0.4778901079308697
+      },
+      "draw": 0.46213801434462703,
+      "random_state_after": 992433829,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        "kbo:player:69418",
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 8,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 8,
+        "home_batting_index": 2,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 64,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 8,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          "kbo:player:69418",
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 8,
+        "home_batting_index": 3,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 65,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 66,
+      "inning": 8,
+      "half": "bottom",
+      "batter_id": "kbo:player:62404",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "strikeout",
+      "probabilities": {
+        "strikeout": 0.17605184509164812,
+        "walk": 0.0894509191571008,
+        "hit_by_pitch": 0.011037315950512367,
+        "single": 0.19053783634918453,
+        "double": 0.04535303046946556,
+        "triple": 0.006632782172113254,
+        "home_run": 0.024144981672865745,
+        "other_out": 0.45679128913710965
+      },
+      "draw": 0.15361129925922612,
+      "random_state_after": 329877754,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        "kbo:player:69418",
+        null
+      ],
+      "outs_after_play": 2,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 8,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          "kbo:player:69418",
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 8,
+        "home_batting_index": 3,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 65,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 8,
+        "half": "bottom",
+        "outs": 2,
+        "bases": [
+          null,
+          "kbo:player:69418",
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 8,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 66,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 67,
+      "inning": 8,
+      "half": "bottom",
+      "batter_id": "kbo:player:52415",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.1804671017667371,
+        "walk": 0.0799942983032814,
+        "hit_by_pitch": 0.020166817259407624,
+        "single": 0.15583796697690414,
+        "double": 0.03224698296720055,
+        "triple": 0.0025242432919920926,
+        "home_run": 0.03157252758594348,
+        "other_out": 0.4971900618485337
+      },
+      "draw": 0.7451132738451597,
+      "random_state_after": 1600118571,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        "kbo:player:69418",
+        null
+      ],
+      "outs_after_play": 3,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 8,
+        "half": "bottom",
+        "outs": 2,
+        "bases": [
+          null,
+          "kbo:player:69418",
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 8,
+        "home_batting_index": 4,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 66,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 9,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 8,
+        "home_batting_index": 5,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 67,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 68,
+      "inning": 9,
+      "half": "top",
+      "batter_id": "kbo:player:79402",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "strikeout",
+      "probabilities": {
+        "strikeout": 0.15354475095010967,
+        "walk": 0.08320511264809706,
+        "hit_by_pitch": 0.01282437450068637,
+        "single": 0.190011369918029,
+        "double": 0.02831804650134056,
+        "triple": 0.004053994980476334,
+        "home_run": 0.01664016055717793,
+        "other_out": 0.5114021899440832
+      },
+      "draw": 0.11879551002643585,
+      "random_state_after": 255111416,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 9,
+        "half": "top",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 8,
+        "home_batting_index": 5,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 67,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 9,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 0,
+        "home_batting_index": 5,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 68,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 69,
+      "inning": 9,
+      "half": "top",
+      "batter_id": "kbo:player:66606",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.15305330493695535,
+        "walk": 0.08376636446648278,
+        "hit_by_pitch": 0.010401729126175992,
+        "single": 0.20018111381676001,
+        "double": 0.04105221966817388,
+        "triple": 0.005501093824263415,
+        "home_run": 0.02030545392176519,
+        "other_out": 0.48573872023942344
+      },
+      "draw": 0.5961439107508808,
+      "random_state_after": 1280209300,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 2,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 9,
+        "half": "top",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 0,
+        "home_batting_index": 5,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 68,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 9,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 1,
+        "home_batting_index": 5,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 69,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 70,
+      "inning": 9,
+      "half": "top",
+      "batter_id": "kbo:player:52001",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "single",
+      "probabilities": {
+        "strikeout": 0.1862369781573282,
+        "walk": 0.09674397782556242,
+        "hit_by_pitch": 0.025181918673032454,
+        "single": 0.16807560962212797,
+        "double": 0.037386683168511264,
+        "triple": 0.005009355849652366,
+        "home_run": 0.02766749323391072,
+        "other_out": 0.45369798346987467
+      },
+      "draw": 0.39071115049599775,
+      "random_state_after": 839045807,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:52001",
+        null,
+        null
+      ],
+      "outs_after_play": 2,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 9,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 1,
+        "home_batting_index": 5,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 69,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 9,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          "kbo:player:52001",
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 2,
+        "home_batting_index": 5,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 70,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 71,
+      "inning": 9,
+      "half": "top",
+      "batter_id": "kbo:player:79240",
+      "pitcher_id": "kbo:player:53375",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.14293962160114917,
+        "walk": 0.07058331974047541,
+        "hit_by_pitch": 0.0158558864822624,
+        "single": 0.19839606740266974,
+        "double": 0.03656439811857868,
+        "triple": 0.0034089437601694233,
+        "home_run": 0.019815481593801816,
+        "other_out": 0.5124362813008934
+      },
+      "draw": 0.6823111546061106,
+      "random_state_after": 1465252047,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:52001",
+        null,
+        null
+      ],
+      "outs_after_play": 3,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 9,
+        "half": "top",
+        "outs": 2,
+        "bases": [
+          "kbo:player:52001",
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 2,
+        "home_batting_index": 5,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          null
+        ],
+        "plate_appearances": 70,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 9,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 5,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 71,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 72,
+      "inning": 9,
+      "half": "bottom",
+      "batter_id": "kbo:player:74540",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.20375366306567913,
+        "walk": 0.07713837203656093,
+        "hit_by_pitch": 0.013561261631435973,
+        "single": 0.17136707736721177,
+        "double": 0.03850838006758104,
+        "triple": 0.0024722970863552633,
+        "home_run": 0.0263046978459956,
+        "other_out": 0.4668942508991804
+      },
+      "draw": 0.6035779510658029,
+      "random_state_after": 1296173780,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        null,
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 9,
+        "half": "bottom",
+        "outs": 0,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 5,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 71,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 9,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 6,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 72,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 73,
+      "inning": 9,
+      "half": "bottom",
+      "batter_id": "kbo:player:67449",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "single",
+      "probabilities": {
+        "strikeout": 0.16063416837972488,
+        "walk": 0.07897933022827665,
+        "hit_by_pitch": 0.008905749169741916,
+        "single": 0.18749889821391236,
+        "double": 0.037577856137212116,
+        "triple": 0.003774571535904204,
+        "home_run": 0.01773352388671979,
+        "other_out": 0.5048959024485081
+      },
+      "draw": 0.33462666518485795,
+      "random_state_after": 718605292,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:67449",
+        null,
+        null
+      ],
+      "outs_after_play": 1,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 9,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          null,
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 6,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 72,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 9,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          "kbo:player:67449",
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 7,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 73,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 74,
+      "inning": 9,
+      "half": "bottom",
+      "batter_id": "kbo:player:65586",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "strikeout",
+      "probabilities": {
+        "strikeout": 0.2145446215284599,
+        "walk": 0.07935265181908299,
+        "hit_by_pitch": 0.024177107182653076,
+        "single": 0.15879456736665665,
+        "double": 0.040360735117189614,
+        "triple": 0.003223456458413451,
+        "home_run": 0.02373597443545815,
+        "other_out": 0.4558108860920862
+      },
+      "draw": 0.07036696893197202,
+      "random_state_after": 151111916,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:67449",
+        null,
+        null
+      ],
+      "outs_after_play": 2,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 9,
+        "half": "bottom",
+        "outs": 1,
+        "bases": [
+          "kbo:player:67449",
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 7,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 73,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 9,
+        "half": "bottom",
+        "outs": 2,
+        "bases": [
+          "kbo:player:67449",
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 8,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 74,
+        "finished": false,
+        "end_reason": null
+      }
+    },
+    {
+      "number": 75,
+      "inning": 9,
+      "half": "bottom",
+      "batter_id": "kbo:player:62234",
+      "pitcher_id": "kbo:player:50030",
+      "outcome": "other_out",
+      "probabilities": {
+        "strikeout": 0.17717062029217318,
+        "walk": 0.07841520723540256,
+        "hit_by_pitch": 0.014191890672986165,
+        "single": 0.18185228927096386,
+        "double": 0.03584504743819187,
+        "triple": 0.0064088283452861826,
+        "home_run": 0.016643876459859926,
+        "other_out": 0.48947224028513625
+      },
+      "draw": 0.6576541151457039,
+      "random_state_after": 1412301458,
+      "runs": 0,
+      "scored_player_ids": [],
+      "bases_after_play": [
+        "kbo:player:67449",
+        null,
+        null
+      ],
+      "outs_after_play": 3,
+      "play_note": null,
+      "baserunning_draws": [],
+      "before": {
+        "inning": 9,
+        "half": "bottom",
+        "outs": 2,
+        "bases": [
+          "kbo:player:67449",
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 8,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 74,
+        "finished": false,
+        "end_reason": null
+      },
+      "after": {
+        "inning": 9,
+        "half": "bottom",
+        "outs": 3,
+        "bases": [
+          "kbo:player:67449",
+          null,
+          null
+        ],
+        "away_score": 5,
+        "home_score": 4,
+        "away_batting_index": 3,
+        "home_batting_index": 0,
+        "away_innings": [
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "home_innings": [
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "plate_appearances": 75,
+        "finished": true,
+        "end_reason": "regulation"
+      }
+    }
+  ]
+}

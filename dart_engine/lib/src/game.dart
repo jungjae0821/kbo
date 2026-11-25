@@ -13,7 +13,8 @@ const maxInnings = 11;
 /// Hit advancement rates are long-run professional averages. The double play
 /// and run-scoring-out rates were calibrated so simulated 2026 games match
 /// the league's GIDP and sacrifice fly totals per plate appearance (see
-/// dart_engine/README.md).
+/// dart_engine/README.md). Advancement on outs (2.1.0) uses mid-grid values;
+/// runs barely move across the grid (outputs/week5_calibration_report.json).
 class BaserunningRates {
   const BaserunningRates({
     this.singleRunnerFromSecondScores = 0.60,
@@ -21,6 +22,8 @@ class BaserunningRates {
     this.doubleRunnerFromFirstScores = 0.42,
     this.doublePlay = 0.18,
     this.runnerFromThirdScoresOnOut = 0.52,
+    this.runnerFromSecondToThirdOnOut = 0.35,
+    this.runnerFromFirstToSecondOnOut = 0.20,
   });
 
   /// Single: runner on second scores instead of stopping at third.
@@ -39,19 +42,32 @@ class BaserunningRates {
   /// outs: sacrifice fly or run-scoring groundout.
   final double runnerFromThirdScoresOnOut;
 
+  /// Other out (not a double play) with fewer than two outs: runner on second
+  /// takes an open third (groundout to the right side, tag-up on a fly).
+  final double runnerFromSecondToThirdOnOut;
+
+  /// Other out (not a double play) with fewer than two outs: runner on first
+  /// takes an open second.
+  final double runnerFromFirstToSecondOnOut;
+
   Map<String, double> toJson() => {
         'single_runner_from_second_scores': singleRunnerFromSecondScores,
         'single_runner_from_first_to_third': singleRunnerFromFirstToThird,
         'double_runner_from_first_scores': doubleRunnerFromFirstScores,
         'double_play': doublePlay,
         'runner_from_third_scores_on_out': runnerFromThirdScoresOnOut,
+        'runner_from_second_to_third_on_out': runnerFromSecondToThirdOnOut,
+        'runner_from_first_to_second_on_out': runnerFromFirstToSecondOnOut,
       };
 }
 
 /// What happened beyond the plate outcome itself, for logs and the UI.
 enum PlayNote {
   doublePlay('double_play'),
-  runScoredOnOut('run_scored_on_out');
+  runScoredOnOut('run_scored_on_out'),
+
+  /// A runner moved up a base on the out and no run scored (2.1.0).
+  runnerAdvancedOnOut('runner_advanced_on_out');
 
   const PlayNote(this.key);
   final String key;
@@ -125,10 +141,33 @@ BaseAdvance advanceBases(
         chance(rates.runnerFromThirdScoresOnOut)) {
       scored.add(next[2]!);
       next[2] = null;
-      return BaseAdvance(next, scored, 1,
-          note: PlayNote.runScoredOnOut, draws: draws);
     }
-    return BaseAdvance(next, scored, 1, draws: draws);
+    // A zero rate draws nothing, so rates added later keep older replays.
+    var advanced = false;
+    if (outs < 2 &&
+        rates.runnerFromSecondToThirdOnOut > 0 &&
+        next[1] != null &&
+        next[2] == null &&
+        chance(rates.runnerFromSecondToThirdOnOut)) {
+      next[2] = next[1];
+      next[1] = null;
+      advanced = true;
+    }
+    if (outs < 2 &&
+        rates.runnerFromFirstToSecondOnOut > 0 &&
+        next[0] != null &&
+        next[1] == null &&
+        chance(rates.runnerFromFirstToSecondOnOut)) {
+      next[1] = next[0];
+      next[0] = null;
+      advanced = true;
+    }
+    final note = scored.isNotEmpty
+        ? PlayNote.runScoredOnOut
+        : advanced
+            ? PlayNote.runnerAdvancedOnOut
+            : null;
+    return BaseAdvance(next, scored, 1, note: note, draws: draws);
   }
   if (outcome == PlateOutcome.single) {
     if (next[2] != null) scored.add(next[2]!);
@@ -464,6 +503,7 @@ class GameEngine {
     required this.seed,
     String? gameId,
     Map<String, String> startingPitchers = const {},
+    this.baserunning = defaultBaserunning,
   })  : gameId = gameId ??
             'kbo-${DateTime.now().microsecondsSinceEpoch}-${_sequence++}',
         _random = SeededRandom(seed) {
@@ -525,9 +565,14 @@ class GameEngine {
 
   /// 2.0.0: hit by pitch, situational base running (extra bases, double
   /// plays, runs on outs), 11-inning limit and the one-batter minimum for
-  /// pitchers. Games from 1.x do not replay under 2.0.0.
-  static const version = '2.0.0';
-  static const baserunning = BaserunningRates();
+  /// pitchers. 2.1.0: runners on first and second can advance on outs.
+  /// Games from older versions do not replay under 2.1.0.
+  static const version = '2.1.0';
+  static const defaultBaserunning = BaserunningRates();
+
+  /// Only calibration tools pass other rates. Checkpoints always restore with
+  /// [defaultBaserunning], so app games must keep the default.
+  final BaserunningRates baserunning;
   static int _sequence = 0;
   final SeasonDataset dataset;
   final String awayTeamId;
