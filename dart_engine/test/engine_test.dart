@@ -1,6 +1,7 @@
 // Dependency-free test runner: dart run test/engine_test.dart
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math' as math;
 
 import '../lib/kbo_engine.dart';
 
@@ -61,6 +62,12 @@ GameState late({
       awayInnings: [away, ...List<int>.filled(inning - 1, 0)],
       homeInnings: [home, ...List<int?>.filled(inning - 2, 0), top ? null : 0],
     );
+
+/// 2.0.0 base running: no advancement on outs beyond runs from third.
+const rates200 = BaserunningRates(
+  runnerFromSecondToThirdOnOut: 0,
+  runnerFromFirstToSecondOnOut: 0,
+);
 
 void main(List<String> args) {
   final datasetPath = args.isEmpty
@@ -316,7 +323,12 @@ void main(List<String> args) {
     final sacFly = advanceBases([null, '2', '3'], 'B', PlateOutcome.otherOut,
         outs: 1, draw: () => 0.0);
     equal([sacFly.outsAdded, sacFly.scored, sacFly.bases, sacFly.note?.key],
-        [1, ['3'], [null, '2', null], 'run_scored_on_out']);
+        [1, ['3'], [null, null, '2'], 'run_scored_on_out']);
+    final sacFly200 = advanceBases([null, '2', '3'], 'B',
+        PlateOutcome.otherOut,
+        outs: 1, draw: () => 0.0, rates: rates200);
+    equal([sacFly200.scored, sacFly200.bases, sacFly200.draws.length],
+        [['3'], [null, '2', null], 1]);
     final strikeout = advanceBases(['1', null, '3'], 'B',
         PlateOutcome.strikeout, draw: () => 0.0);
     equal([strikeout.outsAdded, strikeout.scored], [1, []]);
@@ -328,6 +340,39 @@ void main(List<String> args) {
     );
     equal([play.state.awayScore, play.state.isTop, play.outsAfterPlay],
         [0, false, 3]);
+  });
+  test('runners on first and second advance on outs when the base is open',
+      () {
+    const out = PlateOutcome.otherOut;
+    BaseAdvance play(List<String?> bases, double value, {int outs = 0}) =>
+        advanceBases(bases, 'B', out, outs: outs, draw: () => value);
+    // Draw 0.30: below 0.35 (second to third), above 0.20 (first to second),
+    // above the 0.18 double play rate.
+    final second = play([null, '2', null], 0.30);
+    equal([second.bases, second.scored, second.note?.key],
+        [[null, null, '2'], [], 'runner_advanced_on_out']);
+    // 0.185: not a double play (>= 0.18), then first to second (< 0.20).
+    final first = play(['1', null, null], 0.185);
+    equal([first.outsAdded, first.bases], [1, [null, '1', null]]);
+    final doublePlay = play(['1', null, null], 0.1);
+    equal([doublePlay.outsAdded, doublePlay.note?.key], [2, 'double_play']);
+    // Double play and second-to-third are drawn; first-to-second is not,
+    // because second stays occupied.
+    final stays = play(['1', '2', null], 0.99);
+    equal([stays.bases, stays.draws.length, stays.note], [['1', '2', null], 2, null]);
+    // Second-to-third happens first, which opens second for the runner on first.
+    final both = play(['1', '2', null], 0.19);
+    equal([both.outsAdded, both.bases], [1, [null, '1', '2']]);
+    // Third occupied: the runner on second holds; second occupied: first holds.
+    final blocked = play(['1', '2', '3'], 0.99);
+    equal(blocked.bases, ['1', '2', '3']);
+    // Two outs: the out ends the inning, nothing is drawn.
+    final twoOuts = play([null, '2', null], 0.0, outs: 2);
+    equal([twoOuts.bases, twoOuts.draws], [[null, '2', null], []]);
+    // With 2.0.0 rates the new rules draw nothing, so old games replay.
+    final old = advanceBases(['1', '2', null], 'B', out,
+        outs: 0, draw: () => 0.99, rates: rates200);
+    equal([old.bases, old.draws.length], [['1', '2', null], 1]);
   });
   test('strikeout and other out preserve runners and add one out', () {
     for (final outcome in [PlateOutcome.strikeout, PlateOutcome.otherOut]) {
@@ -587,8 +632,8 @@ void main(List<String> args) {
       );
     }
   });
-  test('2.0.0 without substitutions replays the saved example exactly', () {
-    final file = File('../outputs/engine_2_0_0_example_game.json');
+  void replays(String path, BaserunningRates rates) {
+    final file = File(path);
     check(file.existsSync(), 'Run from dart_engine/ so the example is found');
     final example = jsonDecode(file.readAsStringSync()) as Map<String, dynamic>;
     final game = GameEngine(
@@ -597,12 +642,22 @@ void main(List<String> args) {
       homeTeamId: example['home_team_id'] as String,
       seed: example['seed'] as int,
       gameId: example['game_id'] as String,
+      baserunning: rates,
     )..playToEnd();
     final now = game.toJson();
     for (final key in ['state', 'plate_appearances', 'random_state']) {
       equal(now[key], example[key]);
     }
     equal(now['substitutions'], []);
+  }
+
+  test('2.1.0 without substitutions replays the saved example exactly', () {
+    replays('../outputs/engine_2_1_0_example_game.json',
+        GameEngine.defaultBaserunning);
+  });
+  test('2.1.0 with advancement on outs off still replays the 2.0.0 example',
+      () {
+    replays('../outputs/engine_2_0_0_example_game.json', rates200);
   });
   test('pitching change: new pitcher faces later batters, no re-entry', () {
     final game = engine(7);
@@ -788,6 +843,90 @@ void main(List<String> args) {
           {'kind': 'pitcher', 'team_id': home, 'out_player_id': 'x', 'in_player_id': 'y', 'before_plate_appearance': 3}
         ]);
   });
+  test('spreadSeeds: deterministic, distinct, in range, not consecutive', () {
+    final a = spreadSeeds(500), b = spreadSeeds(500);
+    equal(a, b);
+    check(a.toSet().length == 500, 'Duplicate seeds');
+    check(a.every((s) => s >= 0 && s <= 2147483645), 'Seed out of range');
+    check(
+        spreadSeeds(500, masterSeed: 1).toSet().intersection(a.toSet()).length <
+            5,
+        'Different master seeds should give different lists');
+    // Small seeds open with a strikeout draw; spread seeds must not cluster.
+    check(a.where((s) => s < 1000000).length < 5, 'Seeds cluster near 0');
+  });
+  test('batch summary totals agree with the individual games', () {
+    final played = <GameEngine>[];
+    final matchups = allMatchups(dataset).take(6).toList();
+    final batch = simulateBatch(dataset, matchups, 5,
+        onGame: played.add, masterSeed: 99);
+    equal(batch.games, 30);
+    equal(played.map((g) => g.seed).toSet().length, 30);
+    final runs = played.fold<int>(
+        0, (n, g) => n + g.state.awayScore + g.state.homeScore);
+    equal(batch.league.runs, runs);
+    equal(batch.league.runsAllowed, runs);
+    equal(batch.league.plateAppearances,
+        played.fold<int>(0, (n, g) => n + g.logs.length));
+    equal(batch.league.events.reduce((a, b) => a + b),
+        batch.league.plateAppearances);
+    equal(batch.league.wins, batch.league.losses);
+    equal(batch.league.wins + batch.league.losses + batch.league.ties, 60);
+    equal(batch.homeWins + batch.awayWins + batch.ties, 30);
+    equal(batch.teamRunsHistogram.values.reduce((a, b) => a + b), 60);
+    equal(batch.teams.values.fold<int>(0, (n, t) => n + t.games), 60);
+    // The same master seed reproduces the batch exactly.
+    final again = simulateBatch(dataset, matchups, 5, masterSeed: 99);
+    equal(again.toJson(), batch.toJson());
+  });
+  test('1,000 games of one matchup: every game valid, sampling unbiased', () {
+    final teamIds = dataset.teams.keys.toList();
+    var bad = 0;
+    final batch = simulateBatch(dataset, [(teamIds[0], teamIds[1])], 1000,
+        onGame: (g) {
+      final s = g.state;
+      final tie = s.awayScore == s.homeScore;
+      if (!s.isFinished ||
+          s.inning < 9 ||
+          s.inning > maxInnings ||
+          (tie && (s.inning != maxInnings || s.end != GameEnd.tie)) ||
+          (!tie && g.winnerTeamId == null) ||
+          s.awayInnings.whereType<int>().fold<int>(0, (a, b) => a + b) !=
+              s.awayScore ||
+          s.homeInnings.whereType<int>().fold<int>(0, (a, b) => a + b) !=
+              s.homeScore) {
+        bad++;
+      }
+    });
+    equal([batch.games, bad], [1000, 0]);
+    final league = batch.league;
+    for (final event in PlateOutcome.values) {
+      final n = league.plateAppearances;
+      final expected = league.expectedEvents[event.index] / n;
+      final se = math.sqrt(expected * (1 - expected) / n);
+      final z = (league.rate(event) - expected) / se;
+      check(z.abs() < 4, '${event.key}: sampled vs expected z=$z');
+    }
+  });
+  test('wilson interval and pearson helpers', () {
+    final (low, high) = wilsonInterval(50, 100);
+    check((low - 0.4038).abs() < 1e-3 && (high - 0.5962).abs() < 1e-3,
+        'Wilson 50/100: $low..$high');
+    check((pearson([1, 2, 3], [2, 4, 6])! - 1).abs() < 1e-12, 'r=1');
+    check((pearson([1, 2, 3], [3, 2, 1])! + 1).abs() < 1e-12, 'r=-1');
+    check(pearson([1, 1, 1], [1, 2, 3]) == null, 'No variance');
+    throws(() => wilsonInterval(0, 0));
+  });
+  test('league-average baseline is deterministic and rises with 2.1.0 rules',
+      () {
+    final a = leagueAverageRunsPerNine(raw, rates200, halfInnings: 20000);
+    final b = leagueAverageRunsPerNine(raw, rates200, halfInnings: 20000);
+    final c = leagueAverageRunsPerNine(raw, GameEngine.defaultBaserunning,
+        halfInnings: 20000);
+    equal(a, b);
+    check(c > a, '2.1.0 should not score less: $a vs $c');
+    check(a > 3 && a < 6, 'Implausible runs per nine: $a');
+  });
   stdout.writeln('\n$passed passed, ${failures.length} failed');
   // Optional positional arguments: dataset path, report output path.
   if (args.length > 1) {
@@ -802,7 +941,8 @@ void main(List<String> args) {
           'failed': failures.length,
           'checks': checks,
           'scope':
-              'Engine 2.0.0 rules and real-data smoke tests.',
+              'Engine ${GameEngine.version} rules, batch simulation helpers '
+                  'and real-data smoke tests.',
         })}\n');
   }
   if (failures.isNotEmpty) exitCode = 1;
