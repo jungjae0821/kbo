@@ -3,6 +3,7 @@ import 'package:kbo_engine/kbo_engine.dart';
 
 import '../app_scope.dart';
 import '../data/app_data.dart';
+import '../state/auto_bullpen.dart';
 import '../state/box_score.dart';
 import '../state/game_setup.dart';
 import '../state/labels.dart';
@@ -16,10 +17,15 @@ import 'box_score_screen.dart';
 /// 경기 결과: 스코어보드로 간략하게 → 승리·패전·세이브·홀드 투수 → 예측 결과.
 /// 상세보기는 타자·투수 기록, 다시하기는 준비 화면(직전 설정), 처음으로는 메인 (초안 확정 구조 4).
 class ResultScreen extends StatelessWidget {
-  const ResultScreen({super.key, required this.engine, required this.predictedWinnerId});
+  const ResultScreen({super.key, required this.engine, required this.predictedWinnerId, this.bullpens = const {}});
 
   final GameEngine engine;
-  final String predictedWinnerId;
+
+  /// 예측 없이 돌려본 경기면 null.
+  final String? predictedWinnerId;
+
+  /// 다시하기에 그대로 넘길 불펜 운용.
+  final Map<String, BullpenPlan> bullpens;
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +37,14 @@ class ResultScreen extends StatelessWidget {
     final home = data.team(engine.homeTeamId);
     final winnerId = engine.winnerTeamId;
     final tie = winnerId == null;
-    final hit = winnerId == predictedWinnerId;
+    final predicted = predictedWinnerId;
+    final hit = predicted != null && winnerId == predicted;
     final box = BoxScore.from(engine);
 
     void toHome() => Navigator.of(context).popUntil((r) => r.isFirst);
     void again() {
       Navigator.of(context).popUntil((r) => r.isFirst);
-      startNewGame(context, setup: GameSetup.from(engine));
+      startNewGame(context, setup: GameSetup.from(engine, bullpens: bullpens));
     }
 
     final verdict = tie ? '무승부, 0점 (적중률에서 제외)' : (hit ? '적중, +${RecordBook.pointsPerHit}점' : '빗나감, 0점');
@@ -71,12 +78,18 @@ class ResultScreen extends StatelessWidget {
             const SizedBox(height: 14),
             _Decisions(box: box, data: data),
             const SizedBox(height: 10),
+            if (predicted == null)
+              Panel(
+                color: k.stripe,
+                child: Text(keepAll('예측 없이 돌려본 경기입니다. 경기 결과는 내 기록에 남고, 예측 점수와 적중률에는 들어가지 않습니다.'), style: text.bodyMedium!.copyWith(color: k.inkSub)),
+              )
+            else
             Semantics(
               liveRegion: true,
               child: Panel(
                 color: hit && !tie ? k.accentSoft : k.stripe,
                 child: Text.rich(TextSpan(children: [
-                  TextSpan(text: '내 예측 ${data.team(predictedWinnerId).shortName} 승리, ', style: text.bodyMedium!.copyWith(color: k.inkSub)),
+                  TextSpan(text: '내 예측 ${data.team(predicted).shortName} 승리, ', style: text.bodyMedium!.copyWith(color: k.inkSub)),
                   TextSpan(
                     text: verdict,
                     style: text.bodyMedium!.copyWith(fontWeight: FontWeight.w700),

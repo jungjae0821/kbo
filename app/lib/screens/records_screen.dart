@@ -25,6 +25,7 @@ class RecordsScreen extends StatelessWidget {
         final ready = scope.data.status == DataStatus.ready;
         final missed = r.decidedCount - r.hitCount;
         final ties = r.predictionCount - r.decidedCount;
+        final watched = r.gameCount - r.predictionCount;
         final rate = r.hitRate == null ? '-' : '${(r.hitRate! * 100).round()}%';
         return AppFrame(
           band: Column(
@@ -32,7 +33,7 @@ class RecordsScreen extends StatelessWidget {
             children: [
               const BandTitle(title: '개인 기록', back: true),
               Semantics(
-                label: '누적 ${r.totalPoints}점, 예측 ${r.predictionCount}경기, 적중 ${r.hitCount}, 빗나감 $missed, 무승부 $ties, '
+                label: '누적 ${r.totalPoints}점, ${r.gameCount}경기 중 예측 ${r.predictionCount}경기, 적중 ${r.hitCount}, 빗나감 $missed, 무승부 $ties, '
                     '적중률 ${r.hitRate == null ? '없음' : rate}, 지금 ${r.currentStreak}경기 연속 적중, 최다 ${r.bestStreak}경기',
                 excludeSemantics: true,
                 child: Padding(
@@ -44,7 +45,7 @@ class RecordsScreen extends StatelessWidget {
                         TextSpan(text: '누적 ', style: text.bodyMedium!.copyWith(color: k.bandSub)),
                         TextSpan(text: '${r.totalPoints}점', style: text.headlineSmall!.copyWith(color: k.onBand)),
                         TextSpan(
-                          text: '\n${r.predictionCount}경기 예측, 적중률 $rate. '
+                          text: '\n${r.predictionCount}경기 예측${watched > 0 ? ', 돌려보기 $watched경기' : ''}, 적중률 $rate. '
                               '지금 ${r.currentStreak}경기 연속 적중, 최다 ${r.bestStreak}경기.',
                         ),
                       ],
@@ -89,12 +90,13 @@ class _GameRow extends StatelessWidget {
     final g = game;
     final away = data.team(g.awayTeamId).shortName;
     final home = data.team(g.homeTeamId).shortName;
-    final pick = data.team(g.predictedWinnerId).shortName;
+    final pick = g.predictedWinnerId == null ? null : data.team(g.predictedWinnerId!).shortName;
     final date = '${g.finishedAt.month}.${g.finishedAt.day}';
     final hit = g.isHit && !g.isTie;
-    final result = g.isTie ? '무승부 0점' : (hit ? '적중 +${g.points}점' : '빗나감 0점');
+    final winner = g.isTie ? '무승부' : '${data.team(g.winnerTeamId!).shortName} 승';
+    final result = pick == null ? winner : (g.isTie ? '무승부 0점' : (hit ? '적중 +${g.points}점' : '빗나감 0점'));
     return Semantics(
-      label: '$date, $away ${g.awayScore} 대 ${g.homeScore} $home, 내 예측 $pick, $result',
+      label: '$date, $away ${g.awayScore} 대 ${g.homeScore} $home, ${pick == null ? '예측 없이 돌려보기' : '내 예측 $pick'}, $result',
       excludeSemantics: true,
       child: Container(
         constraints: const BoxConstraints(minHeight: 52),
@@ -110,7 +112,7 @@ class _GameRow extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('$away ${g.awayScore} : ${g.homeScore} $home', style: text.titleSmall),
-                  Text('예측 $pick', style: text.bodySmall!.copyWith(color: k.inkSub)),
+                  Text(pick == null ? '예측 없이 돌려보기' : '예측 $pick', style: text.bodySmall!.copyWith(color: k.inkSub)),
                 ],
               ),
             ),

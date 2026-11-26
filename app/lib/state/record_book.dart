@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 
 import '../data/local_store.dart';
 
-/// 끝난 경기 한 건의 예측 결과.
+/// 끝난 경기 한 건의 결과와 예측. 예측 없이 돌려본 경기는 예측이 null이다.
 class GameRecord {
   GameRecord({
     required this.gameId,
@@ -29,7 +29,7 @@ class GameRecord {
         j['home_team_id'] is! String ||
         j['away_score'] is! int ||
         j['home_score'] is! int ||
-        j['predicted_winner_id'] is! String ||
+        (j['predicted_winner_id'] != null && j['predicted_winner_id'] is! String) ||
         (winner != null && winner is! String) ||
         finishedAt == null) {
       throw const FormatException('경기 기록 항목이 올바르지 않습니다');
@@ -40,7 +40,7 @@ class GameRecord {
       homeTeamId: j['home_team_id'] as String,
       awayScore: j['away_score'] as int,
       homeScore: j['home_score'] as int,
-      predictedWinnerId: j['predicted_winner_id'] as String,
+      predictedWinnerId: j['predicted_winner_id'] as String?,
       winnerTeamId: winner as String?,
       finishedAt: finishedAt,
       engineVersion: j['engine_version'] is String ? j['engine_version'] as String : null,
@@ -53,7 +53,8 @@ class GameRecord {
   final String homeTeamId;
   final int awayScore;
   final int homeScore;
-  final String predictedWinnerId;
+  /// 예측한 팀. 예측 없이 돌려본 경기면 null (채점하지 않고 결과만 남긴다).
+  final String? predictedWinnerId;
 
   /// 무승부면 null.
   final String? winnerTeamId;
@@ -64,7 +65,8 @@ class GameRecord {
   final String? dataVersion;
 
   bool get isTie => winnerTeamId == null;
-  bool get isHit => winnerTeamId == predictedWinnerId;
+  bool get isPredicted => predictedWinnerId != null;
+  bool get isHit => isPredicted && winnerTeamId == predictedWinnerId;
   int get points => isHit ? RecordBook.pointsPerHit : 0;
 
   Map<String, dynamic> toJson() => {
@@ -84,6 +86,7 @@ class GameRecord {
 /// 개인 기록과 채점. 규칙은 README의 기획안을 따른다.
 /// - 적중 +100점, 경기 ID당 한 번만 채점 (앱을 다시 켜도 유지)
 /// - 무승부 0점, 적중률 분모에서 제외, 연속 적중 유지
+/// - 예측 없이 돌려본 경기는 경기 결과만 남긴다 (0점, 적중률·연속 적중에 영향 없음)
 ///
 /// [store]가 있으면 채점할 때마다 기기에 JSON으로 저장하고 [load]로 되살린다.
 class RecordBook extends ChangeNotifier {
@@ -106,9 +109,13 @@ class RecordBook extends ChangeNotifier {
   Future<void> _pending = Future.value();
 
   List<GameRecord> get recent => List.unmodifiable(_games.reversed);
-  int get predictionCount => _games.length;
-  int get decidedCount => _games.where((g) => !g.isTie).length;
-  int get hitCount => _games.where((g) => !g.isTie && g.isHit).length;
+  /// 끝낸 모든 경기 (예측 없이 돌려본 경기 포함).
+  int get gameCount => _games.length;
+
+  /// 승리 팀을 예측한 경기.
+  int get predictionCount => _games.where((g) => g.isPredicted).length;
+  int get decidedCount => _games.where((g) => g.isPredicted && !g.isTie).length;
+  int get hitCount => _games.where((g) => g.isPredicted && !g.isTie && g.isHit).length;
   int get totalPoints => _games.fold(0, (sum, g) => sum + g.points);
   int get currentStreak => _currentStreak;
   int get bestStreak => _bestStreak;
@@ -138,7 +145,7 @@ class RecordBook extends ChangeNotifier {
   }
 
   void _apply(GameRecord record) {
-    if (record.isTie) return;
+    if (record.isTie || !record.isPredicted) return;
     if (record.isHit) {
       _currentStreak++;
       if (_currentStreak > _bestStreak) _bestStreak = _currentStreak;
@@ -209,6 +216,7 @@ class RecordBook extends ChangeNotifier {
         'schema_version': schemaVersion,
         'saved_at': DateTime.now().toUtc().toIso8601String(),
         'total_points': totalPoints,
+        'game_count': gameCount,
         'prediction_count': predictionCount,
         'decided_count': decidedCount,
         'hit_count': hitCount,

@@ -4,10 +4,16 @@ import 'package:flutter/foundation.dart';
 import 'package:kbo_engine/kbo_engine.dart';
 
 import '../data/local_store.dart';
+import 'auto_bullpen.dart';
 
-/// 중단된 경기 한 건: 엔진 체크포인트와 내 예측.
+/// 중단된 경기 한 건: 엔진 체크포인트, 내 예측(돌려보기면 없음), 두 팀 불펜 운용.
 class SavedGame {
-  SavedGame({required this.checkpoint, required this.predictedWinnerId, required this.savedAt});
+  SavedGame({
+    required this.checkpoint,
+    required this.predictedWinnerId,
+    required this.savedAt,
+    this.bullpens = const {},
+  });
 
   factory SavedGame.decode(String source) {
     final Object? json;
@@ -26,23 +32,38 @@ class SavedGame {
     final predicted = json['predicted_winner_id'];
     final rawSavedAt = json['saved_at'];
     final savedAt = rawSavedAt is String ? DateTime.tryParse(rawSavedAt) : null;
+    // 예측 없이 돌려본 경기는 예측이 null이다.
     if (checkpoint is! Map ||
-        predicted is! String ||
+        (predicted != null && predicted is! String) ||
         savedAt == null ||
         checkpoint['state'] is! Map ||
-        (predicted != checkpoint['away_team_id'] && predicted != checkpoint['home_team_id'])) {
+        (predicted != null && predicted != checkpoint['away_team_id'] && predicted != checkpoint['home_team_id'])) {
       throw const FormatException('중단 경기 내용이 올바르지 않습니다');
+    }
+    final rawBullpens = json['bullpens'];
+    final bullpens = <String, BullpenPlan>{};
+    if (rawBullpens is Map) {
+      for (final e in rawBullpens.entries) {
+        final plan = BullpenPlan.fromJson(e.value);
+        if (e.key is String && plan != null) bullpens[e.key as String] = plan;
+      }
     }
     return SavedGame(
       checkpoint: checkpoint.cast<String, dynamic>(),
-      predictedWinnerId: predicted,
+      predictedWinnerId: predicted as String?,
       savedAt: savedAt,
+      bullpens: bullpens,
     );
   }
 
   final Map<String, dynamic> checkpoint;
-  final String predictedWinnerId;
+
+  /// 예측한 팀. 예측 없이 돌려보는 경기면 null (채점하지 않는다).
+  final String? predictedWinnerId;
   final DateTime savedAt;
+
+  /// 팀 ID → 경기 전에 정한 불펜 운용. 이전 버전 파일에는 없다 (기록 기반 자동 운용).
+  final Map<String, BullpenPlan> bullpens;
 
   T _pick<T>(Map source, String key, T fallback) {
     final value = source[key];
@@ -74,6 +95,7 @@ class SavedGame {
         'schema_version': SavedGameStore.schemaVersion,
         'saved_at': savedAt.toUtc().toIso8601String(),
         'predicted_winner_id': predictedWinnerId,
+        'bullpens': {for (final e in bullpens.entries) e.key: e.value.toJson()},
         'checkpoint': checkpoint,
       });
 }
@@ -122,11 +144,12 @@ class SavedGameStore extends ChangeNotifier {
   }
 
   /// 경기 상태를 저장한다. 화면은 기다리지 않아도 된다 (저장은 차례대로 처리).
-  void save(GameEngine engine, String predictedWinnerId) {
+  void save(GameEngine engine, String? predictedWinnerId, {Map<String, BullpenPlan> bullpens = const {}}) {
     final game = SavedGame(
       checkpoint: engine.toCheckpoint(),
       predictedWinnerId: predictedWinnerId,
       savedAt: DateTime.now(),
+      bullpens: bullpens,
     );
     final isNew = _current?.gameId != game.gameId;
     _current = game;

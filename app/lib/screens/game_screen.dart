@@ -16,6 +16,8 @@ import 'result_screen.dart';
 
 /// 경기 진행: 기존 기능 그대로 (초안 확정 구조 3). 띠에 점수·이닝·아웃·주자,
 /// 가운데 타석 기록, 아래 감독 줄(예측한 팀만 투수 교체·대타)과 진행 버튼.
+/// 두 팀 모두 경기 전에 정한 불펜 운용대로 교체 시점에 자동으로 투수를 바꾼다.
+/// 예측 없이 돌려보는 경기([predictedWinnerId]가 null)는 감독 줄이 없고, 점수 없이 결과만 기록에 남는다.
 class GameScreen extends StatefulWidget {
   const GameScreen({
     super.key,
@@ -25,11 +27,16 @@ class GameScreen extends StatefulWidget {
     required this.seed,
     this.startingPitchers = const {},
     this.battingOrders = const {},
+    this.bullpens = const {},
   }) : restored = null;
 
   /// 기기에 저장해 둔 중단 경기를 이어서 진행한다.
-  GameScreen.resume({super.key, required GameEngine engine, required this.predictedWinnerId})
-      : awayId = engine.awayTeamId,
+  GameScreen.resume({
+    super.key,
+    required GameEngine engine,
+    required this.predictedWinnerId,
+    this.bullpens = const {},
+  })  : awayId = engine.awayTeamId,
         homeId = engine.homeTeamId,
         seed = engine.seed,
         startingPitchers = const {},
@@ -38,12 +45,16 @@ class GameScreen extends StatefulWidget {
 
   final String awayId;
   final String homeId;
-  final String predictedWinnerId;
+  /// 예측한 팀. 예측 없이 돌려보기면 null.
+  final String? predictedWinnerId;
   final int seed;
 
   /// 경기 전에 고른 선발투수와 타순 (팀 ID → 값). 없으면 자동.
   final Map<String, String> startingPitchers;
   final Map<String, List<String>> battingOrders;
+
+  /// 팀 ID → 경기 전에 정한 불펜 운용. 없는 팀은 기록 기반 자동 운용.
+  final Map<String, BullpenPlan> bullpens;
 
   /// 이어하기로 되살린 엔진. 새 경기면 null.
   final GameEngine? restored;
@@ -86,17 +97,22 @@ class _GameScreenState extends State<GameScreen> {
     if (engine.state.isFinished) {
       _score();
     } else {
-      _savedGame.save(engine, widget.predictedWinnerId);
+      _savedGame.save(engine, widget.predictedWinnerId, bullpens: widget.bullpens);
     }
   }
 
-  /// 예측하지 않은 팀. 이 팀의 투수 교체는 앱이 정한다.
-  String get _opponentId => widget.predictedWinnerId == widget.awayId ? widget.homeId : widget.awayId;
+  /// 수비 팀의 불펜을 운용대로 움직인다. 타석 직후에도 불러서, 교체된 투수가 바로 화면에 보이게 한다.
+  void _autoPitching() {
+    for (final t in [widget.awayId, widget.homeId]) {
+      autoPitchingChange(engine, _data, t, plan: widget.bullpens[t]);
+    }
+  }
 
-  /// 다음 타석 전에 상대 팀 불펜을 움직이고 한 타석 진행한다.
+  /// 다음 타석 전에 불펜을 움직이고 한 타석 진행한다.
   void _advance() {
-    autoPitchingChange(engine, _data, _opponentId);
+    _autoPitching();
     engine.step();
+    _autoPitching();
   }
 
   void _step() {
@@ -107,6 +123,29 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   bool get _myTeamAttacking => (engine.state.isTop ? widget.awayId : widget.homeId) == widget.predictedWinnerId;
+
+  /// 예측 없이 돌려보기: 다음 이닝 시작(또는 경기 끝)까지 진행한다.
+  void _playToNextInning() {
+    if (engine.state.isFinished) return;
+    final inning = engine.state.inning;
+    setState(() {
+      do {
+        _advance();
+      } while (!engine.state.isFinished && engine.state.inning == inning);
+    });
+    _afterChange();
+  }
+
+  /// 예측 없이 돌려보기: 경기 끝까지 한 번에 진행한다.
+  void _playToEnd() {
+    if (engine.state.isFinished) return;
+    setState(() {
+      while (!engine.state.isFinished) {
+        _advance();
+      }
+    });
+    _afterChange();
+  }
 
   /// 내 팀 수비가 막 시작됐다: 이 공수에서 아직 타석이 없다.
   bool get _defenseJustStarted {
@@ -148,7 +187,7 @@ class _GameScreenState extends State<GameScreen> {
 
   /// 예측한 팀만 교체할 수 있다. 공격 중이면 대타, 수비 중이면 투수 교체.
   Future<void> _substitute() async {
-    final teamId = widget.predictedWinnerId;
+    final teamId = widget.predictedWinnerId!;
     final attacking = _myTeamAttacking;
     final outId = attacking ? engine.nextBatterFor(teamId) : engine.pitcherFor(teamId);
     final outName = _data.player(outId).name;
@@ -191,7 +230,7 @@ class _GameScreenState extends State<GameScreen> {
 
   void _openResult() {
     Navigator.of(context).pushReplacement(MaterialPageRoute(
-      builder: (_) => ResultScreen(engine: engine, predictedWinnerId: widget.predictedWinnerId),
+      builder: (_) => ResultScreen(engine: engine, predictedWinnerId: widget.predictedWinnerId, bullpens: widget.bullpens),
     ));
   }
 
@@ -231,8 +270,8 @@ class _GameScreenState extends State<GameScreen> {
     final finished = s.isFinished;
     final k = context.kbo;
     final text = Theme.of(context).textTheme;
-    final predicted = _data.team(widget.predictedWinnerId);
     final mine = widget.predictedWinnerId;
+    final predicted = mine == null ? null : _data.team(mine);
 
     return AppFrame(
       band: Column(
@@ -242,7 +281,7 @@ class _GameScreenState extends State<GameScreen> {
             title: '가상 경기',
             back: true,
             trailing: Text(
-              '예측 ${predicted.shortName}',
+              predicted == null ? '예측 없이 돌려보기' : '예측 ${predicted.shortName}',
               style: text.bodySmall!.copyWith(color: k.bandSub),
             ),
           ),
@@ -279,6 +318,19 @@ class _GameScreenState extends State<GameScreen> {
       ),
       dock: finished
           ? FilledButton(onPressed: _openResult, child: const Text('경기 결과 보기'))
+          : predicted == null || mine == null
+          ? Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                TextButton(onPressed: _playToEnd, child: const Text('경기 끝까지 진행')),
+                const SizedBox(height: 4),
+                ActionRow(
+                  secondary: FilledButton(style: bandButtonStyle(context, height: 56), onPressed: _playToNextInning, child: const Text('다음 이닝까지')),
+                  primary: FilledButton(onPressed: _step, child: const Text('다음 타석')),
+                ),
+              ],
+            )
           : Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,

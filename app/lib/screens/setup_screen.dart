@@ -10,9 +10,10 @@ import '../state/record_book.dart';
 import '../theme/kbo_theme.dart';
 import '../widgets/frame.dart';
 import '../widgets/player_sheet.dart';
+import '../widgets/team_images.dart';
 import 'game_screen.dart';
 
-/// 시뮬레이션 준비: ① 두 팀 → ② 선발투수 → ③ 라인업 → ④ 승리 예측 → 경기 시작.
+/// 시뮬레이션 준비: ① 두 팀 → ② 선발투수 → ③ 불펜 → ④ 라인업 → ⑤ 승리 예측(또는 예측 없이) → 경기 시작.
 /// 한 화면 안에서 단계를 넘긴다 (초안 확정 구조 2).
 class SetupScreen extends StatefulWidget {
   const SetupScreen({super.key, this.initial});
@@ -24,14 +25,15 @@ class SetupScreen extends StatefulWidget {
   State<SetupScreen> createState() => _SetupScreenState();
 }
 
-enum _Step { teams, starters, lineup, predict }
+enum _Step { teams, starters, bullpen, lineup, predict }
 
 extension on _Step {
   String get label => switch (this) {
         _Step.teams => '두 팀',
-        _Step.starters => '선발투수',
+        _Step.starters => '선발',
+        _Step.bullpen => '불펜',
         _Step.lineup => '라인업',
-        _Step.predict => '승리 예측',
+        _Step.predict => '예측',
       };
 }
 
@@ -39,15 +41,16 @@ class _SetupScreenState extends State<SetupScreen> {
   late final GameSetup _setup = widget.initial ?? GameSetup();
   late _Step _step = widget.initial?.hasTeams == true ? _Step.starters : _Step.teams;
 
-  /// 라인업 단계에서 보고 있는 팀.
+  /// 라인업·불펜 단계에서 보고 있는 팀.
   bool _lineupHome = false;
+  bool _bullpenHome = false;
 
   AppData get _data => AppScope.of(context).data.data!;
 
   bool get _canNext => switch (_step) {
         _Step.teams => _setup.hasTeams,
-        _Step.starters || _Step.lineup => true,
-        _Step.predict => _setup.predictedWinnerId != null,
+        _Step.starters || _Step.bullpen || _Step.lineup => true,
+        _Step.predict => _setup.hasPrediction,
       };
 
   void _back() {
@@ -68,7 +71,12 @@ class _SetupScreenState extends State<SetupScreen> {
 
   Future<void> _start() async {
     final data = _data;
-    final winner = data.team(_setup.predictedWinnerId!);
+    final predicted = _setup.predictedWinnerId;
+    if (predicted == null) {
+      _launch(data, null);
+      return;
+    }
+    final winner = data.team(predicted);
     final ok = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
@@ -81,14 +89,19 @@ class _SetupScreenState extends State<SetupScreen> {
       ),
     );
     if (ok != true || !mounted) return;
+    _launch(data, predicted);
+  }
+
+  void _launch(AppData data, String? predicted) {
     Navigator.of(context).pushReplacement(MaterialPageRoute(
       builder: (_) => GameScreen(
         awayId: _setup.awayId!,
         homeId: _setup.homeId!,
-        predictedWinnerId: _setup.predictedWinnerId!,
+        predictedWinnerId: predicted,
         seed: Random().nextInt(2147483645),
         startingPitchers: _setup.startingPitchers,
         battingOrders: _setup.battingOrders(data),
+        bullpens: _setup.bullpenPlans(data),
       ),
     ));
   }
@@ -100,6 +113,13 @@ class _SetupScreenState extends State<SetupScreen> {
     final Widget body = switch (_step) {
       _Step.teams => _TeamsStep(setup: _setup, data: data, onChanged: () => setState(() {})),
       _Step.starters => _StartersStep(setup: _setup, data: data, onChanged: () => setState(() {})),
+      _Step.bullpen => _BullpenStep(
+          setup: _setup,
+          data: data,
+          home: _bullpenHome,
+          onSide: (home) => setState(() => _bullpenHome = home),
+          onChanged: () => setState(() {}),
+        ),
       _Step.lineup => _LineupStep(
           setup: _setup,
           data: data,
@@ -135,11 +155,14 @@ class _SetupScreenState extends State<SetupScreen> {
               onPressed: _canNext ? _next : null,
               child: Text(switch (_step) {
                 _Step.teams => _setup.hasTeams ? '선발투수 고르기' : '두 팀을 고르세요',
-                _Step.starters => '라인업 확인',
+                _Step.starters => '불펜 정하기',
+                _Step.bullpen => '라인업 확인',
                 _Step.lineup => '승리 팀 예측',
-                _Step.predict => _setup.predictedWinnerId == null
-                    ? '이길 팀을 고르세요'
-                    : '${data.team(_setup.predictedWinnerId!).shortName} 승리로 경기 시작',
+                _Step.predict => _setup.watchOnly
+                    ? '예측 없이 경기 시작'
+                    : _setup.predictedWinnerId == null
+                        ? '이길 팀을 고르세요'
+                        : '${data.team(_setup.predictedWinnerId!).shortName} 승리로 경기 시작',
               }),
             ),
           ],
@@ -358,6 +381,8 @@ class _TeamButton extends StatelessWidget {
       semanticsLabel: '${team.name}, ${team.wins}승 ${team.losses}패${selected ? ', $side팀으로 선택됨' : ''}',
       child: Row(
         children: [
+          TeamLogo(team: team, size: 28),
+          const SizedBox(width: 8),
           Expanded(child: Text(team.name, style: text.titleSmall!.copyWith(color: selected ? k.onBand : k.ink), maxLines: 1, overflow: TextOverflow.ellipsis)),
         ],
       ),
@@ -401,18 +426,40 @@ class _StartersStep extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('$side ${t.name}', style: text.bodySmall!.copyWith(color: k.inkSub)),
-            const SizedBox(height: 2),
             Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Expanded(child: Text(p.name, style: text.headlineSmall)),
-                TextButton(onPressed: () => change(teamId), child: Text('${t.shortName} 선발 바꾸기')),
+                TeamLogo(team: t, size: 20),
+                const SizedBox(width: 6),
+                Text('$side ${t.name}', style: text.bodySmall!.copyWith(color: k.inkSub)),
               ],
             ),
-            Text(keepAll(pitcherLine(p)), style: text.bodyMedium!.copyWith(color: k.inkSub)),
-            if (p.id != auto)
-              Text('자동 선발 ${data.player(auto).name} 대신', style: text.bodySmall!.copyWith(fontWeight: FontWeight.w700)),
+            const SizedBox(height: 6),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                PlayerPhoto(key: ValueKey(p.id), player: p, size: 64),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(p.name, style: text.headlineSmall),
+                      Text(keepAll(pitcherLine(p)), style: text.bodyMedium!.copyWith(color: k.inkSub)),
+                      if (p.id != auto)
+                        Text('자동 선발 ${data.player(auto).name} 대신', style: text.bodySmall!.copyWith(fontWeight: FontWeight.w700)),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: TextButton(
+                          style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                          onPressed: () => change(teamId),
+                          child: Text('${t.shortName} 선발 바꾸기'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       );
@@ -706,7 +753,13 @@ class _PredictStep extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(side, style: text.bodySmall!.copyWith(color: sub)),
-            Text(t.name, style: text.headlineSmall!.copyWith(color: fg)),
+            Row(
+              children: [
+                TeamLogo(team: t, size: 30),
+                const SizedBox(width: 8),
+                Expanded(child: Text(t.name, style: text.headlineSmall!.copyWith(color: fg))),
+              ],
+            ),
             Text(
               keepAll('승률 ${t.winRate.toStringAsFixed(3)}, 타율 ${avg(t.battingAverage)}, 평균자책 ${era(t.era)}, 선발 ${sp.name}'),
               style: text.bodySmall!.copyWith(color: sub),
@@ -716,13 +769,199 @@ class _PredictStep extends StatelessWidget {
       );
     }
 
+    final watch = setup.watchOnly;
     return ListView(
       padding: const EdgeInsets.fromLTRB(12, 12, 12, 8),
       children: [
+        Text(keepAll('이길 팀을 고르면 확정 후 경기 결과로 채점합니다 (적중 ${RecordBook.pointsPerHit}점).'),
+            style: text.bodySmall!.copyWith(color: k.inkSub)),
+        const SizedBox(height: 8),
         pick('원정', setup.awayId!),
         const SizedBox(height: 8),
         pick('홈', setup.homeId!),
+        const SizedBox(height: 16),
+        _PickTile(
+          selected: watch,
+          radio: true,
+          minHeight: 64,
+          padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
+          semanticsLabel: '예측 없이 돌려보기. 확정하지 않고 경기만 봅니다. 경기 결과는 기록에 남고 예측 점수는 없습니다.',
+          onTap: () {
+            setup.watchOnly = true;
+            onChanged();
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('예측 없이 돌려보기', style: text.titleMedium!.copyWith(color: watch ? k.onBand : k.ink)),
+              Text(keepAll('확정 없이 경기만 봅니다. 두 팀 모두 정한 불펜 운용대로 앱이 운영합니다. 경기 결과는 내 기록에 남고, 예측 점수와 적중률에는 들어가지 않습니다.'),
+                  style: text.bodySmall!.copyWith(color: watch ? k.onBand : k.inkSub)),
+            ],
+          ),
+        ),
       ],
+    );
+  }
+}
+
+/// ③ 불펜: 원정·홈을 바꿔 보며 중간 계투 순서와 마무리를 정한다.
+/// 교체 시점(선발 6~7이닝, 구원 1이닝, 대량 실점)이 되면 이 순서대로 자동으로 올라간다.
+class _BullpenStep extends StatelessWidget {
+  const _BullpenStep({
+    required this.setup,
+    required this.data,
+    required this.home,
+    required this.onSide,
+    required this.onChanged,
+  });
+
+  final GameSetup setup;
+  final AppData data;
+  final bool home;
+  final ValueChanged<bool> onSide;
+  final VoidCallback onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final k = context.kbo;
+    final text = Theme.of(context).textTheme;
+    final teamId = home ? setup.homeId! : setup.awayId!;
+    final plan = setup.bullpenOf(data, teamId);
+    final auto = setup.isAutoBullpen(data, teamId);
+    final short = data.team(teamId).shortName;
+
+    Future<void> edit(int? index) async {
+      final current = index == null ? plan.closer : (index < plan.order.length ? plan.order[index] : null);
+      final chosen = await pickPlayer(
+        context,
+        title: index == null ? '$short 마무리 고르기' : '$short ${index + 2}번째 투수 고르기',
+        note: '이미 다른 순서에 있는 투수를 고르면 두 자리를 맞바꿉니다.',
+        candidateIds: [for (final id in setup.bullpenCandidates(data, teamId)) if (id != current) id],
+        data: data,
+        pitcher: true,
+      );
+      if (chosen == null) return;
+      setup.setBullpen(teamId, index == null ? plan.withCloser(chosen) : plan.withOrder(index, chosen));
+      onChanged();
+    }
+
+    Widget side(String label, bool isHome) {
+      final t = data.team(isHome ? setup.homeId! : setup.awayId!);
+      return Expanded(
+        child: _PickTile(
+          selected: home == isHome,
+          radio: true,
+          minHeight: 44,
+          onTap: () => onSide(isHome),
+          semanticsLabel: '$label ${t.name} 불펜 보기',
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: Center(
+            child: Text('$label ${t.shortName}', style: text.titleSmall!.copyWith(color: home == isHome ? k.onBand : k.ink)),
+          ),
+        ),
+      );
+    }
+
+    final rows = <(String, String?, int?)>[
+      for (var i = 0; i < plan.order.length; i++) ('${i + 2}번째', plan.order[i], i),
+      ('마무리', plan.closer, null),
+    ];
+
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(children: [side('원정', false), const SizedBox(width: 8), side('홈', true)]),
+          SectionTitle(
+            auto ? '기본 불펜 운용' : '바꾼 불펜 운용',
+            padding: const EdgeInsets.fromLTRB(4, 8, 0, 0),
+            trailing: auto
+                ? null
+                : TextButton(
+                    onPressed: () {
+                      setup.resetBullpen(teamId);
+                      onChanged();
+                    },
+                    child: const Text('기본으로 되돌리기'),
+                  ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(4, 0, 4, 6),
+            child: Text(
+              keepAll('선발 ${data.player(setup.starterOf(data, teamId)).name} 다음에 이 순서대로 올라갑니다. '
+                  '9회 이후 1~3점 앞서면 마무리가 나옵니다. 예측한 팀은 경기 중에 직접 바꿀 수도 있습니다.'),
+              style: text.bodySmall!.copyWith(color: k.inkSub),
+            ),
+          ),
+          Expanded(
+            child: ListView(
+              physics: const ClampingScrollPhysics(),
+              children: [
+                for (final (i, r) in rows.indexed)
+                  _BullpenRow(
+                    label: r.$1,
+                    player: r.$2 == null ? null : data.player(r.$2!),
+                    striped: i.isEven,
+                    onTap: () => edit(r.$3),
+                  ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _BullpenRow extends StatelessWidget {
+  const _BullpenRow({required this.label, required this.player, required this.striped, required this.onTap});
+
+  final String label;
+  final PlayerCard? player;
+  final bool striped;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final k = context.kbo;
+    final text = Theme.of(context).textTheme;
+    final p = player;
+    return Semantics(
+      button: true,
+      label: '$label 투수 ${p?.name ?? '없음'}${p == null ? '' : ', ${pitcherLine(p)}'}. 눌러서 바꾸기',
+      excludeSemantics: true,
+      child: Material(
+        color: striped ? k.stripe : Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(minHeight: 56),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 6),
+              child: Row(
+                children: [
+                  SizedBox(width: 56, child: Center(child: Text(label, style: text.labelMedium!.copyWith(color: k.inkSub)))),
+                  if (p != null) ...[
+                    PlayerPhoto(key: ValueKey(p.id), player: p, size: 34),
+                    const SizedBox(width: 10),
+                  ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(p?.name ?? '정하지 않음 (기록 기반 자동)', style: p == null ? text.bodyMedium!.copyWith(color: k.inkSub) : text.titleSmall),
+                        if (p != null)
+                          Text(pitcherLine(p), style: text.bodySmall!.copyWith(color: k.inkSub), maxLines: 1, overflow: TextOverflow.ellipsis),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

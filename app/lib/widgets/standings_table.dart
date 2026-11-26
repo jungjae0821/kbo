@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../data/app_data.dart';
 import '../state/labels.dart';
 import '../theme/kbo_theme.dart';
+import 'team_images.dart';
 
 /// 정규시즌 순위표: 열 10개를 한 화면 폭에 넣는다 (초안 판정 17·18).
 /// 승률 순, 게임차는 1위 기준 ((1위 승 - 승) + (패 - 1위 패)) / 2.
@@ -14,15 +15,15 @@ class StandingsTable extends StatelessWidget {
 
   /// 열 이름과 폭 비율. 합 100.
   static const _columns = [
-    ('순위', 8.5),
-    ('팀', 13.0),
-    ('승률', 13.0),
-    ('게임차', 10.5),
-    ('경기', 8.5),
-    ('승', 8.5),
-    ('패', 8.5),
-    ('무', 6.5),
-    ('타율', 12.0),
+    ('순위', 7.0),
+    ('팀', 21.0),
+    ('승률', 12.0),
+    ('게임차', 10.0),
+    ('경기', 8.0),
+    ('승', 7.5),
+    ('패', 7.5),
+    ('무', 5.5),
+    ('타율', 11.0),
     ('평균\n자책', 10.5),
   ];
 
@@ -74,7 +75,20 @@ class StandingsTable extends StatelessWidget {
                 Semantics(
                   label: '${i + 1}위 ${t.name}, 승률 ${t.winRate.toStringAsFixed(3)}, ${t.wins}승 ${t.losses}패 ${t.ties}무',
                   excludeSemantics: true,
-                  child: cell(t.shortName, text.titleSmall!.copyWith(fontSize: 14), align: Alignment.centerLeft),
+                  // 엠블럼 + 짧은 팀 이름. 좁으면 이름이 줄어든다.
+                  child: Row(
+                    children: [
+                      TeamLogo(team: t, size: (rowHeight - 10).clamp(18.0, 26.0)),
+                      const SizedBox(width: 4),
+                      Expanded(
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          alignment: Alignment.centerLeft,
+                          child: Text(t.shortName, style: text.titleSmall!.copyWith(fontSize: 14), maxLines: 1),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 cell(t.winRate.toStringAsFixed(3), text.titleSmall!.copyWith(fontSize: 13.5, color: k.accent)),
                 cell(gb(t), num),

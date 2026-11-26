@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../data/app_data.dart';
 import '../state/labels.dart';
 import '../theme/kbo_theme.dart';
+import 'team_images.dart';
 
 /// 선수 한 명을 고르는 아래쪽 시트. 고른 선수 ID를 돌려준다.
 Future<String?> pickPlayer(
@@ -99,13 +100,24 @@ class _PlayerList extends StatelessWidget {
                             constraints: const BoxConstraints(minHeight: 56),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
+                              child: Row(
                                 children: [
-                                  Text(p.name, style: text.titleMedium),
-                                  Text(pitcher ? pitcherLine(p) : batterLine(p),
-                                      style: text.bodySmall?.copyWith(color: k.inkSub)),
+                                  // 투수를 고를 때는 얼굴 사진을 함께 보인다.
+                                  if (pitcher) ...[
+                                    PlayerPhoto(key: ValueKey(p.id), player: p, size: 40),
+                                    const SizedBox(width: 10),
+                                  ],
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(p.name, style: text.titleMedium),
+                                        Text(pitcher ? pitcherLine(p) : batterLine(p),
+                                            style: text.bodySmall?.copyWith(color: k.inkSub)),
+                                      ],
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),

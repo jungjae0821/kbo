@@ -24,6 +24,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/data/season_dataset.json
+    - assets/logos/
   fonts:
     - family: GyeonggiTitle
       fonts:

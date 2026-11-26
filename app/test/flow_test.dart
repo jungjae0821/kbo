@@ -4,9 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kbo_app/data/data_controller.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/testing.dart';
+import 'package:kbo_app/data/season_cache.dart';
 import 'package:kbo_app/main.dart';
 import 'package:kbo_app/state/record_book.dart';
 import 'package:kbo_app/widgets/play_feed.dart';
+import 'package:kbo_app/widgets/team_images.dart';
 
 /// 테스트에서 번들 대신 실제 시즌 JSON을 돌려준다.
 class _FileBundle extends CachingAssetBundle {
@@ -29,7 +33,7 @@ bool _onScreen(WidgetTester tester, Finder finder) {
 }
 
 void main() {
-  testWidgets('메인 → 준비 4단계 → 경기 → 결과·상세보기 → 다시하기 → 처음으로', (tester) async {
+  testWidgets('메인 → 준비 5단계 → 경기 → 결과·상세보기 → 다시하기 → 처음으로', (tester) async {
     tester.view.physicalSize = const Size(1080, 1920); // 360x640, 기준으로 삼는 작은 휴대폰
     tester.view.devicePixelRatio = 3;
     addTearDown(tester.view.reset);
@@ -48,6 +52,9 @@ void main() {
     expect(_onScreen(tester, find.text('키움')), isTrue, reason: '10위 줄이 화면 밖');
     expect(_onScreen(tester, find.text('시뮬레이션 시작')), isTrue);
     expect(tester.getRect(find.text('키움')).bottom <= tester.getRect(find.text('시뮬레이션 시작')).top, isTrue);
+    // 순위표 팀 칸에 엠블럼과 팀 이름이 함께 보인다.
+    expect(find.descendant(of: find.byType(Table), matching: find.byType(TeamLogo)), findsNWidgets(10));
+    expect(tester.getRect(find.byType(TeamLogo).last).right <= tester.getRect(find.text('키움')).left, isTrue);
 
     await tester.tap(find.text('시뮬레이션 시작'));
     await tester.pumpAndSettle();
@@ -71,6 +78,24 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('자동 선발 소형준 대신'), findsOneWidget);
     expect(_contains('공식 시즌 표의 팀 분류입니다.'), findsOneWidget);
+    // 선발투수 얼굴 사진 자리 (테스트에서는 네트워크가 없어 이름 첫 글자로 대신한다).
+    expect(find.byType(PlayerPhoto), findsNWidgets(2));
+    await tester.tap(find.text('불펜 정하기'));
+    await tester.pumpAndSettle();
+
+    // ③ 불펜: 기본 운용(계투 5명 + 마무리)을 보여 주고, 한 자리를 바꾸면 바꾼 운용이 된다.
+    expect(find.text('기본 불펜 운용'), findsOneWidget);
+    expect(find.bySemanticsLabel(RegExp(r'^2번째 투수 ')), findsOneWidget);
+    expect(find.bySemanticsLabel(RegExp(r'^마무리 투수 ')), findsOneWidget);
+    await tester.tap(find.bySemanticsLabel(RegExp(r'^2번째 투수 ')));
+    await tester.pumpAndSettle();
+    expect(_plain('KT 2번째 투수 고르기'), findsOneWidget);
+    await tester.tap(find.descendant(of: find.byType(BottomSheet), matching: find.byType(InkWell)).first);
+    await tester.pumpAndSettle();
+    expect(find.text('바꾼 불펜 운용'), findsOneWidget);
+    await tester.tap(find.text('기본으로 되돌리기'));
+    await tester.pumpAndSettle();
+    expect(find.text('기본 불펜 운용'), findsOneWidget);
     await tester.tap(find.text('라인업 확인'));
     await tester.pumpAndSettle();
 
@@ -202,7 +227,7 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.text('두산 베어스'));
     await tester.pumpAndSettle();
-    for (final label in ['선발투수 고르기', '라인업 확인', '승리 팀 예측']) {
+    for (final label in ['선발투수 고르기', '불펜 정하기', '라인업 확인', '승리 팀 예측']) {
       await tester.tap(find.text(label));
       await tester.pumpAndSettle();
     }
@@ -223,4 +248,112 @@ void main() {
     expect(find.text('2026 정규시즌 순위'), findsOneWidget);
     expect(find.text('1경기'), findsNothing);
   });
+
+  testWidgets('예측 없이 돌려보기: 확정 없이 끝까지 진행하고, 결과는 기록에 남지만 예측 점수는 없다', (tester) async {
+    tester.view.physicalSize = const Size(1080, 1920);
+    tester.view.devicePixelRatio = 3;
+    addTearDown(tester.view.reset);
+    final data = DataController(bundle: _FileBundle(), remoteUrl: '');
+    final records = RecordBook();
+    await tester.runAsync(data.load);
+    await tester.pumpWidget(KboApp(data: data, records: records));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('시뮬레이션 시작'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('LG 트윈스'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('두산 베어스'));
+    await tester.pumpAndSettle();
+    for (final label in ['선발투수 고르기', '불펜 정하기', '라인업 확인', '승리 팀 예측']) {
+      await tester.tap(find.text(label));
+      await tester.pumpAndSettle();
+    }
+    // 팀을 고른 뒤 돌려보기로 바꾸면 팀 선택이 풀린다.
+    await tester.tap(find.text('LG 트윈스'));
+    await tester.pumpAndSettle();
+    expect(find.text('LG 승리로 경기 시작'), findsOneWidget);
+    await tester.tap(find.text('예측 없이 돌려보기'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('예측 없이 경기 시작'));
+    await tester.pumpAndSettle();
+
+    // 확정 창 없이 바로 경기. 감독 줄 없이 진행 버튼만.
+    expect(find.text('확정하고 시작'), findsNothing);
+    expect(find.text('1회초'), findsOneWidget);
+    expect(find.text('투수 교체'), findsNothing);
+    expect(find.text('대타 내기'), findsNothing);
+    await tester.tap(find.text('다음 이닝까지'));
+    await tester.pumpAndSettle();
+    expect(find.text('2회초'), findsOneWidget);
+    await tester.tap(find.text('경기 끝까지 진행'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('경기 결과 보기'));
+    await tester.pumpAndSettle();
+    expect(_contains('경기 결과는 내 기록에 남고'), findsOneWidget);
+    expect(records.gameCount, 1);
+    expect(records.predictionCount, 0);
+    expect(records.totalPoints, 0);
+    expect(records.hitRate, isNull);
+    expect(records.recent.single.predictedWinnerId, isNull);
+
+    // 처음으로 → 메인에 1경기, 내 기록에 돌려본 경기가 보인다.
+    await tester.tap(find.text('처음으로'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('내 기록'));
+    await tester.pumpAndSettle();
+    expect(find.text('예측 없이 돌려보기'), findsOneWidget);
+    expect(_contains('돌려보기 1경기'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('최신 기록을 받지 못하면 포함된 기록으로 진행하고, 받지 못했다는 안내와 다시 불러오기를 보인다', (tester) async {
+    tester.view.physicalSize = const Size(1080, 1920);
+    tester.view.devicePixelRatio = 3;
+    addTearDown(tester.view.reset);
+    final data = DataController(
+      bundle: _FileBundle(),
+      cache: _EmptyCache(),
+      clientFactory: _failingClient,
+      remoteUrl: 'https://example.invalid/season.json',
+    );
+    await tester.runAsync(data.load);
+    expect(data.status, DataStatus.ready);
+    await tester.pumpWidget(KboApp(data: data, records: RecordBook()));
+    await tester.pumpAndSettle();
+    expect(_contains('최신 시즌 기록을 받지 못해 앱에 포함된 기록을 사용합니다.'), findsOneWidget);
+    expect(find.text('다시 불러오기'), findsOneWidget);
+    expect(find.text('2026 정규시즌 순위'), findsOneWidget);
+    expect(tester.widget<FilledButton>(find.widgetWithText(FilledButton, '시뮬레이션 시작')).onPressed, isNotNull);
+  });
+
+  testWidgets('시즌 데이터를 하나도 읽지 못하면 안내와 다시 불러오기가 보이고 시작할 수 없다', (tester) async {
+    tester.view.physicalSize = const Size(1080, 1920);
+    tester.view.devicePixelRatio = 3;
+    addTearDown(tester.view.reset);
+    final data = DataController(bundle: _BrokenBundle(), cache: _EmptyCache(), remoteUrl: '');
+    await tester.runAsync(data.load);
+    expect(data.status, DataStatus.failed);
+    await tester.pumpWidget(KboApp(data: data, records: RecordBook()));
+    await tester.pumpAndSettle();
+    expect(_contains('시즌 데이터'), findsOneWidget);
+    expect(find.text('다시 불러오기'), findsOneWidget);
+    expect(tester.widget<FilledButton>(find.widgetWithText(FilledButton, '시뮬레이션 시작')).onPressed, isNull);
+  });
+}
+
+/// 원격 서버가 항상 500을 돌려준다.
+http.Client _failingClient() => MockClient((_) async => http.Response('down', 500));
+
+/// 번들 읽기가 항상 실패한다.
+class _BrokenBundle extends CachingAssetBundle {
+  @override
+  Future<ByteData> load(String key) async => throw FlutterError('no asset: $key');
+}
+
+class _EmptyCache implements SeasonCache {
+  @override
+  Future<String?> read(String key) async => null;
+
+  @override
+  Future<void> write(String key, String source) async {}
 }
