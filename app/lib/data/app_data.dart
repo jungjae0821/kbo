@@ -16,6 +16,7 @@ class TeamSummary {
     required this.battingAverage,
     required this.homeRuns,
     required this.era,
+    this.officialName,
   });
 
   factory TeamSummary.fromJson(Map<String, dynamic> j) {
@@ -33,11 +34,27 @@ class TeamSummary {
       battingAverage: (batting['batting_average'] as num?)?.toDouble(),
       homeRuns: batting['home_runs'] as int?,
       era: (pitching['earned_run_average'] as num?)?.toDouble(),
+      officialName: j['official_team_name'] as String?,
     );
   }
 
+  /// 공식 기록 표의 팀 이름("KT", "삼성") → 앱에 포함한 엠블럼 파일 이름 (KBO 구단 코드).
+  static const _logoCodes = {
+    'KT': 'KT',
+    '삼성': 'SS',
+    '한화': 'HH',
+    '롯데': 'LT',
+    'KIA': 'HT',
+    'NC': 'NC',
+    '두산': 'OB',
+    'LG': 'LG',
+    'SSG': 'SK',
+    '키움': 'WO',
+  };
+
   final String id;
   final String name;
+  final String? officialName;
   final int games;
   final int wins;
   final int losses;
@@ -50,6 +67,12 @@ class TeamSummary {
 
   /// "KT 위즈" → "KT", "삼성 라이온즈" → "삼성".
   String get shortName => name.split(' ').first;
+
+  /// 팀 엠블럼 에셋 경로. 모르는 팀이면 null (화면은 글자만 보인다).
+  String? get logoAsset {
+    final code = _logoCodes[officialName ?? shortName] ?? _logoCodes[shortName];
+    return code == null ? null : 'assets/logos/$code.png';
+  }
 
   /// KBO 승률: 무승부를 제외한 승 / (승 + 패).
   double get winRate => wins + losses == 0 ? 0 : wins / (wins + losses);
@@ -72,6 +95,7 @@ class PlayerCard {
     this.saves,
     this.holds,
     this.pitcherStarts = 0,
+    this.kboId,
   });
 
   factory PlayerCard.fromJson(Map<String, dynamic> j) {
@@ -97,6 +121,7 @@ class PlayerCard {
       saves: p?['saves'] as int?,
       holds: p?['holds'] as int?,
       pitcherStarts: starts,
+      kboId: j['kbo_player_id'] as String?,
     );
   }
 
@@ -116,6 +141,14 @@ class PlayerCard {
 
   /// 시즌에 선발투수로 나온 경기 수. 0이면 경기 전 선발 후보에서 뺀다.
   final int pitcherStarts;
+
+  /// KBO 공식 선수 번호. 얼굴 사진 주소에 쓴다.
+  final String? kboId;
+
+  /// KBO 공식 사이트의 선수 얼굴 사진 (공개 이미지, CORS 허용). 번호가 없으면 null.
+  String? get photoUrl => kboId == null || kboId!.isEmpty
+      ? null
+      : 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2026/$kboId.jpg';
 }
 
 /// 앱이 쓰는 시즌 데이터 한 벌. 엔진 입력은 [season]이 계약 검사를 통과한 것만 담는다.

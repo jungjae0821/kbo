@@ -15,7 +15,7 @@ Future<void> resumeSavedGame(BuildContext context) async {
   try {
     final engine = game.restore(data.season);
     await Navigator.of(context).push(MaterialPageRoute(
-      builder: (_) => GameScreen.resume(engine: engine, predictedWinnerId: game.predictedWinnerId),
+      builder: (_) => GameScreen.resume(engine: engine, predictedWinnerId: game.predictedWinnerId, bullpens: game.bullpens),
     ));
   } on FormatException {
     if (!context.mounted) return;

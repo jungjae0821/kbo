@@ -27,7 +27,7 @@ class _BrokenStore extends MemoryLocalStore {
   Future<void> write(String name, String contents) async => throw const FileSystemException('disk full');
 }
 
-GameRecord _record(String id, {required String predicted, String? winner, int away = 3, int home = 2}) => GameRecord(
+GameRecord _record(String id, {required String? predicted, String? winner, int away = 3, int home = 2}) => GameRecord(
       gameId: id,
       awayTeamId: 'A',
       homeTeamId: 'B',
@@ -47,6 +47,28 @@ void main() {
   final teamIds = season.teams.keys.toList();
 
   group('개인 기록 저장', () {
+    test('예측 없이 돌려본 경기도 저장되고, 점수·적중률·연속 적중에는 들어가지 않는다', () async {
+      final store = MemoryLocalStore();
+      final book = RecordBook(store: store);
+      await book.load();
+      book.score(_record('g1', predicted: 'A', winner: 'A'));
+      book.score(_record('g2', predicted: null, winner: 'B', away: 1, home: 4));
+      book.score(_record('g3', predicted: 'A', winner: 'A'));
+      await book.saved;
+
+      final again = RecordBook(store: store);
+      await again.load();
+      expect(again.gameCount, 3);
+      expect(again.predictionCount, 2);
+      expect(again.hitRate, 1.0);
+      expect(again.totalPoints, 2 * RecordBook.pointsPerHit);
+      expect(again.currentStreak, 2);
+      final watched = again.recent.firstWhere((g) => g.gameId == 'g2');
+      expect(watched.predictedWinnerId, isNull);
+      expect((watched.awayScore, watched.homeScore, watched.winnerTeamId), (1, 4, 'B'));
+      expect(watched.points, 0);
+    });
+
     test('저장한 기록을 다시 켜면 그대로 읽고, 같은 경기는 다시 채점하지 않는다', () async {
       final store = MemoryLocalStore();
       final first = RecordBook(store: store);
@@ -192,6 +214,25 @@ void main() {
       final decoded = SavedGame.decode(saved.encode());
       expect(decoded.compatibleWith(season), isFalse);
       expect(() => decoded.restore(season), throwsFormatException);
+    });
+
+    test('예측 없이 돌려본 경기와 불펜 운용도 저장하고 되살린다', () async {
+      final store = MemoryLocalStore();
+      final saved = SavedGameStore(store: store);
+      await saved.load();
+      final game = newGame();
+      for (var i = 0; i < 10; i++) {
+        game.step();
+      }
+      final plan = BullpenPlan(order: game.pitcherCandidates(teamIds[1]).take(3).toList(), closer: null);
+      saved.save(game, null, bullpens: {teamIds[1]: plan});
+      await saved.saved;
+      final reopened = SavedGameStore(store: store);
+      await reopened.load();
+      final current = reopened.current!;
+      expect(current.predictedWinnerId, isNull);
+      expect(current.bullpens[teamIds[1]]!.sameAs(plan), isTrue);
+      expect(current.bullpens.containsKey(teamIds[0]), isFalse);
     });
 
     test('예측 팀이 대진에 없으면 거부한다', () {

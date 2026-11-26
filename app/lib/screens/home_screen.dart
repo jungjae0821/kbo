@@ -129,7 +129,7 @@ class _MyRecordLine extends StatelessWidget {
         );
     return Semantics(
       button: true,
-      label: '내 기록 보기. ${records.predictionCount}경기, 적중률 ${records.hitRate == null ? '없음' : rate}, ${records.totalPoints}점',
+      label: '내 기록 보기. ${records.gameCount}경기, 적중률 ${records.hitRate == null ? '없음' : rate}, ${records.totalPoints}점',
       excludeSemantics: true,
       child: InkWell(
         onTap: onTap,
@@ -148,7 +148,7 @@ class _MyRecordLine extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Row(
                       children: [
-                        item('${records.predictionCount}', '경기'),
+                        item('${records.gameCount}', '경기'),
                         const SizedBox(width: 16),
                         item(rate, '적중률', valueFirst: false),
                         const SizedBox(width: 16),
@@ -189,8 +189,8 @@ class _ResumeCard extends StatelessWidget {
     if (usable) {
       final away = data.team(game.awayTeamId), home = data.team(game.homeTeamId);
       title = '${away.shortName} ${game.awayScore} : ${game.homeScore} ${home.shortName}';
-      detail = '${game.isFinished ? '경기 종료, 채점 전' : '${halfLabel(game.inning, game.isTop)}에서 멈춤'}, '
-          '예측 ${data.team(game.predictedWinnerId).shortName}';
+      detail = '${game.isFinished ? (game.predictedWinnerId == null ? '경기 종료, 기록 전' : '경기 종료, 채점 전') : '${halfLabel(game.inning, game.isTop)}에서 멈춤'}, '
+          '${game.predictedWinnerId == null ? '예측 없이 돌려보기' : '예측 ${data.team(game.predictedWinnerId!).shortName}'}';
     } else {
       title = '이어할 수 없는 경기';
       detail = '시즌 데이터나 경기 엔진이 바뀌었습니다';
